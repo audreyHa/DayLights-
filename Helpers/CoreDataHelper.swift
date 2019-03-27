@@ -1,0 +1,51 @@
+//
+//  CoreDataHelper.swift
+//  DayLights
+//
+//  Created by Audrey Ha on 3/25/19.
+//  Copyright © 2019 AudreyHa. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import CoreData
+
+struct CoreDataHelper{
+    static let context: NSManagedObjectContext={
+        guard let appDelegate=UIApplication.shared.delegate as? AppDelegate else{
+            fatalError()
+        }
+        let persistentContainer=appDelegate.persistentContainer
+        let context=persistentContainer.viewContext
+        return context
+    }()
+    
+    static func newDaylight()->Daylight{
+        let daylight=NSEntityDescription.insertNewObject(forEntityName: "Daylight", into: context) as! Daylight
+        return daylight
+    }
+    
+    static func saveDaylight(){
+        do{
+            try context.save()
+        }catch let error{
+            print("Could not save \(error.localizedDescription)")
+        }
+    }
+    
+    static func delete(daylight: Daylight){
+        context.delete(daylight)
+        saveDaylight()
+    }
+    
+    static func retrieveDaylight()->[Daylight]{
+        do{
+            let fetchRequest=NSFetchRequest<Daylight>(entityName: "Daylight")
+            let results=try context.fetch(fetchRequest)
+            return results
+        }catch let error{
+            print("Could not fetch \(error.localizedDescription)")
+            return []
+        }
+    }
+}
