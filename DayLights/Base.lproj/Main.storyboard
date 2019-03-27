@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="SMj-hF-EOg">
-                                <rect key="frame" x="15" y="40" width="210" height="228"/>
+                                <rect key="frame" x="15" y="40" width="210" height="278.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBL-8M-RIU">
                                         <rect key="frame" x="0.0" y="0.0" width="81.5" height="36"/>
@@ -84,6 +84,9 @@
                                         <state key="normal" title="Gallery: Things I Did Well">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didWellPressed:" destination="VHG-fJ-Z90" eventType="touchUpInside" id="JdD-2P-uld"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-ja-LNn">
                                         <rect key="frame" x="0.0" y="194" width="191" height="34"/>
@@ -91,22 +94,23 @@
                                         <state key="normal" title="Gallery: Grateful Things">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="gratefulThingsPressed:" destination="VHG-fJ-Z90" eventType="touchUpInside" id="PId-qq-1gk"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click Menu to Exit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEa-Dn-eCN">
+                                        <rect key="frame" x="0.0" y="258" width="137" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.60620196989999997" green="0.85892885919999995" blue="0.68420793150000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click Menu to Exit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEa-Dn-eCN">
-                                <rect key="frame" x="15" y="631.5" width="137" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.60620196989999997" green="0.85892885919999995" blue="0.68420793150000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SMj-hF-EOg" firstAttribute="top" secondItem="vSh-y6-RY1" secondAttribute="top" constant="20" id="2A7-jh-alw"/>
                             <constraint firstItem="SMj-hF-EOg" firstAttribute="leading" secondItem="vSh-y6-RY1" secondAttribute="leading" constant="15" id="Mgh-rL-TqR"/>
-                            <constraint firstItem="vSh-y6-RY1" firstAttribute="bottom" secondItem="IEa-Dn-eCN" secondAttribute="bottom" constant="15" id="ktr-Ks-Cce"/>
-                            <constraint firstItem="IEa-Dn-eCN" firstAttribute="leading" secondItem="vSh-y6-RY1" secondAttribute="leading" constant="15" id="wzJ-1Q-eUW"/>
                             <constraint firstItem="vSh-y6-RY1" firstAttribute="trailing" secondItem="SMj-hF-EOg" secondAttribute="trailing" constant="15" id="zfv-FG-lmL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vSh-y6-RY1"/>
@@ -115,6 +119,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3O-rZ-f93" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-805" y="819"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0DY-BO-4gd">
+            <objects>
+                <viewController id="qX2-Rj-cYD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jqs-bO-6CW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gallery: Things I did well" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxF-Q3-uEy">
+                                <rect key="frame" x="94" y="226" width="186" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cKN-Ln-o3W"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90S-m4-ge2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="830"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ev3-Ki-PRG">
+            <objects>
+                <viewController id="m4k-SW-ulO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xBp-EA-wUD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gallery: Grateful things" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xm-B4-1Yd">
+                                <rect key="frame" x="50" y="224" width="176" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="09D-XD-fxm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hK-lY-hNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="824"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -278,6 +330,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="uF6-c4-4Ot" id="exj-9J-1Bm"/>
+                        <segue destination="qX2-Rj-cYD" kind="show" identifier="showDidWell" id="5Wo-5m-jRs"/>
+                        <segue destination="m4k-SW-ulO" kind="show" identifier="showGratefulThings" id="zOg-Qk-pPf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -10,14 +10,20 @@ import UIKit
 
 class Side: UIViewController {
 
+    @IBAction func didWellPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name("DidWell"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
+        
+    }
+    
+    @IBAction func gratefulThingsPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name("GratefulThings"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
 }

@@ -17,32 +17,47 @@ class ContainerVC: UIViewController{
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        hideTheSide()
         hideSideMenu()
-        NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name("ToggleSideMenu"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openSideMenu), name: NSNotification.Name("OpenSideMenu"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(closeSideMenu), name: NSNotification.Name("CloseSideMenu"), object: nil)
+
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(hideSideMenu), name: NSNotification.Name("hideSide"), object: nil)
     }
     
-    @objc func toggleSideMenu(){
-        if (sideMenuOpen==true){ //closing
-            sideMenuOpen=false
-            print("reached here")
-            hamburgerConstraint.constant = -240
-        }else{ //opening
-            sideMenuOpen=true
-            print("reached 2")
-            hamburgerConstraint.constant = 0
-        }
+    @objc func openSideMenu(){
+        print("opened")
+        hamburgerConstraint.constant = 0
     }
     
-    func hideSideMenu() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissSideMenu))
+    @objc func closeSideMenu(){
+        print("closed")
+        hamburgerConstraint.constant = -240
+    }
+    
+    
+    //after touching outside
+    @objc func hideSideMenu() {
+        sideMenuOpen=false
+        print("touch outside")
+        hamburgerConstraint.constant = -240
+    }
+    
+    //after touching menu
+    func hideTheSide() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissTheMenu))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
-    @objc func dismissSideMenu() { //closing
+    @objc func dismissTheMenu() {
+        NotificationCenter.default.post(name: NSNotification.Name("hideSide"), object: nil)
         sideMenuOpen=false
-        print("reached 3")
+        print("touch MENU")
         hamburgerConstraint.constant = -240
     }
     
 }
+

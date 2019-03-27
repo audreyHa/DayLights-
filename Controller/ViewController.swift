@@ -11,14 +11,19 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func onMoreTapped(_ sender: UIBarButtonItem) {
-        NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("OpenSideMenu"), object: nil)
     }
     
     @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showGratefulThings), name: NSNotification.Name("GratefulThings"), object: nil)
+        self.hideSide()
         self.hideKeyboardWhenTappedAround() 
         let dateformatter = DateFormatter()
         
@@ -30,7 +35,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @objc func showDidWell(){
+        performSegue(withIdentifier: "showDidWell", sender: nil)
+    }
     
+    @objc func showGratefulThings(){
+        performSegue(withIdentifier: "showGratefulThings", sender: nil)
+    }
 }
 
 extension UIViewController {
@@ -45,14 +56,14 @@ extension UIViewController {
     }
 }
 
-//extension UIViewController {
-//    func hideSideMenu() {
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissSideMenu))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
-//    }
-//    
-//    @objc func dismissSideMenu() {
-//        ContainerVC.hamburgerConstraint.constant = -240
-//    }
-//}
+extension UIViewController {
+    func hideSide() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissMenu))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissMenu() {
+        NotificationCenter.default.post(name: NSNotification.Name("hideSide"), object: nil)
+    }
+}
