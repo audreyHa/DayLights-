@@ -9,15 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
 
+    @IBOutlet weak var didWellText: UITextView!
+    @IBOutlet weak var gratefulText: UITextView!
+    
+    
     @IBAction func onMoreTapped(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("OpenSideMenu"), object: nil)
     }
     
     @IBAction func saveDayLights(_ sender: UIButton) {
+        var daylight=CoreDataHelper.newDaylight()
+        daylight.didWell=didWellText.text ?? ""
+        daylight.gratefulThing=gratefulText.text ?? ""
+        print("This is the did well: \(didWellText.text)")
+        print("This is the grateful thing: \(gratefulText.text)")
+        daylight.dateCreated=Date()
+        CoreDataHelper.saveDaylight()
         
+        
+        didWellText.text = "Type text here..."
+        gratefulText.text = "Type text here..."
     }
     
+
     
     
     @IBOutlet weak var dateLabel: UILabel!

@@ -41,7 +41,6 @@ class ContainerVC: UIViewController{
     //after touching outside
     @objc func hideSideMenu() {
         sideMenuOpen=false
-        print("touch outside")
         hamburgerConstraint.constant = -240
     }
     
@@ -55,7 +54,6 @@ class ContainerVC: UIViewController{
     @objc func dismissTheMenu() {
         NotificationCenter.default.post(name: NSNotification.Name("hideSide"), object: nil)
         sideMenuOpen=false
-        print("touch MENU")
         hamburgerConstraint.constant = -240
     }
     
