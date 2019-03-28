@@ -20,20 +20,55 @@ class ViewController: UIViewController {
     }
     
     @IBAction func saveDayLights(_ sender: UIButton) {
-        var daylight=CoreDataHelper.newDaylight()
-        daylight.didWell=didWellText.text ?? ""
-        daylight.gratefulThing=gratefulText.text ?? ""
-        print("This is the did well: \(didWellText.text)")
-        print("This is the grateful thing: \(gratefulText.text)")
-        daylight.dateCreated=Date()
-        CoreDataHelper.saveDaylight()
+        var daylightsArray=[Daylight]()
+        daylightsArray=CoreDataHelper.retrieveDaylight()
+        var count=0;
+        for value in daylightsArray{
+            print("hello")
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "MM/dd/yy"
+            let now = dateformatter.string(from: Date())
+            let reformatedPastDate=dateformatter.string(from: value.dateCreated!)
+            
+            if (now==reformatedPastDate){
+                count+=1
+            }
+        }
         
+        if (count==0){
+            var daylight=CoreDataHelper.newDaylight()
+            if (didWellText.text==""){
+                daylight.didWell="None entered"
+            }else{
+                daylight.didWell=didWellText.text!
+            }
+            
+            if (gratefulText.text==""){
+                daylight.gratefulThing="None entered"
+            }else{
+                daylight.gratefulThing=gratefulText.text!
+            }
+            
+            daylight.dateCreated=Date()
+            CoreDataHelper.saveDaylight()
+        }else{
+            createAlert(title: "ALERT!", message: "You have already created DayLights for today! See you tomorrow!")
+            count=0;
+        }
         
-        didWellText.text = "Type text here..."
-        gratefulText.text = "Type text here..."
+        didWellText.text = ""
+        gratefulText.text = ""
     }
     
-
+    func createAlert(title: String, message: String){
+        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -46,10 +81,9 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showGratefulThings), name: NSNotification.Name("GratefulThings"), object: nil)
         self.hideSide()
         self.hideKeyboardWhenTappedAround() 
+        
         let dateformatter = DateFormatter()
-        
         dateformatter.dateFormat = "MM/dd/yy"
-        
         let now = dateformatter.string(from: Date())
         
         dateLabel.text=now

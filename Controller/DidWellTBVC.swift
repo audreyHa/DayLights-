@@ -18,8 +18,10 @@ class DidWellTBVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.estimatedRowHeight = 600
+        tableView.rowHeight = UITableView.automaticDimension
         daylights=CoreDataHelper.retrieveDaylight()
-        print(daylights)
+        daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +43,15 @@ class DidWellTBVC: UITableViewController {
         cell.didWellText.text=daylight.didWell
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        if editingStyle == .delete{
+            let daylightToDelete=daylights[indexPath.row]
+            CoreDataHelper.delete(daylight: daylightToDelete)
+            daylights=CoreDataHelper.retrieveDaylight()
+            daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
+        }
     }
 
 }
