@@ -15,6 +15,8 @@
 		F68CFA0A2249F1A2001138FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68CFA082249F1A2001138FE /* LaunchScreen.storyboard */; };
 		F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CFA12224A013B001138FE /* CoreDataHelper.swift */; };
 		F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6902855224B1DDF003E26E4 /* ContainerVC.swift */; };
+		F6919787224C918E00554EFA /* GalleryDidWellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6919786224C918E00554EFA /* GalleryDidWellVC.swift */; };
+		F6919789224C919D00554EFA /* GalleryGratefulThingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6919788224C919D00554EFA /* GalleryGratefulThingsVC.swift */; };
 		F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F79ECC224B3DB700A1DAC8 /* Side.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		F68CFA0B2249F1A2001138FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F68CFA12224A013B001138FE /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		F6902855224B1DDF003E26E4 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		F6919786224C918E00554EFA /* GalleryDidWellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDidWellVC.swift; sourceTree = "<group>"; };
+		F6919788224C919D00554EFA /* GalleryGratefulThingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryGratefulThingsVC.swift; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +92,8 @@
 				F68CF9FE2249F1A1001138FE /* ViewController.swift */,
 				F6902855224B1DDF003E26E4 /* ContainerVC.swift */,
 				F6F79ECC224B3DB700A1DAC8 /* Side.swift */,
+				F6919786224C918E00554EFA /* GalleryDidWellVC.swift */,
+				F6919788224C919D00554EFA /* GalleryGratefulThingsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,6 +174,8 @@
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */,
 				F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */,
+				F6919789224C919D00554EFA /* GalleryGratefulThingsVC.swift in Sources */,
+				F6919787224C918E00554EFA /* GalleryDidWellVC.swift in Sources */,
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,11 +14,16 @@ class ViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name("OpenSideMenu"), object: nil)
     }
     
+    @IBAction func saveDayLights(_ sender: UIButton) {
+        
+    }
+    
+    
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
         
@@ -33,7 +38,7 @@ class ViewController: UIViewController {
         
         dateLabel.text=now
         // Do any additional setup after loading the view, typically from a nib.
-    }
+    }//end of view did load
     
     @objc func showDidWell(){
         performSegue(withIdentifier: "showDidWell", sender: nil)
