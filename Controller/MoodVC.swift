@@ -25,9 +25,14 @@ class MoodVC: UIViewController {
         for value in moodValues{
             count+=Int(value)
         }
-        average=(count/moodValues.count)
-        var roundedAverage=round(Double(average))
-        averageMoodValue.text=String(roundedAverage)
+        if (moodValues.count != 0){
+            average=(count/moodValues.count)
+            var roundedAverage=round(Double(average))
+            averageMoodValue.text=String(roundedAverage)
+        }else{
+            averageMoodValue.text="Not enough mood data to calculate average"
+        }
+        
         // Do any additional setup after loading the view.
     }
     
