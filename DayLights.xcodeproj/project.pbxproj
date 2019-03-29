@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F616C67B224DE4B100C85721 /* FunnyTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67A224DE4B100C85721 /* FunnyTBVC.swift */; };
+		F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */; };
 		F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FC2249F1A1001138FE /* AppDelegate.swift */; };
 		F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FE2249F1A1001138FE /* ViewController.swift */; };
 		F68CFA022249F1A1001138FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68CFA002249F1A1001138FE /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F616C67A224DE4B100C85721 /* FunnyTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTBVC.swift; sourceTree = "<group>"; };
+		F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTableViewCell.swift; sourceTree = "<group>"; };
 		F68CF9F92249F1A1001138FE /* DayLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68CF9FC2249F1A1001138FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F68CF9FE2249F1A1001138FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 				F68CFA0B2249F1A2001138FE /* Info.plist */,
 				F68CFA032249F1A1001138FE /* DayLights.xcdatamodeld */,
 				F691978E224C975A00554EFA /* DidWellTableViewCell.swift */,
+				F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */,
 				F6919790224C976500554EFA /* GratefulTableViewCell.swift */,
 			);
 			path = DayLights;
@@ -99,6 +104,7 @@
 				F6902855224B1DDF003E26E4 /* ContainerVC.swift */,
 				F6F79ECC224B3DB700A1DAC8 /* Side.swift */,
 				F691978A224C96D400554EFA /* DidWellTBVC.swift */,
+				F616C67A224DE4B100C85721 /* FunnyTBVC.swift */,
 				F691978C224C96E500554EFA /* GratefulTBVC.swift */,
 			);
 			path = Controller;
@@ -177,10 +183,12 @@
 			files = (
 				F68CFA052249F1A1001138FE /* DayLights.xcdatamodeld in Sources */,
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
+				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,
 				F691978B224C96D400554EFA /* DidWellTBVC.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */,
 				F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */,
+				F616C67B224DE4B100C85721 /* FunnyTBVC.swift in Sources */,
 				F691978D224C96E500554EFA /* GratefulTBVC.swift in Sources */,
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
 				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,

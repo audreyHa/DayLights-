@@ -21,6 +21,10 @@ class Side: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
     }
     
+    @IBAction func funnyThingsPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name("FunnyThings"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

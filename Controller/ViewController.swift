@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var daylightsArray=[Daylight]()
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulText: UITextView!
+    @IBOutlet weak var funnyText: UITextView!
     
     
     @IBAction func onMoreTapped(_ sender: UIBarButtonItem) {
@@ -51,15 +52,21 @@ class ViewController: UIViewController {
                 daylight.gratefulThing=gratefulText.text!
             }
             
+            if (funnyText.text==""){
+                daylight.funny="None entered"
+            }else{
+                daylight.funny=funnyText.text!
+            }
+            
             daylight.dateCreated=Date()
             CoreDataHelper.saveDaylight()
             didWellText.text = ""
             gratefulText.text = ""
         }else if(count==1){
-            createAlert(title: "ALERT!", message: "You have already created 1 DayLights entry today! Do you still want to save this one?")
+            createAlert(title: "ALERT!", message: "You already created 1 DayLights today! Do you still want to save this one?")
             count=0
         }else{
-            createAlert(title: "ALERT!", message: "You have already created \(count) DayLights entries today! Do you still want to save this one?")
+            createAlert(title: "ALERT!", message: "You already created \(count) DayLights today! Do you still want to save this one?")
             count=0
         }
     }
@@ -82,10 +89,17 @@ class ViewController: UIViewController {
                 daylight.gratefulThing=self.gratefulText.text!
             }
             
+            if (self.funnyText.text==""){
+                daylight.funny="None entered"
+            }else{
+                daylight.funny=self.funnyText.text!
+            }
+            
             daylight.dateCreated=Date()
             CoreDataHelper.saveDaylight()
             self.didWellText.text = ""
             self.gratefulText.text = ""
+            self.funnyText.text=""
 
         }))
         
@@ -93,6 +107,7 @@ class ViewController: UIViewController {
             alert.dismiss(animated: true, completion: nil)
             self.didWellText.text = ""
             self.gratefulText.text = ""
+            self.funnyText.text=""
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -105,8 +120,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(showGratefulThings), name: NSNotification.Name("GratefulThings"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showFunny), name: NSNotification.Name("FunnyThings"), object: nil)
+        
         self.hideSide()
         self.hideKeyboardWhenTappedAround() 
         
@@ -124,6 +140,10 @@ class ViewController: UIViewController {
     
     @objc func showGratefulThings(){
         performSegue(withIdentifier: "showGratefulThings", sender: nil)
+    }
+    
+    @objc func showFunny(){
+        performSegue(withIdentifier: "showFunny", sender: nil)
     }
 }
 

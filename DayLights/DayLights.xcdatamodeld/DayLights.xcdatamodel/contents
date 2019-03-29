@@ -3,9 +3,10 @@
     <entity name="Daylight" representedClassName=".Daylight" syncable="YES" codeGenerationType="class">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="didWell" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="funny" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gratefulThing" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Daylight" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Daylight" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>
