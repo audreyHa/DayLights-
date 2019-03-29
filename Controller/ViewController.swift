@@ -16,6 +16,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var gratefulText: UITextView!
     @IBOutlet weak var funnyText: UITextView!
     
+    @IBOutlet weak var mood1: UIButton!
+    @IBOutlet weak var mood2: UIButton!
+    @IBOutlet weak var mood3: UIButton!
+    @IBOutlet weak var mood4: UIButton!
+    @IBOutlet weak var mood5: UIButton!
+    @IBAction func mood1(_ sender: UIButton) {
+        mood1.layer.borderWidth = 3
+        var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+        mood1.layer.borderColor = red.cgColor
+    }
+    
     
     @IBOutlet weak var contentsView: UIView!
     
@@ -66,6 +77,7 @@ class ViewController: UIViewController {
             CoreDataHelper.saveDaylight()
             didWellText.text = ""
             gratefulText.text = ""
+            funnyText.text=""
         }else if(count==1){
             createAlert(title: "ALERT!", message: "You already created 1 DayLights today! Do you still want to save this one?")
             count=0
@@ -120,14 +132,20 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     
+    
+    //VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         contentsView.layer.cornerRadius = 8
         contentsView.layer.masksToBounds = true
         saveButton.layer.cornerRadius = 8
         saveButton.layer.masksToBounds = true
         
-        contentsView.layer.borderWidth = 4
+        contentsView.layer.borderWidth = 3
         var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
         contentsView.layer.borderColor = red.cgColor
         
@@ -144,7 +162,30 @@ class ViewController: UIViewController {
         
         dateLabel.text=now
         // Do any additional setup after loading the view, typically from a nib.
-    }//end of view did load
+    }
+    //END of view did load
+    
+    
+    //START keyboard modifying functions
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= (keyboardSize.height/2)
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    //END keyboard modifying functions
+    
+    
+    @objc func keyboardWillChange(notification: Notification){
+        
+    }
     
     @objc func showDidWell(){
         performSegue(withIdentifier: "showDidWell", sender: nil)
