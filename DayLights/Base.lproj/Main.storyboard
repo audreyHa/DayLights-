@@ -455,18 +455,30 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-Fy-Ri1">
                                                                 <rect key="frame" x="65" y="0.0" width="55" height="54"/>
                                                                 <state key="normal" title="Button" image="emojiScale2"/>
+                                                                <connections>
+                                                                    <action selector="mood2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9xO-mJ-yJt"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I77-g5-ElD">
                                                                 <rect key="frame" x="130" y="0.0" width="55" height="54"/>
                                                                 <state key="normal" title="Button" image="emojiScale3"/>
+                                                                <connections>
+                                                                    <action selector="mood3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VYe-Tv-W8n"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZx-KN-DC3">
                                                                 <rect key="frame" x="195" y="0.0" width="55" height="54"/>
                                                                 <state key="normal" title="Button" image="emojiScale4"/>
+                                                                <connections>
+                                                                    <action selector="mood4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2jd-9O-4Ro"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iec-Jm-ggK">
                                                                 <rect key="frame" x="260" y="0.0" width="55" height="54"/>
                                                                 <state key="normal" title="Button" image="emojiScale5"/>
+                                                                <connections>
+                                                                    <action selector="mood5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="skg-Wb-nEK"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

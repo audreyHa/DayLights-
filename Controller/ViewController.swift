@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
     var count=0
+    var currentMood=0
     var daylightsArray=[Daylight]()
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulText: UITextView!
@@ -23,8 +24,53 @@ class ViewController: UIViewController {
     @IBOutlet weak var mood5: UIButton!
     @IBAction func mood1(_ sender: UIButton) {
         mood1.layer.borderWidth = 3
-        var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
         mood1.layer.borderColor = red.cgColor
+        currentMood=1
+        mood2.layer.borderWidth=0
+        mood3.layer.borderWidth=0
+        mood4.layer.borderWidth=0
+        mood5.layer.borderWidth=0
+        
+    }
+    
+    @IBAction func mood2(_ sender: UIButton) {
+        mood2.layer.borderWidth = 3
+        mood2.layer.borderColor = red.cgColor
+        currentMood=2
+        mood1.layer.borderWidth=0
+        mood3.layer.borderWidth=0
+        mood4.layer.borderWidth=0
+        mood5.layer.borderWidth=0
+    }
+    
+    @IBAction func mood3(_ sender: UIButton) {
+        mood3.layer.borderWidth = 3
+        mood3.layer.borderColor = red.cgColor
+        currentMood=3
+        mood2.layer.borderWidth=0
+        mood1.layer.borderWidth=0
+        mood4.layer.borderWidth=0
+        mood5.layer.borderWidth=0
+    }
+    
+    @IBAction func mood4(_ sender: UIButton) {
+        mood4.layer.borderWidth = 3
+        mood4.layer.borderColor = red.cgColor
+        currentMood=4
+        mood2.layer.borderWidth=0
+        mood3.layer.borderWidth=0
+        mood1.layer.borderWidth=0
+        mood5.layer.borderWidth=0
+    }
+    
+    @IBAction func mood5(_ sender: UIButton) {
+        mood5.layer.borderWidth = 3
+        mood5.layer.borderColor = red.cgColor
+        currentMood=5
+        mood2.layer.borderWidth=0
+        mood3.layer.borderWidth=0
+        mood4.layer.borderWidth=0
+        mood1.layer.borderWidth=0
     }
     
     
@@ -73,11 +119,19 @@ class ViewController: UIViewController {
                 daylight.funny=funnyText.text!
             }
             
+            daylight.mood=Int32(currentMood)
+            print(currentMood)
+            currentMood=0
             daylight.dateCreated=Date()
             CoreDataHelper.saveDaylight()
             didWellText.text = ""
             gratefulText.text = ""
             funnyText.text=""
+            mood1.layer.borderWidth=0
+            mood2.layer.borderWidth=0
+            mood3.layer.borderWidth=0
+            mood4.layer.borderWidth=0
+            mood5.layer.borderWidth=0
         }else if(count==1){
             createAlert(title: "ALERT!", message: "You already created 1 DayLights today! Do you still want to save this one?")
             count=0
@@ -110,12 +164,19 @@ class ViewController: UIViewController {
             }else{
                 daylight.funny=self.funnyText.text!
             }
-            
+            daylight.mood=Int32(self.currentMood)
+            print(self.currentMood)
+            self.currentMood=0
             daylight.dateCreated=Date()
             CoreDataHelper.saveDaylight()
             self.didWellText.text = ""
             self.gratefulText.text = ""
             self.funnyText.text=""
+            self.mood1.layer.borderWidth=0
+            self.mood2.layer.borderWidth=0
+            self.mood3.layer.borderWidth=0
+            self.mood4.layer.borderWidth=0
+            self.mood5.layer.borderWidth=0
 
         }))
         
@@ -124,6 +185,11 @@ class ViewController: UIViewController {
             self.didWellText.text = ""
             self.gratefulText.text = ""
             self.funnyText.text=""
+            self.mood1.layer.borderWidth=0
+            self.mood2.layer.borderWidth=0
+            self.mood3.layer.borderWidth=0
+            self.mood4.layer.borderWidth=0
+            self.mood5.layer.borderWidth=0
         }))
         
         self.present(alert, animated: true, completion: nil)
