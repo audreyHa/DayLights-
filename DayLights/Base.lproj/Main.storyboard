@@ -393,7 +393,7 @@
                                     <constraint firstItem="uF6-c4-4Ot" firstAttribute="leading" secondItem="PrU-ED-OZ2" secondAttribute="leading" constant="25" id="uaw-0j-Huu"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJZ-7u-7dQ" userLabel="ContentsView">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJZ-7u-7dQ" userLabel="ContentsView">
                                 <rect key="frame" x="15" y="229" width="345" height="358"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O7q-UO-pRg">
@@ -410,7 +410,7 @@
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WuK-UO-kRO">
                                                         <rect key="frame" x="0.0" y="15" width="301" height="59.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -433,7 +433,7 @@
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="05Y-jk-gUQ">
                                                         <rect key="frame" x="0.0" y="15" width="301" height="59.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -456,7 +456,7 @@
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7fE-BC-zFi">
                                                         <rect key="frame" x="0.0" y="15" width="301" height="59.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -521,6 +521,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <color key="tintColor" red="0.60620196989999997" green="0.85892885919999995" blue="0.68420793150000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="OYB-oi-AX9" secondAttribute="trailing" constant="14" id="0jW-oh-zMj"/>
                                             <constraint firstItem="kuA-rz-dd6" firstAttribute="leading" secondItem="O7q-UO-pRg" secondAttribute="leading" id="3ZG-to-X4a"/>
@@ -537,7 +538,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.60620196989999997" green="0.85892885919999995" blue="0.68420793150000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.60620196989999997" green="0.85892885919999995" blue="0.68420793150000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="O7q-UO-pRg" secondAttribute="bottom" constant="15" id="3eR-66-egz"/>
@@ -589,10 +590,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentsView" destination="sJZ-7u-7dQ" id="Ujk-8E-bk7"/>
                         <outlet property="dateLabel" destination="uF6-c4-4Ot" id="exj-9J-1Bm"/>
                         <outlet property="didWellText" destination="WuK-UO-kRO" id="hpq-Wq-feA"/>
                         <outlet property="funnyText" destination="7fE-BC-zFi" id="yk8-1l-qwb"/>
                         <outlet property="gratefulText" destination="05Y-jk-gUQ" id="6OE-fJ-guT"/>
+                        <outlet property="saveButton" destination="5ae-Sl-GyC" id="Zra-tY-KWA"/>
                         <segue destination="jHX-bd-3Gx" kind="show" identifier="showDidWell" id="hxV-M8-9lt"/>
                         <segue destination="p4B-qL-NPf" kind="show" identifier="showGratefulThings" id="Uyb-n0-5GV"/>
                         <segue destination="ynK-Gl-5ax" kind="show" identifier="showFunny" id="MNl-Sf-LbN"/>

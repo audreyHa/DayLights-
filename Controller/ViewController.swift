@@ -17,9 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var funnyText: UITextView!
     
     
+    @IBOutlet weak var contentsView: UIView!
+    
     @IBAction func onMoreTapped(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("OpenSideMenu"), object: nil)
     }
+    
+    @IBOutlet weak var saveButton: UIButton!
     
     @IBAction func saveDayLights(_ sender: UIButton) {
         
@@ -118,6 +122,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        contentsView.layer.cornerRadius = 8
+        contentsView.layer.masksToBounds = true
+        saveButton.layer.cornerRadius = 8
+        saveButton.layer.masksToBounds = true
+        
+        contentsView.layer.borderWidth = 4
+        var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+        contentsView.layer.borderColor = red.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showGratefulThings), name: NSNotification.Name("GratefulThings"), object: nil)
