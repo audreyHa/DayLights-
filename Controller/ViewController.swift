@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-
+    var count=0
+    var daylightsArray=[Daylight]()
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulText: UITextView!
     
@@ -20,7 +21,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func saveDayLights(_ sender: UIButton) {
-        var daylightsArray=[Daylight]()
+        
         daylightsArray=CoreDataHelper.retrieveDaylight()
         var count=0;
         for value in daylightsArray{
@@ -52,19 +53,46 @@ class ViewController: UIViewController {
             
             daylight.dateCreated=Date()
             CoreDataHelper.saveDaylight()
+            didWellText.text = ""
+            gratefulText.text = ""
+        }else if(count==1){
+            createAlert(title: "ALERT!", message: "You have already created 1 DayLights entry today! Do you still want to save this one?")
+            count=0
         }else{
-            createAlert(title: "ALERT!", message: "You have already created DayLights for today! See you tomorrow!")
-            count=0;
+            createAlert(title: "ALERT!", message: "You have already created \(count) DayLights entries today! Do you still want to save this one?")
+            count=0
         }
-        
-        didWellText.text = ""
-        gratefulText.text = ""
     }
     
     func createAlert(title: String, message: String){
         let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
+            
+            var daylight=CoreDataHelper.newDaylight()
+            if (self.didWellText.text==""){
+                daylight.didWell="None entered"
+            }else{
+                daylight.didWell=self.didWellText.text!
+            }
+            
+            if (self.gratefulText.text==""){
+                daylight.gratefulThing="None entered"
+            }else{
+                daylight.gratefulThing=self.gratefulText.text!
+            }
+            
+            daylight.dateCreated=Date()
+            CoreDataHelper.saveDaylight()
+            self.didWellText.text = ""
+            self.gratefulText.text = ""
+
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.didWellText.text = ""
+            self.gratefulText.text = ""
         }))
         
         self.present(alert, animated: true, completion: nil)
