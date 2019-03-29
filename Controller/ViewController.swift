@@ -218,6 +218,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showGratefulThings), name: NSNotification.Name("GratefulThings"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFunny), name: NSNotification.Name("FunnyThings"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
         
         self.hideSide()
         self.hideKeyboardWhenTappedAround() 
@@ -263,6 +264,10 @@ class ViewController: UIViewController {
     
     @objc func showFunny(){
         performSegue(withIdentifier: "showFunny", sender: nil)
+    }
+    
+    @objc func showMood(){
+        performSegue(withIdentifier: "showMood", sender: nil)
     }
 }
 
