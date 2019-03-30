@@ -636,31 +636,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average mood:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocE-MY-Nbf">
-                                <rect key="frame" x="99" y="153" width="115" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2R8-Xq-Ds8">
-                                <rect key="frame" x="135" y="223" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyT-4z-mPV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfl-kl-2Pv">
+                                        <rect key="frame" x="25" y="22.5" width="335" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xfl-kl-2Pv" firstAttribute="centerY" secondItem="cyT-4z-mPV" secondAttribute="centerY" id="2hP-HV-CWS"/>
+                                    <constraint firstAttribute="trailing" secondItem="xfl-kl-2Pv" secondAttribute="trailing" constant="15" id="A7q-lt-vVC"/>
+                                    <constraint firstAttribute="height" constant="75" id="AyS-4g-lQt"/>
+                                    <constraint firstItem="xfl-kl-2Pv" firstAttribute="leading" secondItem="cyT-4z-mPV" secondAttribute="leading" constant="25" id="Swq-p9-Xb2"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oop-ZP-Ww7">
+                                <rect key="frame" x="25" y="266" width="325" height="386"/>
+                                <color key="backgroundColor" red="0.4039215686" green="0.39607843139999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mm4-kZ-7WU">
+                                <rect key="frame" x="25" y="154" width="325" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-6w-ZpY">
+                                <rect key="frame" x="25" y="197" width="325" height="54"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Mood This Week:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocE-MY-Nbf">
+                                        <rect key="frame" x="0.0" y="17" width="265" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhO-AO-KaN">
+                                        <rect key="frame" x="270" y="0.0" width="55" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="afo-i9-z6c"/>
+                                            <constraint firstAttribute="width" constant="55" id="fhO-Ji-72E"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="mm4-kZ-7WU" secondAttribute="trailing" constant="25" id="1uX-nv-iwK"/>
+                            <constraint firstItem="cyT-4z-mPV" firstAttribute="top" secondItem="1hG-In-suE" secondAttribute="top" id="2C4-RF-12L"/>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="zh7-6w-ZpY" secondAttribute="trailing" constant="25" id="77r-xl-ZjZ"/>
+                            <constraint firstItem="Oop-ZP-Ww7" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="DP7-HL-8NO"/>
+                            <constraint firstItem="mm4-kZ-7WU" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="ExE-DB-19l"/>
+                            <constraint firstItem="cyT-4z-mPV" firstAttribute="trailing" secondItem="1hG-In-suE" secondAttribute="trailing" id="MT7-XD-NBu"/>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="bottom" secondItem="Oop-ZP-Ww7" secondAttribute="bottom" constant="15" id="OMD-8e-xaw"/>
+                            <constraint firstItem="zh7-6w-ZpY" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="SYh-Zb-pr3"/>
+                            <constraint firstItem="mm4-kZ-7WU" firstAttribute="top" secondItem="cyT-4z-mPV" secondAttribute="bottom" constant="15" id="V4K-q3-slz"/>
+                            <constraint firstItem="cyT-4z-mPV" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" id="a20-Z0-cpC"/>
+                            <constraint firstItem="Oop-ZP-Ww7" firstAttribute="top" secondItem="zh7-6w-ZpY" secondAttribute="bottom" constant="15" id="aLB-6w-3sj"/>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="Oop-ZP-Ww7" secondAttribute="trailing" constant="25" id="nE4-h0-nX5"/>
+                            <constraint firstItem="zh7-6w-ZpY" firstAttribute="top" secondItem="mm4-kZ-7WU" secondAttribute="bottom" constant="15" id="qsx-9c-uZz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1hG-In-suE"/>
                     </view>
-                    <connections>
-                        <outlet property="averageMoodValue" destination="2R8-Xq-Ds8" id="1da-rt-2Sf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53t-6c-lyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="-5"/>
+            <point key="canvasLocation" x="2144.8000000000002" y="-5.8470764617691158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VLR-6O-a6Y">
