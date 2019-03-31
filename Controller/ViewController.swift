@@ -141,6 +141,15 @@ class ViewController: UIViewController {
         }
     }
     
+    func moodAlert(title: String, message: String){
+        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func createAlert(title: String, message: String){
         let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
@@ -267,7 +276,20 @@ class ViewController: UIViewController {
     }
     
     @objc func showMood(){
-        performSegue(withIdentifier: "showMood", sender: nil)
+        var daylights=CoreDataHelper.retrieveDaylight()
+        var count=0
+        for value in daylights{
+            if (value.mood != 0){
+                count+=1
+            }
+        }
+        
+        if (count>6){
+            performSegue(withIdentifier: "showMood", sender: nil)
+        }else{
+            moodAlert(title: "ALERT!", message: "You do not have enough mood data yet! Check back after making more DayLights!")
+        }
+        
     }
 }
 

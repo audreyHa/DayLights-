@@ -729,7 +729,7 @@
             </objects>
             <point key="canvasLocation" x="2889" y="713"/>
         </scene>
-        <!--My Mood Over Time-->
+        <!--Mood Over Time (Recent -> Old)-->
         <scene sceneID="BgY-mD-sVu">
             <objects>
                 <collectionViewController id="gGc-9x-zc3" customClass="CollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
@@ -758,7 +758,7 @@
                             <outlet property="delegate" destination="gGc-9x-zc3" id="lMo-Mn-aku"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="My Mood Over Time" id="4zV-UN-G3l"/>
+                    <navigationItem key="navigationItem" title="Mood Over Time (Recent -&gt; Old)" id="4zV-UN-G3l"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaO-E2-mpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
