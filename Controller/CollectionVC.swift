@@ -22,6 +22,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     override func viewDidLoad() {
         super.viewDidLoad()
         daylightsArray=CoreDataHelper.retrieveDaylight()
+        daylightsArray = daylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
         for value in daylightsArray{
             if (value.mood != 0){
                 values.append(Int(value.mood*120))
@@ -67,6 +68,6 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 60, height: view.frame.height)
+        return CGSize(width: 40, height: view.frame.height)
     }
 }

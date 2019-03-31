@@ -29,6 +29,7 @@ class BarCell: UICollectionViewCell{
     let barDate: UILabel = {
         let label=UILabel()
         label.text="This"
+        label.font = UIFont.systemFont(ofSize: 13.0)
         label.translatesAutoresizingMaskIntoConstraints=false
         return label
     }()
