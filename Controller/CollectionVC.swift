@@ -32,6 +32,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         collectionView?.register(BarCell.self, forCellWithReuseIdentifier: cellId)
         (collectionView?.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
     }
+
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return values.count
@@ -40,7 +41,8 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BarCell
         cell.barHeightConstraint?.constant=CGFloat(values[indexPath.item])
-        cell.backgroundColor = .white
+        
+        
         if (values[indexPath.item]==120){
             cell.barView.backgroundColor=red1
         }else if (values[indexPath.item]==2*120){
@@ -54,10 +56,17 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         }else{
             cell.barView.backgroundColor=UIColor.blue
         }
+        
+        var date=daylightsArray[indexPath.item].dateCreated!
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "MM/dd"
+        let now = dateformatter.string(from: date)
+    
+        cell.barDate.text="\(now)"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 30, height: view.frame.height)
+        return CGSize(width: 60, height: view.frame.height)
     }
 }
