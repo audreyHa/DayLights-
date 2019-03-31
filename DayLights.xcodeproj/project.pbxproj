@@ -22,6 +22,8 @@
 		F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691978E224C975A00554EFA /* DidWellTableViewCell.swift */; };
 		F6919791224C976500554EFA /* GratefulTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6919790224C976500554EFA /* GratefulTableViewCell.swift */; };
 		F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BACC41224DFCEB00430B79 /* MoodVC.swift */; };
+		F6EDDF19224F0AD0009A1C0F /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EDDF18224F0AD0009A1C0F /* CollectionVC.swift */; };
+		F6EDDF1C224F0D1B009A1C0F /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EDDF1B224F0D1B009A1C0F /* BarCell.swift */; };
 		F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F79ECC224B3DB700A1DAC8 /* Side.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		F691978E224C975A00554EFA /* DidWellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellTableViewCell.swift; sourceTree = "<group>"; };
 		F6919790224C976500554EFA /* GratefulTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratefulTableViewCell.swift; sourceTree = "<group>"; };
 		F6BACC41224DFCEB00430B79 /* MoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
+		F6EDDF18224F0AD0009A1C0F /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		F6EDDF1B224F0D1B009A1C0F /* BarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				F6902852224B1810003E26E4 /* Controller */,
+				F6EDDF1A224F0CFB009A1C0F /* Cells */,
 				F68CFA11224A012F001138FE /* Helpers */,
 				F68CF9FB2249F1A1001138FE /* DayLights */,
 				F68CF9FA2249F1A1001138FE /* Products */,
@@ -84,9 +89,6 @@
 				F68CFA082249F1A2001138FE /* LaunchScreen.storyboard */,
 				F68CFA0B2249F1A2001138FE /* Info.plist */,
 				F68CFA032249F1A1001138FE /* DayLights.xcdatamodeld */,
-				F691978E224C975A00554EFA /* DidWellTableViewCell.swift */,
-				F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */,
-				F6919790224C976500554EFA /* GratefulTableViewCell.swift */,
 			);
 			path = DayLights;
 			sourceTree = "<group>";
@@ -109,8 +111,20 @@
 				F616C67A224DE4B100C85721 /* FunnyTBVC.swift */,
 				F691978C224C96E500554EFA /* GratefulTBVC.swift */,
 				F6BACC41224DFCEB00430B79 /* MoodVC.swift */,
+				F6EDDF18224F0AD0009A1C0F /* CollectionVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		F6EDDF1A224F0CFB009A1C0F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F691978E224C975A00554EFA /* DidWellTableViewCell.swift */,
+				F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */,
+				F6919790224C976500554EFA /* GratefulTableViewCell.swift */,
+				F6EDDF1B224F0D1B009A1C0F /* BarCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +202,13 @@
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
 				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,
 				F691978B224C96D400554EFA /* DidWellTBVC.swift in Sources */,
+				F6EDDF19224F0AD0009A1C0F /* CollectionVC.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */,
 				F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */,
 				F616C67B224DE4B100C85721 /* FunnyTBVC.swift in Sources */,
 				F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */,
+				F6EDDF1C224F0D1B009A1C0F /* BarCell.swift in Sources */,
 				F691978D224C96E500554EFA /* GratefulTBVC.swift in Sources */,
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
 				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,
