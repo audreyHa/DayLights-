@@ -621,7 +621,7 @@
                         <segue destination="jHX-bd-3Gx" kind="show" identifier="showDidWell" id="hxV-M8-9lt"/>
                         <segue destination="p4B-qL-NPf" kind="show" identifier="showGratefulThings" id="Uyb-n0-5GV"/>
                         <segue destination="ynK-Gl-5ax" kind="show" identifier="showFunny" id="MNl-Sf-LbN"/>
-                        <segue destination="gGc-9x-zc3" kind="show" identifier="showMood" id="JJp-U4-bth"/>
+                        <segue destination="gGc-9x-zc3" kind="show" identifier="showMood" id="KmR-M5-Klz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -654,10 +654,6 @@
                                     <constraint firstItem="xfl-kl-2Pv" firstAttribute="leading" secondItem="cyT-4z-mPV" secondAttribute="leading" constant="25" id="Swq-p9-Xb2"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oop-ZP-Ww7">
-                                <rect key="frame" x="25" y="222" width="325" height="430"/>
-                                <color key="backgroundColor" red="0.4039215686" green="0.39607843139999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mm4-kZ-7WU">
                                 <rect key="frame" x="25" y="110" width="325" height="29"/>
                                 <segments>
@@ -684,31 +680,56 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmr-fb-irE">
+                                <rect key="frame" x="15" y="222" width="345" height="430"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ASU-yf-cGM">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BarCell" id="Brc-vy-1ab" customClass="BarCell" customModule="DayLights" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="50" height="50"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="mm4-kZ-7WU" secondAttribute="trailing" constant="25" id="1uX-nv-iwK"/>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="bottom" secondItem="qmr-fb-irE" secondAttribute="bottom" constant="15" id="21S-D0-dLZ"/>
                             <constraint firstItem="cyT-4z-mPV" firstAttribute="top" secondItem="1hG-In-suE" secondAttribute="top" id="2C4-RF-12L"/>
                             <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="zh7-6w-ZpY" secondAttribute="trailing" constant="25" id="77r-xl-ZjZ"/>
-                            <constraint firstItem="Oop-ZP-Ww7" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="DP7-HL-8NO"/>
                             <constraint firstItem="mm4-kZ-7WU" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="ExE-DB-19l"/>
+                            <constraint firstItem="qmr-fb-irE" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="15" id="Ff1-J5-emo"/>
                             <constraint firstItem="cyT-4z-mPV" firstAttribute="trailing" secondItem="1hG-In-suE" secondAttribute="trailing" id="MT7-XD-NBu"/>
-                            <constraint firstItem="1hG-In-suE" firstAttribute="bottom" secondItem="Oop-ZP-Ww7" secondAttribute="bottom" constant="15" id="OMD-8e-xaw"/>
                             <constraint firstItem="zh7-6w-ZpY" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="SYh-Zb-pr3"/>
                             <constraint firstItem="mm4-kZ-7WU" firstAttribute="top" secondItem="cyT-4z-mPV" secondAttribute="bottom" constant="15" id="V4K-q3-slz"/>
                             <constraint firstItem="cyT-4z-mPV" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" id="a20-Z0-cpC"/>
-                            <constraint firstItem="Oop-ZP-Ww7" firstAttribute="top" secondItem="zh7-6w-ZpY" secondAttribute="bottom" constant="15" id="aLB-6w-3sj"/>
-                            <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="Oop-ZP-Ww7" secondAttribute="trailing" constant="25" id="nE4-h0-nX5"/>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="qmr-fb-irE" secondAttribute="trailing" constant="15" id="aBd-SS-Fef"/>
                             <constraint firstItem="zh7-6w-ZpY" firstAttribute="top" secondItem="mm4-kZ-7WU" secondAttribute="bottom" constant="15" id="qsx-9c-uZz"/>
+                            <constraint firstItem="qmr-fb-irE" firstAttribute="top" secondItem="zh7-6w-ZpY" secondAttribute="bottom" constant="15" id="wWG-1D-HkY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1hG-In-suE"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="qmr-fb-irE" id="DmZ-SW-8cN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53t-6c-lyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2889" y="713"/>
         </scene>
-        <!--CollectionVC-->
+        <!--My Mood Over Time-->
         <scene sceneID="BgY-mD-sVu">
             <objects>
                 <collectionViewController id="gGc-9x-zc3" customClass="CollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
@@ -723,7 +744,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CUU-oR-UNn">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BarCell" id="CUU-oR-UNn" customClass="BarCell" customModule="DayLights" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -737,10 +758,11 @@
                             <outlet property="delegate" destination="gGc-9x-zc3" id="lMo-Mn-aku"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="My Mood Over Time" id="4zV-UN-G3l"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaO-E2-mpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2985" y="-13"/>
+            <point key="canvasLocation" x="2984.8000000000002" y="-13.043478260869566"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VLR-6O-a6Y">
