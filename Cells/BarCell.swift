@@ -30,6 +30,7 @@ class BarCell: UICollectionViewCell{
         let label=UILabel()
         label.text="This"
         label.font = UIFont.systemFont(ofSize: 13.0)
+        label.textColor=UIColor.black
         label.translatesAutoresizingMaskIntoConstraints=false
         return label
     }()

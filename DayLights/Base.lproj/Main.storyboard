@@ -637,9 +637,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyT-4z-mPV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="75"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfl-kl-2Pv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfl-kl-2Pv">
                                         <rect key="frame" x="25" y="22.5" width="335" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
@@ -654,37 +654,105 @@
                                     <constraint firstItem="xfl-kl-2Pv" firstAttribute="leading" secondItem="cyT-4z-mPV" secondAttribute="leading" constant="25" id="Swq-p9-Xb2"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-6w-ZpY">
-                                <rect key="frame" x="25" y="153" width="325" height="54"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="sdO-nj-YB5">
+                                <rect key="frame" x="25" y="164" width="325" height="478"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Mood This Week:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocE-MY-Nbf">
-                                        <rect key="frame" x="0.0" y="17" width="265" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhO-AO-KaN">
-                                        <rect key="frame" x="270" y="0.0" width="55" height="54"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="afo-i9-z6c"/>
-                                            <constraint firstAttribute="width" constant="55" id="fhO-Ji-72E"/>
-                                        </constraints>
-                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iaK-ww-Qcb">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="101"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-Fd-Joj">
+                                                <rect key="frame" x="0.0" y="40" width="265" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2gJ-TQ-Emr">
+                                                <rect key="frame" x="270" y="23.5" width="55" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="CtD-Zi-8fJ"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-6w-ZpY">
+                                        <rect key="frame" x="0.0" y="126" width="325" height="100.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Mood This Week:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocE-MY-Nbf">
+                                                <rect key="frame" x="0.0" y="40" width="265" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhO-AO-KaN">
+                                                <rect key="frame" x="270" y="23" width="55" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="afo-i9-z6c"/>
+                                                    <constraint firstAttribute="width" constant="55" id="fhO-Ji-72E"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Rij-s1-anX">
+                                        <rect key="frame" x="0.0" y="251.5" width="325" height="101"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Mood This Month:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlN-Jw-vrN">
+                                                <rect key="frame" x="0.0" y="40" width="265" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPY-Tk-wDs">
+                                                <rect key="frame" x="270" y="23.5" width="55" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="Cez-Sr-EjA"/>
+                                                    <constraint firstAttribute="height" constant="54" id="UWF-x6-kMw"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Uws-Rq-ci5">
+                                        <rect key="frame" x="0.0" y="377.5" width="325" height="100.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Mood This Year:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXe-h3-f4o">
+                                                <rect key="frame" x="0.0" y="40" width="265" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ivu-bQ-GQ8">
+                                                <rect key="frame" x="270" y="23" width="55" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="SIW-Z5-gl1"/>
+                                                    <constraint firstAttribute="width" constant="55" id="wVF-Vb-ML5"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Rij-s1-anX" firstAttribute="height" secondItem="Uws-Rq-ci5" secondAttribute="height" id="2hf-HS-MkB"/>
+                                    <constraint firstItem="zh7-6w-ZpY" firstAttribute="leading" secondItem="sdO-nj-YB5" secondAttribute="leading" id="HL8-0h-15u"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rij-s1-anX" secondAttribute="trailing" id="K7F-1j-Sr9"/>
+                                    <constraint firstItem="Uws-Rq-ci5" firstAttribute="leading" secondItem="sdO-nj-YB5" secondAttribute="leading" id="MTC-AW-3eF"/>
+                                    <constraint firstItem="zh7-6w-ZpY" firstAttribute="height" secondItem="Rij-s1-anX" secondAttribute="height" id="NgB-UK-K6e"/>
+                                    <constraint firstItem="Rij-s1-anX" firstAttribute="leading" secondItem="sdO-nj-YB5" secondAttribute="leading" id="Ptq-TQ-x5F"/>
+                                    <constraint firstAttribute="trailing" secondItem="zh7-6w-ZpY" secondAttribute="trailing" id="R6t-G5-Hha"/>
+                                    <constraint firstItem="iaK-ww-Qcb" firstAttribute="height" secondItem="zh7-6w-ZpY" secondAttribute="height" id="Ssb-eA-KJa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uws-Rq-ci5" secondAttribute="trailing" id="rQf-kA-IT1"/>
+                                    <constraint firstAttribute="trailing" secondItem="iaK-ww-Qcb" secondAttribute="trailing" id="sPc-7T-v8X"/>
+                                    <constraint firstItem="iaK-ww-Qcb" firstAttribute="leading" secondItem="sdO-nj-YB5" secondAttribute="leading" id="xX6-ur-rhw"/>
+                                </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBI-aI-zgc">
-                                <rect key="frame" x="56" y="115" width="39" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Week"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="bottom" secondItem="sdO-nj-YB5" secondAttribute="bottom" constant="25" id="0vd-tB-Uwj"/>
                             <constraint firstItem="cyT-4z-mPV" firstAttribute="top" secondItem="1hG-In-suE" secondAttribute="top" id="2C4-RF-12L"/>
-                            <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="zh7-6w-ZpY" secondAttribute="trailing" constant="25" id="77r-xl-ZjZ"/>
                             <constraint firstItem="cyT-4z-mPV" firstAttribute="trailing" secondItem="1hG-In-suE" secondAttribute="trailing" id="MT7-XD-NBu"/>
-                            <constraint firstItem="zh7-6w-ZpY" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="SYh-Zb-pr3"/>
                             <constraint firstItem="cyT-4z-mPV" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" id="a20-Z0-cpC"/>
+                            <constraint firstItem="sdO-nj-YB5" firstAttribute="top" secondItem="cyT-4z-mPV" secondAttribute="bottom" constant="25" id="dau-qU-Sup"/>
+                            <constraint firstItem="1hG-In-suE" firstAttribute="trailing" secondItem="sdO-nj-YB5" secondAttribute="trailing" constant="25" id="goW-zz-tAF"/>
+                            <constraint firstItem="sdO-nj-YB5" firstAttribute="leading" secondItem="1hG-In-suE" secondAttribute="leading" constant="25" id="pfg-rj-cff"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1hG-In-suE"/>
                     </view>
@@ -696,6 +764,7 @@
         <!--My Mood Over Time-->
         <scene sceneID="BgY-mD-sVu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KaO-E2-mpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="gGc-9x-zc3" customClass="CollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I9r-BU-c4F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -722,9 +791,14 @@
                             <outlet property="delegate" destination="gGc-9x-zc3" id="lMo-Mn-aku"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="My Mood Over Time" id="4zV-UN-G3l"/>
+                    <navigationItem key="navigationItem" title="My Mood Over Time" id="4zV-UN-G3l">
+                        <barButtonItem key="rightBarButtonItem" title="Stats!" id="ADc-nB-8xv">
+                            <connections>
+                                <segue destination="Adx-jZ-QlQ" kind="show" id="ADb-gC-1of"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KaO-E2-mpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2984.8000000000002" y="-13.043478260869566"/>
         </scene>

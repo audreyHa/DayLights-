@@ -9,7 +9,6 @@
 import UIKit
 
 class MoodVC: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
