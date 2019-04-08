@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         daylightsArray=CoreDataHelper.retrieveDaylight()
         var count=0;
         for value in daylightsArray{
-            print("hello")
+//            print("hello")
             
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "MM/dd/yy"
@@ -120,7 +120,7 @@ class ViewController: UIViewController {
             }
             
             daylight.mood=Int32(currentMood)
-            print(currentMood)
+//            print(currentMood)
             currentMood=0
             daylight.dateCreated=Date()
             CoreDataHelper.saveDaylight()
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
                 daylight.funny=self.funnyText.text!
             }
             daylight.mood=Int32(self.currentMood)
-            print(self.currentMood)
+//            print(self.currentMood)
             self.currentMood=0
             daylight.dateCreated=Date()
             CoreDataHelper.saveDaylight()
@@ -277,6 +277,7 @@ class ViewController: UIViewController {
     
     @objc func showMood(){
         var daylights=CoreDataHelper.retrieveDaylight()
+        
         var count=0
         for value in daylights{
             if (value.mood != 0){
@@ -284,7 +285,7 @@ class ViewController: UIViewController {
             }
         }
         
-        if (count>6){
+        if (count>0){
             performSegue(withIdentifier: "showMood", sender: nil)
         }else{
             moodAlert(title: "ALERT!", message: "You do not have enough mood data yet! Check back after making more DayLights!")

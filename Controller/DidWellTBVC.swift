@@ -34,8 +34,8 @@ class DidWellTBVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DidWellTableViewCell", for: indexPath) as! DidWellTableViewCell
         
         let daylight=daylights[indexPath.row]
-        print("this is the daylight did well \(daylight.didWell)")
-        print("this is the daylight did well DATE \(daylight.dateCreated)")
+//        print("this is the daylight did well \(daylight.didWell)")
+//        print("this is the daylight did well DATE \(daylight.dateCreated)")
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
         let now = dateformatter.string(from: daylight.dateCreated!)

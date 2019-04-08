@@ -660,7 +660,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iaK-ww-Qcb">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="101"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-Fd-Joj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Mood Today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-Fd-Joj">
                                                 <rect key="frame" x="0.0" y="40" width="265" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -670,6 +670,7 @@
                                                 <rect key="frame" x="270" y="23.5" width="55" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="55" id="CtD-Zi-8fJ"/>
+                                                    <constraint firstAttribute="height" constant="54" id="D7W-HF-N2A"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -756,6 +757,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1hG-In-suE"/>
                     </view>
+                    <connections>
+                        <outlet property="monthImage" destination="uPY-Tk-wDs" id="gVb-x1-eyN"/>
+                        <outlet property="todayImage" destination="2gJ-TQ-Emr" id="Ypg-AY-0U1"/>
+                        <outlet property="weekImage" destination="yhO-AO-KaN" id="JPD-I1-rvA"/>
+                        <outlet property="yearImage" destination="ivu-bQ-GQ8" id="8eb-aw-vdV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53t-6c-lyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -764,7 +771,6 @@
         <!--My Mood Over Time-->
         <scene sceneID="BgY-mD-sVu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KaO-E2-mpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="gGc-9x-zc3" customClass="CollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I9r-BU-c4F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -799,6 +805,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KaO-E2-mpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2984.8000000000002" y="-13.043478260869566"/>
         </scene>
