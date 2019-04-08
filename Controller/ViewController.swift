@@ -85,10 +85,9 @@ class ViewController: UIViewController {
     @IBAction func saveDayLights(_ sender: UIButton) {
         
         daylightsArray=CoreDataHelper.retrieveDaylight()
+        
         var count=0;
         for value in daylightsArray{
-//            print("hello")
-            
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "MM/dd/yy"
             let now = dateformatter.string(from: Date())
@@ -132,13 +131,18 @@ class ViewController: UIViewController {
             mood3.layer.borderWidth=0
             mood4.layer.borderWidth=0
             mood5.layer.borderWidth=0
+            
+            moodIsNotGreat()
         }else if(count==1){
+            
             createAlert(title: "ALERT!", message: "You already created 1 DayLights today! Do you still want to save this one?")
             count=0
         }else{
+            
             createAlert(title: "ALERT!", message: "You already created \(count) DayLights today! Do you still want to save this one?")
             count=0
         }
+        
     }
     
     func moodAlert(title: String, message: String){
@@ -146,8 +150,42 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
         }))
-
-        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func moodIsNotGreat(){
+        let calendar = Calendar.current
+        let weekDateformatter = DateFormatter()
+        weekDateformatter.dateFormat = "MM/dd/yy"
+        let todayStringDate = weekDateformatter.string(from: Date())
+        let today = calendar.startOfDay(for: Date())
+        let yesterday=weekDateformatter.string(from: today.addingTimeInterval(TimeInterval(-86400)))
+        let yesterday2=weekDateformatter.string(from: today.addingTimeInterval(TimeInterval(-172800)))
+        var datesToCheck=[Daylight]()
+        var checkingCount=0
+        self.daylightsArray=CoreDataHelper.retrieveDaylight()
+        for daylight in self.daylightsArray{
+            var daylightDate=weekDateformatter.string(from: daylight.dateCreated!)
+            if ((daylightDate==todayStringDate)||(daylightDate==yesterday)||(daylightDate==yesterday2)){
+                datesToCheck.append(daylight)
+            }
+        }
+        
+        print("Date to check array \(datesToCheck.count)")
+        for date in datesToCheck{
+            if (Int(date.mood)<4){
+                checkingCount+=1
+            }
+        }
+        
+        print("Checking count \(checkingCount)")
+        if(checkingCount==datesToCheck.count){
+            
+                print("welp, I got here")
+                let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great... Try talking to a family member/guardian, trusted adult, teacher, or friend.", preferredStyle: UIAlertController.Style.alert)
+            alert2.addAction(UIAlertAction(title: "I'll Talk to Someone!", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert2, animated: true, completion: nil)
+            
+        }
     }
     
     func createAlert(title: String, message: String){
@@ -186,6 +224,9 @@ class ViewController: UIViewController {
             self.mood3.layer.borderWidth=0
             self.mood4.layer.borderWidth=0
             self.mood5.layer.borderWidth=0
+            
+            self.moodIsNotGreat()
+            
 
         }))
         
@@ -199,6 +240,8 @@ class ViewController: UIViewController {
             self.mood3.layer.borderWidth=0
             self.mood4.layer.borderWidth=0
             self.mood5.layer.borderWidth=0
+            
+            self.moodIsNotGreat()
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -237,7 +280,7 @@ class ViewController: UIViewController {
         let now = dateformatter.string(from: Date())
         
         dateLabel.text=now
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
     //END of view did load
     
