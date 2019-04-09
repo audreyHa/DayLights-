@@ -156,33 +156,71 @@ class ViewController: UIViewController {
         let calendar = Calendar.current
         let weekDateformatter = DateFormatter()
         weekDateformatter.dateFormat = "MM/dd/yy"
+        var datesArray=[String]()
         let todayStringDate = weekDateformatter.string(from: Date())
+        datesArray.append(todayStringDate)
         let today = calendar.startOfDay(for: Date())
-        let yesterday=weekDateformatter.string(from: today.addingTimeInterval(TimeInterval(-86400)))
-        let yesterday2=weekDateformatter.string(from: today.addingTimeInterval(TimeInterval(-172800)))
+        
+        for i in 1...13{
+            datesArray.append(weekDateformatter.string(from: today.addingTimeInterval(TimeInterval(-86400*i))))
+        }
+        
         var datesToCheck=[Daylight]()
+        var weekDatesToCheck=[Daylight]()
+        var doubleWeekToCheck=[Daylight]()
+        var weekCheck=0
         var checkingCount=0
+        var doubleCheck=0
+        
         self.daylightsArray=CoreDataHelper.retrieveDaylight()
         for daylight in self.daylightsArray{
             var daylightDate=weekDateformatter.string(from: daylight.dateCreated!)
-            if ((daylightDate==todayStringDate)||(daylightDate==yesterday)||(daylightDate==yesterday2)){
+            if ((daylightDate==datesArray[0])||(daylightDate==datesArray[1])||(daylightDate==datesArray[2])){
                 datesToCheck.append(daylight)
+                weekDatesToCheck.append(daylight)
             }
+            if ((daylightDate==datesArray[3])||(daylightDate==datesArray[4])||(daylightDate==datesArray[5])||(daylightDate==datesArray[6])){
+                weekDatesToCheck.append(daylight)
+            }
+            if ((daylightDate==datesArray[7])||(daylightDate==datesArray[8])||(daylightDate==datesArray[9])||(daylightDate==datesArray[10])||(daylightDate==datesArray[11])||(daylightDate==datesArray[12])||(daylightDate==datesArray[13])){
+                doubleWeekToCheck.append(daylight)
+            }
+
         }
         
-        print("Date to check array \(datesToCheck.count)")
         for date in datesToCheck{
-            if (Int(date.mood)<4){
+            if (Int(date.mood)<3){
                 checkingCount+=1
             }
         }
         
-        print("Checking count \(checkingCount)")
-        if(checkingCount==datesToCheck.count){
-            
-                print("welp, I got here")
-                let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great... Try talking to a family member/guardian, trusted adult, teacher, or friend.", preferredStyle: UIAlertController.Style.alert)
-            alert2.addAction(UIAlertAction(title: "I'll Talk to Someone!", style: UIAlertAction.Style.default, handler: nil))
+        for weekDate in weekDatesToCheck{
+            if(Int(weekDate.mood)<4){
+                weekCheck+=1
+            }
+        }
+        
+        for doubleDate in doubleWeekToCheck{
+            if(Int(doubleDate.mood)<4){
+                doubleCheck+=1
+            }
+        }
+        
+        if(doubleWeekToCheck.count==doubleCheck){
+            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been good for the past few weeks... Let's look at some resources!", preferredStyle: UIAlertController.Style.alert)
+            alert2.addAction(UIAlertAction(title: "Show some resources!", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert2, animated: true, completion: nil)
+        }else if(weekDatesToCheck.count==weekCheck){
+            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great for the past week... PLEASE make sure to talk to a family member/guardian, trusted adult, teacher, or friend.", preferredStyle: UIAlertController.Style.alert)
+            alert2.addAction(UIAlertAction(title: "I WILL Talk to Someone!", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert2, animated: true, completion: nil)
+        }else if(checkingCount==datesToCheck.count){
+                let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great for the past few days... Try talking to a family member/guardian, trusted adult, teacher, or friend!", preferredStyle: UIAlertController.Style.alert)
+            alert2.addAction(UIAlertAction(title: "I'll Talk to Someone", style: UIAlertAction.Style.default, handler:{
+                (action) in
+                alert2.dismiss(animated: true, completion: nil)
+                
+            }))
                 self.present(alert2, animated: true, completion: nil)
             
         }

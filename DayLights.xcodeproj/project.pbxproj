@@ -11,6 +11,7 @@
 		F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */; };
 		F61832A522506BB60083886A /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A422506BB60083886A /* CollectionVC.swift */; };
 		F61832A722506BCE0083886A /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A622506BCE0083886A /* BarCell.swift */; };
+		F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */; };
 		F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FC2249F1A1001138FE /* AppDelegate.swift */; };
 		F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FE2249F1A1001138FE /* ViewController.swift */; };
 		F68CFA022249F1A1001138FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68CFA002249F1A1001138FE /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTableViewCell.swift; sourceTree = "<group>"; };
 		F61832A422506BB60083886A /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		F61832A622506BCE0083886A /* BarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
+		F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
 		F68CF9F92249F1A1001138FE /* DayLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68CF9FC2249F1A1001138FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F68CF9FE2249F1A1001138FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				F691978C224C96E500554EFA /* GratefulTBVC.swift */,
 				F6BACC41224DFCEB00430B79 /* MoodVC.swift */,
 				F61832A422506BB60083886A /* CollectionVC.swift */,
+				F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				F616C67B224DE4B100C85721 /* FunnyTBVC.swift in Sources */,
 				F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */,
 				F61832A722506BCE0083886A /* BarCell.swift in Sources */,
+				F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */,
 				F691978D224C96E500554EFA /* GratefulTBVC.swift in Sources */,
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
 				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,
