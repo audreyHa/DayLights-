@@ -25,6 +25,11 @@ struct CoreDataHelper{
         return daylight
     }
     
+    static func newOrg() -> Organization{
+        let organization=NSEntityDescription.insertNewObject(forEntityName: "Organization", into: context) as! Organization
+        return organization
+    }
+    
     static func saveDaylight(){
         do{
             try context.save()
@@ -50,4 +55,18 @@ struct CoreDataHelper{
             return []
         }
     }
+    
+    static func retrieveOrg()->[Organization]{
+        do{
+            let fetchRequest=NSFetchRequest<Organization>(entityName: "Organization")
+            let results=try context.fetch(fetchRequest)
+            print("there should be results")
+            return results
+        }catch let error{
+            print("Could not fetch \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    
 }

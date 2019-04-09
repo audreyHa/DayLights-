@@ -207,23 +207,35 @@ class ViewController: UIViewController {
         }
         
         if(doubleWeekToCheck.count==doubleCheck){
-            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been good for the past few weeks... Let's look at some resources!", preferredStyle: UIAlertController.Style.alert)
-            alert2.addAction(UIAlertAction(title: "Show some resources!", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert2, animated: true, completion: nil)
-        }else if(weekDatesToCheck.count==weekCheck){
-            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great for the past week... PLEASE make sure to talk to a family member/guardian, trusted adult, teacher, or friend.", preferredStyle: UIAlertController.Style.alert)
-            alert2.addAction(UIAlertAction(title: "I WILL Talk to Someone!", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert2, animated: true, completion: nil)
-        }else if(checkingCount==datesToCheck.count){
-                let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great for the past few days... Try talking to a family member/guardian, trusted adult, teacher, or friend!", preferredStyle: UIAlertController.Style.alert)
-            alert2.addAction(UIAlertAction(title: "I'll Talk to Someone", style: UIAlertAction.Style.default, handler:{
+            
+            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like your mood has not been good for the past few weeks... Let's look at some resources!", preferredStyle: UIAlertController.Style.alert)
+            alert2.addAction(UIAlertAction(title: "Show some resources!", style: UIAlertAction.Style.default, handler: {
                 (action) in
                 alert2.dismiss(animated: true, completion: nil)
-                
+                self.performSegue(withIdentifier: "resources", sender: nil)
             }))
-                self.present(alert2, animated: true, completion: nil)
+            self.present(alert2, animated: true, completion: nil)
+        
+        }else if(weekDatesToCheck.count==weekCheck){
+//            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like your mood has not been good for the past few weeks... Let's look at some resources!", preferredStyle: UIAlertController.Style.alert)
+//            alert2.addAction(UIAlertAction(title: "Show some resources!", style: UIAlertAction.Style.default, handler: {
+//                (action) in
+//                alert2.dismiss(animated: true, completion: nil)
+//                self.performSegue(withIdentifier: "resources", sender: nil)
+//            }))
+//            self.present(alert2, animated: true, completion: nil)
+            
+            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great for the past week... Please make sure to talk to a family member or guardian, trusted adult, teacher, or friend.", preferredStyle: UIAlertController.Style.alert)
+            alert2.addAction(UIAlertAction(title: "I WILL Talk to Someone!", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert2, animated: true, completion: nil)
+        
+        }else if(checkingCount==datesToCheck.count){
+            let alert2 = UIAlertController(title: "ALERT!", message: "Looks like your mood has not been great for the past few days... Try talking to a family member or guardian, trusted adult, teacher, or friend!", preferredStyle: UIAlertController.Style.alert)
+            alert2.addAction(UIAlertAction(title: "I'll Talk to Someone", style: UIAlertAction.Style.default, handler:nil))
+            self.present(alert2, animated: true, completion: nil)
             
         }
+        
     }
     
     func createAlert(title: String, message: String){

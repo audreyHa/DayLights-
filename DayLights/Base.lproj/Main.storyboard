@@ -811,10 +811,10 @@
             </objects>
             <point key="canvasLocation" x="2098" y="-552"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Resources Table View Controller-->
         <scene sceneID="HdO-gu-niI">
             <objects>
-                <tableViewController id="lVb-ru-sDB" sceneMemberID="viewController">
+                <tableViewController id="lVb-ru-sDB" customClass="ResourcesTableViewController" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ai2-Ht-koZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -838,7 +838,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="74" id="dAu-4n-u0K">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrganizationCell" rowHeight="74" id="dAu-4n-u0K" customClass="OrganizationCell" customModule="DayLights" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="103" width="375" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dAu-4n-u0K" id="Svv-6J-hsH">
@@ -849,12 +849,18 @@
                                             <rect key="frame" x="16" y="16" width="343" height="42"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name of Organization" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ck-ay-qg6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="14.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                     <color key="textColor" red="0.60620196989999997" green="0.85892885919999995" blue="0.68420793150000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jue-AT-CyU">
+                                                    <rect key="frame" x="0.0" y="7" width="343" height="7.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Contact Info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BfX-Fw-1Kf">
                                                     <rect key="frame" x="0.0" y="21.5" width="343" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -864,7 +870,9 @@
                                             <constraints>
                                                 <constraint firstItem="jue-AT-CyU" firstAttribute="leading" secondItem="jDC-mk-1uu" secondAttribute="leading" id="CwU-dV-CD2"/>
                                                 <constraint firstItem="4Ck-ay-qg6" firstAttribute="leading" secondItem="jDC-mk-1uu" secondAttribute="leading" id="JwM-Vs-uqq"/>
+                                                <constraint firstAttribute="trailing" secondItem="BfX-Fw-1Kf" secondAttribute="trailing" id="Mfr-F7-tzJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="4Ck-ay-qg6" secondAttribute="trailing" id="fiz-NZ-slM"/>
+                                                <constraint firstItem="BfX-Fw-1Kf" firstAttribute="leading" secondItem="jDC-mk-1uu" secondAttribute="leading" id="gSP-ho-4zR"/>
                                                 <constraint firstAttribute="trailing" secondItem="jue-AT-CyU" secondAttribute="trailing" id="gnN-al-jVS"/>
                                             </constraints>
                                         </stackView>
@@ -876,6 +884,11 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="jDC-mk-1uu" secondAttribute="bottom" constant="5" id="q5e-za-bQN"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contact" destination="BfX-Fw-1Kf" id="0Fp-fX-yiN"/>
+                                    <outlet property="orgDesc" destination="jue-AT-CyU" id="tbZ-FN-wJo"/>
+                                    <outlet property="orgName" destination="4Ck-ay-qg6" id="YSD-fq-L0v"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
