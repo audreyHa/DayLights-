@@ -9,10 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var daylight: Daylight?
+    
     var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
     var count=0
     var currentMood=0
     var daylightsArray=[Daylight]()
+    
+
+    
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulText: UITextView!
     @IBOutlet weak var funnyText: UITextView!
@@ -22,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mood3: UIButton!
     @IBOutlet weak var mood4: UIButton!
     @IBOutlet weak var mood5: UIButton!
+    
     @IBAction func mood1(_ sender: UIButton) {
         mood1.layer.borderWidth = 3
         mood1.layer.borderColor = red.cgColor
@@ -82,75 +89,94 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIButton!
     
-    @IBAction func saveDayLights(_ sender: UIButton) {
-        
-        daylightsArray=CoreDataHelper.retrieveDaylight()
-        
-        var count=0;
-        for value in daylightsArray{
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "MM/dd/yy"
-            let now = dateformatter.string(from: Date())
-            let reformatedPastDate=dateformatter.string(from: value.dateCreated!)
-            
-            if (now==reformatedPastDate){
-                count+=1
-            }
+    func saveWhatYouHave(){
+        if (didWellText.text==""){
+            daylight!.didWell="None entered"
+        }else{
+            daylight!.didWell=didWellText.text!
         }
         
-        if (count==0){
-            var daylight=CoreDataHelper.newDaylight()
-            if (didWellText.text==""){
-                daylight.didWell="None entered"
-            }else{
-                daylight.didWell=didWellText.text!
-            }
-            
-            if (gratefulText.text==""){
-                daylight.gratefulThing="None entered"
-            }else{
-                daylight.gratefulThing=gratefulText.text!
-            }
-            
-            if (funnyText.text==""){
-                daylight.funny="None entered"
-            }else{
-                daylight.funny=funnyText.text!
-            }
-            
-            daylight.mood=Int32(currentMood)
-            print(currentMood)
-            currentMood=0
-            daylight.dateCreated=Date()
-            CoreDataHelper.saveDaylight()
-            didWellText.text = ""
-            gratefulText.text = ""
-            funnyText.text=""
-            mood1.layer.borderWidth=0
-            mood2.layer.borderWidth=0
-            mood3.layer.borderWidth=0
-            mood4.layer.borderWidth=0
-            mood5.layer.borderWidth=0
-            
+        if (gratefulText.text==""){
+            daylight!.gratefulThing="None entered"
+        }else{
+            daylight!.gratefulThing=gratefulText.text!
+        }
+        
+        if (funnyText.text==""){
+            daylight!.funny="None entered"
+        }else{
+            daylight!.funny=funnyText.text!
+        }
+        
+        if (daylight!.dateCreated == nil){
+            daylight!.dateCreated=Date()
+        }
+        
+        daylight!.mood=Int32(currentMood)
+        currentMood=0
+        CoreDataHelper.saveDaylight()
+    }
+    
+    func resetEverything(){
+        count=0
+        currentMood=0
+        didWellText.text = ""
+        gratefulText.text = ""
+        funnyText.text=""
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "MM/dd/yy"
+        let now = dateformatter.string(from: Date())
+        dateLabel.text=now
+        mood1.layer.borderWidth=0
+        mood2.layer.borderWidth=0
+        mood3.layer.borderWidth=0
+        mood4.layer.borderWidth=0
+        mood5.layer.borderWidth=0
+        daylight=nil
+    }
+    
+    @IBAction func saveDayLights(_ sender: UIButton) {
+        if daylight != nil{
+            saveWhatYouHave()
+            resetEverything()
             moodIsNotGreat()
         }else{
-            let comeLater = UIAlertController(title: "ALERT!", message: "Looks like you've already created 1 DayLights for today. See you tomorrow!", preferredStyle: UIAlertController.Style.alert)
-            comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
-            self.present(comeLater, animated: true, completion: nil)
+
+            daylightsArray=CoreDataHelper.retrieveDaylight()
+            var count=0
+
+            for value in daylightsArray{
+                    
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "MM/dd/yy"
+                let now = dateformatter.string(from: Date())
+                let reformatedPastDate=dateformatter.string(from: value.dateCreated!)
+                    
+                if (now==reformatedPastDate){
+                    count+=1
+                }
+            }
             
-            count=0
-            self.didWellText.text = ""
-            self.gratefulText.text = ""
-            self.funnyText.text=""
-            self.mood1.layer.borderWidth=0
-            self.mood2.layer.borderWidth=0
-            self.mood3.layer.borderWidth=0
-            self.mood4.layer.borderWidth=0
-            self.mood5.layer.borderWidth=0
+            if (count==0){
+                daylight=CoreDataHelper.newDaylight()
+                saveWhatYouHave()
+                resetEverything()
+                moodIsNotGreat()
+            }else{
+                let comeLater = UIAlertController(title: "ALERT!", message: "Looks like you've already created 1 DayLights for today. See you tomorrow!", preferredStyle: UIAlertController.Style.alert)
+                comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
+                self.present(comeLater, animated: true, completion: nil)
+                
+                count=0
+                resetEverything()
+            }
         }
-        
     }
 
+    @IBAction func cancelButton(_ sender: UIButton) {
+        resetEverything()
+        currentMood=0
+    }
     
     func moodIsNotGreat(){
         let calendar = Calendar.current
@@ -307,6 +333,8 @@ class ViewController: UIViewController {
         contentsView.layer.masksToBounds = true
         saveButton.layer.cornerRadius = 8
         saveButton.layer.masksToBounds = true
+        cancelButton.layer.cornerRadius = 8
+        cancelButton.layer.masksToBounds = true
         
         contentsView.layer.borderWidth = 3
         var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
@@ -329,6 +357,54 @@ class ViewController: UIViewController {
     }
     //END of view did load
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 1
+        if let daylight = daylight{
+            // 2
+            didWellText.text = daylight.didWell
+            gratefulText.text = daylight.gratefulThing
+            funnyText.text=daylight.funny
+            
+            if (daylight.mood==1){
+                mood1.layer.borderWidth = 3
+                mood1.layer.borderColor = red.cgColor
+                currentMood=1
+            }else if(daylight.mood==2){
+                mood2.layer.borderWidth = 3
+                mood2.layer.borderColor = red.cgColor
+                currentMood=2
+            }else if(daylight.mood==3){
+                mood3.layer.borderWidth = 3
+                mood3.layer.borderColor = red.cgColor
+                currentMood=3
+            }else if(daylight.mood==4){
+                mood4.layer.borderWidth = 3
+                mood4.layer.borderColor = red.cgColor
+                currentMood=4
+            }else if(daylight.mood==5){
+                mood5.layer.borderWidth = 3
+                mood5.layer.borderColor = red.cgColor
+                currentMood=5
+            }
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "MM/dd/yy"
+            
+            dateLabel.text="Created on \(dateformatter.string(from: daylight.dateCreated!))"
+            
+        } else {
+            // 3
+            didWellText.text = ""
+            gratefulText.text = ""
+            funnyText.text=""
+        }
+    }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        
+    }
     
     //START keyboard modifying functions
     @objc func keyboardWillShow(notification: NSNotification) {

@@ -50,4 +50,28 @@ class FunnyTBVC: UITableViewController {
             daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 1
+        guard let identifier = segue.identifier,
+            let destination = segue.destination as? ViewController
+            else { return }
+        
+        switch identifier {
+            // 2
+            
+        case "edit":
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            // 2
+            let daylight = daylights[indexPath.row]
+            // 3
+            let destination = segue.destination as! ViewController
+            // 4
+            destination.daylight = daylight
+            
+        default:
+            print("unexpected segue identifier")
+        }
+    }
 }
