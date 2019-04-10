@@ -28,7 +28,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     override func viewDidLoad() {
         super.viewDidLoad()
         daylightsArray=CoreDataHelper.retrieveDaylight()
-        daylightsArray = daylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
+        daylightsArray = daylightsArray.sorted(by: { $1.dateCreated!.compare($0.dateCreated!) == .orderedDescending })
         for value in daylightsArray{
             if (value.mood != 0){
                 values.append(Int(value.mood*120))
@@ -74,7 +74,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
             }
         }
         
-        editedDaylightsArray=editedDaylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
+        editedDaylightsArray=editedDaylightsArray.sorted(by: { $1.dateCreated!.compare($0.dateCreated!) == .orderedDescending })
         var date=editedDaylightsArray[indexPath.item].dateCreated!
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd"
