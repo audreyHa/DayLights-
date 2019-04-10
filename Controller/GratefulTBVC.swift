@@ -19,7 +19,6 @@ class GratefulTBVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         daylights=CoreDataHelper.retrieveDaylight()
-//        tableView.estimatedRowHeight = 600
         tableView.rowHeight = UITableView.automaticDimension
         daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
     }
@@ -45,6 +44,7 @@ class GratefulTBVC: UITableViewController {
         if editingStyle == .delete{
             let daylightToDelete=daylights[indexPath.row]
             CoreDataHelper.delete(daylight: daylightToDelete)
+            CoreDataHelper.saveDaylight()
             daylights=CoreDataHelper.retrieveDaylight()
             daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
         }

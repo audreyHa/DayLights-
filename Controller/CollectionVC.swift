@@ -10,9 +10,15 @@ import Foundation
 import UIKit
 
 class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayout{
+    var daylightsArray=[Daylight](){
+        didSet{
+            collectionView.reloadData()
+        }
+    }
+    
     let cellId="cellId"
     var values=[Int]()
-    var daylightsArray=[Daylight]()
+
     var red1=UIColor(red: 255.0/255.0, green: 124.0/255.0, blue: 124.0/255.0, alpha: 1.0)
     var orange2=UIColor(red: 253.0/255.0, green: 171.0/255.0, blue: 36.0/255.0, alpha: 1.0)
     var yellow3=UIColor(red: 255.0/255.0, green: 202.0/255.0, blue: 0.0/255.0, alpha: 1.0)
@@ -28,6 +34,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
                 values.append(Int(value.mood*120))
             }
         }
+        print(values)
         collectionView?.backgroundColor = .white
         
         collectionView?.register(BarCell.self, forCellWithReuseIdentifier: cellId)
@@ -58,7 +65,17 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
             cell.barView.backgroundColor=UIColor.blue
         }
         
-        var date=daylightsArray[indexPath.item].dateCreated!
+        var editedDaylightsArray=[Daylight]()
+        for daylight in daylightsArray{
+            if (daylight.mood==0){
+                print("we are not adding this to the edited list!!!")
+            }else{
+                editedDaylightsArray.append(daylight)
+            }
+        }
+        
+        editedDaylightsArray=editedDaylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
+        var date=editedDaylightsArray[indexPath.item].dateCreated!
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd"
         let now = dateformatter.string(from: date)

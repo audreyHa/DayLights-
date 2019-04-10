@@ -48,6 +48,7 @@ class DidWellTBVC: UITableViewController {
         if editingStyle == .delete{
             let daylightToDelete=daylights[indexPath.row]
             CoreDataHelper.delete(daylight: daylightToDelete)
+            CoreDataHelper.saveDaylight()
             daylights=CoreDataHelper.retrieveDaylight()
             daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
         }
