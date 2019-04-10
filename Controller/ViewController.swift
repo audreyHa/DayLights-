@@ -133,24 +133,24 @@ class ViewController: UIViewController {
             mood5.layer.borderWidth=0
             
             moodIsNotGreat()
-        }else if(count==1){
-            
-            createAlert(title: "ALERT!", message: "You already created 1 DayLights today! Do you still want to save this one?")
-            count=0
         }else{
+            let comeLater = UIAlertController(title: "ALERT!", message: "Looks like you've already created 1 DayLights for today. See you tomorrow!", preferredStyle: UIAlertController.Style.alert)
+            comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
+            self.present(comeLater, animated: true, completion: nil)
             
-            createAlert(title: "ALERT!", message: "You already created \(count) DayLights today! Do you still want to save this one?")
             count=0
+            self.didWellText.text = ""
+            self.gratefulText.text = ""
+            self.funnyText.text=""
+            self.mood1.layer.borderWidth=0
+            self.mood2.layer.borderWidth=0
+            self.mood3.layer.borderWidth=0
+            self.mood4.layer.borderWidth=0
+            self.mood5.layer.borderWidth=0
         }
         
     }
-    
-    func moodAlert(title: String, message: String){
-        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-    }
+
     
     func moodIsNotGreat(){
         let calendar = Calendar.current
@@ -292,65 +292,6 @@ class ViewController: UIViewController {
         print("3 day count \(threeDayCount)")
     }
     
-    func createAlert(title: String, message: String){
-        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            
-            var daylight=CoreDataHelper.newDaylight()
-            if (self.didWellText.text==""){
-                daylight.didWell="None entered"
-            }else{
-                daylight.didWell=self.didWellText.text!
-            }
-            
-            if (self.gratefulText.text==""){
-                daylight.gratefulThing="None entered"
-            }else{
-                daylight.gratefulThing=self.gratefulText.text!
-            }
-            
-            if (self.funnyText.text==""){
-                daylight.funny="None entered"
-            }else{
-                daylight.funny=self.funnyText.text!
-            }
-            daylight.mood=Int32(self.currentMood)
-//            print(self.currentMood)
-            self.currentMood=0
-            daylight.dateCreated=Date()
-            CoreDataHelper.saveDaylight()
-            self.didWellText.text = ""
-            self.gratefulText.text = ""
-            self.funnyText.text=""
-            self.mood1.layer.borderWidth=0
-            self.mood2.layer.borderWidth=0
-            self.mood3.layer.borderWidth=0
-            self.mood4.layer.borderWidth=0
-            self.mood5.layer.borderWidth=0
-            
-            self.moodIsNotGreat()
-            
-
-        }))
-        
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-            self.didWellText.text = ""
-            self.gratefulText.text = ""
-            self.funnyText.text=""
-            self.mood1.layer.borderWidth=0
-            self.mood2.layer.borderWidth=0
-            self.mood3.layer.borderWidth=0
-            self.mood4.layer.borderWidth=0
-            self.mood5.layer.borderWidth=0
-            
-            self.moodIsNotGreat()
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -435,7 +376,10 @@ class ViewController: UIViewController {
         if (count>0){
             performSegue(withIdentifier: "showMood", sender: nil)
         }else{
-            moodAlert(title: "ALERT!", message: "You do not have enough mood data yet! Check back after making more DayLights!")
+            let comeLater = UIAlertController(title: "ALERT!", message: "You do not have enough mood data yet. Check back soon!", preferredStyle: UIAlertController.Style.alert)
+            comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
+            self.present(comeLater, animated: true, completion: nil)
+
         }
         
     }
