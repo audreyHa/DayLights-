@@ -163,7 +163,7 @@ class ViewController: UIViewController {
                 resetEverything()
                 moodIsNotGreat()
             }else{
-                let comeLater = UIAlertController(title: "ALERT!", message: "Looks like you've already created 1 DayLights for today. See you tomorrow!", preferredStyle: UIAlertController.Style.alert)
+                let comeLater = UIAlertController(title: "ALERT!", message: "You've already created 1 DayLights today. See you back here tomorrow!", preferredStyle: UIAlertController.Style.alert)
                 comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
                 self.present(comeLater, animated: true, completion: nil)
                 
@@ -344,6 +344,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showGratefulThings), name: NSNotification.Name("GratefulThings"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFunny), name: NSNotification.Name("FunnyThings"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
         
         self.hideSide()
         self.hideKeyboardWhenTappedAround() 
@@ -429,6 +430,10 @@ class ViewController: UIViewController {
     
     @objc func showDidWell(){
         performSegue(withIdentifier: "showDidWell", sender: nil)
+    }
+    
+    @objc func showResources(){
+        performSegue(withIdentifier: "resources", sender: nil)
     }
     
     @objc func showGratefulThings(){

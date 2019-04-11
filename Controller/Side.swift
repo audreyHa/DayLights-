@@ -10,6 +10,11 @@ import UIKit
 
 class Side: UIViewController {
 
+    @IBAction func resourcesPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name("resources"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
+    }
+    
     @IBAction func didWellPressed(_ sender: UIButton) {
         NotificationCenter.default.post(name: NSNotification.Name("DidWell"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
