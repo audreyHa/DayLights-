@@ -51,6 +51,7 @@
 		F691978E224C975A00554EFA /* DidWellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellTableViewCell.swift; sourceTree = "<group>"; };
 		F6919790224C976500554EFA /* GratefulTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratefulTableViewCell.swift; sourceTree = "<group>"; };
 		F6BACC41224DFCEB00430B79 /* MoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
+		F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayLights.entitlements; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +88,7 @@
 		F68CF9FB2249F1A1001138FE /* DayLights */ = {
 			isa = PBXGroup;
 			children = (
+				F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */,
 				F68CF9FC2249F1A1001138FE /* AppDelegate.swift */,
 				F68CFA002249F1A1001138FE /* Main.storyboard */,
 				F68CFA062249F1A2001138FE /* Assets.xcassets */,
@@ -165,6 +167,11 @@
 				TargetAttributes = {
 					F68CF9F82249F1A1001138FE = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

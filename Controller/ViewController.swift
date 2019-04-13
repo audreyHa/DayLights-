@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
     var daylight: Daylight?
@@ -142,34 +143,39 @@ class ViewController: UIViewController {
             moodIsNotGreat()
         }else{
 
-            daylightsArray=CoreDataHelper.retrieveDaylight()
-            var count=0
-
-            for value in daylightsArray{
-                    
-                let dateformatter = DateFormatter()
-                dateformatter.dateFormat = "MM/dd/yy"
-                let now = dateformatter.string(from: Date())
-                let reformatedPastDate=dateformatter.string(from: value.dateCreated!)
-                    
-                if (now==reformatedPastDate){
-                    count+=1
-                }
-            }
+//            daylightsArray=CoreDataHelper.retrieveDaylight()
+//            var count=0
+//
+//            for value in daylightsArray{
+//
+//                let dateformatter = DateFormatter()
+//                dateformatter.dateFormat = "MM/dd/yy"
+//                let now = dateformatter.string(from: Date())
+//                let reformatedPastDate=dateformatter.string(from: value.dateCreated!)
+//
+//                if (now==reformatedPastDate){
+//                    count+=1
+//                }
+//            }
             
-            if (count==0){
-                daylight=CoreDataHelper.newDaylight()
-                saveWhatYouHave()
-                resetEverything()
-                moodIsNotGreat()
-            }else{
-                let comeLater = UIAlertController(title: "ALERT!", message: "You've already created 1 DayLights today. See you back here tomorrow!", preferredStyle: UIAlertController.Style.alert)
-                comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
-                self.present(comeLater, animated: true, completion: nil)
-                
-                count=0
-                resetEverything()
-            }
+            daylight=CoreDataHelper.newDaylight()
+            saveWhatYouHave()
+            resetEverything()
+            moodIsNotGreat()
+            
+//            if (count==0){
+//                daylight=CoreDataHelper.newDaylight()
+//                saveWhatYouHave()
+//                resetEverything()
+//                moodIsNotGreat()
+//            }else{
+//                let comeLater = UIAlertController(title: "ALERT!", message: "You've already created 1 DayLights today. See you back here tomorrow!", preferredStyle: UIAlertController.Style.alert)
+//                comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
+//                self.present(comeLater, animated: true, completion: nil)
+//
+//                count=0
+//                resetEverything()
+//            }
         }
     }
 
@@ -326,6 +332,30 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let content=UNMutableNotificationContent()
+        content.title="DayLights Alert!"
+        content.body="Make sure to fill out your DayLights for today!"
+        content.sound=UNNotificationSound.default
+        
+        let gregorian = Calendar(identifier: .gregorian)
+        let now = Date()
+        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
+        
+        // Change the time to 7:00:00 in your locale
+        components.hour = 18
+        components.minute = 0
+        components.second = 0
+        
+        let date = gregorian.date(from: components)!
+        
+        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+        
+        let request=UNNotificationRequest(identifier: "testIdentifier", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -351,9 +381,9 @@ class ViewController: UIViewController {
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
-        let now = dateformatter.string(from: Date())
+        let newnow = dateformatter.string(from: Date())
         
-        dateLabel.text=now
+        dateLabel.text=newnow
 
     }
     //END of view did load
@@ -411,7 +441,7 @@ class ViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= (keyboardSize.height/2)
+                self.view.frame.origin.y -= (keyboardSize.height/3)
             }
         }
     }
