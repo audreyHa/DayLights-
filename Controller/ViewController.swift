@@ -128,6 +128,7 @@ class ViewController: UIViewController {
         dateformatter.dateFormat = "MM/dd/yy"
         let now = dateformatter.string(from: Date())
         dateLabel.text=now
+        dayLightsTitleLabel.text="DayLights"
         mood1.layer.borderWidth=0
         mood2.layer.borderWidth=0
         mood3.layer.borderWidth=0
@@ -326,6 +327,7 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dayLightsTitleLabel: UILabel!
     
     
     //VIEW DID LOAD
@@ -371,8 +373,7 @@ class ViewController: UIViewController {
         contentsView.layer.borderColor = red.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showGratefulThings), name: NSNotification.Name("GratefulThings"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showFunny), name: NSNotification.Name("FunnyThings"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
         
@@ -384,6 +385,7 @@ class ViewController: UIViewController {
         let newnow = dateformatter.string(from: Date())
         
         dateLabel.text=newnow
+        dayLightsTitleLabel.text="DayLights"
 
     }
     //END of view did load
@@ -424,6 +426,7 @@ class ViewController: UIViewController {
             dateformatter.dateFormat = "MM/dd/yy"
             
             dateLabel.text="Created on \(dateformatter.string(from: daylight.dateCreated!))"
+            dayLightsTitleLabel.text="Editing"
             
         } else {
             // 3
@@ -466,13 +469,7 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "resources", sender: nil)
     }
     
-    @objc func showGratefulThings(){
-        performSegue(withIdentifier: "showGratefulThings", sender: nil)
-    }
     
-    @objc func showFunny(){
-        performSegue(withIdentifier: "showFunny", sender: nil)
-    }
     
     @objc func showMood(){
         var daylights=CoreDataHelper.retrieveDaylight()

@@ -70,6 +70,9 @@ class FunnyTBVC: UITableViewController {
             // 4
             destination.daylight = daylight
             
+        case "home":
+            let destination = segue.destination as! ViewController
+            
         default:
             print("unexpected segue identifier")
         }

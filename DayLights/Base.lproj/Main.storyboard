@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="SMj-hF-EOg">
-                                <rect key="frame" x="15" y="40" width="210" height="415"/>
+                                <rect key="frame" x="15" y="40" width="210" height="289"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBL-8M-RIU">
                                         <rect key="frame" x="0.0" y="0.0" width="81.5" height="36"/>
@@ -88,28 +88,8 @@
                                             <action selector="didWellPressed:" destination="VHG-fJ-Z90" eventType="touchUpInside" id="JdD-2P-uld"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-ja-LNn">
-                                        <rect key="frame" x="0.0" y="193" width="181" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Gallery: Grateful Things">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="gratefulThingsPressed:" destination="VHG-fJ-Z90" eventType="touchUpInside" id="PId-qq-1gk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qM2-H2-g3w">
-                                        <rect key="frame" x="0.0" y="256" width="185" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Gallery: Joyful Moments">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="funnyThingsPressed:" destination="VHG-fJ-Z90" eventType="touchUpInside" id="5Ux-WA-6LO"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-ko-giw">
-                                        <rect key="frame" x="0.0" y="319" width="106" height="33"/>
+                                        <rect key="frame" x="0.0" y="193" width="106" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Mood Tracker">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,7 +99,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30I-Tl-3O3">
-                                        <rect key="frame" x="0.0" y="382" width="181" height="33"/>
+                                        <rect key="frame" x="0.0" y="256" width="181" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Hotlines and Resources">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,6 +195,13 @@
                             <outlet property="delegate" destination="jHX-bd-3Gx" id="50L-Eg-wad"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="4BG-TP-olr">
+                        <barButtonItem key="rightBarButtonItem" title="Grateful Things Gallery" id="SjX-SB-xs4">
+                            <connections>
+                                <segue destination="p4B-qL-NPf" kind="show" id="l49-DL-Gze"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afz-h4-ZhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="LPS-n5-hmM" userLabel="Exit" sceneMemberID="exit"/>
@@ -292,11 +279,18 @@
                             <outlet property="delegate" destination="p4B-qL-NPf" id="sUq-VP-j5m"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="0tg-Ee-z3m">
+                        <barButtonItem key="rightBarButtonItem" title="Joyful Moments Gallery" id="gAe-Qi-nCs">
+                            <connections>
+                                <segue destination="ynK-Gl-5ax" kind="show" id="mSH-fs-pF9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lpt-9l-W8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="A9M-hi-EFk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1150" y="980"/>
+            <point key="canvasLocation" x="940" y="812"/>
         </scene>
         <!--FunnyTBVC-->
         <scene sceneID="xLn-fO-Ebv">
@@ -369,6 +363,13 @@
                             <outlet property="delegate" destination="ynK-Gl-5ax" id="hK4-QD-ZrU"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Boh-0T-LfL">
+                        <barButtonItem key="rightBarButtonItem" title="Home" id="H77-i1-3PF">
+                            <connections>
+                                <segue destination="V6p-GH-xiA" kind="unwind" identifier="home" unwindAction="unwindWithSegue:" id="sRu-6b-I1O"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9zo-9p-LQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="V6p-GH-xiA" userLabel="Exit" sceneMemberID="exit"/>
@@ -647,6 +648,7 @@
                         <outlet property="cancelButton" destination="qEU-fE-ody" id="QKn-wZ-I84"/>
                         <outlet property="contentsView" destination="sJZ-7u-7dQ" id="Ujk-8E-bk7"/>
                         <outlet property="dateLabel" destination="uF6-c4-4Ot" id="exj-9J-1Bm"/>
+                        <outlet property="dayLightsTitleLabel" destination="Kut-Au-Zww" id="co5-WJ-1Mh"/>
                         <outlet property="didWellText" destination="WuK-UO-kRO" id="hpq-Wq-feA"/>
                         <outlet property="funnyText" destination="7fE-BC-zFi" id="yk8-1l-qwb"/>
                         <outlet property="gratefulText" destination="05Y-jk-gUQ" id="6OE-fJ-guT"/>
@@ -657,8 +659,6 @@
                         <outlet property="mood5" destination="iec-Jm-ggK" id="4rJ-OV-CYP"/>
                         <outlet property="saveButton" destination="5ae-Sl-GyC" id="Zra-tY-KWA"/>
                         <segue destination="jHX-bd-3Gx" kind="show" identifier="showDidWell" id="hxV-M8-9lt"/>
-                        <segue destination="p4B-qL-NPf" kind="show" identifier="showGratefulThings" id="Uyb-n0-5GV"/>
-                        <segue destination="ynK-Gl-5ax" kind="show" identifier="showFunny" id="MNl-Sf-LbN"/>
                         <segue destination="gGc-9x-zc3" kind="show" identifier="showMood" id="KmR-M5-Klz"/>
                         <segue destination="lVb-ru-sDB" kind="show" identifier="resources" id="QAL-ca-O38"/>
                     </connections>
