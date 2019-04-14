@@ -47,6 +47,12 @@ class SearchDayLight: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchDayLightCell", for: indexPath) as! SearchDayLightCell
+        cell.didWellText.text=""
+        cell.gratefulText.text=""
+        cell.joyousText.text=""
+        cell.moodImage.image=nil
+        cell.moodText.text="Mood:"
+        
         cell.didWellText.text=selectedDate[0].didWell
         cell.gratefulText.text=selectedDate[0].gratefulThing
         cell.joyousText.text=selectedDate[0].funny
@@ -65,7 +71,7 @@ class SearchDayLight: UITableViewController {
         }else if selectedDate[0].mood==5{
             cell.moodImage.image=#imageLiteral(resourceName: "emojiScale5")
         }else{
-            cell.moodText.text="No mood entered"
+            cell.moodText.text="No Mood Entered!"
         }
         
         return cell

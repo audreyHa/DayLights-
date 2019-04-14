@@ -15,6 +15,10 @@ class MoodVC: UIViewController {
     @IBOutlet weak var monthImage: UIImageView!
     @IBOutlet weak var yearImage: UIImageView!
     
+    @IBOutlet weak var moodLabel: UILabel!
+    @IBOutlet weak var weekLabel: UILabel!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +40,17 @@ class MoodVC: UIViewController {
         var todayMoodSum=0
         var todayCount=0
         for daylight in daylightsArray{
-            let theDate=daylight.dateCreated
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "MM/dd/yy"
-            let daylightDate = dateformatter.string(from: theDate!)
-            if (todaysDate==daylightDate){
-                todayMoodSum += Int(daylight.mood)
-                todayCount += 1
+            if daylight.mood != 0{
+                let theDate=daylight.dateCreated
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "MM/dd/yy"
+                let daylightDate = dateformatter.string(from: theDate!)
+                if (todaysDate==daylightDate){
+                    todayMoodSum += Int(daylight.mood)
+                    todayCount += 1
+                }
             }
+            
         }
         
         if (todayCount != 0){
@@ -53,6 +60,8 @@ class MoodVC: UIViewController {
             averageToday=Double(newtodayMoodSum/newtodayCount)
             averageToday.round()
             todayMood=Int(averageToday)
+        }else{
+            moodLabel.text="No Mood Entered Today!"
         }
         
         //week mood
@@ -72,14 +81,17 @@ class MoodVC: UIViewController {
         let yesterday6=weekDateformatter.string(from: today.addingTimeInterval(TimeInterval(-518400)))
         
         for daylight in daylightsArray{
-            let theDate=daylight.dateCreated
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "MM/dd/yy"
-            let daylightDate = dateformatter.string(from: theDate!)
-            if (todayStringDate==daylightDate)||(yesterday==daylightDate)||(yesterday2==daylightDate)||(yesterday3==daylightDate)||(yesterday4==daylightDate)||(yesterday5==daylightDate)||(yesterday6==daylightDate){
-                weekMoodSum += Int(daylight.mood)
-                weekCount+=1
+            if daylight.mood != 0{
+                let theDate=daylight.dateCreated
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "MM/dd/yy"
+                let daylightDate = dateformatter.string(from: theDate!)
+                if (todayStringDate==daylightDate)||(yesterday==daylightDate)||(yesterday2==daylightDate)||(yesterday3==daylightDate)||(yesterday4==daylightDate)||(yesterday5==daylightDate)||(yesterday6==daylightDate){
+                    weekMoodSum += Int(daylight.mood)
+                    weekCount+=1
+                }
             }
+            
         }
         
         print("week mood sum \(weekMoodSum) week count \(weekCount)")
@@ -92,6 +104,8 @@ class MoodVC: UIViewController {
             averageWeek.round()
             print("average Week ROUNDED \(averageWeek)")
             weekMood=Int(averageWeek)
+        }else{
+            weekLabel.text="No Moods Entered This Week!"
         }
         
         
@@ -106,14 +120,17 @@ class MoodVC: UIViewController {
         let currentMonth = newDateformatter.string(from: Date())
         
         for daylight in daylightsArray{
-            let theDate=daylight.dateCreated
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "MM"
-            let daylightDate = dateformatter.string(from: theDate!)
-            if (currentMonth==daylightDate){
-                monthMoodSum += Int(daylight.mood)
-                count+=1
+            if daylight.mood != 0{
+                let theDate=daylight.dateCreated
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "MM"
+                let daylightDate = dateformatter.string(from: theDate!)
+                if (currentMonth==daylightDate){
+                    monthMoodSum += Int(daylight.mood)
+                    count+=1
+                }
             }
+            
         }
         
         if (count != 0){
@@ -123,6 +140,8 @@ class MoodVC: UIViewController {
             averageMonth=Double(newmonthMoodSum/newcount)
             averageMonth.round()
             monthMood=Int(averageMonth)
+        }else{
+            moodLabel.text="No Moods Entered This Month!"
         }
         
         
@@ -135,15 +154,18 @@ class MoodVC: UIViewController {
         
         
         for daylight in daylightsArray{
-            let theDate=daylight.dateCreated
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "MM/dd/yy"
-            let daylightDate = dateformatter.string(from: theDate!)
-            if (String(currentYear.suffix(2)) == String(daylightDate.suffix(2))){
-                yearMoodSum += Int(daylight.mood)
-                yearCount+=1
-                
+            if daylight.mood != 0{
+                let theDate=daylight.dateCreated
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "MM/dd/yy"
+                let daylightDate = dateformatter.string(from: theDate!)
+                if (String(currentYear.suffix(2)) == String(daylightDate.suffix(2))){
+                    yearMoodSum += Int(daylight.mood)
+                    yearCount+=1
+                    
+                }
             }
+            
         }
         
         if (yearCount != 0){
@@ -153,6 +175,8 @@ class MoodVC: UIViewController {
             averageYear=Double(newyearMoodSum/newyearCount)
             averageYear.round()
             yearMood=Int(averageYear)
+        }else{
+            moodLabel.text="No Moods Entered This Year!"
         }
         
         print("today \(todayMood)")
