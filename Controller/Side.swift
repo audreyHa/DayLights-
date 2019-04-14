@@ -10,6 +10,12 @@ import UIKit
 
 class Side: UIViewController {
 
+    @IBAction func searchPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name("searchDayLights"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
+        
+    }
+    
     @IBAction func resourcesPressed(_ sender: UIButton) {
         NotificationCenter.default.post(name: NSNotification.Name("resources"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)

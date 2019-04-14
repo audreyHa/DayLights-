@@ -143,40 +143,11 @@ class ViewController: UIViewController {
             resetEverything()
             moodIsNotGreat()
         }else{
-
-//            daylightsArray=CoreDataHelper.retrieveDaylight()
-//            var count=0
-//
-//            for value in daylightsArray{
-//
-//                let dateformatter = DateFormatter()
-//                dateformatter.dateFormat = "MM/dd/yy"
-//                let now = dateformatter.string(from: Date())
-//                let reformatedPastDate=dateformatter.string(from: value.dateCreated!)
-//
-//                if (now==reformatedPastDate){
-//                    count+=1
-//                }
-//            }
             
             daylight=CoreDataHelper.newDaylight()
             saveWhatYouHave()
             resetEverything()
             moodIsNotGreat()
-            
-//            if (count==0){
-//                daylight=CoreDataHelper.newDaylight()
-//                saveWhatYouHave()
-//                resetEverything()
-//                moodIsNotGreat()
-//            }else{
-//                let comeLater = UIAlertController(title: "ALERT!", message: "You've already created 1 DayLights today. See you back here tomorrow!", preferredStyle: UIAlertController.Style.alert)
-//                comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
-//                self.present(comeLater, animated: true, completion: nil)
-//
-//                count=0
-//                resetEverything()
-//            }
         }
     }
 
@@ -373,7 +344,7 @@ class ViewController: UIViewController {
         contentsView.layer.borderColor = red.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(searchDayLights), name: NSNotification.Name("searchDayLights"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
         
@@ -459,6 +430,10 @@ class ViewController: UIViewController {
     
     @objc func keyboardWillChange(notification: Notification){
         
+    }
+    
+    @objc func searchDayLights(){
+        performSegue(withIdentifier: "search", sender: nil)
     }
     
     @objc func showDidWell(){
