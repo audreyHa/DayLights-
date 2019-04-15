@@ -138,16 +138,49 @@ class ViewController: UIViewController {
     }
     
     @IBAction func saveDayLights(_ sender: UIButton) {
-        if daylight != nil{
-            saveWhatYouHave()
-            resetEverything()
-            moodIsNotGreat()
-        }else{
+        var dateCount=0
+        for daylight in daylightsArray{
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "MM/dd/yy"
+            let dateCreated=dateformatter.string(from: daylight.dateCreated!)
+            let now=dateformatter.string(from: Date())
             
-            daylight=CoreDataHelper.newDaylight()
-            saveWhatYouHave()
-            resetEverything()
-            moodIsNotGreat()
+            if dateCreated==now{
+                dateCount+=1
+            }
+        }
+        
+        if dateCount==1{
+            if daylight==nil{
+                createAlert(title: "ALERT!", message: "You already created one DayLight today. See you later!")
+                dateCount=0
+                count=0
+                currentMood=0
+                didWellText.text = ""
+                gratefulText.text = ""
+                funnyText.text=""
+                mood1.layer.borderWidth=0
+                mood2.layer.borderWidth=0
+                mood3.layer.borderWidth=0
+                mood4.layer.borderWidth=0
+                mood5.layer.borderWidth=0
+            }else{
+                saveWhatYouHave()
+                resetEverything()
+                moodIsNotGreat()
+            }
+        }else{
+            if daylight != nil{
+                saveWhatYouHave()
+                resetEverything()
+                moodIsNotGreat()
+            }else{
+                
+                daylight=CoreDataHelper.newDaylight()
+                saveWhatYouHave()
+                resetEverything()
+                moodIsNotGreat()
+            }
         }
     }
 
@@ -405,6 +438,14 @@ class ViewController: UIViewController {
             gratefulText.text = ""
             funnyText.text=""
         }
+    }
+    
+    func createAlert(title: String, message: String){
+        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title:"OK", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
