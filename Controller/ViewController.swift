@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var currentMood=0
     var daylightsArray=[Daylight]()
     
+    
 
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -89,6 +90,98 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var saveButton: UIButton!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        var datePicker = UIDatePicker()
+
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore{
+            print("Not first launch.")
+        }else{
+            let privacyPolicy = UIAlertController(title: "PRIVACY POLICY", message:"By clicking “Continue” or continuing to use this app, you acknowledge that DayLights incorporates an analytical tool (Answers) tracking how many times users land on different screens to improve user experience and guide development for future features. Any identifiable information (name, contact information, location) will not be collected. Your recordings are stored locally on your phone; no third party (including me) has access to your content in this app. If you have any questions, please contact DayLights@gmail.com!", preferredStyle: UIAlertController.Style.alert)
+            
+            //1. Create the alert controller.
+            let notification = UIAlertController(title: "ALERT!", message: "What time do you want notifications for creating DayLights entries?", preferredStyle: .alert)
+            
+            //2. Add the text field. You can configure it however you need.
+            notification.addTextField { (textField) in
+                
+                datePicker = UIDatePicker(frame:CGRect(x: 0, y: self.view.frame.size.height - 220, width:self.view.frame.size.width, height: 216))
+                datePicker.backgroundColor = UIColor.white
+                datePicker.datePickerMode = .time
+
+                textField.inputView = datePicker
+
+            }
+            
+            // 3. Grab the value from the text field, and print it when the user clicks OK.
+            notification.addAction(UIAlertAction(title:"Done!", style: UIAlertAction.Style.default, handler: {(action) in
+                let hourFormatter = DateFormatter()
+                hourFormatter.dateFormat = "HH"
+                
+                let minuteFormatter = DateFormatter()
+                minuteFormatter.dateFormat = "mm"
+                
+                var strHour = Int32(hourFormatter.string(from: datePicker.date))
+                var strMin = Int32(minuteFormatter.string(from: datePicker.date))
+                
+                var notificationTime=CoreDataHelper.newNotiTime()
+                notificationTime.hour=strHour!
+                notificationTime.minute=strMin!
+                CoreDataHelper.saveDaylight()
+                
+                
+                
+                // Change the time to 7:00:00 in your locale
+                
+                var notiArray=CoreDataHelper.retrieveNotification()
+                
+                if notiArray.count != 0{
+                    let content=UNMutableNotificationContent()
+                    content.title="DayLights Alert!"
+                    content.body="Make sure to fill out your DayLights for today!"
+                    content.sound=UNNotificationSound.default
+                    
+                    let gregorian = Calendar(identifier: .gregorian)
+                    let now = Date()
+                    var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
+                    
+                    var updateNotificationTime=notiArray[0]
+                    components.hour = Int(updateNotificationTime.hour)
+                    components.minute = Int(updateNotificationTime.minute)
+                    components.second = 0
+                    
+                    let date = gregorian.date(from: components)!
+                    
+                    let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+                    
+                    let request=UNNotificationRequest(identifier: "testIdentifier", content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    
+                    
+                }
+                
+            }))
+
+            notification.addAction(UIAlertAction(title:"I Don't Want Notifications", style: UIAlertAction.Style.default, handler: nil))
+
+            // add an action (button)
+            privacyPolicy.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                DispatchQueue.main.async {
+                    self.present(notification, animated: true)
+                }
+            })
+            // show the alert
+            self.present(privacyPolicy, animated: true, completion: nil)
+
+            print("First time opening app")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+           
+        }
+    }
+
     
     func saveWhatYouHave(){
         if (didWellText.text==""){
@@ -338,27 +431,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let content=UNMutableNotificationContent()
-        content.title="DayLights Alert!"
-        content.body="Make sure to fill out your DayLights for today!"
-        content.sound=UNNotificationSound.default
         
-        let gregorian = Calendar(identifier: .gregorian)
-        let now = Date()
-        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
-        
-        // Change the time to 7:00:00 in your locale
-        components.hour = 18
-        components.minute = 0
-        components.second = 0
-        
-        let date = gregorian.date(from: components)!
-        
-        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
-        
-        let request=UNNotificationRequest(identifier: "testIdentifier", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
         
         
