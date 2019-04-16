@@ -15,7 +15,7 @@ class DidWellTBVC: UITableViewController {
             tableView.reloadData()
         }
     }
-    
+    var cellRow=0
     override func viewDidLoad() {
         super.viewDidLoad()
 //        tableView.estimatedRowHeight = 600
@@ -54,6 +54,10 @@ class DidWellTBVC: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        cellRow=indexPath.row
+        createAlert(title: "ALERT!", message: "Do you want to edit this DayLight?")
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 1
         guard let identifier = segue.identifier,
@@ -64,10 +68,7 @@ class DidWellTBVC: UITableViewController {
         // 2
         
         case "edit":
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            
-            // 2
-            let daylight = daylights[indexPath.row]
+            let daylight = daylights[cellRow]
             // 3
             let destination = segue.destination as! ViewController
             // 4
@@ -78,4 +79,15 @@ class DidWellTBVC: UITableViewController {
         }
     }
 
+    func createAlert(title: String, message: String){
+        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title:"Yes", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "edit", sender: nil)
+        }))
+        alert.addAction(UIAlertAction(title:"No", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

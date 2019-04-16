@@ -196,7 +196,6 @@
                                 <connections>
                                     <outlet property="didWellDate" destination="Ue7-Id-Pfa" id="rbO-8X-gMT"/>
                                     <outlet property="didWellText" destination="112-TR-fMk" id="VeW-nl-GlD"/>
-                                    <segue destination="LPS-n5-hmM" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="YQG-1p-Vnm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -212,6 +211,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="LPS-n5-hmM" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="sQm-Ic-p50"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afz-h4-ZhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="LPS-n5-hmM" userLabel="Exit" sceneMemberID="exit"/>
@@ -642,7 +644,6 @@
                                 <connections>
                                     <outlet property="gratefulDate" destination="uUN-mX-TP2" id="tFy-iZ-CG8"/>
                                     <outlet property="gratefulText" destination="wLr-WT-vcW" id="mHE-uP-aWT"/>
-                                    <segue destination="A9M-hi-EFk" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="lGq-IJ-qIW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -658,6 +659,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="A9M-hi-EFk" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="kkh-o7-58y"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lpt-9l-W8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="A9M-hi-EFk" userLabel="Exit" sceneMemberID="exit"/>
@@ -726,7 +730,6 @@
                                 <connections>
                                     <outlet property="funnyData" destination="rvP-a2-iiO" id="VpT-Dy-fq9"/>
                                     <outlet property="funnyDate" destination="CjF-6a-tRt" id="PcV-B0-cyh"/>
-                                    <segue destination="V6p-GH-xiA" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="XUE-Uw-mid"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -742,6 +745,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="V6p-GH-xiA" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="pdO-Xg-GjV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9zo-9p-LQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="V6p-GH-xiA" userLabel="Exit" sceneMemberID="exit"/>
