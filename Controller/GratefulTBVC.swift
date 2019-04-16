@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class GratefulTBVC: UITableViewController {
 
@@ -18,6 +19,7 @@ class GratefulTBVC: UITableViewController {
     var cellRow=0
     override func viewDidLoad() {
         super.viewDidLoad()
+        Answers.logCustomEvent(withName: "Opened Grateful Gallery", customAttributes: nil)
         daylights=CoreDataHelper.retrieveDaylight()
         tableView.rowHeight = UITableView.automaticDimension
         daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })

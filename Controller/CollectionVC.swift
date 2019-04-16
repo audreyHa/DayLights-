@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Crashlytics
 
 class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayout{
     var daylightsArray=[Daylight](){
@@ -27,6 +28,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Answers.logCustomEvent(withName: "Opened Mood Graph Page", customAttributes: nil)
         daylightsArray=CoreDataHelper.retrieveDaylight()
         daylightsArray = daylightsArray.sorted(by: { $1.dateCreated!.compare($0.dateCreated!) == .orderedDescending })
         for value in daylightsArray{

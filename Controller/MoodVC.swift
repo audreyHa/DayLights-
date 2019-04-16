@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class MoodVC: UIViewController {
     
@@ -22,7 +23,7 @@ class MoodVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        Answers.logCustomEvent(withName: "Opened Mood Stats", customAttributes: nil)
         var daylightsArray=[Daylight]()
         daylightsArray=CoreDataHelper.retrieveDaylight()
         daylightsArray = daylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })

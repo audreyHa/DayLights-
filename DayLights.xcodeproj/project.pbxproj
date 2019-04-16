@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070E9B9945AC15E74BC6D355 /* Pods_DayLights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */; };
 		F616C67B224DE4B100C85721 /* FunnyTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67A224DE4B100C85721 /* FunnyTBVC.swift */; };
 		F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */; };
 		F61832A522506BB60083886A /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A422506BB60083886A /* CollectionVC.swift */; };
@@ -34,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayLights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.debug.xcconfig"; sourceTree = "<group>"; };
+		8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.release.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.release.xcconfig"; sourceTree = "<group>"; };
 		F616C67A224DE4B100C85721 /* FunnyTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTBVC.swift; sourceTree = "<group>"; };
 		F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTableViewCell.swift; sourceTree = "<group>"; };
 		F61832A422506BB60083886A /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
@@ -68,12 +72,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070E9B9945AC15E74BC6D355 /* Pods_DayLights.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0212A5550E821AAEBCC7CA38 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */,
+				8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		78A0406CDB7F0B1B1FB36A1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F68CF9F02249F1A1001138FE = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +104,8 @@
 				F68CFA11224A012F001138FE /* Helpers */,
 				F68CF9FB2249F1A1001138FE /* DayLights */,
 				F68CF9FA2249F1A1001138FE /* Products */,
+				0212A5550E821AAEBCC7CA38 /* Pods */,
+				78A0406CDB7F0B1B1FB36A1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F68CFA0E2249F1A2001138FE /* Build configuration list for PBXNativeTarget "DayLights" */;
 			buildPhases = (
+				2943F10288EB9F76D8026A7E /* [CP] Check Pods Manifest.lock */,
 				F68CF9F52249F1A1001138FE /* Sources */,
 				F68CF9F62249F1A1001138FE /* Frameworks */,
 				F68CF9F72249F1A1001138FE /* Resources */,
+				F6762936226645A6006723F5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -217,6 +243,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2943F10288EB9F76D8026A7E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DayLights-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6762936226645A6006723F5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 704b97df301458252200f524d2ad4ee22de72e87 ae1335d6c10efa2decd4d0f8bf463bf0886c40f79b53409f5a2bb86a96df1324\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F68CF9F52249F1A1001138FE /* Sources */ = {
@@ -387,6 +452,7 @@
 		};
 		F68CFA0F2249F1A2001138FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -405,6 +471,7 @@
 		};
 		F68CFA102249F1A2001138FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

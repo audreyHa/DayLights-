@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class FunnyTBVC: UITableViewController {
 
@@ -18,6 +19,7 @@ class FunnyTBVC: UITableViewController {
     var cellRow=0
     override func viewDidLoad() {
         super.viewDidLoad()
+        Answers.logCustomEvent(withName: "Opened Joyful Gallery", customAttributes: nil)
         daylights=CoreDataHelper.retrieveDaylight()
         //        tableView.estimatedRowHeight = 600
         tableView.rowHeight = UITableView.automaticDimension

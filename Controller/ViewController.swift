@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import Crashlytics
 
 class ViewController: UIViewController {
     var daylight: Daylight?
@@ -98,6 +99,11 @@ class ViewController: UIViewController {
         if launchedBefore{
             print("Not first launch.")
         }else{
+       
+  
+            Answers.logCustomEvent(withName: "First time User", customAttributes: nil)
+            
+
             let privacyPolicy = UIAlertController(title: "PRIVACY POLICY", message:"By clicking “Continue” or continuing to use this app, you acknowledge that DayLights incorporates an analytical tool (Answers) tracking how many times users land on different screens to improve user experience and guide development for future features. Any identifiable information (name, contact information, location) will not be collected. Your recordings are stored locally on your phone; no third party (including me) has access to your content in this app. If you have any questions, please contact DayLights@gmail.com!", preferredStyle: UIAlertController.Style.alert)
             
             //1. Create the alert controller.
@@ -258,17 +264,19 @@ class ViewController: UIViewController {
                 mood4.layer.borderWidth=0
                 mood5.layer.borderWidth=0
             }else{
+                Answers.logCustomEvent(withName: "Editing DayLight", customAttributes: nil)
                 saveWhatYouHave()
                 resetEverything()
                 moodIsNotGreat()
             }
         }else{
             if daylight != nil{
+                Answers.logCustomEvent(withName: "Editing DayLight", customAttributes: nil)
                 saveWhatYouHave()
                 resetEverything()
                 moodIsNotGreat()
             }else{
-                
+                Answers.logCustomEvent(withName: "Saved New DayLight", customAttributes: nil)
                 daylight=CoreDataHelper.newDaylight()
                 saveWhatYouHave()
                 resetEverything()
@@ -395,7 +403,7 @@ class ViewController: UIViewController {
         
         
         if((doubleWeekToCheck.count==doubleCheck)||(doubleWeekToCheck.count-1 == doubleCheck)||(doubleWeekToCheck.count-2 == doubleCheck))&&(doubleWeekEachDateCount>=10){
-            
+            Answers.logCustomEvent(withName: "Bad Mood Past 2 Weeks", customAttributes: nil)
                 let alert2 = UIAlertController(title: "ALERT!", message: "Looks like your mood has not been good for the past few weeks... Let's look at some resources!", preferredStyle: UIAlertController.Style.alert)
                 alert2.addAction(UIAlertAction(title: "Show some resources!", style: UIAlertAction.Style.default, handler: {
                     (action) in
@@ -405,13 +413,13 @@ class ViewController: UIViewController {
                 self.present(alert2, animated: true, completion: nil)
 
         }else if((weekDatesToCheck.count==weekCheck)||(weekDatesToCheck.count-1 == weekCheck))&&(weekCheckEachDateCount>=5){
-            
+                Answers.logCustomEvent(withName: "Bad Mood Past 1 Weeks", customAttributes: nil)
                 let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great for the past week... Please make sure to talk to a family member or guardian, trusted adult, teacher, or friend.", preferredStyle: UIAlertController.Style.alert)
                 alert2.addAction(UIAlertAction(title: "I WILL Talk to Someone!", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert2, animated: true, completion: nil)
 
         }else if(checkingCount==datesToCheck.count)&&(threeDayCount==3){
-            
+            Answers.logCustomEvent(withName: "Bad Mood Past 3 Days", customAttributes: nil)
                 let alert2 = UIAlertController(title: "ALERT!", message: "Looks like your mood has not been great for the past few days... Try talking to a family member or guardian, trusted adult, teacher, or friend!", preferredStyle: UIAlertController.Style.alert)
                 alert2.addAction(UIAlertAction(title: "I'll Talk to Someone", style: UIAlertAction.Style.default, handler:nil))
                 self.present(alert2, animated: true, completion: nil)

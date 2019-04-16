@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class DidWellTBVC: UITableViewController {
     
@@ -19,6 +20,7 @@ class DidWellTBVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        tableView.estimatedRowHeight = 600
+        Answers.logCustomEvent(withName: "Opened Did Well Gallery", customAttributes: nil)
         tableView.rowHeight = UITableView.automaticDimension
         daylights=CoreDataHelper.retrieveDaylight()
         daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })

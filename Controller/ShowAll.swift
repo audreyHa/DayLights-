@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ShowAll: UITableViewController {
 
@@ -18,6 +19,7 @@ class ShowAll: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Answers.logCustomEvent(withName: "Opened Show All DayLights", customAttributes: nil)
         daylights=CoreDataHelper.retrieveDaylight()
         tableView.rowHeight = UITableView.automaticDimension
         daylights = daylights.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
