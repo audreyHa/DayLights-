@@ -100,7 +100,7 @@ class ResourcesTableViewController: UITableViewController {
 
         let organization=self.organizations[indexPath.row]
         var brightRed = UIColor(red: 232.0/255.0, green: 90.0/255.0, blue: 69.0/255.0, alpha: 1.0)
-        var teal = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+        var teal = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         if (organization.organizationName=="Anxiety and Depression Association of America")||(organization.organizationName=="Depression and Bipolar Support Alliance")||(organization.organizationName=="Sidran Institute"){
             cell.orgName.textColor=teal
         }else{

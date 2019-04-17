@@ -24,7 +24,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     var orange2=UIColor(red: 253.0/255.0, green: 171.0/255.0, blue: 36.0/255.0, alpha: 1.0)
     var yellow3=UIColor(red: 255.0/255.0, green: 202.0/255.0, blue: 0.0/255.0, alpha: 1.0)
     var green5=UIColor(red: 126.0/255.0, green: 227.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-    var blue4 = UIColor(red: 117.0/255.0, green: 214.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+    var blue4=UIColor(red: 95.0/255.0, green: 219.0/255.0, blue: 137.0/255.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,16 +55,16 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         
         if (values[indexPath.item]==120){
             cell.barView.backgroundColor=red1
-        }else if (values[indexPath.item]==2*120){
+        }else if (values[indexPath.item]==2*100){
             cell.barView.backgroundColor=orange2
-        }else if (values[indexPath.item]==3*120){
+        }else if (values[indexPath.item]==3*100){
             cell.barView.backgroundColor=yellow3
-        }else if (values[indexPath.item]==4*120){
+        }else if (values[indexPath.item]==4*100){
             cell.barView.backgroundColor=blue4
-        }else if (values[indexPath.item]==5*120){
+        }else if (values[indexPath.item]==5*100){
             cell.barView.backgroundColor=green5
         }else{
-            cell.barView.backgroundColor=UIColor.blue
+            cell.barView.backgroundColor=blue4
         }
         
         var editedDaylightsArray=[Daylight]()

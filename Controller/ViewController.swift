@@ -13,7 +13,7 @@ import Crashlytics
 class ViewController: UIViewController {
     var daylight: Daylight?
     
-    var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+    var red = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     var count=0
     var currentMood=0
     var daylightsArray=[Daylight]()
@@ -454,7 +454,7 @@ class ViewController: UIViewController {
         cancelButton.layer.masksToBounds = true
         
         contentsView.layer.borderWidth = 3
-        var red = UIColor(red: 155.0/255.0, green: 219.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+        var red = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         contentsView.layer.borderColor = red.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
