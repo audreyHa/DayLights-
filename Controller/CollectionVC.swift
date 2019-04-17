@@ -23,8 +23,8 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     var red1=UIColor(red: 255.0/255.0, green: 124.0/255.0, blue: 124.0/255.0, alpha: 1.0)
     var orange2=UIColor(red: 253.0/255.0, green: 171.0/255.0, blue: 36.0/255.0, alpha: 1.0)
     var yellow3=UIColor(red: 255.0/255.0, green: 202.0/255.0, blue: 0.0/255.0, alpha: 1.0)
-    var blue4=UIColor(red: 126.0/255.0, green: 227.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-    var green5 = UIColor(red: 117.0/255.0, green: 214.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+    var green5=UIColor(red: 126.0/255.0, green: 227.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+    var blue4 = UIColor(red: 117.0/255.0, green: 214.0/255.0, blue: 161.0/255.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         daylightsArray = daylightsArray.sorted(by: { $1.dateCreated!.compare($0.dateCreated!) == .orderedDescending })
         for value in daylightsArray{
             if (value.mood != 0){
-                values.append(Int(value.mood*120))
+                values.append(Int(value.mood*100))
             }
         }
         print(values)
