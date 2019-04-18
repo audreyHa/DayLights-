@@ -1356,5 +1356,4 @@
         <image name="emojiScale5" width="2048" height="2048"/>
         <image name="ic_menu_white_3x" width="24" height="24"/>
     </resources>
-    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

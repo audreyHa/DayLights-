@@ -209,9 +209,20 @@ class ViewController: UIViewController {
         }
         
         if (daylight!.dateCreated == nil){
-            
-            
             daylight!.dateCreated=Date()
+            
+            //delete starting from here
+//            var temporaryArray=CoreDataHelper.retrieveDaylight()
+//            let calendar = Calendar.current
+//            let today = calendar.startOfDay(for: Date())
+//            if temporaryArray.count==1{
+//                daylight!.dateCreated=today.addingTimeInterval(TimeInterval(-86400*2))
+//            }else if temporaryArray.count==2{
+//                daylight!.dateCreated=today.addingTimeInterval(TimeInterval(-86400))
+//            }else{
+//                daylight!.dateCreated=Date()
+//            }
+            //end delete here
         }
         
         daylight!.mood=Int32(currentMood)
