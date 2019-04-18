@@ -55,7 +55,7 @@ class FunnyTBVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cellRow=indexPath.row
-        createAlert(title: "ALERT!", message: "Do you want to edit this DayLight?")
+        createAlert(title: "ALERT!", message: "Do you want to edit this Daily Highlight?")
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 1

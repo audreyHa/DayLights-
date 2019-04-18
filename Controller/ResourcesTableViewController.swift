@@ -21,12 +21,6 @@ class ResourcesTableViewController: UITableViewController {
         crisisTextLine.orgDescription="Text HOME to 741-741: 24/7"
         crisisTextLine.contact=""
         organizations.append(crisisTextLine)
-
-        var domesticViolence=CoreDataHelper.newOrg()
-        domesticViolence.organizationName="National Domestic Violence Hotline"
-        domesticViolence.orgDescription="Crisis intervention, safety planning, and information on domestic violence: 24/7"
-        domesticViolence.contact="1-800-799-7233"
-        organizations.append(domesticViolence)
         
         var hopelineNetwork=CoreDataHelper.newOrg()
         hopelineNetwork.organizationName="National Hopeline Network"
@@ -39,54 +33,6 @@ class ResourcesTableViewController: UITableViewController {
         parent.orgDescription="Emotional support for parents from a trained advocate: 24/7"
         parent.contact="855-427-2736"
         organizations.append(parent)
-        
-        var selfHarmHotline=CoreDataHelper.newOrg()
-        selfHarmHotline.organizationName="Self-harm Hotline"
-        selfHarmHotline.orgDescription="Provides services to adolesecents and adults engaging in self-destructive behaviors: 24/7"
-        selfHarmHotline.contact="1-800-366-8288"
-        organizations.append(selfHarmHotline)
-        
-        var sexualAssaultHotline=CoreDataHelper.newOrg()
-        sexualAssaultHotline.organizationName="National Sexual Assault Hotline"
-        sexualAssaultHotline.orgDescription="Ran by RAINN (Rape, Abuse, and Incest National Network): 24/7"
-        sexualAssaultHotline.contact="1-800-656-4673"
-        organizations.append(sexualAssaultHotline)
-
-        var mentalAndSubstance=CoreDataHelper.newOrg()
-        mentalAndSubstance.organizationName="Substance Abuse and Mental Health Services Administration"
-        mentalAndSubstance.orgDescription="Mental and/or substance use disorders national helpline: 24/7"
-        mentalAndSubstance.contact="1-800-662-4357"
-        organizations.append(mentalAndSubstance)
-        
-        var suicidePrevent=CoreDataHelper.newOrg()
-        suicidePrevent.organizationName="Suicide Prevention Lifeline"
-        suicidePrevent.orgDescription="Connects callers to trained crisis counselors: 24/7"
-        suicidePrevent.contact="1-800-273-8255"
-        organizations.append(suicidePrevent)
-        
-        var veteran=CoreDataHelper.newOrg()
-        veteran.organizationName="Veteran Crisis Line"
-        veteran.orgDescription="Talk to a caring crisis hotline volunteer: 24/7"
-        veteran.contact="877-838-2838"
-        organizations.append(veteran)
-        
-        var anxiety=CoreDataHelper.newOrg()
-        anxiety.organizationName="Anxiety and Depression Association of America"
-        anxiety.orgDescription="Information of prevention, treatment, and symptoms of anxiety and depression"
-        anxiety.contact="240-485-1001"
-        organizations.append(anxiety)
-        
-        var depressionBi=CoreDataHelper.newOrg()
-        depressionBi.organizationName="Depression and Bipolar Support Alliance"
-        depressionBi.orgDescription="Information on bipolar disorder and depression, in-person and online support"
-        depressionBi.contact="1-800-826-3632"
-        organizations.append(depressionBi)
-        
-        var sidran=CoreDataHelper.newOrg()
-        sidran.organizationName="Sidran Institute"
-        sidran.orgDescription="Understand, manage, and treat trauma and dissociation"
-        sidran.contact="410-825-8888 ext 102"
-        organizations.append(sidran)
         
     }
 
