@@ -15,7 +15,7 @@ All data regarding your Day Highlights entries is stored locally on your phone. 
 
 If you have any questions, please feel free to contact me at DayHighlights@gmail.com!
 
-Happy Day-Highlighting!
+Happy DayHighlighting!
 
 Sincerely, <br>
 Audrey Ha
