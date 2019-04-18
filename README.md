@@ -17,7 +17,7 @@ If you have any questions, please feel free to contact me at DayHighlights@gmail
 
 Happy Day-Highlighting!
 
-Sincerely,
+Sincerely, <br>
 Audrey Ha
 
 ## Author
