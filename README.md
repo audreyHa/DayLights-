@@ -13,7 +13,7 @@ The only purpose of collecting user behavior data for this version is to improve
 
 All data regarding your DayHighlights entries is stored locally on your phone. No third party (including me!) has access to your personal data or content stored in this app.
 
-If you have any questions, please feel free to contact me at DayHighlights@gmail.com!
+If you have any questions, please feel free to contact me at DayHighlightsApp@gmail.com!
 
 Happy DayHighlighting!
 
