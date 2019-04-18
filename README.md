@@ -1,4 +1,4 @@
-# Day Highlights-
+# Day Highlights
 Simple positivity app! Log one thing you did well, one thing you're grateful for, and one joyful moment from today.
 
 ## Features
