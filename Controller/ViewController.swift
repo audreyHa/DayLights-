@@ -209,6 +209,8 @@ class ViewController: UIViewController {
         }
         
         if (daylight!.dateCreated == nil){
+            
+            
             daylight!.dateCreated=Date()
         }
         
@@ -250,9 +252,11 @@ class ViewController: UIViewController {
             }
         }
         
+
+        
         if dateCount==1{
             if daylight==nil{
-                createAlert(title: "ALERT!", message: "You already created DayHighlights earlier today. Only create one entry per day! See you tomorrow!")
+                createAlert(title: "ALERT!", message: "You created DayHighlights earlier today. Only create one entry per day. See you tomorrow!")
                 dateCount=0
                 count=0
                 currentMood=0

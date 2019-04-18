@@ -30,6 +30,7 @@ class MoodVC: UIViewController {
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
+        
         let todaysDate = dateformatter.string(from: Date())
         
         var todayMood=0

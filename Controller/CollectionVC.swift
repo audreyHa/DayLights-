@@ -53,8 +53,9 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         cell.barHeightConstraint?.constant=CGFloat(values[indexPath.item])
         
         
-        if (values[indexPath.item]==120){
+        if (values[indexPath.item]==100){
             cell.barView.backgroundColor=red1
+            print("should be red")
         }else if (values[indexPath.item]==2*100){
             cell.barView.backgroundColor=orange2
         }else if (values[indexPath.item]==3*100){
