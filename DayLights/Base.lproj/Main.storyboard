@@ -73,16 +73,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-xn-Grt">
-                                        <rect key="frame" x="0.0" y="71" width="208" height="36"/>
+                                        <rect key="frame" x="0.0" y="71" width="200" height="36"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                        <state key="normal" title="Create New Daily Highlight">
+                                        <state key="normal" title="Create New Day Highlight">
                                             <color key="titleColor" red="0.16078431369999999" green="0.86274509799999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNl-lj-b56">
-                                        <rect key="frame" x="0.0" y="137" width="191" height="36"/>
+                                        <rect key="frame" x="0.0" y="137" width="183" height="36"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                        <state key="normal" title="Daily Highlights Galleries">
+                                        <state key="normal" title="Day Highlights Galleries">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -1353,7 +1353,7 @@
         <image name="emojiScale2" width="2048" height="2048"/>
         <image name="emojiScale3" width="2048" height="2048"/>
         <image name="emojiScale4" width="2048" height="2048"/>
-        <image name="emojiScale5" width="1178" height="1178"/>
+        <image name="emojiScale5" width="2048" height="2048"/>
         <image name="ic_menu_white_3x" width="24" height="24"/>
     </resources>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
