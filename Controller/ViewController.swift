@@ -104,10 +104,10 @@ class ViewController: UIViewController {
             Answers.logCustomEvent(withName: "First time User", customAttributes: nil)
             
 
-            let privacyPolicy = UIAlertController(title: "PRIVACY POLICY", message:"By clicking “Continue” or continuing to use this app, you acknowledge that Daily Highlights incorporates an analytical tool (Answers) tracking how many times users land on different screens to improve user experience and guide development for future features. Any identifiable information (name, contact information, location) will not be collected. Your recordings are stored locally on your phone; no third party (including me) has access to your content in this app. If you have any questions, please contact DailyHighlights@gmail.com!", preferredStyle: UIAlertController.Style.alert)
+            let privacyPolicy = UIAlertController(title: "PRIVACY POLICY", message:"By clicking “Continue” or continuing to use this app, you acknowledge that Day Highlights incorporates an analytical tool (Answers) tracking how many times users land on different screens to improve user experience and guide development for future features. Any identifiable information (name, contact information, location) will not be collected. Your recordings are stored locally on your phone; no third party (including me) has access to your content in this app. If you have any questions, please contact DayHighlights@gmail.com!", preferredStyle: UIAlertController.Style.alert)
             
             //1. Create the alert controller.
-            let notification = UIAlertController(title: "ALERT!", message: "What time do you want notifications for creating Daily Highlights entries?", preferredStyle: .alert)
+            let notification = UIAlertController(title: "ALERT!", message: "What time do you want notifications for creating Day Highlights entries?", preferredStyle: .alert)
             
             //2. Add the text field. You can configure it however you need.
             notification.addTextField { (textField) in
@@ -144,8 +144,8 @@ class ViewController: UIViewController {
                 
                 if notiArray.count != 0{
                     let content=UNMutableNotificationContent()
-                    content.title="Daily Highlights Alert!"
-                    content.body="Make sure to fill out your Daily Highlights for today!"
+                    content.title="Day Highlights Alert!"
+                    content.body="Make sure to fill out your Day Highlights for today!"
                     content.sound=UNNotificationSound.default
                     
                     let gregorian = Calendar(identifier: .gregorian)
@@ -227,7 +227,7 @@ class ViewController: UIViewController {
         dateformatter.dateFormat = "MM/dd/yy"
         let now = dateformatter.string(from: Date())
         dateLabel.text=now
-        dayLightsTitleLabel.text="Daily Highlights"
+        dayLightsTitleLabel.text="Day Highlights"
         mood1.layer.borderWidth=0
         mood2.layer.borderWidth=0
         mood3.layer.borderWidth=0
@@ -237,8 +237,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func saveDayLights(_ sender: UIButton) {
+        var array=CoreDataHelper.retrieveDaylight()
         var dateCount=0
-        for daylight in daylightsArray{
+        for daylight in array{
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "MM/dd/yy"
             let dateCreated=dateformatter.string(from: daylight.dateCreated!)
@@ -251,7 +252,7 @@ class ViewController: UIViewController {
         
         if dateCount==1{
             if daylight==nil{
-                createAlert(title: "ALERT!", message: "You already created your Daily Highlights today. See you later!")
+                createAlert(title: "ALERT!", message: "You already created your Day Highlights today. See you later!")
                 dateCount=0
                 count=0
                 currentMood=0
@@ -470,7 +471,7 @@ class ViewController: UIViewController {
         let newnow = dateformatter.string(from: Date())
         
         dateLabel.text=newnow
-        dayLightsTitleLabel.text="Daily Highlights"
+        dayLightsTitleLabel.text="Day Highlights"
 
     }
     //END of view did load

@@ -20,11 +20,11 @@ class CollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
     let cellId="cellId"
     var values=[Int]()
 
-    var red1=UIColor(red: 255.0/255.0, green: 124.0/255.0, blue: 124.0/255.0, alpha: 1.0)
-    var orange2=UIColor(red: 253.0/255.0, green: 171.0/255.0, blue: 36.0/255.0, alpha: 1.0)
-    var yellow3=UIColor(red: 255.0/255.0, green: 202.0/255.0, blue: 0.0/255.0, alpha: 1.0)
-    var green5=UIColor(red: 126.0/255.0, green: 227.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-    var blue4=UIColor(red: 95.0/255.0, green: 219.0/255.0, blue: 137.0/255.0, alpha: 1.0)
+    var red1=UIColor(red: 255/255.0, green: 70/255.0, blue: 67/255.0, alpha: 1.0)
+    var orange2=UIColor(red: 255/255.0, green: 135/255.0, blue: 32/255.0, alpha: 1.0)
+    var yellow3=UIColor(red: 255/255.0, green: 236/255.0, blue: 116/255.0, alpha: 1.0)
+    var blue4=UIColor(red: 103/255.0, green: 255/255.0, blue: 134/255.0, alpha: 1.0)
+    var green5=UIColor(red: 41/255.0, green: 220/255.0, blue: 255/255.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()

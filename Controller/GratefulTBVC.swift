@@ -54,7 +54,7 @@ class GratefulTBVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cellRow=indexPath.row
-        createAlert(title: "ALERT!", message: "Do you want to edit this Daily Highlight?")
+        createAlert(title: "ALERT!", message: "Do you want to edit this Day Highlight?")
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 1

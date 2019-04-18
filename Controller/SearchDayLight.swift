@@ -29,7 +29,7 @@ class SearchDayLight: UITableViewController {
         }
         
         if selectedDate.count==0{
-            let noDayLight = UIAlertController(title: "ALERT!", message: "You did not make Daily Highlights on this day!", preferredStyle: UIAlertController.Style.alert)
+            let noDayLight = UIAlertController(title: "ALERT!", message: "You did not make Day Highlights on this day!", preferredStyle: UIAlertController.Style.alert)
             noDayLight.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
             self.present(noDayLight, animated: true, completion: nil)
         }
