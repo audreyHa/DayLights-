@@ -2,7 +2,7 @@
 Simple positivity app! Log one thing you did well, one thing you're grateful for, and one joyful moment from today.
 
 ## Features
-Day Highlights is a positivity journaling app for people of all ages. Each day, users log one thing they did well, one grateful thing, and one joyful moment from that day; [studies](https://optionb.org/articles/write-down-positive-moments) show that logging these three things can improve happiness levels. Then, the app creates galleries for the things you did well, your grateful things, and your joyful moments, making it easy and quick to view past entries. 
+DayHighlights is a positivity journaling app for people of all ages. Each day, users log one thing they did well, one grateful thing, and one joyful moment from that day; [studies](https://optionb.org/articles/write-down-positive-moments) show that logging these three things can improve happiness levels. Then, the app creates galleries for the things you did well, your grateful things, and your joyful moments, making it easy and quick to view past entries. 
 
 Everyday, users also enter their mood. You can view a graph of your mood overtime and see statistics on your mood this week, this month, and this year. 
 
