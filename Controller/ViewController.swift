@@ -17,10 +17,7 @@ class ViewController: UIViewController {
     var count=0
     var currentMood=0
     var daylightsArray=[Daylight]()
-    
-    
 
-    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulText: UITextView!

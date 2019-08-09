@@ -1,21 +1,27 @@
 PODS:
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
 
 DEPENDENCIES:
+  - Charts
   - Crashlytics
   - Fabric
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
     - Crashlytics
     - Fabric
 
 SPEC CHECKSUMS:
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
 
-PODFILE CHECKSUM: e9a8a2812e854451377d5dd4954960ec1898455e
+PODFILE CHECKSUM: 59a8cb607490dc1d6b9522e92f90c0ad4e329f25
 
 COCOAPODS: 1.5.3

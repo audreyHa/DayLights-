@@ -8,5 +8,5 @@ target 'DayLights' do
   # Pods for DayLights
 	pod 'Fabric'
 	pod 'Crashlytics'
-
+	pod 'Charts'
 end
