@@ -22,21 +22,11 @@ class Side: UIViewController {
     }
     
     @IBAction func didWellPressed(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name("DidWell"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("showDidWell"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
         
     }
-    
-    @IBAction func gratefulThingsPressed(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name("GratefulThings"), object: nil)
-        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
-    }
-    
-    @IBAction func funnyThingsPressed(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name("FunnyThings"), object: nil)
-        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
-    }
-    
+
     @IBAction func moodTrackerPressed(_ sender: UIButton) {
         NotificationCenter.default.post(name: NSNotification.Name("ShowMood"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)

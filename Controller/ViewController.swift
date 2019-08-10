@@ -451,11 +451,7 @@ class ViewController: UIViewController {
     //VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -465,12 +461,12 @@ class ViewController: UIViewController {
         saveButton.layer.masksToBounds = true
         cancelButton.layer.cornerRadius = 8
         cancelButton.layer.masksToBounds = true
-        
+
         contentsView.layer.borderWidth = 3
         var red = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         contentsView.layer.borderColor = red.cgColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("DidWell"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("showDidWell"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(searchDayLights), name: NSNotification.Name("searchDayLights"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
