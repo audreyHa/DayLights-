@@ -17,21 +17,31 @@ class LeftCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rightZoom: UIButton!
     
     var leftDate: String!
-    var leftEntry: String!
-    var leftType: String!
+    var leftDidWell: String!
+    var leftGrateful: String!
+    var leftJoyful: String!
     
     var rightDate: String!
-    var rightEntry: String!
-    var rightType: String!
+    var rightDidWell: String!
+    var rightGrateful: String!
+    var rightJoyful: String!
     
     @IBAction func onLeftZoomTouched(_ sender: Any) {
-        UserDefaults.standard.set(leftType,forKey: "bigHeader")
-        UserDefaults.standard.set(leftEntry,forKey: "bodyText")
-        UserDefaults.standard.set(leftDate,forKey: "dateToInclude")
-        UserDefaults.standard.set("leftEntryAlert", forKey: "typeEntryAlert")
+        UserDefaults.standard.set(leftDidWell,forKey: "didWellText")
+        UserDefaults.standard.set(leftGrateful,forKey: "gratefulText")
+        UserDefaults.standard.set(leftJoyful, forKey: "joyfulText")
+        UserDefaults.standard.set(leftDate, forKey: "dateToInclude")
         
         NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
     }
     
-
+    @IBAction func onRightZoomTouched(_ sender: Any) {
+        UserDefaults.standard.set(rightDidWell,forKey: "didWellText")
+        UserDefaults.standard.set(rightGrateful,forKey: "gratefulText")
+        UserDefaults.standard.set(rightJoyful, forKey: "joyfulText")
+        UserDefaults.standard.set(rightDate, forKey: "dateToInclude")
+        
+        NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
+    }
+    
 }

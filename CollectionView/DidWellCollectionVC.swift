@@ -75,7 +75,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             }
         }
         
-        var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.15, width: image.frame.width*0.65, height: image.frame.height*0.59))
+        var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.15, width: image.frame.width*0.63, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
 
         label.text = array[row].didWell
@@ -90,31 +90,53 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         image.addSubview(label)
-
-        let button = UIButton()
-        let btnImage = UIImage(named: "greenBalloon")
-        button.setImage(btnImage, for: UIControl.State.normal)
-        button.frame=CGRect(x: 0, y: 0, width: 100, height: 100)
-       
-        image.addSubview(button)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=leftCollectionView.dequeueReusableCell(withReuseIdentifier: "LeftCell", for: indexPath) as! LeftCollectionViewCell
         
-        cell.leftHandImage.image=UIImage(named: "greenBalloon")
-        cell.leftHandImage.setImageColor()
-        addLabel(image: cell.leftHandImage, array: leftEntries, row: indexPath.row, cell: cell)
-        
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
         
-        cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
-        cell.leftType="Things I Did Well"
-        cell.leftEntry=leftEntries[indexPath.row].didWell!
-        
         cell.dateLabel.adjustsFontSizeToFitWidth=true
         
+        func setLeftSide(){
+            cell.leftHandImage.image=UIImage(named: "greenBalloon")
+            
+            let valueToSubtract=cell.leftHandImage.frame.width*1.3
+            let min=Int(cell.leftHandImage.frame.width*0.3)
+            let max=Int(collectionView.frame.width-valueToSubtract)
+            let randomInt = Int.random(in: min..<max)
+            cell.leftHandImage.frame=CGRect(x: CGFloat(randomInt), y: cell.leftHandImage.frame.origin.y, width: cell.leftHandImage.frame.width, height: cell.leftHandImage.frame.height)
+            cell.leftZoom.frame=CGRect(x: cell.leftHandImage.frame.origin.x, y: cell.leftHandImage.frame.origin.y, width: cell.leftZoom.frame.width, height: cell.leftZoom.frame.height)
+            
+            cell.leftHandImage.setImageColor()
+            addLabel(image: cell.leftHandImage, array: leftEntries, row: indexPath.row, cell: cell)
+            
+            cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
+            cell.leftDidWell=leftEntries[indexPath.row].didWell!
+            cell.leftGrateful=leftEntries[indexPath.row].gratefulThing!
+            cell.leftJoyful=leftEntries[indexPath.row].funny
+        }
+        
+        func setRightSide(){
+            cell.rightHandImage.image=UIImage(named: "greenBalloon")
+
+            cell.rightHandImage.setImageColor()
+            addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row, cell: cell)
+            
+            let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
+            let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
+            
+            cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
+            
+            cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
+            cell.rightDidWell=rightEntries[indexPath.row].didWell!
+            cell.rightGrateful=rightEntries[indexPath.row].gratefulThing!
+            cell.rightJoyful=rightEntries[indexPath.row].funny
+        }
+        
+        setLeftSide()
         
         if dayHighlightsArray.count%2 != 0{
             print("count is odd")
@@ -132,27 +154,17 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
                     }
                 }
                 
+                if cell.rightZoom != nil{
+                    cell.rightZoom.removeFromSuperview()
+                }
+
                 let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
                 cell.dateLabel.text = ("\(leftDate)")
             }else{
-                cell.rightHandImage.image=UIImage(named: "greenBalloon")
-                cell.rightHandImage.setImageColor()
-                addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row, cell: cell)
-                
-                let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
-                let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
-                
-                cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
+                setRightSide()
             }
         }else{
-            cell.rightHandImage.image=UIImage(named: "greenBalloon")
-            cell.rightHandImage.setImageColor()
-            addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row, cell: cell)
-            
-            let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
-            let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
-            
-            cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
+            setRightSide()
         }
 
        return cell
