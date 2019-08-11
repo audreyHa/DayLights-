@@ -14,6 +14,7 @@
 		F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */; };
 		F61F8E3D22FE4FE200080D31 /* DidWellCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3C22FE4FE200080D31 /* DidWellCollectionVC.swift */; };
 		F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */; };
+		F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68954B422FF43BC00D23B5B /* EntryAlert.swift */; };
 		F68A4227225C6BF300B56FA1 /* OrganizationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */; };
 		F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FC2249F1A1001138FE /* AppDelegate.swift */; };
 		F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FE2249F1A1001138FE /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCollectionViewCell.swift; sourceTree = "<group>"; };
 		F61F8E3C22FE4FE200080D31 /* DidWellCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellCollectionVC.swift; sourceTree = "<group>"; };
 		F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
+		F68954B422FF43BC00D23B5B /* EntryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlert.swift; sourceTree = "<group>"; };
 		F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationCell.swift; sourceTree = "<group>"; };
 		F68CF9F92249F1A1001138FE /* DayLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68CF9FC2249F1A1001138FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		F68CF9F02249F1A1001138FE = {
 			isa = PBXGroup;
 			children = (
+				F68954B422FF43BC00D23B5B /* EntryAlert.swift */,
 				F61F8E3522FE4C5A00080D31 /* CollectionView */,
 				F6902852224B1810003E26E4 /* Controller */,
 				F6EDDF1A224F0CFB009A1C0F /* Cells */,
@@ -325,6 +328,7 @@
 				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,
 				F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */,
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
+				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
 				F691978B224C96D400554EFA /* DidWellTBVC.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F69C9E852262DC8000CFF1AC /* ShowAllCell.swift in Sources */,
@@ -502,7 +506,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -523,7 +527,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -39,8 +39,18 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x00818a), UIColor(rgb: 0x843b62), UIColor(rgb: 0x00a79d), UIColor(rgb: 0xcf455c), UIColor(rgb: 0x2d3561),  UIColor(rgb: 0x241663), UIColor(rgb: 0x226b80), UIColor(rgb: 0xdc5353), UIColor(rgb: 0x00818a)]
         ]
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showEntryAlert(notification:)), name: Notification.Name("showEntryAlert"), object: nil)
     }
     
+    @objc func showEntryAlert(notification: Notification) {
+        let vc = storyboard!.instantiateViewController(withIdentifier: "EntryAlert") as! EntryAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var number1=0
         if dayHighlightsArray.count%2 == 0{
@@ -52,19 +62,26 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         return number1
     }
     
-    func addLabel(image: UIImageView, array: [Daylight], row: Int){
+    func addLabel(image: UIImageView, array: [Daylight], row: Int, cell: LeftCollectionViewCell){
         for subview in image.subviews{
             if let item = subview as? UILabel{
                 item.removeFromSuperview()
             }
         }
         
-        var label = UILabel(frame: CGRect(x: image.frame.width*0.2, y: image.frame.height*0.15, width: image.frame.width*0.57, height: image.frame.height*0.59))
+        for subview in image.subviews{
+            if let item = subview as? UIButton{
+                item.removeFromSuperview()
+            }
+        }
+        
+        var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.15, width: image.frame.width*0.65, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
 
         label.text = array[row].didWell
         label.adjustsFontSizeToFitWidth=true
         label.numberOfLines=100
+        label.font=UIFont(name: "Avenir", size: 17)
         
         if myColors[1].contains(image.tintColor){
             label.textColor=UIColor.white
@@ -73,6 +90,13 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         image.addSubview(label)
+
+        let button = UIButton()
+        let btnImage = UIImage(named: "greenBalloon")
+        button.setImage(btnImage, for: UIControl.State.normal)
+        button.frame=CGRect(x: 0, y: 0, width: 100, height: 100)
+       
+        image.addSubview(button)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,11 +104,17 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         cell.leftHandImage.image=UIImage(named: "greenBalloon")
         cell.leftHandImage.setImageColor()
-        addLabel(image: cell.leftHandImage, array: leftEntries, row: indexPath.row)
-
-        cell.dateLabel.adjustsFontSizeToFitWidth=true
+        addLabel(image: cell.leftHandImage, array: leftEntries, row: indexPath.row, cell: cell)
+        
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
+        
+        cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
+        cell.leftType="Things I Did Well"
+        cell.leftEntry=leftEntries[indexPath.row].didWell!
+        
+        cell.dateLabel.adjustsFontSizeToFitWidth=true
+        
         
         if dayHighlightsArray.count%2 != 0{
             print("count is odd")
@@ -107,7 +137,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             }else{
                 cell.rightHandImage.image=UIImage(named: "greenBalloon")
                 cell.rightHandImage.setImageColor()
-                addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row)
+                addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row, cell: cell)
                 
                 let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
                 let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
@@ -117,7 +147,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         }else{
             cell.rightHandImage.image=UIImage(named: "greenBalloon")
             cell.rightHandImage.setImageColor()
-            addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row)
+            addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row, cell: cell)
             
             let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
             let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)

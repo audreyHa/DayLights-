@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     var red = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     var count=0
-    var currentMood=0
+    var currentMood: Int32?
     var daylightsArray=[Daylight]()
 
     @IBOutlet weak var cancelButton: UIButton!
@@ -205,24 +205,16 @@ class ViewController: UIViewController {
             daylight!.funny=funnyText.text!
         }
         
-        if (daylight!.dateCreated == nil){
-            daylight!.dateCreated=Date()
-            
-            //delete starting from here
-//            var temporaryArray=CoreDataHelper.retrieveDaylight()
-//            let calendar = Calendar.current
-//            let today = calendar.startOfDay(for: Date())
-//            if temporaryArray.count==1{
-//                daylight!.dateCreated=today.addingTimeInterval(TimeInterval(-86400*2))
-//            }else if temporaryArray.count==2{
-//                daylight!.dateCreated=today.addingTimeInterval(TimeInterval(-86400))
-//            }else{
-//                daylight!.dateCreated=Date()
-//            }
-            //end delete here
+        if currentMood != nil{
+            daylight!.mood=currentMood ?? 3
         }
         
-        daylight!.mood=Int32(currentMood)
+        currentMood=nil
+        
+        if (daylight!.dateCreated == nil){
+            daylight!.dateCreated=Date()
+        }
+
         currentMood=0
         CoreDataHelper.saveDaylight()
     }
