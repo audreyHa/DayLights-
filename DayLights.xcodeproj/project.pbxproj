@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		070E9B9945AC15E74BC6D355 /* Pods_DayLights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */; };
-		F616C67B224DE4B100C85721 /* FunnyTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67A224DE4B100C85721 /* FunnyTBVC.swift */; };
+		F61176272300F35500121F15 /* NegativeThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61176262300F35500121F15 /* NegativeThoughts.swift */; };
 		F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */; };
 		F61832A722506BCE0083886A /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A622506BCE0083886A /* BarCell.swift */; };
 		F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */; };
@@ -24,8 +24,6 @@
 		F68CFA0A2249F1A2001138FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68CFA082249F1A2001138FE /* LaunchScreen.storyboard */; };
 		F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CFA12224A013B001138FE /* CoreDataHelper.swift */; };
 		F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6902855224B1DDF003E26E4 /* ContainerVC.swift */; };
-		F691978B224C96D400554EFA /* DidWellTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691978A224C96D400554EFA /* DidWellTBVC.swift */; };
-		F691978D224C96E500554EFA /* GratefulTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691978C224C96E500554EFA /* GratefulTBVC.swift */; };
 		F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691978E224C975A00554EFA /* DidWellTableViewCell.swift */; };
 		F6919791224C976500554EFA /* GratefulTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6919790224C976500554EFA /* GratefulTableViewCell.swift */; };
 		F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */; };
@@ -36,6 +34,7 @@
 		F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BACC41224DFCEB00430B79 /* MoodVC.swift */; };
 		F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5B8FB22FE06FE00078675 /* Chart.swift */; };
 		F6C5B8FE22FE1D8200078675 /* GraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */; };
+		F6C6E49A2300F4E700A1612B /* NegativeThoughtsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */; };
 		F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E110382300DB330033C4CA /* YesNoAlert.swift */; };
 		F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F79ECC224B3DB700A1DAC8 /* Side.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +43,7 @@
 		1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayLights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.debug.xcconfig"; sourceTree = "<group>"; };
 		8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.release.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.release.xcconfig"; sourceTree = "<group>"; };
-		F616C67A224DE4B100C85721 /* FunnyTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTBVC.swift; sourceTree = "<group>"; };
+		F61176262300F35500121F15 /* NegativeThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughts.swift; sourceTree = "<group>"; };
 		F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTableViewCell.swift; sourceTree = "<group>"; };
 		F61832A622506BCE0083886A /* BarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
 		F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -62,8 +61,6 @@
 		F68CFA0B2249F1A2001138FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F68CFA12224A013B001138FE /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		F6902855224B1DDF003E26E4 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
-		F691978A224C96D400554EFA /* DidWellTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellTBVC.swift; sourceTree = "<group>"; };
-		F691978C224C96E500554EFA /* GratefulTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratefulTBVC.swift; sourceTree = "<group>"; };
 		F691978E224C975A00554EFA /* DidWellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellTableViewCell.swift; sourceTree = "<group>"; };
 		F6919790224C976500554EFA /* GratefulTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratefulTableViewCell.swift; sourceTree = "<group>"; };
 		F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDayLight.swift; sourceTree = "<group>"; };
@@ -74,6 +71,7 @@
 		F6BACC41224DFCEB00430B79 /* MoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
 		F6C5B8FB22FE06FE00078675 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTableViewCell.swift; sourceTree = "<group>"; };
+		F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsCell.swift; sourceTree = "<group>"; };
 		F6E110382300DB330033C4CA /* YesNoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoAlert.swift; sourceTree = "<group>"; };
 		F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayLights.entitlements; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
@@ -168,9 +166,6 @@
 				F68CF9FE2249F1A1001138FE /* ViewController.swift */,
 				F6902855224B1DDF003E26E4 /* ContainerVC.swift */,
 				F6F79ECC224B3DB700A1DAC8 /* Side.swift */,
-				F691978A224C96D400554EFA /* DidWellTBVC.swift */,
-				F616C67A224DE4B100C85721 /* FunnyTBVC.swift */,
-				F691978C224C96E500554EFA /* GratefulTBVC.swift */,
 				F6BACC41224DFCEB00430B79 /* MoodVC.swift */,
 				F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */,
 				F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */,
@@ -186,6 +181,8 @@
 				F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */,
 				F68954B422FF43BC00D23B5B /* EntryAlert.swift */,
 				F6E110382300DB330033C4CA /* YesNoAlert.swift */,
+				F61176262300F35500121F15 /* NegativeThoughts.swift */,
+				F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -337,21 +334,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61176272300F35500121F15 /* NegativeThoughts.swift in Sources */,
 				F68CFA052249F1A1001138FE /* DayLights.xcdatamodeld in Sources */,
 				F6A0B38922FFE3A400DD8A03 /* EntryAlertCell.swift in Sources */,
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
+				F6C6E49A2300F4E700A1612B /* NegativeThoughtsCell.swift in Sources */,
 				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,
 				F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */,
 				F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */,
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
-				F691978B224C96D400554EFA /* DidWellTBVC.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F69C9E852262DC8000CFF1AC /* ShowAllCell.swift in Sources */,
 				F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */,
 				F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */,
 				F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */,
-				F616C67B224DE4B100C85721 /* FunnyTBVC.swift in Sources */,
 				F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */,
 				F61832A722506BCE0083886A /* BarCell.swift in Sources */,
 				F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */,
@@ -359,7 +356,6 @@
 				F61F8E3D22FE4FE200080D31 /* DidWellCollectionVC.swift in Sources */,
 				F68A4227225C6BF300B56FA1 /* OrganizationCell.swift in Sources */,
 				F6C5B8FE22FE1D8200078675 /* GraphTableViewCell.swift in Sources */,
-				F691978D224C96E500554EFA /* GratefulTBVC.swift in Sources */,
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
 				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,
 				F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */,
