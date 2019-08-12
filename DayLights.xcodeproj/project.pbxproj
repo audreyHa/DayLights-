@@ -36,6 +36,7 @@
 		F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BACC41224DFCEB00430B79 /* MoodVC.swift */; };
 		F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5B8FB22FE06FE00078675 /* Chart.swift */; };
 		F6C5B8FE22FE1D8200078675 /* GraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */; };
+		F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E110382300DB330033C4CA /* YesNoAlert.swift */; };
 		F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F79ECC224B3DB700A1DAC8 /* Side.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		F6BACC41224DFCEB00430B79 /* MoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
 		F6C5B8FB22FE06FE00078675 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTableViewCell.swift; sourceTree = "<group>"; };
+		F6E110382300DB330033C4CA /* YesNoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoAlert.swift; sourceTree = "<group>"; };
 		F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayLights.entitlements; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +185,7 @@
 			children = (
 				F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */,
 				F68954B422FF43BC00D23B5B /* EntryAlert.swift */,
+				F6E110382300DB330033C4CA /* YesNoAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				F6A0B38922FFE3A400DD8A03 /* EntryAlertCell.swift in Sources */,
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
 				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,
+				F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */,
 				F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */,
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,

@@ -27,21 +27,29 @@ class LeftCollectionViewCell: UICollectionViewCell {
     var rightJoyful: String!
     
     @IBAction func onLeftZoomTouched(_ sender: Any) {
+        UserDefaults.standard.set("left", forKey: "sideInCell")
         UserDefaults.standard.set(leftDidWell,forKey: "didWellText")
         UserDefaults.standard.set(leftGrateful,forKey: "gratefulText")
         UserDefaults.standard.set(leftJoyful, forKey: "joyfulText")
         UserDefaults.standard.set(leftDate, forKey: "dateToInclude")
-        
+        getIndexPath()
         NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
     }
     
     @IBAction func onRightZoomTouched(_ sender: Any) {
+        UserDefaults.standard.set("right", forKey: "sideInCell")
         UserDefaults.standard.set(rightDidWell,forKey: "didWellText")
         UserDefaults.standard.set(rightGrateful,forKey: "gratefulText")
         UserDefaults.standard.set(rightJoyful, forKey: "joyfulText")
         UserDefaults.standard.set(rightDate, forKey: "dateToInclude")
-        
+        getIndexPath()
         NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
     }
     
+    func getIndexPath(){
+        if let superView = self.superview as? UICollectionView{
+            var myIndexPath = superView.indexPath(for: self)
+            UserDefaults.standard.set(myIndexPath!.row, forKey: "rowOfPressedZoom")
+        }
+    }
 }

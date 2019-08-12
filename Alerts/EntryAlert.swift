@@ -20,6 +20,10 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var myDateLabel: UILabel!
     @IBOutlet weak var okButton: UIButton!
     
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    
     var categoryTitles=[String]()
     var categoryContent=[String]()
     
@@ -58,9 +62,18 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
         okButton.layer.cornerRadius = 5
         okButton.clipsToBounds = true
         
+        editButton.layer.cornerRadius=5
+        deleteButton.layer.cornerRadius=5
         centerView.superview?.bringSubviewToFront(centerView)
         
         daylightImage.superview?.bringSubviewToFront(daylightImage)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deleteDaylight(notification:)), name: Notification.Name("delete"), object: nil)
+    }
+    
+    @objc func deleteDaylight(notification: Notification) {
+        editButton.isHidden=true
+        deleteButton.isHidden=true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,4 +98,12 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
     }
 
+    @IBAction func deletePressed(_ sender: Any) {
+        UserDefaults.standard.set("delete",forKey: "typeYesNoAlert")
+        let vc = storyboard!.instantiateViewController(withIdentifier: "YesNoAlert") as! YesNoAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
 }

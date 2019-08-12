@@ -132,9 +132,7 @@ class ViewController: UIViewController {
                 notificationTime.hour=strHour!
                 notificationTime.minute=strMin!
                 CoreDataHelper.saveDaylight()
-                
-                
-                
+
                 // Change the time to 7:00:00 in your locale
                 
                 var notiArray=CoreDataHelper.retrieveNotification()
@@ -161,19 +159,23 @@ class ViewController: UIViewController {
                     
                     let request=UNNotificationRequest(identifier: "testIdentifier", content: content, trigger: trigger)
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                    
-                    
                 }
-                
             }))
-
-            notification.addAction(UIAlertAction(title:"I Don't Want Notifications", style: UIAlertAction.Style.default, handler: nil))
 
             // add an action (button)
             privacyPolicy.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 DispatchQueue.main.async {
-                    self.present(notification, animated: true)
+                    let notificationCenter = UNUserNotificationCenter.current()
+                    
+                    notificationCenter.getNotificationSettings { (settings) in
+                        // Do not schedule notifications if not authorized.
+                        if settings.authorizationStatus == .authorized{
+                            self.present(notification, animated: true)
+                        }else{
+                            self.setNotificationTime()
+                        }
+                    }
                 }
             })
             // show the alert
@@ -185,6 +187,29 @@ class ViewController: UIViewController {
         }
     }
 
+    func setNotificationTime(){
+        let content=UNMutableNotificationContent()
+        content.title="DayHighlights Alert!"
+        content.body="Make sure to fill out your DayHighlights for today!"
+        content.sound=UNNotificationSound.default
+        
+        let gregorian = Calendar(identifier: .gregorian)
+        let now = Date()
+        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
+        
+        // Change the time to 7:00:00 in your locale
+        components.hour = 12
+        components.minute = 0
+        components.second = 0
+        
+        let date = gregorian.date(from: components)!
+        
+        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+        
+        let request=UNNotificationRequest(identifier: "testIdentifier", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
     
     func saveWhatYouHave(){
         if (didWellText.text==""){
@@ -240,41 +265,7 @@ class ViewController: UIViewController {
     
     @IBAction func saveDayLights(_ sender: UIButton) {
         var array=CoreDataHelper.retrieveDaylight()
-        var dateCount=0
-        for daylight in array{
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "MM/dd/yy"
-            let dateCreated=dateformatter.string(from: daylight.dateCreated!)
-            let now=dateformatter.string(from: Date())
-            
-            if dateCreated==now{
-                dateCount+=1
-            }
-        }
         
-
-        
-        if dateCount==1{
-            if daylight==nil{
-                createAlert(title: "ALERT!", message: "You created DayHighlights earlier today. Only create one entry per day. See you tomorrow!")
-                dateCount=0
-                count=0
-                currentMood=0
-                didWellText.text = ""
-                gratefulText.text = ""
-                funnyText.text=""
-                mood1.layer.borderWidth=0
-                mood2.layer.borderWidth=0
-                mood3.layer.borderWidth=0
-                mood4.layer.borderWidth=0
-                mood5.layer.borderWidth=0
-            }else{
-                Answers.logCustomEvent(withName: "Editing DayLight", customAttributes: nil)
-                saveWhatYouHave()
-                resetEverything()
-                moodIsNotGreat()
-            }
-        }else{
             if daylight != nil{
                 Answers.logCustomEvent(withName: "Editing DayLight", customAttributes: nil)
                 saveWhatYouHave()
@@ -287,7 +278,6 @@ class ViewController: UIViewController {
                 resetEverything()
                 moodIsNotGreat()
             }
-        }
     }
 
     @IBAction func cancelButton(_ sender: UIButton) {

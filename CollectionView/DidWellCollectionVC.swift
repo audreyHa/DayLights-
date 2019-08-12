@@ -11,6 +11,7 @@ import UIKit
 class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
     @IBOutlet weak var leftCollectionView: UICollectionView!
+    @IBOutlet weak var headerCategoryLabel: UILabel!
     
     var dayHighlightsArray=CoreDataHelper.retrieveDaylight()
     var myColors=[[UIColor]]()
@@ -20,8 +21,29 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resetDaylightArrays()
+
+        leftCollectionView.dataSource=self
+        leftCollectionView.delegate=self
+        
+        myColors=[
+            //light
+            [UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf2e3c9), UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x8bbabb)],
+            
+            //dark
+            [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x00818a), UIColor(rgb: 0x843b62), UIColor(rgb: 0x00a79d), UIColor(rgb: 0xcf455c), UIColor(rgb: 0x2d3561),  UIColor(rgb: 0x241663), UIColor(rgb: 0x226b80), UIColor(rgb: 0xdc5353), UIColor(rgb: 0x00818a), UIColor(rgb: 0x207561), UIColor(rgb: 0x366ed8), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b)]
+        ]
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showEntryAlert(notification:)), name: Notification.Name("showEntryAlert"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deleteDaylight(notification:)), name: Notification.Name("delete"), object: nil)
+    }
+    
+    func resetDaylightArrays(){
         dayHighlightsArray.reverse()
         var count=0
+        leftEntries=[]
+        rightEntries=[]
         for daylight in dayHighlightsArray{
             if count%2 == 0{
                 leftEntries.append(daylight)
@@ -30,17 +52,6 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             }
             count+=1
         }
-
-        leftCollectionView.dataSource=self
-        leftCollectionView.delegate=self
-        
-        myColors=[
-            [UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf2e3c9), UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x8bbabb)],
-            
-            [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x00818a), UIColor(rgb: 0x843b62), UIColor(rgb: 0x00a79d), UIColor(rgb: 0xcf455c), UIColor(rgb: 0x2d3561),  UIColor(rgb: 0x241663), UIColor(rgb: 0x226b80), UIColor(rgb: 0xdc5353), UIColor(rgb: 0x00818a)]
-        ]
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showEntryAlert(notification:)), name: Notification.Name("showEntryAlert"), object: nil)
     }
     
     @objc func showEntryAlert(notification: Notification) {
@@ -49,6 +60,30 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         vc.view.backgroundColor = transparentGrey
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func deleteDaylight(notification: Notification) {
+        
+        var side=UserDefaults.standard.string(forKey: "sideInCell")
+        var indexPathToDelete=UserDefaults.standard.integer(forKey: "rowOfPressedZoom")
+        var daylightToDelete: Daylight?
+        
+        if side=="left"{
+            print("side is left")
+            daylightToDelete=leftEntries[indexPathToDelete]
+        }else if side=="right"{
+            print("side is right")
+            daylightToDelete=rightEntries[indexPathToDelete]
+        }
+        
+        if daylightToDelete != nil{
+            CoreDataHelper.delete(daylight: daylightToDelete!)
+            CoreDataHelper.saveDaylight()
+            dayHighlightsArray=CoreDataHelper.retrieveDaylight()
+            resetDaylightArrays()
+        }
+        
+        leftCollectionView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -75,10 +110,20 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             }
         }
         
-        var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.15, width: image.frame.width*0.63, height: image.frame.height*0.59))
+        var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.17, width: image.frame.width*0.63, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
 
-        label.text = array[row].didWell
+        switch(headerCategoryLabel.text){
+        case "Gallery: Things I Did Well":
+            label.text = array[row].didWell
+        case "Gallery: Things I'm Grateful For":
+            label.text = array[row].gratefulThing
+        case "Gallery: Joyful Moments":
+            label.text = array[row].funny
+        default:
+            label.text = array[row].didWell
+        }
+        
         label.adjustsFontSizeToFitWidth=true
         label.numberOfLines=100
         label.font=UIFont(name: "Avenir", size: 17)
@@ -92,6 +137,36 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         image.addSubview(label)
     }
     
+    func setImageColor(image: UIImageView){
+        var myTempColors=[
+            //dark navy/purples/magenta
+            //NEED MORE PURPLES
+            [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x843b62), UIColor(rgb: 0x241663), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b), UIColor(rgb: 0x9ea9f0), UIColor(rgb: 0xccc1ff), UIColor(rgb: 0xffeafe), UIColor(rgb: 0xab93c9), UIColor(rgb: 0xd698b9)],
+            
+            // green/teal/blue
+            //NEED MORE GREENS
+
+            [UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x00818a), UIColor(rgb: 0x00a79d), UIColor(rgb: 0x226b80), UIColor(rgb: 0x00818a), UIColor(rgb: 0x8bbabb), UIColor(rgb: 0xa0cc78), UIColor(rgb: 0x9cf196), UIColor(rgb: 0x5edfff), UIColor(rgb: 0xb2fcff), UIColor(rgb: 0xe0f5b9), UIColor(rgb: 0xc6f1d6), UIColor(rgb: 0xdaf1f9), UIColor(rgb: 0x366ed8)],
+            
+            // red/orange/yellow/pink
+            [UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf2e3c9), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xdc5353), UIColor(rgb: 0xcf455c), UIColor(rgb: 0xf67e7d)]
+        ]
+        
+        var randomInt1 = Int.random(in: 0...2)
+        switch(headerCategoryLabel.text){
+        case "Gallery: Things I Did Well":
+            randomInt1=0
+        case "Gallery: Things I'm Grateful For":
+            randomInt1=1
+        case "Gallery: Joyful Moments":
+            randomInt1=2
+        default:
+            randomInt1=0
+        }
+        
+        let randomInt2 = Int.random(in: 0..<myTempColors[randomInt1].count)
+        image.tintColor = myTempColors[randomInt1][randomInt2]
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=leftCollectionView.dequeueReusableCell(withReuseIdentifier: "LeftCell", for: indexPath) as! LeftCollectionViewCell
         
@@ -103,14 +178,22 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         func setLeftSide(){
             cell.leftHandImage.image=UIImage(named: "greenBalloon")
             
-            let valueToSubtract=cell.leftHandImage.frame.width*1.3
-            let min=Int(cell.leftHandImage.frame.width*0.3)
-            let max=Int(collectionView.frame.width-valueToSubtract)
-            let randomInt = Int.random(in: min..<max)
-            cell.leftHandImage.frame=CGRect(x: CGFloat(randomInt), y: cell.leftHandImage.frame.origin.y, width: cell.leftHandImage.frame.width, height: cell.leftHandImage.frame.height)
+            var valueToSubtract=cell.leftHandImage.frame.width*1.1
+            var min=0
+            var max=Int(collectionView.frame.width-valueToSubtract)
+            
+            
+            if(headerCategoryLabel.text=="Gallery: Things I'm Grateful For"){
+                min=Int(cell.leftHandImage.frame.width*0.6)
+            }
+            
+            var randomInt = Int.random(in: min..<max)
+            
+             cell.leftHandImage.frame=CGRect(x: CGFloat(randomInt), y: cell.leftHandImage.frame.origin.y, width: cell.leftHandImage.frame.width, height: cell.leftHandImage.frame.height)
             cell.leftZoom.frame=CGRect(x: cell.leftHandImage.frame.origin.x, y: cell.leftHandImage.frame.origin.y, width: cell.leftZoom.frame.width, height: cell.leftZoom.frame.height)
             
-            cell.leftHandImage.setImageColor()
+            cell.leftHandImage.setTemplateImage()
+            setImageColor(image: cell.leftHandImage)
             addLabel(image: cell.leftHandImage, array: leftEntries, row: indexPath.row, cell: cell)
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
@@ -121,8 +204,9 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         func setRightSide(){
             cell.rightHandImage.image=UIImage(named: "greenBalloon")
-
-            cell.rightHandImage.setImageColor()
+            
+            cell.rightHandImage.setTemplateImage()
+            setImageColor(image: cell.rightHandImage)
             addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row, cell: cell)
             
             let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
@@ -139,7 +223,6 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         setLeftSide()
         
         if dayHighlightsArray.count%2 != 0{
-            print("count is odd")
             var oneMore=dayHighlightsArray.count+1
             var halfOneMore=oneMore/2
             
@@ -154,16 +237,16 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
                     }
                 }
                 
-                if cell.rightZoom != nil{
-                    cell.rightZoom.removeFromSuperview()
-                }
+                cell.rightZoom.isHidden=true
 
                 let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
                 cell.dateLabel.text = ("\(leftDate)")
             }else{
+                cell.rightZoom.isHidden=false
                 setRightSide()
             }
         }else{
+            cell.rightZoom.isHidden=false
             setRightSide()
         }
 
@@ -172,20 +255,9 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
 }
 
 extension UIImageView {
-    func setImageColor() {
+    func setTemplateImage() {
         let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
         self.image = templateImage
-
-        var myTempColors=[
-            [UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf2e3c9), UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x8bbabb)],
-            
-            [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x00818a), UIColor(rgb: 0x843b62), UIColor(rgb: 0x00a79d), UIColor(rgb: 0xcf455c), UIColor(rgb: 0x2d3561),  UIColor(rgb: 0x241663), UIColor(rgb: 0x226b80), UIColor(rgb: 0xdc5353), UIColor(rgb: 0x00818a)]
-        ]
-
-        
-        let randomInt1 = Int.random(in: 0..<2)
-        let randomInt2 = Int.random(in: 0..<myTempColors[randomInt1].count)
-        self.tintColor = myTempColors[randomInt1][randomInt2]
     }
 }
 
