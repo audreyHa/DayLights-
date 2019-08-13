@@ -167,6 +167,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         let randomInt2 = Int.random(in: 0..<myTempColors[randomInt1].count)
         image.tintColor = myTempColors[randomInt1][randomInt2]
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=leftCollectionView.dequeueReusableCell(withReuseIdentifier: "LeftCell", for: indexPath) as! LeftCollectionViewCell
         
@@ -184,7 +185,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             
             if(headerCategoryLabel.text=="Gallery: Things I'm Grateful For"){
-                min=Int(cell.leftHandImage.frame.width*0.6)
+                min=Int(cell.leftHandImage.frame.width*0.4)
             }
             
             var randomInt = Int.random(in: min..<max)

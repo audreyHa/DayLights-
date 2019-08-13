@@ -35,6 +35,11 @@ struct CoreDataHelper{
         return notiTime
     }
     
+    static func newNegativeThought() -> NegativeThought{
+        let negativeThought=NSEntityDescription.insertNewObject(forEntityName: "NegativeThought", into: context) as! NegativeThought
+        return negativeThought
+    }
+    
     static func saveDaylight(){
         do{
             try context.save()
@@ -46,6 +51,11 @@ struct CoreDataHelper{
     
     static func delete(daylight: Daylight){
         context.delete(daylight)
+        saveDaylight()
+    }
+    
+    static func delete(negativeThought: NegativeThought){
+        context.delete(negativeThought)
         saveDaylight()
     }
     
@@ -85,5 +95,16 @@ struct CoreDataHelper{
         }
     }
     
+    static func retrieveNegativeThought()->[NegativeThought]{
+        do{
+            let fetchRequest=NSFetchRequest<NegativeThought>(entityName: "NegativeThought")
+            let results=try context.fetch(fetchRequest)
+            print("there should be results")
+            return results
+        }catch let error{
+            print("Could not fetch \(error.localizedDescription)")
+            return []
+        }
+    }
     
 }

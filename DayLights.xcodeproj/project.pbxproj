@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		070E9B9945AC15E74BC6D355 /* Pods_DayLights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */; };
-		F61176272300F35500121F15 /* NegativeThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61176262300F35500121F15 /* NegativeThoughts.swift */; };
+		F61176272300F35500121F15 /* NegativeThoughtsEntering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */; };
+		F614E20823010CB50041D628 /* NegativeThoughtsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614E20723010CB50041D628 /* NegativeThoughtsGame.swift */; };
+		F614E20B230117250041D628 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614E20A230117250041D628 /* GameCell.swift */; };
 		F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */; };
 		F61832A722506BCE0083886A /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A622506BCE0083886A /* BarCell.swift */; };
 		F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */; };
@@ -43,7 +45,9 @@
 		1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayLights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.debug.xcconfig"; sourceTree = "<group>"; };
 		8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.release.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.release.xcconfig"; sourceTree = "<group>"; };
-		F61176262300F35500121F15 /* NegativeThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughts.swift; sourceTree = "<group>"; };
+		F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsEntering.swift; sourceTree = "<group>"; };
+		F614E20723010CB50041D628 /* NegativeThoughtsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsGame.swift; sourceTree = "<group>"; };
+		F614E20A230117250041D628 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTableViewCell.swift; sourceTree = "<group>"; };
 		F61832A622506BCE0083886A /* BarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
 		F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +110,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F614E20923010CBB0041D628 /* NegativeThoughtsGame */ = {
+			isa = PBXGroup;
+			children = (
+				F614E20723010CB50041D628 /* NegativeThoughtsGame.swift */,
+				F614E20A230117250041D628 /* GameCell.swift */,
+				F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */,
+				F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */,
+			);
+			path = NegativeThoughtsGame;
+			sourceTree = "<group>";
+		};
 		F61F8E3522FE4C5A00080D31 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +133,7 @@
 		F68CF9F02249F1A1001138FE = {
 			isa = PBXGroup;
 			children = (
+				F614E20923010CBB0041D628 /* NegativeThoughtsGame */,
 				F6AA6ED322FFEB5D0070652B /* Alerts */,
 				F61F8E3522FE4C5A00080D31 /* CollectionView */,
 				F6902852224B1810003E26E4 /* Controller */,
@@ -181,8 +197,6 @@
 				F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */,
 				F68954B422FF43BC00D23B5B /* EntryAlert.swift */,
 				F6E110382300DB330033C4CA /* YesNoAlert.swift */,
-				F61176262300F35500121F15 /* NegativeThoughts.swift */,
-				F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -334,7 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F61176272300F35500121F15 /* NegativeThoughts.swift in Sources */,
+				F61176272300F35500121F15 /* NegativeThoughtsEntering.swift in Sources */,
 				F68CFA052249F1A1001138FE /* DayLights.xcdatamodeld in Sources */,
 				F6A0B38922FFE3A400DD8A03 /* EntryAlertCell.swift in Sources */,
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
@@ -351,6 +365,7 @@
 				F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */,
 				F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */,
 				F61832A722506BCE0083886A /* BarCell.swift in Sources */,
+				F614E20823010CB50041D628 /* NegativeThoughtsGame.swift in Sources */,
 				F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */,
 				F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */,
 				F61F8E3D22FE4FE200080D31 /* DidWellCollectionVC.swift in Sources */,
@@ -360,6 +375,7 @@
 				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,
 				F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */,
 				F6919791224C976500554EFA /* GratefulTableViewCell.swift in Sources */,
+				F614E20B230117250041D628 /* GameCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

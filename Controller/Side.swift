@@ -10,6 +10,13 @@ import UIKit
 
 class Side: UIViewController {
 
+    @IBOutlet weak var createNewButton: UIButton!
+    @IBOutlet weak var galleriesButton: UIButton!
+    @IBOutlet weak var moodTrackerButton: UIButton!
+    @IBOutlet weak var negativeThoughts: UIButton!
+    @IBOutlet weak var resourcesHotlinesButton: UIButton!
+    
+    
     @IBAction func searchPressed(_ sender: UIButton) {
         NotificationCenter.default.post(name: NSNotification.Name("searchDayLights"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
@@ -33,9 +40,18 @@ class Side: UIViewController {
 
     }
     
+    @IBAction func negativeThoughtsPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("negativeThoughtsGame"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createNewButton.titleLabel?.adjustsFontSizeToFitWidth=true
+        galleriesButton.titleLabel?.adjustsFontSizeToFitWidth=true
+        moodTrackerButton.titleLabel?.adjustsFontSizeToFitWidth=true
+        negativeThoughts.titleLabel?.adjustsFontSizeToFitWidth=true
+        resourcesHotlinesButton.titleLabel?.adjustsFontSizeToFitWidth=true
     }
 
     

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var count=0
     var currentMood: Int32?
     var daylightsArray=[Daylight]()
-
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulText: UITextView!
@@ -29,57 +29,39 @@ class ViewController: UIViewController {
     @IBOutlet weak var mood4: UIButton!
     @IBOutlet weak var mood5: UIButton!
     
+    var moodButtons=[UIButton]()
+    
     @IBAction func mood1(_ sender: UIButton) {
-        mood1.layer.borderWidth = 3
-        mood1.layer.borderColor = red.cgColor
-        currentMood=1
-        mood2.layer.borderWidth=0
-        mood3.layer.borderWidth=0
-        mood4.layer.borderWidth=0
-        mood5.layer.borderWidth=0
-        
+        setMoodButton(currentButton: mood1, value: 1)
     }
     
     @IBAction func mood2(_ sender: UIButton) {
-        mood2.layer.borderWidth = 3
-        mood2.layer.borderColor = red.cgColor
-        currentMood=2
-        mood1.layer.borderWidth=0
-        mood3.layer.borderWidth=0
-        mood4.layer.borderWidth=0
-        mood5.layer.borderWidth=0
+        setMoodButton(currentButton: mood2, value: 2)
     }
     
     @IBAction func mood3(_ sender: UIButton) {
-        mood3.layer.borderWidth = 3
-        mood3.layer.borderColor = red.cgColor
-        currentMood=3
-        mood2.layer.borderWidth=0
-        mood1.layer.borderWidth=0
-        mood4.layer.borderWidth=0
-        mood5.layer.borderWidth=0
+        setMoodButton(currentButton: mood3, value: 3)
     }
     
     @IBAction func mood4(_ sender: UIButton) {
-        mood4.layer.borderWidth = 3
-        mood4.layer.borderColor = red.cgColor
-        currentMood=4
-        mood2.layer.borderWidth=0
-        mood3.layer.borderWidth=0
-        mood1.layer.borderWidth=0
-        mood5.layer.borderWidth=0
+        setMoodButton(currentButton: mood4, value: 4)
     }
     
     @IBAction func mood5(_ sender: UIButton) {
-        mood5.layer.borderWidth = 3
-        mood5.layer.borderColor = red.cgColor
-        currentMood=5
-        mood2.layer.borderWidth=0
-        mood3.layer.borderWidth=0
-        mood4.layer.borderWidth=0
-        mood1.layer.borderWidth=0
+        setMoodButton(currentButton: mood5, value: 5)
     }
     
+    func setMoodButton(currentButton: UIButton, value: Int){
+        currentButton.layer.borderWidth=3
+        currentButton.layer.borderColor = red.cgColor
+        currentMood=Int32(value)
+        
+        for button in moodButtons{
+            if button != currentButton{
+                button.layer.borderWidth=0
+            }
+        }
+    }
     
     @IBOutlet weak var contentsView: UIView!
     
@@ -434,6 +416,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        moodButtons=[mood1, mood2, mood3, mood4, mood5]
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -452,6 +436,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(searchDayLights), name: NSNotification.Name("searchDayLights"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(negativeThoughtsGame), name: NSNotification.Name("negativeThoughtsGame"), object: nil)
         
         self.hideSide()
         self.hideKeyboardWhenTappedAround() 
@@ -557,7 +542,9 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "resources", sender: nil)
     }
     
-    
+    @objc func negativeThoughtsGame(){
+        performSegue(withIdentifier: "negativeThoughtsGame", sender: nil)
+    }
     
     @objc func showMood(){
         var daylights=CoreDataHelper.retrieveDaylight()
