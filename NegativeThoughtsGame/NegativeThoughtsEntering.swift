@@ -23,7 +23,10 @@ class NegativeThoughtsEntering: UIViewController, UITableViewDelegate, UITableVi
     
     var myNegativeThoughtEntries=[NegativeThought]()
     var thoughtsArray=[String]()
+    
     var entriesArray=[String]()
+    var slidersArray=[Float]()
+    
     var allCells=[NegativeThoughtsCell]()
     
     var firstCell: NegativeThoughtsCell?
@@ -72,52 +75,61 @@ class NegativeThoughtsEntering: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: NegativeThoughtsCell = tableView.dequeueReusableCell(withIdentifier: "NegativeThoughtsCell", for: indexPath) as! NegativeThoughtsCell
         
+        cell.slider.setThumbImage(UIImage(named: "redPlayBar"), for: UIControl.State.normal)
+        cell.slider.minimumValue=1
+        cell.slider.maximumValue=100
+        
         cell.thoughtLabel.text=thoughtsArray[indexPath.row]
         print("thoughts array: \(thoughtsArray)")
         if indexPath.row==0{
             firstCell=cell
+        
             cell.textField.text=""
             cell.slider.value=1.0
-        }else{
-            if myNegativeThoughtEntries[indexPath.row-1].entry != nil{
-                cell.textField.text=myNegativeThoughtEntries[indexPath.row-1].entry
-            }else{
-                cell.textField.text=""
-            }
             
-            if myNegativeThoughtEntries[indexPath.row-1].sliderValue != nil{
-                print("setting slider value here: \(Float(myNegativeThoughtEntries[indexPath.row-1].sliderValue))")
-                cell.slider.value=Float(myNegativeThoughtEntries[indexPath.row-1].sliderValue)
+        }else{
+                if myNegativeThoughtEntries[indexPath.row-1].entry != nil{
+                    cell.textField.text=myNegativeThoughtEntries[indexPath.row-1].entry
+                }else{
+                    cell.textField.text=""
+                }
+                
+                if myNegativeThoughtEntries[indexPath.row-1].sliderValue != nil{
+                    cell.slider.value=Float(myNegativeThoughtEntries[indexPath.row-1].sliderValue)
+                }else{
+                    cell.slider.value=1.0
             }
         }
 
         cell.selectionStyle = .none
         cell.severeLabel.adjustsFontSizeToFitWidth=true
         
-        cell.slider.setThumbImage(UIImage(named: "redPlayBar"), for: UIControl.State.normal)
-        cell.slider.minimumValue=1
-        cell.slider.maximumValue=100
-        
-        
         if allCells.contains(cell){
 //            print("this cell is already there")
         }else{
             allCells.append(cell)
-            print("Index Path of cell we're adding \(indexPath.row)")
         }
         
         return cell
     }
     
     @IBAction func donePressed(_ sender: Any) {
-        var count=0
-
-        var newCoreDataEntry=CoreDataHelper.newNegativeThought()
-        newCoreDataEntry.entry=firstCell!.textField.text
-        newCoreDataEntry.sliderValue=Int64(firstCell!.slider.value)
+        for entry in myNegativeThoughtEntries{
+            CoreDataHelper.delete(negativeThought: entry)
+        }
         
-        CoreDataHelper.saveDaylight()
-
+        myNegativeThoughtEntries=CoreDataHelper.retrieveNegativeThought()
+        
+        print("all cells count: \(allCells.count)")
+        for cell in allCells{
+            var newCoreDataEntry=CoreDataHelper.newNegativeThought()
+            newCoreDataEntry.entry=cell.textField.text
+            newCoreDataEntry.sliderValue=Int64(cell.slider.value)
+            CoreDataHelper.saveDaylight()
+        }
+        
+        myNegativeThoughtEntries=CoreDataHelper.retrieveNegativeThought()
+        
         NotificationCenter.default.post(name: Notification.Name("retrieveNegativeThoughts"), object: nil)
         
         navigationController?.popViewController(animated: true)
@@ -141,7 +153,7 @@ class NegativeThoughtsEntering: UIViewController, UITableViewDelegate, UITableVi
 
         print("Negative Thought Entries count: \(myNegativeThoughtEntries.count)")
         for entry in myNegativeThoughtEntries{
-            print("Text Entry: \(entry.entry)")
+            print("Text Entry: \(entry.entry!)")
         }
 
         tableView.reloadData()

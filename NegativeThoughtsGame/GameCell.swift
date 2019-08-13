@@ -18,12 +18,18 @@ class GameCell: UICollectionViewCell {
         count+=1
         var countLabelText=Int(countLabel.text!)
         
+        var coreDataArray=CoreDataHelper.retrieveNegativeThought()
+        var indexPath=returnIndexPath()
+        coreDataArray[indexPath.row].sliderValue=Int64(countLabelText!-1)
+        
         if (countLabelText==1){
             getIndexPath()
              NotificationCenter.default.post(name: Notification.Name("finishedCount"), object: nil)
         }else{
             countLabel.text="\(countLabelText!-1)"
         }
+
+        
     }
     
     func getIndexPath(){
@@ -32,4 +38,14 @@ class GameCell: UICollectionViewCell {
             UserDefaults.standard.set(myIndexPath!.row, forKey: "rowOfFinishedCount")
         }
     }
+    
+    func returnIndexPath() -> IndexPath{
+        var myIndexPath: IndexPath!
+        if let superView = self.superview as? UICollectionView{
+            myIndexPath = superView.indexPath(for: self)
+        }
+        
+        return myIndexPath!
+    }
+
 }

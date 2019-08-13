@@ -52,9 +52,9 @@ class NegativeThoughtsGame: UIViewController, UICollectionViewDelegate, UICollec
 
         var negativeThoughtToDelete=negativeThoughtsArray[myIndexRow]
         CoreDataHelper.delete(negativeThought: negativeThoughtToDelete)
-                
+
         negativeThoughtsArray=CoreDataHelper.retrieveNegativeThought()
-                
+
         collectionView.reloadData()
     }
     
@@ -98,15 +98,10 @@ class NegativeThoughtsGame: UIViewController, UICollectionViewDelegate, UICollec
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
         
         if negativeThoughtsArray.count>0{
-            var multipliedCount=negativeThoughtsArray[indexPath.row].sliderValue*1
+            print("negative thoughts array count \(negativeThoughtsArray.count)")
+            var sliderCount=negativeThoughtsArray[indexPath.row].sliderValue
+            cell.countLabel.text="\(sliderCount)"
             
-            if cell.countLabel.text == ""{
-                print("putting number onto count label")
-                cell.countLabel.text="\(multipliedCount)"
-            }else{
-                print("not putting number onto count label")
-            }
-
             for subview in cell.gameButton.subviews{
                 if let item = subview as? UIImageView{
                     item.removeFromSuperview()
@@ -129,10 +124,11 @@ class NegativeThoughtsGame: UIViewController, UICollectionViewDelegate, UICollec
         }
         
         if allCells.contains(cell){
-            print("this cell is already there")
+//            print("this cell is already there")
         }else{
             allCells.append(cell)
         }
+
         
         return cell
     }

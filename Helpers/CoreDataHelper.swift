@@ -43,7 +43,6 @@ struct CoreDataHelper{
     static func saveDaylight(){
         do{
             try context.save()
-            print("it should be saving...")
         }catch let error{
             print("Could not save \(error.localizedDescription)")
         }
@@ -63,7 +62,6 @@ struct CoreDataHelper{
         do{
             let fetchRequest=NSFetchRequest<Daylight>(entityName: "Daylight")
             let results=try context.fetch(fetchRequest)
-            print("there should be results")
             return results
         }catch let error{
             print("Could not fetch \(error.localizedDescription)")
@@ -75,7 +73,6 @@ struct CoreDataHelper{
         do{
             let fetchRequest=NSFetchRequest<Organization>(entityName: "Organization")
             let results=try context.fetch(fetchRequest)
-            print("there should be results")
             return results
         }catch let error{
             print("Could not fetch \(error.localizedDescription)")
@@ -87,7 +84,6 @@ struct CoreDataHelper{
         do{
             let fetchRequest=NSFetchRequest<NotificationTime>(entityName: "NotificationTime")
             let results=try context.fetch(fetchRequest)
-            print("there should be results")
             return results
         }catch let error{
             print("Could not fetch \(error.localizedDescription)")
@@ -99,7 +95,6 @@ struct CoreDataHelper{
         do{
             let fetchRequest=NSFetchRequest<NegativeThought>(entityName: "NegativeThought")
             let results=try context.fetch(fetchRequest)
-            print("there should be results")
             return results
         }catch let error{
             print("Could not fetch \(error.localizedDescription)")
