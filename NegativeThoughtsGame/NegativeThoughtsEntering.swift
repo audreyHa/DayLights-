@@ -29,7 +29,7 @@ class NegativeThoughtsEntering: UIViewController, UITableViewDelegate, UITableVi
     
     var allCells=[NegativeThoughtsCell]()
     
-    var firstCell: NegativeThoughtsCell?
+    var lastCell: NegativeThoughtsCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,21 +81,27 @@ class NegativeThoughtsEntering: UIViewController, UITableViewDelegate, UITableVi
         
         cell.thoughtLabel.text=thoughtsArray[indexPath.row]
         print("thoughts array: \(thoughtsArray)")
-        if indexPath.row==0{
-            firstCell=cell
+        
+        if indexPath.row==myNegativeThoughtEntries.count{
+            lastCell=cell
         
             cell.textField.text=""
             cell.slider.value=1.0
             
         }else{
-                if myNegativeThoughtEntries[indexPath.row-1].entry != nil{
-                    cell.textField.text=myNegativeThoughtEntries[indexPath.row-1].entry
+            for entry in myNegativeThoughtEntries{
+                print("Text Entry: \(entry.entry!)")
+            }
+            print("all cells count: \(allCells.count)")
+            print("myNegativeThoughtEntries.count \(myNegativeThoughtEntries.count)")
+                if myNegativeThoughtEntries[indexPath.row].entry != nil{
+                    cell.textField.text=myNegativeThoughtEntries[indexPath.row].entry
                 }else{
                     cell.textField.text=""
                 }
                 
-                if myNegativeThoughtEntries[indexPath.row-1].sliderValue != nil{
-                    cell.slider.value=Float(myNegativeThoughtEntries[indexPath.row-1].sliderValue)
+                if myNegativeThoughtEntries[indexPath.row].sliderValue != nil{
+                    cell.slider.value=Float(myNegativeThoughtEntries[indexPath.row].sliderValue)
                 }else{
                     cell.slider.value=1.0
             }
@@ -113,22 +119,18 @@ class NegativeThoughtsEntering: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-    @IBAction func donePressed(_ sender: Any) {
-        for entry in myNegativeThoughtEntries{
-            CoreDataHelper.delete(negativeThought: entry)
-        }
-        
-        myNegativeThoughtEntries=CoreDataHelper.retrieveNegativeThought()
-        
-        print("all cells count: \(allCells.count)")
-        for cell in allCells{
+    func resetCoreData(){
+ 
             var newCoreDataEntry=CoreDataHelper.newNegativeThought()
-            newCoreDataEntry.entry=cell.textField.text
-            newCoreDataEntry.sliderValue=Int64(cell.slider.value)
+            newCoreDataEntry.entry=lastCell.textField.text
+            newCoreDataEntry.sliderValue=Int64(lastCell.slider.value)
             CoreDataHelper.saveDaylight()
-        }
         
         myNegativeThoughtEntries=CoreDataHelper.retrieveNegativeThought()
+    }
+    
+    @IBAction func donePressed(_ sender: Any) {
+        resetCoreData()
         
         NotificationCenter.default.post(name: Notification.Name("retrieveNegativeThoughts"), object: nil)
         
@@ -138,16 +140,15 @@ class NegativeThoughtsEntering: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func addPressed(_ sender: Any) {
         var newCoreDataEntry=CoreDataHelper.newNegativeThought()
-        newCoreDataEntry.entry=firstCell!.textField.text
-        newCoreDataEntry.sliderValue=Int64(firstCell!.slider.value)
-        print("slider value: \(Int64(firstCell!.slider.value))")
+        newCoreDataEntry.entry=lastCell.textField.text
+        newCoreDataEntry.sliderValue=Int64(lastCell.slider.value)
+        print("slider value: \(Int64(lastCell.slider.value))")
         CoreDataHelper.saveDaylight()
-        
+
         myNegativeThoughtEntries=CoreDataHelper.retrieveNegativeThought()
-        myNegativeThoughtEntries.reverse()
         
         var count=myNegativeThoughtEntries.count+1
-        thoughtsArray.insert("Thought \(count)", at: 0)
+        thoughtsArray.append("Thought \(count)")
         
         print("thoughts array: \(thoughtsArray)")
 

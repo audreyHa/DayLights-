@@ -100,6 +100,7 @@ class NegativeThoughtsGame: UIViewController, UICollectionViewDelegate, UICollec
         if negativeThoughtsArray.count>0{
             print("negative thoughts array count \(negativeThoughtsArray.count)")
             var sliderCount=negativeThoughtsArray[indexPath.row].sliderValue
+            print("slider value for \(indexPath.row): \(sliderCount)")
             cell.countLabel.text="\(sliderCount)"
             
             for subview in cell.gameButton.subviews{
