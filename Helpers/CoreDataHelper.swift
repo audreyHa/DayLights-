@@ -58,6 +58,11 @@ struct CoreDataHelper{
         saveDaylight()
     }
     
+    static func delete(noti: NotificationTime){
+        context.delete(noti)
+        saveDaylight()
+    }
+    
     static func retrieveDaylight()->[Daylight]{
         do{
             let fetchRequest=NSFetchRequest<Daylight>(entityName: "Daylight")

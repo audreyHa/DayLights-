@@ -45,6 +45,9 @@ class YesNoAlert: UIViewController{
         
         daylightImage.superview?.bringSubviewToFront(daylightImage)
         
+        headerLabel.adjustsFontSizeToFitWidth=true
+        bodyText.adjustsFontSizeToFitWidth=true
+        
         switch (UserDefaults.standard.string(forKey: "typeYesNoAlert")) {
         case "delete":
             headerLabel.text="Confirm!"

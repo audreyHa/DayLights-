@@ -29,12 +29,19 @@ class SearchDayLight: UITableViewController {
         }
         
         if selectedDate.count==0{
-            let noDayLight = UIAlertController(title: "ALERT!", message: "You did not make DayHighlights on this day!", preferredStyle: UIAlertController.Style.alert)
-            noDayLight.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
-            self.present(noDayLight, animated: true, completion: nil)
+            UserDefaults.standard.set("noDaylightToday",forKey: "typeOKAlert")
+            makeOKAlert()
         }
         tableView.reloadData()
         
+    }
+    
+    func makeOKAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "OKAlert") as! OKAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

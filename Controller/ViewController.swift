@@ -78,91 +78,8 @@ class ViewController: UIViewController {
         if launchedBefore{
             print("Not first launch.")
         }else{
-       
-  
             Answers.logCustomEvent(withName: "First time User", customAttributes: nil)
-            
-
-            let privacyPolicy = UIAlertController(title: "PRIVACY POLICY", message:"By clicking “Continue” or continuing to use this app, you acknowledge that DayHighlights incorporates an analytical tool (Answers) tracking how many times users land on different screens to improve user experience and guide development for future features. Any identifiable information (name, contact information, location, etc.) will not be collected. Your DayHighLights are stored locally on your phone; no third party (including me) has access to your content in this app. If you have any questions, please contact DayHighlightsApp@gmail.com!", preferredStyle: UIAlertController.Style.alert)
-            
-            //1. Create the alert controller.
-            let notification = UIAlertController(title: "ALERT!", message: "What time do you want notifications for creating DayHighlights entries?", preferredStyle: .alert)
-            
-            //2. Add the text field. You can configure it however you need.
-            notification.addTextField { (textField) in
-                
-                datePicker = UIDatePicker(frame:CGRect(x: 0, y: self.view.frame.size.height - 220, width:self.view.frame.size.width, height: 216))
-                datePicker.backgroundColor = UIColor.white
-                datePicker.datePickerMode = .time
-
-                textField.inputView = datePicker
-
-            }
-            
-            // 3. Grab the value from the text field, and print it when the user clicks OK.
-            notification.addAction(UIAlertAction(title:"Done!", style: UIAlertAction.Style.default, handler: {(action) in
-                let hourFormatter = DateFormatter()
-                hourFormatter.dateFormat = "HH"
-                
-                let minuteFormatter = DateFormatter()
-                minuteFormatter.dateFormat = "mm"
-                
-                var strHour = Int32(hourFormatter.string(from: datePicker.date))
-                var strMin = Int32(minuteFormatter.string(from: datePicker.date))
-                
-                var notificationTime=CoreDataHelper.newNotiTime()
-                notificationTime.hour=strHour!
-                notificationTime.minute=strMin!
-                CoreDataHelper.saveDaylight()
-
-                // Change the time to 7:00:00 in your locale
-                
-                var notiArray=CoreDataHelper.retrieveNotification()
-                
-                if notiArray.count != 0{
-                    let content=UNMutableNotificationContent()
-                    content.title="DayHighlights Alert!"
-                    content.body="Make sure to fill out your DayHighlights for today!"
-                    content.sound=UNNotificationSound.default
-                    
-                    let gregorian = Calendar(identifier: .gregorian)
-                    let now = Date()
-                    var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
-                    
-                    var updateNotificationTime=notiArray[0]
-                    components.hour = Int(updateNotificationTime.hour)
-                    components.minute = Int(updateNotificationTime.minute)
-                    components.second = 0
-                    
-                    let date = gregorian.date(from: components)!
-                    
-                    let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
-                    
-                    let request=UNNotificationRequest(identifier: "testIdentifier", content: content, trigger: trigger)
-                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                }
-            }))
-
-            // add an action (button)
-            privacyPolicy.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default) {
-                UIAlertAction in
-                DispatchQueue.main.async {
-                    let notificationCenter = UNUserNotificationCenter.current()
-                    
-                    notificationCenter.getNotificationSettings { (settings) in
-                        // Do not schedule notifications if not authorized.
-                        if settings.authorizationStatus == .authorized{
-                            self.present(notification, animated: true)
-                        }else{
-                            self.setNotificationTime()
-                        }
-                    }
-                }
-            })
-            // show the alert
-            self.present(privacyPolicy, animated: true, completion: nil)
-
+            makePrivacyAlert()
             print("First time opening app")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
            
@@ -381,25 +298,18 @@ class ViewController: UIViewController {
         
         if((doubleWeekToCheck.count==doubleCheck)||(doubleWeekToCheck.count-1 == doubleCheck)||(doubleWeekToCheck.count-2 == doubleCheck))&&(doubleWeekEachDateCount>=10){
             Answers.logCustomEvent(withName: "Bad Mood Past 2 Weeks", customAttributes: nil)
-                let alert2 = UIAlertController(title: "ALERT!", message: "Looks like your mood has not been good for the past few weeks... Let's look at some resources!", preferredStyle: UIAlertController.Style.alert)
-                alert2.addAction(UIAlertAction(title: "Show some resources!", style: UIAlertAction.Style.default, handler: {
-                    (action) in
-                    alert2.dismiss(animated: true, completion: nil)
-                    self.performSegue(withIdentifier: "resources", sender: nil)
-                }))
-                self.present(alert2, animated: true, completion: nil)
+            UserDefaults.standard.set("resources",forKey: "typeOKAlert")
+            makeOKAlert()
 
         }else if((weekDatesToCheck.count==weekCheck)||(weekDatesToCheck.count-1 == weekCheck))&&(weekCheckEachDateCount>=5){
                 Answers.logCustomEvent(withName: "Bad Mood Past 1 Weeks", customAttributes: nil)
-                let alert2 = UIAlertController(title: "ALERT!", message: "Looks like you mood has not been great for the past week... Please make sure to talk to a family member or guardian, trusted adult, teacher, or friend.", preferredStyle: UIAlertController.Style.alert)
-                alert2.addAction(UIAlertAction(title: "I WILL Talk to Someone!", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert2, animated: true, completion: nil)
+            UserDefaults.standard.set("weekTalkToFriend",forKey: "typeOKAlert")
+            makeOKAlert()
 
         }else if(checkingCount==datesToCheck.count)&&(threeDayCount==3){
             Answers.logCustomEvent(withName: "Bad Mood Past 3 Days", customAttributes: nil)
-                let alert2 = UIAlertController(title: "ALERT!", message: "Looks like your mood has not been great for the past few days... Try talking to a family member or guardian, trusted adult, teacher, or friend!", preferredStyle: UIAlertController.Style.alert)
-                alert2.addAction(UIAlertAction(title: "I'll Talk to Someone", style: UIAlertAction.Style.default, handler:nil))
-                self.present(alert2, animated: true, completion: nil)
+            UserDefaults.standard.set("daysTalkToFriend",forKey: "typeOKAlert")
+            makeOKAlert()
         }
         
         print("Double week each count \(doubleWeekEachDateCount)")
@@ -407,6 +317,29 @@ class ViewController: UIViewController {
         print("3 day count \(threeDayCount)")
     }
     
+    func makeOKAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "OKAlert") as! OKAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func makePrivacyAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "PrivacyPolicyAlert") as! PrivacyPolicyAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func makeEnterNotiAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "EnterNotiAlert") as! EnterNotiAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dayLightsTitleLabel: UILabel!
@@ -437,6 +370,8 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(negativeThoughtsGame), name: NSNotification.Name("negativeThoughtsGame"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(segueResources), name: NSNotification.Name("segueResources"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notiTime), name: NSNotification.Name("notiTime"), object: nil)
         
         self.hideSide()
         self.hideKeyboardWhenTappedAround() 
@@ -447,7 +382,6 @@ class ViewController: UIViewController {
         
         dateLabel.text=newnow
         dayLightsTitleLabel.text="DayHighlights"
-
     }
     //END of view did load
     
@@ -496,17 +430,15 @@ class ViewController: UIViewController {
             funnyText.text=""
         }
     }
-    
-    func createAlert(title: String, message: String){
-        let alert=UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title:"OK", style: UIAlertAction.Style.default, handler: {(action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
         
+    }
+    
+    @objc func notiTime(notification: NSNotification) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+       makeEnterNotiAlert()
     }
     
     //START keyboard modifying functions
@@ -523,9 +455,11 @@ class ViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-    //END keyboard modifying functions
     
-    
+    @objc func segueResources(notification: NSNotification) {
+        self.performSegue(withIdentifier: "resources", sender: nil)
+    }
+
     @objc func keyboardWillChange(notification: Notification){
         
     }
@@ -559,10 +493,8 @@ class ViewController: UIViewController {
         if (count>0){
             performSegue(withIdentifier: "showMood", sender: nil)
         }else{
-            let comeLater = UIAlertController(title: "ALERT!", message: "You do not have enough mood data yet. Check back soon!", preferredStyle: UIAlertController.Style.alert)
-            comeLater.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
-            self.present(comeLater, animated: true, completion: nil)
-
+            UserDefaults.standard.set("noMoodData",forKey: "typeOKAlert")
+            makeOKAlert()
         }
         
     }

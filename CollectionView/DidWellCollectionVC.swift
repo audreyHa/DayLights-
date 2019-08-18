@@ -37,6 +37,28 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         NotificationCenter.default.addObserver(self, selector: #selector(self.showEntryAlert(notification:)), name: Notification.Name("showEntryAlert"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.deleteDaylight(notification:)), name: Notification.Name("delete"), object: nil)
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "SkyDH.jpg")?.draw(in: self.view.bounds)
+        
+        switch(headerCategoryLabel.text){
+        case "Gallery: Things I'm Grateful For":
+            UIImage(named: "SunsetDH.jpg")?.draw(in: self.view.bounds)
+        case "Gallery: Joyful Moments":
+            UIImage(named: "SkyDH.png")?.draw(in: self.view.bounds)
+        default:
+            UIImage(named: "SkyDH.png")?.draw(in: self.view.bounds)
+        }
+        
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
+        
+        leftCollectionView.backgroundColor=UIColor.clear
     }
     
     func resetDaylightArrays(){

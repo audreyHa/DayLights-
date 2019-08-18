@@ -15,6 +15,10 @@
 		F61832A722506BCE0083886A /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A622506BCE0083886A /* BarCell.swift */; };
 		F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */; };
 		F61F8E3D22FE4FE200080D31 /* DidWellCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3C22FE4FE200080D31 /* DidWellCollectionVC.swift */; };
+		F627BA362309046700F888A3 /* OKAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA352309046700F888A3 /* OKAlert.swift */; };
+		F627BA3823091DB800F888A3 /* PrivacyPolicyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3723091DB800F888A3 /* PrivacyPolicyAlert.swift */; };
+		F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */; };
+		F627BA3C2309288B00F888A3 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3B2309288B00F888A3 /* SettingsVC.swift */; };
 		F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */; };
 		F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68954B422FF43BC00D23B5B /* EntryAlert.swift */; };
 		F68A4227225C6BF300B56FA1 /* OrganizationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */; };
@@ -52,6 +56,10 @@
 		F61832A622506BCE0083886A /* BarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
 		F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCollectionViewCell.swift; sourceTree = "<group>"; };
 		F61F8E3C22FE4FE200080D31 /* DidWellCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellCollectionVC.swift; sourceTree = "<group>"; };
+		F627BA352309046700F888A3 /* OKAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OKAlert.swift; sourceTree = "<group>"; };
+		F627BA3723091DB800F888A3 /* PrivacyPolicyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyAlert.swift; sourceTree = "<group>"; };
+		F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNotiAlert.swift; sourceTree = "<group>"; };
+		F627BA3B2309288B00F888A3 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
 		F68954B422FF43BC00D23B5B /* EntryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlert.swift; sourceTree = "<group>"; };
 		F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationCell.swift; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 				F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */,
 				F69C9E822262DC7300CFF1AC /* ShowAll.swift */,
 				F6C5B8FB22FE06FE00078675 /* Chart.swift */,
+				F627BA3B2309288B00F888A3 /* SettingsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +206,9 @@
 				F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */,
 				F68954B422FF43BC00D23B5B /* EntryAlert.swift */,
 				F6E110382300DB330033C4CA /* YesNoAlert.swift */,
+				F627BA352309046700F888A3 /* OKAlert.swift */,
+				F627BA3723091DB800F888A3 /* PrivacyPolicyAlert.swift */,
+				F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -359,6 +371,7 @@
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
+				F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */,
 				F69C9E852262DC8000CFF1AC /* ShowAllCell.swift in Sources */,
 				F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */,
 				F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */,
@@ -368,10 +381,13 @@
 				F614E20823010CB50041D628 /* NegativeThoughtsGame.swift in Sources */,
 				F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */,
 				F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */,
+				F627BA3C2309288B00F888A3 /* SettingsVC.swift in Sources */,
 				F61F8E3D22FE4FE200080D31 /* DidWellCollectionVC.swift in Sources */,
 				F68A4227225C6BF300B56FA1 /* OrganizationCell.swift in Sources */,
 				F6C5B8FE22FE1D8200078675 /* GraphTableViewCell.swift in Sources */,
+				F627BA362309046700F888A3 /* OKAlert.swift in Sources */,
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
+				F627BA3823091DB800F888A3 /* PrivacyPolicyAlert.swift in Sources */,
 				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,
 				F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */,
 				F6919791224C976500554EFA /* GratefulTableViewCell.swift in Sources */,
