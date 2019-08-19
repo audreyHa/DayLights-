@@ -2369,16 +2369,16 @@
                                 <rect key="frame" x="20" y="169" width="335" height="75"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="YBT-Qz-cQo">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="33"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Notifications:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vw-iQ-a1s">
-                                                <rect key="frame" x="0.0" y="0.0" width="256" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="256" height="33"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HTs-b6-nzh">
-                                                <rect key="frame" x="286" y="0.0" width="51" height="34.5"/>
+                                                <rect key="frame" x="286" y="0.0" width="51" height="33"/>
                                                 <color key="onTintColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <connections>
                                                     <action selector="sliderChanged:" destination="Hyf-iL-3FT" eventType="valueChanged" id="FYg-2I-6fj"/>
@@ -2387,20 +2387,20 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="loL-x8-Wb3">
-                                        <rect key="frame" x="0.0" y="42.5" width="335" height="32.5"/>
+                                        <rect key="frame" x="0.0" y="41" width="335" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:00:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qi-UE-c1P">
-                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="32.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cma-YD-Wvs">
-                                                <rect key="frame" x="131.5" y="0.0" width="203.5" height="32.5"/>
-                                                <color key="backgroundColor" red="0.84705882349999995" green="0.38823529410000002" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="203.5" height="34"/>
+                                                <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                 <state key="normal" title="  Change Notification Time  ">
-                                                    <color key="titleColor" red="0.81960784310000001" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="changeNotiTime:" destination="Hyf-iL-3FT" eventType="touchUpInside" id="2On-HV-fH1"/>
