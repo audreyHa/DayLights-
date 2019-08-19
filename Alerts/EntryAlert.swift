@@ -95,7 +95,6 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
         navigationController?.popViewController(animated: true)
 
         dismiss(animated: true, completion: nil)
-        
     }
 
     @IBAction func deletePressed(_ sender: Any) {
@@ -106,4 +105,9 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true, completion: nil)
     }
+    
+    @IBAction func editPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("editDaylight"), object: nil)
+    }
+    
 }

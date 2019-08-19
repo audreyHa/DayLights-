@@ -52,7 +52,11 @@ class OKAlert: UIViewController {
             yesButton.setTitle("I WILL talk to someone!", for: .normal)
         case "noMoodData":
             headerLabel.text="ALERT!"
-            bodyText.text="You do not have any mood data yet!"
+            bodyText.text="You do not have any mood data yet!\n\nCheck back after filling out at least 2 entries!"
+            yesButton.setTitle("OK", for: .normal)
+        case "noDaylightData":
+            headerLabel.text="ALERT!"
+            bodyText.text="You do not have any DayHighlights yet!\n\nCheck back after filling out an entry!"
             yesButton.setTitle("OK", for: .normal)
         case "noDaylightToday":
             headerLabel.text="ALERT!"

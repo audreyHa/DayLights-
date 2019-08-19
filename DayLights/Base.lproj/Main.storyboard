@@ -296,9 +296,11 @@
                     <connections>
                         <outlet property="headerCategoryLabel" destination="x0u-QY-QRI" id="NTY-je-nXr"/>
                         <outlet property="leftCollectionView" destination="pKX-Ut-uUJ" id="fvM-5T-gzN"/>
+                        <segue destination="hnT-2y-b0d" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="y3c-Bm-fNl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nkb-4j-Xth" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hnT-2y-b0d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-102" y="917"/>
         </scene>
@@ -1002,6 +1004,9 @@
                                                         <state key="normal" title="  Edit  ">
                                                             <color key="titleColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="editPressed:" destination="7n1-Z6-aeH" eventType="touchUpInside" id="y5W-0O-3sv"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIg-wZ-mTu">
                                                         <rect key="frame" x="202" y="0.0" width="82" height="36"/>
@@ -1322,9 +1327,11 @@
                     <connections>
                         <outlet property="headerCategoryLabel" destination="Zef-yv-Oua" id="AjN-o4-OCu"/>
                         <outlet property="leftCollectionView" destination="ZXr-Ao-ORK" id="EuJ-Xb-xbg"/>
+                        <segue destination="EcP-bi-3Dx" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="kfD-1v-Xpi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42J-SX-W0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EcP-bi-3Dx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="751" y="916"/>
         </scene>
@@ -1470,13 +1477,14 @@
                     <navigationItem key="navigationItem" id="nOa-Ay-gEb">
                         <barButtonItem key="rightBarButtonItem" title="Home" id="OL0-XA-FIX">
                             <connections>
-                                <segue destination="G00-QX-yBF" kind="unwind" unwindAction="unwindWithSegue:" id="LpO-WN-jq7"/>
+                                <segue destination="G00-QX-yBF" kind="unwind" identifier="home" unwindAction="unwindWithSegue:" id="LpO-WN-jq7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="headerCategoryLabel" destination="xeI-xp-sIx" id="Csn-RD-Bfi"/>
                         <outlet property="leftCollectionView" destination="81H-bj-bY9" id="3Um-jc-HKM"/>
+                        <segue destination="G00-QX-yBF" kind="unwind" identifier="edit" unwindAction="unwindWithSegue:" id="Z8I-4P-PTY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zu-e7-PM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2238,7 +2246,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Wz6-mc-GNk">
-                                                        <rect key="frame" x="0.0" y="58" width="280" height="93"/>
+                                                        <rect key="frame" x="0.0" y="57.5" width="280" height="93.5"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="587800421.03371596">
                                                             <!--2019-08-18 05:53:41 +0000-->
                                                         </date>

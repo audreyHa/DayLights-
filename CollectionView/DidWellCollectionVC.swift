@@ -38,14 +38,16 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.deleteDaylight(notification:)), name: Notification.Name("delete"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.editDaylight(notification:)), name: Notification.Name("editDaylight"), object: nil)
+        
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "SkyDH.jpg")?.draw(in: self.view.bounds)
         
         switch(headerCategoryLabel.text){
         case "Gallery: Things I'm Grateful For":
-            UIImage(named: "SunsetDH.jpg")?.draw(in: self.view.bounds)
+            UIImage(named: "PlanetDH.jpg")?.draw(in: self.view.bounds)
         case "Gallery: Joyful Moments":
-            UIImage(named: "SkyDH.png")?.draw(in: self.view.bounds)
+            UIImage(named: "SunsetDH.png")?.draw(in: self.view.bounds)
         default:
             UIImage(named: "SkyDH.png")?.draw(in: self.view.bounds)
         }
@@ -74,6 +76,45 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             }
             count+=1
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 1
+        guard let identifier = segue.identifier,
+            let destination = segue.destination as? ViewController
+            else { return }
+        
+        switch identifier {
+            // 2
+            
+        case "edit":
+            var side=UserDefaults.standard.string(forKey: "sideInCell")
+            var indexPathToDelete=UserDefaults.standard.integer(forKey: "rowOfPressedZoom")
+            var daylightToEdit: Daylight?
+
+            if side=="left"{
+                print("side is left")
+                daylightToEdit=leftEntries[indexPathToDelete]
+            }else if side=="right"{
+                print("side is right")
+                daylightToEdit=rightEntries[indexPathToDelete]
+            }
+            
+            
+            // 3
+            let destination = segue.destination as! ViewController
+            // 4
+            destination.daylight = daylightToEdit
+            
+        default:
+            print("unexpected segue identifier")
+        }
+    }
+    
+    @objc func editDaylight(notification: Notification){
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "edit", sender: nil)
     }
     
     @objc func showEntryAlert(notification: Notification) {
@@ -162,16 +203,13 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
     func setImageColor(image: UIImageView){
         var myTempColors=[
             //dark navy/purples/magenta
-            //NEED MORE PURPLES
             [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x843b62), UIColor(rgb: 0x241663), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b), UIColor(rgb: 0x9ea9f0), UIColor(rgb: 0xccc1ff), UIColor(rgb: 0xffeafe), UIColor(rgb: 0xab93c9), UIColor(rgb: 0xd698b9)],
+
+            // red/orange/yellow/pink
+            [UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf2e3c9), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xdc5353), UIColor(rgb: 0xcf455c), UIColor(rgb: 0xf67e7d)],
             
             // green/teal/blue
-            //NEED MORE GREENS
-
-            [UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x00818a), UIColor(rgb: 0x00a79d), UIColor(rgb: 0x226b80), UIColor(rgb: 0x00818a), UIColor(rgb: 0x8bbabb), UIColor(rgb: 0xa0cc78), UIColor(rgb: 0x9cf196), UIColor(rgb: 0x5edfff), UIColor(rgb: 0xb2fcff), UIColor(rgb: 0xe0f5b9), UIColor(rgb: 0xc6f1d6), UIColor(rgb: 0xdaf1f9), UIColor(rgb: 0x366ed8)],
-            
-            // red/orange/yellow/pink
-            [UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf2e3c9), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xdc5353), UIColor(rgb: 0xcf455c), UIColor(rgb: 0xf67e7d)]
+            [UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x00818a), UIColor(rgb: 0x00a79d), UIColor(rgb: 0x226b80), UIColor(rgb: 0x00818a), UIColor(rgb: 0x8bbabb), UIColor(rgb: 0xa0cc78), UIColor(rgb: 0x9cf196), UIColor(rgb: 0x5edfff), UIColor(rgb: 0xb2fcff), UIColor(rgb: 0xe0f5b9), UIColor(rgb: 0xc6f1d6), UIColor(rgb: 0xdaf1f9), UIColor(rgb: 0x366ed8)]
         ]
         
         var randomInt1 = Int.random(in: 0...2)
@@ -273,6 +311,17 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             setRightSide()
         }
 
+        switch(headerCategoryLabel.text){
+        case "Gallery: Things I'm Grateful For":
+            cell.dateLabel.textColor=UIColor.white
+            cell.rightZoom.imageView?.setTemplateImage()
+            cell.rightZoom.imageView?.tintColor=UIColor.white
+            cell.leftZoom.imageView?.setTemplateImage()
+            cell.leftZoom.imageView?.tintColor=UIColor.white
+        default:
+            cell.dateLabel.textColor=UIColor.black
+        }
+        
        return cell
     }
 }

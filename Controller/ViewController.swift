@@ -469,7 +469,22 @@ class ViewController: UIViewController {
     }
     
     @objc func showDidWell(){
-        performSegue(withIdentifier: "showDidWell", sender: nil)
+        var daylights=CoreDataHelper.retrieveDaylight()
+        
+        var count=0
+        for value in daylights{
+            if (value.mood != 0){
+                count+=1
+            }
+        }
+        
+        if (count>0){
+            performSegue(withIdentifier: "showDidWell", sender: nil)
+        }else{
+            UserDefaults.standard.set("noDaylightData",forKey: "typeOKAlert")
+            makeOKAlert()
+        }
+        
     }
     
     @objc func showResources(){
@@ -490,13 +505,12 @@ class ViewController: UIViewController {
             }
         }
         
-        if (count>0){
+        if (count>1){
             performSegue(withIdentifier: "showMood", sender: nil)
         }else{
             UserDefaults.standard.set("noMoodData",forKey: "typeOKAlert")
             makeOKAlert()
         }
-        
     }
 }
 

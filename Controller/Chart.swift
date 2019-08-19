@@ -86,29 +86,29 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             switch(month){
             case "01":
-                formalMonthYear.append("January \(year)")
+                formalMonthYear.append("Jan \(year)")
             case "02":
-                formalMonthYear.append("February \(year)")
+                formalMonthYear.append("Feb \(year)")
             case "03":
-                formalMonthYear.append("March \(year)")
+                formalMonthYear.append("Mar \(year)")
             case "04":
-                formalMonthYear.append("April \(year)")
+                formalMonthYear.append("Apr \(year)")
             case "05":
                 formalMonthYear.append("May \(year)")
             case "06":
-                formalMonthYear.append("June \(year)")
+                formalMonthYear.append("Jun \(year)")
             case "07":
-                formalMonthYear.append("July \(year)")
+                formalMonthYear.append("Jul \(year)")
             case "08":
-                formalMonthYear.append("August \(year)")
+                formalMonthYear.append("Aug \(year)")
             case "09":
-                formalMonthYear.append("September \(year)")
+                formalMonthYear.append("Sep \(year)")
             case "10":
-                formalMonthYear.append("October \(year)")
+                formalMonthYear.append("Oct \(year)")
             case "11":
-                formalMonthYear.append("November \(year)")
+                formalMonthYear.append("Nov \(year)")
             case "12":
-                formalMonthYear.append("December \(year)")
+                formalMonthYear.append("Dec \(year)")
             default:
                 break
             }
