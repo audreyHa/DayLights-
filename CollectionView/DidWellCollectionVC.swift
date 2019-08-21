@@ -26,10 +26,13 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
 
         leftCollectionView.dataSource=self
         leftCollectionView.delegate=self
-
-        var layout=leftCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize=CGSize(width: (leftCollectionView.frame.size.width-30), height:400)
         
+        let width = self.view.bounds.width // This is the width of the superview, in your case probably the `UIViewController`
+        let height = CGFloat(400) // Your desired height, if you want it to full the superview, use self.bounds.height
+        let layout = leftCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: height) // Sets the dimensions of your collection view cell.
+
+        leftCollectionView.updateConstraintsIfNeeded()
         
         myColors=[
             //light
@@ -256,6 +259,10 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
                 min=Int(cell.leftHandImage.frame.width*0.4)
             }
             
+            if min>max{
+                min=0
+            }
+            
             var randomInt = Int.random(in: min..<max)
             
              cell.leftHandImage.frame=CGRect(x: CGFloat(randomInt), y: cell.leftHandImage.frame.origin.y, width: cell.leftHandImage.frame.width, height: cell.leftHandImage.frame.height)
@@ -330,9 +337,24 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             cell.dateLabel.textColor=UIColor.black
         }
 
+       
+        cell.updateConstraintsIfNeeded()
        return cell
     }
 }
+
+//extension ViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let numberOfCellInColumn = 2.0
+//
+//        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+//            let interitemSpace = flowLayout.minimumInteritemSpacing
+//            let cellWidth = (collectionView.bounds.width - (numberOfCellInColumn - 1) * interitemSpace - flowLayout.sectionInset.left - flowLayout.sectionInset.right) * (1.0/numberOfCellInColumn)
+//            return CGSize(width: cellWidth, height: cellWidth)
+//        }
+//        return CGSize.zero
+//    }
+//}
 
 extension UIImageView {
     func setTemplateImage() {
@@ -358,3 +380,4 @@ extension UIColor {
         )
     }
 }
+
