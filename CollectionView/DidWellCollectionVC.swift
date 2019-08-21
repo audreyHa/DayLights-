@@ -26,11 +26,10 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
 
         leftCollectionView.dataSource=self
         leftCollectionView.delegate=self
-        
+
         var layout=leftCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize=CGSize(width: (leftCollectionView.frame.size.width-40), height:400)
-        layout.sectionInset = UIEdgeInsets(top: 5,left: 15,bottom: 5,right: 15)
-        layout.minimumInteritemSpacing=0
+        layout.itemSize=CGSize(width: (leftCollectionView.frame.size.width-30), height:400)
+        
         
         myColors=[
             //light
@@ -68,7 +67,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         leftCollectionView.backgroundColor=UIColor.clear
     }
-    
+
     func resetDaylightArrays(){
         dayHighlightsArray.reverse()
         var count=0
@@ -151,7 +150,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             dayHighlightsArray=CoreDataHelper.retrieveDaylight()
             resetDaylightArrays()
         }
-        
+
         leftCollectionView.reloadData()
     }
 
@@ -330,7 +329,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         default:
             cell.dateLabel.textColor=UIColor.black
         }
-        
+
        return cell
     }
 }

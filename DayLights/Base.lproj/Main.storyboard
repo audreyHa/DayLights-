@@ -1182,7 +1182,7 @@
         <!--Did Well CollectionVC-->
         <scene sceneID="629-nO-bCj">
             <objects>
-                <viewController id="IIT-nQ-LXs" customClass="DidWellCollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="IIT-nQ-LXs" customClass="DidWellCollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zbl-mC-kn6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1339,7 +1339,7 @@
         <!--Did Well CollectionVC-->
         <scene sceneID="irb-yV-6VR">
             <objects>
-                <viewController id="Xqt-3o-fFF" customClass="DidWellCollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xqt-3o-fFF" customClass="DidWellCollectionVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JAJ-xQ-vZx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

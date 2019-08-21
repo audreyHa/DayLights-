@@ -25,6 +25,7 @@ class LeftCollectionViewCell: UICollectionViewCell {
     var rightDidWell: String!
     var rightGrateful: String!
     var rightJoyful: String!
+
     
     @IBAction func onLeftZoomTouched(_ sender: Any) {
         UserDefaults.standard.set("left", forKey: "sideInCell")
