@@ -47,6 +47,9 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             cell.labels=formalMonthYear
             cell.lineChartView.isUserInteractionEnabled=false
+            if daylightsArray.count<10{
+                cell.lineChartView.xAxis.drawLabelsEnabled=false
+            }
         }else{
             var monthData=daylightsPerMonth[indexPath.row-1]
             var monthName=formalIndividualMonths[indexPath.row-1]
