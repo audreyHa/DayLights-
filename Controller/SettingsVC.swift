@@ -15,6 +15,7 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var mySwitch: UISwitch!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var changeNotiButton: UIButton!
+    @IBOutlet var fullView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,19 @@ class SettingsVC: UIViewController {
         changeNotiButton.titleLabel?.adjustsFontSizeToFitWidth=true
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTimeAndSwitch), name: NSNotification.Name("updateTimeAndSwitch"), object: nil)
+
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "RainDH.jpg")?.draw(in: self.view.bounds)
+        
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
+        
+        fullView.backgroundColor=UIColor.clear
     }
     
     func makeEnterNotiAlert(){

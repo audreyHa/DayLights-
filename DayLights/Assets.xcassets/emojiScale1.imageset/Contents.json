@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Screen Shot 2019-04-16 at 11.57.03 PM.png",
+      "filename" : "Centered1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Screen Shot 2019-04-16 at 11.57.03 PM@2x.png",
+      "filename" : "Centered1@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Screen Shot 2019-04-16 at 11.57.03 PM@3x.png",
+      "filename" : "Centered1@3x.png",
       "scale" : "3x"
     }
   ],

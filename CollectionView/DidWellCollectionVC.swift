@@ -21,10 +21,16 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        headerCategoryLabel.adjustsFontSizeToFitWidth=true
         resetDaylightArrays()
 
         leftCollectionView.dataSource=self
         leftCollectionView.delegate=self
+        
+        var layout=leftCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize=CGSize(width: (leftCollectionView.frame.size.width-40), height:400)
+        layout.sectionInset = UIEdgeInsets(top: 5,left: 15,bottom: 5,right: 15)
+        layout.minimumInteritemSpacing=0
         
         myColors=[
             //light
@@ -197,19 +203,22 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             label.textColor=UIColor.black
         }
         
+//        label.backgroundColor=UIColor.purple
+        
         image.addSubview(label)
     }
     
     func setImageColor(image: UIImageView){
         var myTempColors=[
-            //dark navy/purples/magenta
-            [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x843b62), UIColor(rgb: 0x241663), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b), UIColor(rgb: 0x9ea9f0), UIColor(rgb: 0xccc1ff), UIColor(rgb: 0xffeafe), UIColor(rgb: 0xab93c9), UIColor(rgb: 0xd698b9)],
-
             // red/orange/yellow/pink
             [UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xdc5353), UIColor(rgb: 0xcf455c), UIColor(rgb: 0xf67e7d)],
             
             // green/teal/blue
-            [UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x00818a), UIColor(rgb: 0x00a79d), UIColor(rgb: 0x226b80), UIColor(rgb: 0x00818a), UIColor(rgb: 0x9cf196), UIColor(rgb: 0x5edfff), UIColor(rgb: 0xb2fcff), UIColor(rgb: 0xe0f5b9), UIColor(rgb: 0xc6f1d6), UIColor(rgb: 0xdaf1f9), UIColor(rgb: 0x366ed8)]
+            [UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x00818a), UIColor(rgb: 0x00a79d), UIColor(rgb: 0x226b80), UIColor(rgb: 0x00818a), UIColor(rgb: 0x9cf196), UIColor(rgb: 0x5edfff), UIColor(rgb: 0xb2fcff), UIColor(rgb: 0xe0f5b9), UIColor(rgb: 0xc6f1d6), UIColor(rgb: 0xdaf1f9), UIColor(rgb: 0x366ed8)],
+            
+            //dark navy/purples/magenta
+            [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x843b62), UIColor(rgb: 0x241663), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b), UIColor(rgb: 0x9ea9f0), UIColor(rgb: 0xccc1ff), UIColor(rgb: 0xffeafe), UIColor(rgb: 0xab93c9), UIColor(rgb: 0xd698b9)]
+            
         ]
         
         var randomInt1 = Int.random(in: 0...2)

@@ -382,6 +382,7 @@ class ViewController: UIViewController {
         
         dateLabel.text=newnow
         dayLightsTitleLabel.text="DayHighlights"
+        dateLabel.adjustsFontSizeToFitWidth=true
     }
     //END of view did load
     

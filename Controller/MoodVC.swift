@@ -23,6 +23,12 @@ class MoodVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        moodLabel.adjustsFontSizeToFitWidth=true
+        weekLabel.adjustsFontSizeToFitWidth=true
+        monthLabel.adjustsFontSizeToFitWidth=true
+        yearLabel.adjustsFontSizeToFitWidth=true
+        
         Answers.logCustomEvent(withName: "Opened Mood Stats", customAttributes: nil)
         var daylightsArray=[Daylight]()
         daylightsArray=CoreDataHelper.retrieveDaylight()
@@ -205,9 +211,17 @@ class MoodVC: UIViewController {
             }
         }
         
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "RainDH.jpg")?.draw(in: self.view.bounds)
         
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }//end of view did load
-
 }
 
 
