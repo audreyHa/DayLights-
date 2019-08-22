@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class RandomBalloonsVC: UIViewController {
 
@@ -14,26 +16,70 @@ class RandomBalloonsVC: UIViewController {
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     var secondInterval: Double!
+    var totalMin: Int!
+    var totalSec: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let segmentIndex = segmentedControl.selectedSegmentIndex
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setRandomBalloonGame(notification:)), name: Notification.Name("setRandomBalloonGame"), object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        makeGameSettingsAlert()
+    }
+    
+    func makeGameSettingsAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "GameSettingsAlert") as! GameSettingsAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func setRandomBalloonGame(notification: Notification){
+        var gameTime=UserDefaults.standard.string(forKey: "gameTime")
+        var gameLevel=UserDefaults.standard.string(forKey: "gameLevel")
         
-        switch(segmentIndex){
-        case 0:
+        switch(gameTime){
+        case "30 Sec":
+            totalMin=0
+            totalSec=30
+        case "1 Min":
+            totalMin=1
+            totalSec=0
+        case "5 Min":
+            totalMin=5
+            totalSec=0
+        default:
+            totalMin=1
+            totalSec=0
+        }
+        
+        switch(gameLevel){
+        case "Easy":
             secondInterval=1
-        case 1:
+            segmentedControl.selectedSegmentIndex = 0
+        case "Medium":
             secondInterval=0.5
-        case 2:
+            segmentedControl.selectedSegmentIndex = 1
+        case "HARD":
             secondInterval=0.25
-        case 3:
-            secondInterval=0.07
+            segmentedControl.selectedSegmentIndex = 2
+        case "EXTREME":
+            secondInterval=0.1
+            segmentedControl.selectedSegmentIndex = 3
         default:
             secondInterval=0.25
+            segmentedControl.selectedSegmentIndex = 2
         }
-
+        
         scheduledAddBalloonTimer()
+    }
+    
+    func scheduledAddBalloonTimer(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        timer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
     }
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
@@ -41,7 +87,8 @@ class RandomBalloonsVC: UIViewController {
         
         switch(segmentIndex){
         case 0:
-            secondInterval=1        case 1:
+            secondInterval=1
+        case 1:
             secondInterval=0.5
         case 2:
             secondInterval=0.25
@@ -82,7 +129,7 @@ class RandomBalloonsVC: UIViewController {
         var fullHeight=Int(gameView.frame.height)
         
         var widthMin=Int(gameView.frame.width*0.2)
-        var widthMax=Int(gameView.frame.width*0.4)
+        var widthMax=Int(gameView.frame.width*0.3)
         var randomWidth = Int.random(in: widthMin...widthMax)
         
         var randomX=Int.random(in: 0...fullWidth-randomWidth)
@@ -95,11 +142,6 @@ class RandomBalloonsVC: UIViewController {
         gameView.addSubview(myImageView)
     }
 
-    func scheduledAddBalloonTimer(){
-        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        timer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if let firstTouch = touches.first {
@@ -107,7 +149,24 @@ class RandomBalloonsVC: UIViewController {
             
             //if view that was being pan gestured is a small blue circle view
             if let item = hitView as? UIImageView{
-                item.removeFromSuperview()
+                
+                guard let path = Bundle.main.path(forResource: "balloonPopping", ofType:"mp4") else {
+                    debugPrint("mp4 not found")
+                    return
+                }
+                
+
+                let player = AVPlayer(url: URL(fileURLWithPath: path))
+                let playerLayer = AVPlayerLayer(player: player)
+                playerLayer.frame = item.bounds
+                item.layer.addSublayer(playerLayer)
+                player.play()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
+                    // Code you want to be delayed
+                    item.removeFromSuperview()
+                }
+                
             }
         }
     }

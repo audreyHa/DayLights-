@@ -43,6 +43,9 @@
 		F6C6E49A2300F4E700A1612B /* NegativeThoughtsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */; };
 		F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E110382300DB330033C4CA /* YesNoAlert.swift */; };
 		F6E8B628230DD4CA004104D7 /* RandomBalloonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */; };
+		F6E8B62A230E67E6004104D7 /* GameSettingsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */; };
+		F6E8B62C230E734C004104D7 /* balloonPopping.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F6E8B62B230E734C004104D7 /* balloonPopping.mp4 */; };
+		F6E8B630230E73CE004104D7 /* popBalloon.gif in Resources */ = {isa = PBXBuildFile; fileRef = F6E8B62F230E73CE004104D7 /* popBalloon.gif */; };
 		F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F79ECC224B3DB700A1DAC8 /* Side.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +90,9 @@
 		F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsCell.swift; sourceTree = "<group>"; };
 		F6E110382300DB330033C4CA /* YesNoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoAlert.swift; sourceTree = "<group>"; };
 		F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBalloonsVC.swift; sourceTree = "<group>"; };
+		F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsAlert.swift; sourceTree = "<group>"; };
+		F6E8B62B230E734C004104D7 /* balloonPopping.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = balloonPopping.mp4; sourceTree = "<group>"; };
+		F6E8B62F230E73CE004104D7 /* popBalloon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = popBalloon.gif; sourceTree = "<group>"; };
 		F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayLights.entitlements; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +150,8 @@
 		F68CF9F02249F1A1001138FE = {
 			isa = PBXGroup;
 			children = (
+				F6E8B62F230E73CE004104D7 /* popBalloon.gif */,
+				F6E8B62B230E734C004104D7 /* balloonPopping.mp4 */,
 				F614E20923010CBB0041D628 /* NegativeThoughtsGame */,
 				F6AA6ED322FFEB5D0070652B /* Alerts */,
 				F61F8E3522FE4C5A00080D31 /* CollectionView */,
@@ -212,6 +220,7 @@
 				F627BA352309046700F888A3 /* OKAlert.swift */,
 				F627BA3723091DB800F888A3 /* PrivacyPolicyAlert.swift */,
 				F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */,
+				F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -297,6 +306,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6E8B630230E73CE004104D7 /* popBalloon.gif in Resources */,
+				F6E8B62C230E734C004104D7 /* balloonPopping.mp4 in Resources */,
 				F68CFA0A2249F1A2001138FE /* LaunchScreen.storyboard in Resources */,
 				F68CFA072249F1A2001138FE /* Assets.xcassets in Resources */,
 				F68CFA022249F1A1001138FE /* Main.storyboard in Resources */,
@@ -376,6 +387,7 @@
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */,
+				F6E8B62A230E67E6004104D7 /* GameSettingsAlert.swift in Sources */,
 				F69C9E852262DC8000CFF1AC /* ShowAllCell.swift in Sources */,
 				F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */,
 				F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */,
