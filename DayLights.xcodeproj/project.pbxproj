@@ -42,6 +42,7 @@
 		F6C5B8FE22FE1D8200078675 /* GraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */; };
 		F6C6E49A2300F4E700A1612B /* NegativeThoughtsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */; };
 		F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E110382300DB330033C4CA /* YesNoAlert.swift */; };
+		F6E8B628230DD4CA004104D7 /* RandomBalloonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */; };
 		F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F79ECC224B3DB700A1DAC8 /* Side.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTableViewCell.swift; sourceTree = "<group>"; };
 		F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsCell.swift; sourceTree = "<group>"; };
 		F6E110382300DB330033C4CA /* YesNoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoAlert.swift; sourceTree = "<group>"; };
+		F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBalloonsVC.swift; sourceTree = "<group>"; };
 		F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayLights.entitlements; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 				F614E20A230117250041D628 /* GameCell.swift */,
 				F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */,
 				F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */,
+				F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */,
 			);
 			path = NegativeThoughtsGame;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				F61176272300F35500121F15 /* NegativeThoughtsEntering.swift in Sources */,
 				F68CFA052249F1A1001138FE /* DayLights.xcdatamodeld in Sources */,
 				F6A0B38922FFE3A400DD8A03 /* EntryAlertCell.swift in Sources */,
+				F6E8B628230DD4CA004104D7 /* RandomBalloonsVC.swift in Sources */,
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
 				F6C6E49A2300F4E700A1612B /* NegativeThoughtsCell.swift in Sources */,
 				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DG2-lt-dsm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hIM-d8-Sj3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1591,6 +1591,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4S-zI-KcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2628" y="10"/>
+        </scene>
+        <!--Random BalloonsVC-->
+        <scene sceneID="FGT-EG-hLO">
+            <objects>
+                <viewController id="hIM-d8-Sj3" customClass="RandomBalloonsVC" customModule="DayLights" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H4v-Y1-5QA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-cT-By1">
+                                <rect key="frame" x="15" y="35" width="345" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Balloon Popping Game!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wN-9m-g1t">
+                                        <rect key="frame" x="38.5" y="0.0" width="268.5" height="42.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap each balloon as they appear!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEN-XU-mPc">
+                                        <rect key="frame" x="24" y="52.5" width="297.5" height="42.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="YdO-1u-BSh">
+                                        <rect key="frame" x="85" y="105" width="175" height="42.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfp-IE-YFk">
+                                                <rect key="frame" x="0.0" y="0.0" width="87" height="42.5"/>
+                                                <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="  Start Over  ">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="startOverGame:" destination="hIM-d8-Sj3" eventType="touchUpInside" id="Tgj-Pv-JRe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArQ-dp-Non">
+                                                <rect key="frame" x="127" y="0.0" width="48" height="42.5"/>
+                                                <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="  Stop  ">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="stopGame:" destination="hIM-d8-Sj3" eventType="touchUpInside" id="Nqi-Oq-4zE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="pun-s0-g1K">
+                                        <rect key="frame" x="20" y="157.5" width="305" height="43.5"/>
+                                        <segments>
+                                            <segment title="Easy"/>
+                                            <segment title="Medium"/>
+                                            <segment title="Hard"/>
+                                            <segment title="EXTREME"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentedValueChanged:" destination="hIM-d8-Sj3" eventType="valueChanged" id="sGx-Bv-ZcA"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pun-s0-g1K" firstAttribute="centerX" secondItem="3q1-cT-By1" secondAttribute="centerX" id="S5B-rp-zrM"/>
+                                    <constraint firstItem="YdO-1u-BSh" firstAttribute="height" secondItem="4wN-9m-g1t" secondAttribute="height" id="Umj-F6-wl6"/>
+                                    <constraint firstItem="pun-s0-g1K" firstAttribute="height" secondItem="4wN-9m-g1t" secondAttribute="height" id="WL8-Nj-JVd"/>
+                                    <constraint firstAttribute="trailing" secondItem="pun-s0-g1K" secondAttribute="trailing" constant="20" id="c8V-Z0-INb"/>
+                                    <constraint firstItem="eEN-XU-mPc" firstAttribute="height" secondItem="4wN-9m-g1t" secondAttribute="height" id="mMi-In-wQ7"/>
+                                    <constraint firstItem="pun-s0-g1K" firstAttribute="leading" secondItem="3q1-cT-By1" secondAttribute="leading" constant="20" id="vXK-bR-n4W"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMs-hW-57T">
+                                <rect key="frame" x="0.0" y="250" width="375" height="417"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3q1-cT-By1" firstAttribute="leading" secondItem="3rC-zO-gpk" secondAttribute="leading" constant="15" id="5Sr-Ha-thn"/>
+                            <constraint firstAttribute="trailing" secondItem="3q1-cT-By1" secondAttribute="trailing" constant="15" id="CxL-5T-uw2"/>
+                            <constraint firstItem="TMs-hW-57T" firstAttribute="leading" secondItem="3rC-zO-gpk" secondAttribute="leading" id="K7k-Qa-PHa"/>
+                            <constraint firstItem="3rC-zO-gpk" firstAttribute="bottom" secondItem="TMs-hW-57T" secondAttribute="bottom" id="gFI-A3-P9w"/>
+                            <constraint firstItem="3q1-cT-By1" firstAttribute="height" secondItem="H4v-Y1-5QA" secondAttribute="height" multiplier="0.3" id="gd9-g6-dVG"/>
+                            <constraint firstItem="TMs-hW-57T" firstAttribute="top" secondItem="3q1-cT-By1" secondAttribute="bottom" constant="15" id="kjf-cN-e2l"/>
+                            <constraint firstItem="3rC-zO-gpk" firstAttribute="trailing" secondItem="TMs-hW-57T" secondAttribute="trailing" id="s1x-82-wUG"/>
+                            <constraint firstItem="3q1-cT-By1" firstAttribute="top" secondItem="3rC-zO-gpk" secondAttribute="top" constant="15" id="wUq-fT-w6A"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3rC-zO-gpk"/>
+                    </view>
+                    <connections>
+                        <outlet property="gameView" destination="TMs-hW-57T" id="1uW-4R-rGn"/>
+                        <outlet property="segmentedControl" destination="pun-s0-g1K" id="XM4-8f-jb4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekJ-EJ-lYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3621" y="17"/>
         </scene>
         <!--Yes No Alert-->
         <scene sceneID="UEE-ur-fIr">
