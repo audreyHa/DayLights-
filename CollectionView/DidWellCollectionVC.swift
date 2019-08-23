@@ -23,7 +23,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         headerCategoryLabel.adjustsFontSizeToFitWidth=true
         resetDaylightArrays()
-
+        
         leftCollectionView.dataSource=self
         leftCollectionView.delegate=self
         
@@ -204,7 +204,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         case "Gallery: Things I Did Well":
             label.text = array[row].didWell
         case "Gallery: Stressful Moments":
-            label.text = array[row].gratefulThing
+            label.text = array[row].funny
         default:
             label.text = array[row].didWell
         }
@@ -288,7 +288,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
-            cell.leftGrateful=leftEntries[indexPath.row].gratefulThing!
+            cell.leftGrateful=leftEntries[indexPath.row].funny!
         }
         
         func setRightSide(){
@@ -305,7 +305,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
-            cell.rightGrateful=rightEntries[indexPath.row].gratefulThing!
+            cell.rightGrateful=rightEntries[indexPath.row].funny!
         }
         
         setLeftSide()

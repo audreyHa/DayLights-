@@ -23,6 +23,20 @@ class GraphTableViewCell: UITableViewCell {
         var colorTemplates=[ChartColorTemplates.colorful(), ChartColorTemplates.material(), ChartColorTemplates.joyful(), ChartColorTemplates.pastel()]
         for i in 0...entryNumber-1 {
             var val=monthData[i].mood
+            switch(monthData[i].mood){
+            case 1:
+                val=5
+            case 2:
+                val=4
+            case 3:
+                val=3
+            case 4:
+                val=2
+            case 5:
+                val=1
+            default:
+                val=3
+            }
             values.append(ChartDataEntry(x: Double(i+1), y: Double(val)))
         }
         

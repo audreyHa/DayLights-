@@ -37,7 +37,7 @@ class ShowAll: UITableViewController {
         dateformatter.dateFormat = "MM/dd/yy"
         let now = dateformatter.string(from: daylight.dateCreated!)
         cell.dateLabel.text=now
-        cell.gratefulText.text=daylight.gratefulThing
+        cell.gratefulText.text=daylight.funny
         cell.didWellText.text=daylight.didWell
         
         if daylight.mood==1{

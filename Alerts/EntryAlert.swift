@@ -46,16 +46,6 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         categoryContent=[gratefulText!, didWellText!,]
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yy"
-        let cutOffDate = formatter.date(from: "08/21/19")!
-        let journalEntryDate = formatter.date(from: dateToInclude!)!
-        
-        if journalEntryDate<cutOffDate{
-            categoryTitles=["What I Did Well"]
-            categoryContent=[didWellText!]
-        }
-        
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
         let inDate=dateformatter.date(from: dateToInclude!)

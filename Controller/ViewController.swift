@@ -117,10 +117,12 @@ class ViewController: UIViewController {
         }
         
         if (gratefulText.text==""){
-            daylight!.gratefulThing="None entered"
+            daylight!.funny="None entered"
         }else{
-            daylight!.gratefulThing=gratefulText.text!
+            daylight!.funny=gratefulText.text!
         }
+        
+        daylight!.gratefulThing="No Grateful Thing Entered."
         
         if currentMood != nil{
             daylight!.mood=currentMood ?? 3
@@ -341,6 +343,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        daylightsArray=CoreDataHelper.retrieveDaylight()
+        
+        let clearedGrateful = UserDefaults.standard.bool(forKey: "clearedGrateful")
+        if clearedGrateful{
+            print("DON'T need to clear Grateful.")
+        }else{
+            print("NEED to clear Grateful.")
+            daylightsArray=CoreDataHelper.retrieveDaylight()
+            for item in daylightsArray{
+                print("updating grateful things")
+                item.funny="Need To Enter Stressful Moment"
+                CoreDataHelper.saveDaylight()
+            }
+
+            UserDefaults.standard.set(true, forKey: "clearedGrateful")
+            daylightsArray=CoreDataHelper.retrieveDaylight()
+        }
+        
         moodButtons=[mood1, mood2, mood3, mood4, mood5]
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -385,7 +405,7 @@ class ViewController: UIViewController {
         if let daylight = daylight{
             // 2
             didWellText.text = daylight.didWell
-            gratefulText.text = daylight.gratefulThing
+            gratefulText.text = daylight.funny
             
             if (daylight.mood==1){
                 mood1.layer.borderWidth = 3

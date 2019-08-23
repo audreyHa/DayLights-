@@ -66,12 +66,10 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func setEditedDaylightsArray(){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yy"
-        let someDateTime = formatter.date(from: "08/21/19")!
+
         
         for daylight in dayHighlightsArray{
-            if daylight.dateCreated! > someDateTime{
+            if daylight.funny != "Need To Enter Stressful Moment"{
                 editedDaylightsArray.append(daylight)
             }
         }
@@ -194,7 +192,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
         
         var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.17, width: image.frame.width*0.63, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
-        label.text = array[row].gratefulThing
+        label.text = array[row].funny
         
         label.adjustsFontSizeToFitWidth=true
         label.numberOfLines=100
@@ -268,7 +266,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
-            cell.leftGrateful=leftEntries[indexPath.row].gratefulThing!
+            cell.leftGrateful=leftEntries[indexPath.row].funny!
         }
         
         func setRightSide(){
@@ -287,7 +285,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
-            cell.rightGrateful=rightEntries[indexPath.row].gratefulThing!
+            cell.rightGrateful=rightEntries[indexPath.row].funny!
         }
         
         setLeftSide()

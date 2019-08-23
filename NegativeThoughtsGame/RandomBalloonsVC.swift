@@ -12,17 +12,32 @@ import AVFoundation
 
 class RandomBalloonsVC: UIViewController {
 
-    var timer = Timer()
+    var balloonTimer = Timer()
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     var secondInterval: Double!
     var totalMin: Int!
     var totalSec: Int!
+    var recordValue: Int!
+    var increasingValue=0
+    
+    var gameTimer=Timer()
+    
+    @IBOutlet weak var startOverButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var countdownTimer: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startOverButton.layer.cornerRadius=5
+        stopButton.layer.cornerRadius=5
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.setRandomBalloonGame(notification:)), name: Notification.Name("setRandomBalloonGame"), object: nil)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,16 +60,26 @@ class RandomBalloonsVC: UIViewController {
         case "30 Sec":
             totalMin=0
             totalSec=30
+            
+            var record=UserDefaults.standard.integer(forKey: "recordThirty")
+            recordValue=record
         case "1 Min":
             totalMin=1
             totalSec=0
+            
+            var record=UserDefaults.standard.integer(forKey: "recordOneMin")
+            recordValue=record
         case "5 Min":
             totalMin=5
             totalSec=0
+            
+            var record=UserDefaults.standard.integer(forKey: "recordFiveMin")
+            recordValue=record
         default:
-            totalMin=1
-            totalSec=0
+            print("error in setting min and sec and record values")
         }
+        
+        gameTimer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RandomBalloonsVC.descendingAction), userInfo: nil, repeats: true)
         
         switch(gameLevel){
         case "Easy":
@@ -74,52 +99,116 @@ class RandomBalloonsVC: UIViewController {
             segmentedControl.selectedSegmentIndex = 2
         }
         
+        
         scheduledAddBalloonTimer()
     }
+    
+    @objc func descendingAction(){
+        
+        if (totalMin==0 && totalSec==0){
+            gameTimer.invalidate()
+            balloonTimer.invalidate()
+            
+            for subview in gameView.subviews{
+                if let item = subview as? UIImageView{
+                    item.removeFromSuperview()
+                }
+            }
+            
+            if increasingValue>recordValue{
+                var gameTime=UserDefaults.standard.string(forKey: "gameTime")
+                
+                switch(gameTime){
+                case "30 Sec":
+                    UserDefaults.standard.set(increasingValue, forKey: "recordThirty")
+                case "1 Min":
+                    UserDefaults.standard.set(increasingValue, forKey: "recordOneMin")
+                case "5 Min":
+                    UserDefaults.standard.set(increasingValue, forKey: "recordFiveMin")
+                default:
+                    print("error in setting the record values after game")
+                }
+                
+                
+            }
+            //present alert with current score and record score
+        }else{
+            totalSec = totalSec - 1
+            if totalSec<0{ //more than 59 seconds
+                
+                totalSec=totalSec + 60
+                totalMin=totalMin-1
+                displaying()
+            }else if totalSec>=0 && totalMin>=0{
+                displaying()
+            }
+        }
+    }
+    
+    func displaying(){
+        if totalMin<10{
+            if totalSec<10{
+                countdownTimer.text = String("0\(Int(totalMin!)) : 0\(Int(totalSec!))")
+            } else{
+                countdownTimer.text = String("0\(Int(totalMin!)) : \(Int(totalSec!))")
+            }
+        } else{
+            if totalSec<10{
+                countdownTimer.text = String("\(Int(totalMin!)) : 0\(Int(totalSec!))")
+            } else{
+                countdownTimer.text = String("\(Int(totalMin!)) : \(Int(totalSec!))")
+            }
+        }
+    }// end of function
     
     func scheduledAddBalloonTimer(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        timer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
+        balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
     }
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
-        let segmentIndex = segmentedControl.selectedSegmentIndex
-        
-        switch(segmentIndex){
-        case 0:
-            secondInterval=1
-        case 1:
-            secondInterval=0.5
-        case 2:
-            secondInterval=0.25
-        case 3:
-            secondInterval=0.1
-        default:
-            secondInterval=0.25
+        if (totalSec != 0)||(totalMin != 0){
+            let segmentIndex = segmentedControl.selectedSegmentIndex
+            
+            switch(segmentIndex){
+            case 0:
+                secondInterval=1
+            case 1:
+                secondInterval=0.5
+            case 2:
+                secondInterval=0.25
+            case 3:
+                secondInterval=0.1
+            default:
+                secondInterval=0.25
+            }
+            
+            balloonTimer.invalidate()
+            scheduledAddBalloonTimer()
         }
-        
-        timer.invalidate()
-        scheduledAddBalloonTimer()
     }
     
     func segmentedControlValueChanged(){
-        let segmentIndex = segmentedControl.selectedSegmentIndex
-        
-        switch(segmentIndex){
-        case 0:
-            secondInterval=1
-        case 1:
-            secondInterval=0.5
-        case 2:
-            secondInterval=0.25
-        case 3:
-            secondInterval=0.1
-        default:
-            secondInterval=0.25
+        if (totalSec != 0)||(totalMin != 0){
+            let segmentIndex = segmentedControl.selectedSegmentIndex
+            
+            switch(segmentIndex){
+            case 0:
+                secondInterval=1
+            case 1:
+                secondInterval=0.5
+            case 2:
+                secondInterval=0.25
+            case 3:
+                secondInterval=0.15
+            default:
+                secondInterval=0.25
+            }
+            
+            balloonTimer.invalidate()
+            scheduledAddBalloonTimer()
         }
         
-        timer.invalidate()
-        scheduledAddBalloonTimer()
     }
     
     @objc func addRandomBalloon(){
@@ -131,9 +220,10 @@ class RandomBalloonsVC: UIViewController {
         var widthMin=Int(gameView.frame.width*0.2)
         var widthMax=Int(gameView.frame.width*0.3)
         var randomWidth = Int.random(in: widthMin...widthMax)
+        var countdownLabelHeight=Int(countdownTimer.frame.height)
         
         var randomX=Int.random(in: 0...fullWidth-randomWidth)
-        var randomY=Int.random(in: 0...fullHeight-randomWidth)
+        var randomY=Int.random(in: countdownLabelHeight...fullHeight-randomWidth)
         
         myImageView.frame=CGRect(x: randomX, y: randomY, width: randomWidth, height: randomWidth)
         myImageView.image = UIImage(imageLiteralResourceName: "greenBalloon").withRenderingMode(.alwaysTemplate)
@@ -165,6 +255,14 @@ class RandomBalloonsVC: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
                     // Code you want to be delayed
                     item.removeFromSuperview()
+                    self.increasingValue += 1
+                   
+                    if self.recordValue == 0{
+                        self.countLabel.text="\(self.increasingValue)"
+                    }else{
+                        self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
+                    }
+                    
                 }
                 
             }
@@ -172,23 +270,24 @@ class RandomBalloonsVC: UIViewController {
     }
     
     @IBAction func stopGame(_ sender: Any) {
-        for subview in gameView.subviews{
-            if let item = subview as? UIImageView{
-                item.removeFromSuperview()
+        if stopButton.titleLabel!.text == "  Pause  "{
+            if (totalSec != 0)||(totalMin != 0){
+                balloonTimer.invalidate()
+                gameTimer.invalidate()
+                stopButton.setTitle("  Resume  ", for: .normal)
+            }
+        }else{
+            if (totalSec != 0)||(totalMin != 0){
+                gameTimer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RandomBalloonsVC.descendingAction), userInfo: nil, repeats: true)
+                balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
+                stopButton.setTitle("  Pause  ", for: .normal)
             }
         }
-        
-        timer.invalidate()
+
     }
     
     @IBAction func startOverGame(_ sender: Any) {
-        for subview in gameView.subviews{
-            if let item = subview as? UIImageView{
-                item.removeFromSuperview()
-            }
-        }
-        
-        segmentedControlValueChanged()
+        makeGameSettingsAlert()
     }
     
 }

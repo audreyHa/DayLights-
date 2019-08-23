@@ -286,7 +286,7 @@
                         <viewLayoutGuide key="safeArea" id="00v-0J-JbX"/>
                     </view>
                     <navigationItem key="navigationItem" id="o4S-oh-oCy">
-                        <barButtonItem key="rightBarButtonItem" title="Grateful Things Gallery" id="y8v-ie-nPz">
+                        <barButtonItem key="rightBarButtonItem" title="Stressful Moments Gallery" id="y8v-ie-nPz">
                             <connections>
                                 <segue destination="IIT-nQ-LXs" kind="show" id="QHK-aL-GAS"/>
                             </connections>
@@ -690,7 +690,7 @@
                         <segue destination="lVb-ru-sDB" kind="show" identifier="resources" id="QAL-ca-O38"/>
                         <segue destination="ulj-q6-Gbe" kind="show" identifier="showMood" id="D4J-UW-4Mv"/>
                         <segue destination="pWn-qb-Yv7" kind="show" identifier="showDidWell" id="Nhe-ro-Bqe"/>
-                        <segue destination="CV3-nZ-KGw" kind="show" identifier="negativeThoughtsGame" id="WkL-yy-Whf"/>
+                        <segue destination="hIM-d8-Sj3" kind="show" identifier="negativeThoughtsGame" id="5Zj-gd-D9T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1325,7 +1325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JWr-zN-fVB">
-                                <rect key="frame" x="15" y="79" width="345" height="97.5"/>
+                                <rect key="frame" x="15" y="35" width="345" height="97.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balloon Popping Game!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgT-3x-N7E">
                                         <rect key="frame" x="38.5" y="0.0" width="268.5" height="34.5"/>
@@ -1342,7 +1342,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aEj-dG-vXV">
-                                <rect key="frame" x="0.0" y="186.5" width="375" height="470.5"/>
+                                <rect key="frame" x="0.0" y="142.5" width="375" height="514.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mRU-aN-wcs">
                                     <size key="itemSize" width="168" height="169"/>
@@ -1413,7 +1413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4S-zI-KcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2628" y="10"/>
+            <point key="canvasLocation" x="4298" y="1915"/>
         </scene>
         <!--Random BalloonsVC-->
         <scene sceneID="FGT-EG-hLO">
@@ -1424,7 +1424,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-cT-By1">
-                                <rect key="frame" x="15" y="35" width="345" height="133.5"/>
+                                <rect key="frame" x="15" y="79" width="345" height="133.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Balloon Popping Game!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wN-9m-g1t">
                                         <rect key="frame" x="38.5" y="0.0" width="268.5" height="26"/>
@@ -1433,7 +1433,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="YdO-1u-BSh">
-                                        <rect key="frame" x="85" y="36" width="175" height="25.5"/>
+                                        <rect key="frame" x="80" y="36" width="185" height="25.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfp-IE-YFk">
                                                 <rect key="frame" x="0.0" y="0.0" width="87" height="25.5"/>
@@ -1446,9 +1446,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArQ-dp-Non">
-                                                <rect key="frame" x="127" y="0.0" width="48" height="25.5"/>
+                                                <rect key="frame" x="127" y="0.0" width="58" height="25.5"/>
                                                 <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <state key="normal" title="  Stop  ">
+                                                <state key="normal" title="  Pause  ">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -1487,8 +1487,36 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMs-hW-57T">
-                                <rect key="frame" x="0.0" y="183.5" width="375" height="483.5"/>
+                                <rect key="frame" x="0.0" y="227.5" width="375" height="439.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-UO-tKg">
+                                        <rect key="frame" x="160" y="5" width="200" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="zkD-K5-ear"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6H-TG-YMT">
+                                        <rect key="frame" x="15" y="5" width="130" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="F2e-rR-fwm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kgn-UO-tKg" firstAttribute="leading" secondItem="G6H-TG-YMT" secondAttribute="trailing" constant="15" id="Gfn-dg-Cw5"/>
+                                    <constraint firstItem="kgn-UO-tKg" firstAttribute="height" secondItem="G6H-TG-YMT" secondAttribute="height" id="PyV-5D-KwG"/>
+                                    <constraint firstItem="G6H-TG-YMT" firstAttribute="leading" secondItem="TMs-hW-57T" secondAttribute="leading" constant="15" id="ngw-fj-nsA"/>
+                                    <constraint firstAttribute="trailing" secondItem="kgn-UO-tKg" secondAttribute="trailing" constant="15" id="om7-vS-FWN"/>
+                                    <constraint firstItem="G6H-TG-YMT" firstAttribute="top" secondItem="TMs-hW-57T" secondAttribute="top" constant="5" id="smi-Sy-SqM"/>
+                                    <constraint firstItem="kgn-UO-tKg" firstAttribute="top" secondItem="TMs-hW-57T" secondAttribute="top" constant="5" id="ufs-yu-06g"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1505,8 +1533,12 @@
                         <viewLayoutGuide key="safeArea" id="3rC-zO-gpk"/>
                     </view>
                     <connections>
+                        <outlet property="countLabel" destination="kgn-UO-tKg" id="Rcc-Hu-cAy"/>
+                        <outlet property="countdownTimer" destination="G6H-TG-YMT" id="WRY-Au-0E2"/>
                         <outlet property="gameView" destination="TMs-hW-57T" id="1uW-4R-rGn"/>
                         <outlet property="segmentedControl" destination="pun-s0-g1K" id="XM4-8f-jb4"/>
+                        <outlet property="startOverButton" destination="Dfp-IE-YFk" id="QXx-2D-qEP"/>
+                        <outlet property="stopButton" destination="ArQ-dp-Non" id="XMj-lR-Xv1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ekJ-EJ-lYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2625,7 +2657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gF6-Zx-9aK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6936.8000000000002" y="2050.5247376311845"/>
+            <point key="canvasLocation" x="4654" y="17"/>
         </scene>
     </scenes>
     <resources>
