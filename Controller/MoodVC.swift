@@ -69,7 +69,7 @@ class MoodVC: UIViewController {
             averageToday.round()
             todayMood=Int(averageToday)
         }else{
-            moodLabel.text="No Mood Entered Today!"
+            moodLabel.text="No Data Entered Today!"
         }
         
         //week mood

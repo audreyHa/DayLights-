@@ -13,6 +13,8 @@
 		F614E20B230117250041D628 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614E20A230117250041D628 /* GameCell.swift */; };
 		F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */; };
 		F61832A722506BCE0083886A /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A622506BCE0083886A /* BarCell.swift */; };
+		F61E8FB2230F9FF6004806BF /* StressfulCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E8FB1230F9FF6004806BF /* StressfulCollectionVC.swift */; };
+		F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E8FB3230FA005004806BF /* StressfulCell.swift */; };
 		F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */; };
 		F61F8E3D22FE4FE200080D31 /* DidWellCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61F8E3C22FE4FE200080D31 /* DidWellCollectionVC.swift */; };
 		F627BA362309046700F888A3 /* OKAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA352309046700F888A3 /* OKAlert.swift */; };
@@ -58,6 +60,8 @@
 		F614E20A230117250041D628 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTableViewCell.swift; sourceTree = "<group>"; };
 		F61832A622506BCE0083886A /* BarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
+		F61E8FB1230F9FF6004806BF /* StressfulCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressfulCollectionVC.swift; sourceTree = "<group>"; };
+		F61E8FB3230FA005004806BF /* StressfulCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressfulCell.swift; sourceTree = "<group>"; };
 		F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCollectionViewCell.swift; sourceTree = "<group>"; };
 		F61F8E3C22FE4FE200080D31 /* DidWellCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellCollectionVC.swift; sourceTree = "<group>"; };
 		F627BA352309046700F888A3 /* OKAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OKAlert.swift; sourceTree = "<group>"; };
@@ -141,8 +145,10 @@
 		F61F8E3522FE4C5A00080D31 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */,
 				F61F8E3C22FE4FE200080D31 /* DidWellCollectionVC.swift */,
+				F61F8E3622FE4C6E00080D31 /* LeftCollectionViewCell.swift */,
+				F61E8FB1230F9FF6004806BF /* StressfulCollectionVC.swift */,
+				F61E8FB3230FA005004806BF /* StressfulCell.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,
 				F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */,
 				F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */,
+				F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */,
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
@@ -403,6 +410,7 @@
 				F6C5B8FE22FE1D8200078675 /* GraphTableViewCell.swift in Sources */,
 				F627BA362309046700F888A3 /* OKAlert.swift in Sources */,
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
+				F61E8FB2230F9FF6004806BF /* StressfulCollectionVC.swift in Sources */,
 				F627BA3823091DB800F888A3 /* PrivacyPolicyAlert.swift in Sources */,
 				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,
 				F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */,

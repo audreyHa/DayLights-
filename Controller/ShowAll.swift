@@ -39,7 +39,6 @@ class ShowAll: UITableViewController {
         cell.dateLabel.text=now
         cell.gratefulText.text=daylight.gratefulThing
         cell.didWellText.text=daylight.didWell
-        cell.joyText.text=daylight.funny
         
         if daylight.mood==1{
             cell.moodImage.image=#imageLiteral(resourceName: "emojiScale1")

@@ -40,19 +40,19 @@ class OKAlert: UIViewController {
         switch (UserDefaults.standard.string(forKey: "typeOKAlert")) {
         case "resources":
             headerLabel.text="ALERT!"
-            bodyText.text="Looks like your mood has not been good for the past few weeks... Let's look at some resources!"
+            bodyText.text="Looks like your stress has not been good for the past few weeks... Let's look at some resources!"
             yesButton.setTitle("LET'S GO!", for: .normal)
         case "weekTalkToFriend":
             headerLabel.text="ALERT!"
-            bodyText.text="Looks like you mood has not been great for the past week... Please make sure to talk to a family member or guardian, trusted adult, teacher, or friend."
+            bodyText.text="Looks like you stress has not been great for the past week... Please make sure to talk to a family member or guardian, trusted adult, teacher, or friend."
             yesButton.setTitle("I WILL talk to someone!", for: .normal)
         case "daysTalkToFriend":
             headerLabel.text="ALERT!"
-            bodyText.text="Looks like your mood has not been great for the past few days... Try talking to a family member or guardian, trusted adult, teacher, or friend!"
+            bodyText.text="Looks like your stress has not been great for the past few days... Try talking to a family member or guardian, trusted adult, teacher, or friend!"
             yesButton.setTitle("I WILL talk to someone!", for: .normal)
         case "noMoodData":
             headerLabel.text="ALERT!"
-            bodyText.text="You do not have any mood data yet!\n\nCheck back after filling out at least 2 entries!"
+            bodyText.text="You do not have any stress data yet!\n\nCheck back after filling out at least 2 entries!"
             yesButton.setTitle("OK", for: .normal)
         case "noDaylightData":
             headerLabel.text="ALERT!"

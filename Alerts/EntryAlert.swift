@@ -41,10 +41,20 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
         var dateToInclude=UserDefaults.standard.string(forKey: "dateToInclude")
         var didWellText=UserDefaults.standard.string(forKey: "didWellText")
         var gratefulText=UserDefaults.standard.string(forKey: "gratefulText")
-        var joyfulText=UserDefaults.standard.string(forKey: "joyfulText")
        
-        categoryTitles=["What I Did Well", "What I'm Grateful For","Joyful Moment"]
-        categoryContent=[didWellText!, gratefulText!, joyfulText!]
+        categoryTitles=["Stressful Moments", "What I Did Well"]
+        
+        categoryContent=[gratefulText!, didWellText!,]
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy"
+        let cutOffDate = formatter.date(from: "08/21/19")!
+        let journalEntryDate = formatter.date(from: dateToInclude!)!
+        
+        if journalEntryDate<cutOffDate{
+            categoryTitles=["What I Did Well"]
+            categoryContent=[didWellText!]
+        }
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
@@ -77,7 +87,7 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return categoryTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

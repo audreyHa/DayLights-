@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulText: UITextView!
-    @IBOutlet weak var funnyText: UITextView!
     
     @IBOutlet weak var mood1: UIButton!
     @IBOutlet weak var mood2: UIButton!
@@ -123,12 +122,6 @@ class ViewController: UIViewController {
             daylight!.gratefulThing=gratefulText.text!
         }
         
-        if (funnyText.text==""){
-            daylight!.funny="None entered"
-        }else{
-            daylight!.funny=funnyText.text!
-        }
-        
         if currentMood != nil{
             daylight!.mood=currentMood ?? 3
         }
@@ -148,7 +141,6 @@ class ViewController: UIViewController {
         currentMood=0
         didWellText.text = ""
         gratefulText.text = ""
-        funnyText.text=""
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
         let now = dateformatter.string(from: Date())
@@ -394,7 +386,6 @@ class ViewController: UIViewController {
             // 2
             didWellText.text = daylight.didWell
             gratefulText.text = daylight.gratefulThing
-            funnyText.text=daylight.funny
             
             if (daylight.mood==1){
                 mood1.layer.borderWidth = 3
@@ -428,7 +419,6 @@ class ViewController: UIViewController {
             // 3
             didWellText.text = ""
             gratefulText.text = ""
-            funnyText.text=""
         }
     }
 

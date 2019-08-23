@@ -1,19 +1,20 @@
 //
-//  DidWellCollectionVC.swift
+//  StressfulCollectionVC.swift
 //  DayLights
 //
-//  Created by Audrey Ha on 8/9/19.
+//  Created by Audrey Ha on 8/22/19.
 //  Copyright © 2019 AudreyHa. All rights reserved.
 //
 
 import UIKit
 
-class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-
+class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+    
     @IBOutlet weak var leftCollectionView: UICollectionView!
     @IBOutlet weak var headerCategoryLabel: UILabel!
     
     var dayHighlightsArray=CoreDataHelper.retrieveDaylight()
+    var editedDaylightsArray=[Daylight]()
     var myColors=[[UIColor]]()
     var leftEntries=[Daylight]()
     var rightEntries=[Daylight]()
@@ -22,8 +23,10 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         
         headerCategoryLabel.adjustsFontSizeToFitWidth=true
+        
+        setEditedDaylightsArray()
         resetDaylightArrays()
-
+        
         leftCollectionView.dataSource=self
         leftCollectionView.delegate=self
         
@@ -31,7 +34,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         let height = CGFloat(400) // Your desired height, if you want it to full the superview, use self.bounds.height
         let layout = leftCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: height) // Sets the dimensions of your collection view cell.
-
+        
         leftCollectionView.updateConstraintsIfNeeded()
         
         myColors=[
@@ -49,16 +52,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         NotificationCenter.default.addObserver(self, selector: #selector(self.editDaylight(notification:)), name: Notification.Name("editDaylight"), object: nil)
         
         UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "SkyDH.jpg")?.draw(in: self.view.bounds)
-        
-        switch(headerCategoryLabel.text){
-        case "Gallery: Stressful Moments":
-            UIImage(named: "PlanetDH.jpg")?.draw(in: self.view.bounds)
-        case "Gallery: Joyful Moments":
-            UIImage(named: "SunsetDH.png")?.draw(in: self.view.bounds)
-        default:
-            UIImage(named: "SkyDH.png")?.draw(in: self.view.bounds)
-        }
+        UIImage(named: "SunsetDH.png")?.draw(in: self.view.bounds)
         
         if let image = UIGraphicsGetImageFromCurrentImageContext(){
             UIGraphicsEndImageContext()
@@ -70,13 +64,27 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         leftCollectionView.backgroundColor=UIColor.clear
     }
-
+    
+    func setEditedDaylightsArray(){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy"
+        let someDateTime = formatter.date(from: "08/21/19")!
+        
+        for daylight in dayHighlightsArray{
+            if daylight.dateCreated! > someDateTime{
+                editedDaylightsArray.append(daylight)
+            }
+        }
+        
+        editedDaylightsArray.reverse()
+    }
+    
     func resetDaylightArrays(){
-        dayHighlightsArray.reverse()
+
         var count=0
         leftEntries=[]
         rightEntries=[]
-        for daylight in dayHighlightsArray{
+        for daylight in editedDaylightsArray{
             if count%2 == 0{
                 leftEntries.append(daylight)
             }else{
@@ -99,7 +107,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             var side=UserDefaults.standard.string(forKey: "sideInCell")
             var indexPathToDelete=UserDefaults.standard.integer(forKey: "rowOfPressedZoom")
             var daylightToEdit: Daylight?
-
+            
             if side=="left"{
                 print("side is left")
                 daylightToEdit=leftEntries[indexPathToDelete]
@@ -151,40 +159,27 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             CoreDataHelper.delete(daylight: daylightToDelete!)
             CoreDataHelper.saveDaylight()
             dayHighlightsArray=CoreDataHelper.retrieveDaylight()
+            setEditedDaylightsArray()
             resetDaylightArrays()
         }
-
+        
         leftCollectionView.reloadData()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var updatedDaylightsArray=[Daylight]()
-        for daylight in dayHighlightsArray{
-            if daylight.dateCreated! > Date(){
-                updatedDaylightsArray.append(daylight)
-            }
-        }
+        
         var number1=0
-        
-        switch(headerCategoryLabel.text){
-        case "Gallery: Stressful Moments":
-            if updatedDaylightsArray.count%2 == 0{
-                number1=updatedDaylightsArray.count/2
-            }else{
-                number1=(updatedDaylightsArray.count+1)/2
-            }
-        default:
-            if dayHighlightsArray.count%2 == 0{
-                number1=dayHighlightsArray.count/2
-            }else{
-                number1=(dayHighlightsArray.count+1)/2
-            }
+        if editedDaylightsArray.count%2 == 0{
+            number1=editedDaylightsArray.count/2
+        }else{
+            number1=(editedDaylightsArray.count+1)/2
         }
         
+        print("number 1: \(number1)")
         return number1
     }
     
-    func addLabel(image: UIImageView, array: [Daylight], row: Int, cell: LeftCollectionViewCell){
+    func addLabel(image: UIImageView, array: [Daylight], row: Int, cell: StressfulCell){
         for subview in image.subviews{
             if let item = subview as? UILabel{
                 item.removeFromSuperview()
@@ -199,15 +194,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.17, width: image.frame.width*0.63, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
-
-        switch(headerCategoryLabel.text){
-        case "Gallery: Things I Did Well":
-            label.text = array[row].didWell
-        case "Gallery: Stressful Moments":
-            label.text = array[row].gratefulThing
-        default:
-            label.text = array[row].didWell
-        }
+        label.text = array[row].gratefulThing
         
         label.adjustsFontSizeToFitWidth=true
         label.numberOfLines=100
@@ -219,7 +206,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             label.textColor=UIColor.black
         }
         
-//        label.backgroundColor=UIColor.purple
+        //        label.backgroundColor=UIColor.purple
         
         image.addSubview(label)
     }
@@ -238,23 +225,14 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         ]
         
         var randomInt1 = Int.random(in: 0...2)
-        switch(headerCategoryLabel.text){
-        case "Gallery: Things I Did Well":
-            randomInt1=0
-        case "Gallery: Stressful Moments":
-            randomInt1=1
-        case "Gallery: Joyful Moments":
-            randomInt1=2
-        default:
-            randomInt1=0
-        }
-        
+        randomInt1=1
+
         let randomInt2 = Int.random(in: 0..<myTempColors[randomInt1].count)
         image.tintColor = myTempColors[randomInt1][randomInt2]
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell=leftCollectionView.dequeueReusableCell(withReuseIdentifier: "LeftCell", for: indexPath) as! LeftCollectionViewCell
+        let cell=leftCollectionView.dequeueReusableCell(withReuseIdentifier: "StressfulCell", for: indexPath) as! StressfulCell
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
@@ -279,12 +257,14 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             var randomInt = Int.random(in: min..<max)
             
-             cell.leftHandImage.frame=CGRect(x: CGFloat(randomInt), y: cell.leftHandImage.frame.origin.y, width: cell.leftHandImage.frame.width, height: cell.leftHandImage.frame.height)
+            cell.leftHandImage.frame=CGRect(x: CGFloat(randomInt), y: cell.leftHandImage.frame.origin.y, width: cell.leftHandImage.frame.width, height: cell.leftHandImage.frame.height)
             cell.leftZoom.frame=CGRect(x: cell.leftHandImage.frame.origin.x, y: cell.leftHandImage.frame.origin.y, width: cell.leftZoom.frame.width, height: cell.leftZoom.frame.height)
             
             cell.leftHandImage.setTemplateImage()
             setImageColor(image: cell.leftHandImage)
             addLabel(image: cell.leftHandImage, array: leftEntries, row: indexPath.row, cell: cell)
+            
+            print("add label to left. row: \(indexPath.row). Left entries count: \(leftEntries.count)")
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
@@ -298,6 +278,8 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             setImageColor(image: cell.rightHandImage)
             addLabel(image: cell.rightHandImage, array: rightEntries, row: indexPath.row, cell: cell)
             
+            print("add label to right. row: \(indexPath.row). Right entries count: \(rightEntries.count)")
+            
             let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
             let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
             
@@ -310,8 +292,8 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         
         setLeftSide()
         
-        if dayHighlightsArray.count%2 != 0{
-            var oneMore=dayHighlightsArray.count+1
+        if editedDaylightsArray.count%2 != 0{
+            var oneMore=editedDaylightsArray.count+1
             var halfOneMore=oneMore/2
             
             if indexPath.row==(halfOneMore-1){
@@ -326,7 +308,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
                 }
                 
                 cell.rightZoom.isHidden=true
-
+                
                 let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
                 cell.dateLabel.text = ("\(leftDate)")
             }else{
@@ -337,46 +319,10 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             cell.rightZoom.isHidden=false
             setRightSide()
         }
-
-        switch(headerCategoryLabel.text){
-        case "Gallery: Stressful Moments":
-            cell.dateLabel.textColor=UIColor.white
-            cell.rightZoom.imageView?.setTemplateImage()
-            cell.rightZoom.imageView?.tintColor=UIColor.white
-            cell.leftZoom.imageView?.setTemplateImage()
-            cell.leftZoom.imageView?.tintColor=UIColor.white
-        default:
-            cell.dateLabel.textColor=UIColor.black
-        }
-
-       
-        cell.updateConstraintsIfNeeded()
-       return cell
-    }
-}
-
-extension UIImageView {
-    func setTemplateImage() {
-        let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
-        self.image = templateImage
-    }
-}
-
-extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        assert(red >= 0 && red <= 255, "Invalid red component")
-        assert(green >= 0 && green <= 255, "Invalid green component")
-        assert(blue >= 0 && blue <= 255, "Invalid blue component")
         
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-    }
-    
-    convenience init(rgb: Int) {
-        self.init(
-            red: (rgb >> 16) & 0xFF,
-            green: (rgb >> 8) & 0xFF,
-            blue: rgb & 0xFF
-        )
+        cell.dateLabel.textColor=UIColor.white
+        
+        cell.updateConstraintsIfNeeded()
+        return cell
     }
 }
-

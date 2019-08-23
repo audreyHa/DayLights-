@@ -64,7 +64,6 @@ class SearchDayLight: UITableViewController {
         
         cell.didWellText.text=selectedDate[0].didWell
         cell.gratefulText.text=selectedDate[0].gratefulThing
-        cell.joyousText.text=selectedDate[0].funny
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
