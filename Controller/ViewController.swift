@@ -8,7 +8,6 @@
 
 import UIKit
 import UserNotifications
-import Crashlytics
 
 class ViewController: UIViewController {
     var daylight: Daylight?
@@ -77,7 +76,6 @@ class ViewController: UIViewController {
         if launchedBefore{
             print("Not first launch.")
         }else{
-            Answers.logCustomEvent(withName: "First time User", customAttributes: nil)
             makePrivacyAlert()
             print("First time opening app")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
@@ -160,12 +158,10 @@ class ViewController: UIViewController {
         var array=CoreDataHelper.retrieveDaylight()
         
             if daylight != nil{
-                Answers.logCustomEvent(withName: "Editing DayLight", customAttributes: nil)
                 saveWhatYouHave()
                 resetEverything()
                 moodIsNotGreat()
             }else{
-                Answers.logCustomEvent(withName: "Saved New DayLight", customAttributes: nil)
                 daylight=CoreDataHelper.newDaylight()
                 saveWhatYouHave()
                 resetEverything()
@@ -291,17 +287,14 @@ class ViewController: UIViewController {
         
         
         if((doubleWeekToCheck.count==doubleCheck)||(doubleWeekToCheck.count-1 == doubleCheck)||(doubleWeekToCheck.count-2 == doubleCheck))&&(doubleWeekEachDateCount>=10){
-            Answers.logCustomEvent(withName: "Bad Mood Past 2 Weeks", customAttributes: nil)
             UserDefaults.standard.set("resources",forKey: "typeOKAlert")
             makeOKAlert()
 
         }else if((weekDatesToCheck.count==weekCheck)||(weekDatesToCheck.count-1 == weekCheck))&&(weekCheckEachDateCount>=5){
-                Answers.logCustomEvent(withName: "Bad Mood Past 1 Weeks", customAttributes: nil)
             UserDefaults.standard.set("weekTalkToFriend",forKey: "typeOKAlert")
             makeOKAlert()
 
         }else if(checkingCount==datesToCheck.count)&&(threeDayCount==3){
-            Answers.logCustomEvent(withName: "Bad Mood Past 3 Days", customAttributes: nil)
             UserDefaults.standard.set("daysTalkToFriend",forKey: "typeOKAlert")
             makeOKAlert()
         }

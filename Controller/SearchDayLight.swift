@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
 
 class SearchDayLight: UITableViewController {
 
@@ -46,7 +45,6 @@ class SearchDayLight: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Answers.logCustomEvent(withName: "Opened Search Page", customAttributes: nil)
         tableView.rowHeight = UITableView.automaticDimension
     }
 

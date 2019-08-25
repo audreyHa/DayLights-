@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
 
 class MoodVC: UIViewController {
     
@@ -28,8 +27,7 @@ class MoodVC: UIViewController {
         weekLabel.adjustsFontSizeToFitWidth=true
         monthLabel.adjustsFontSizeToFitWidth=true
         yearLabel.adjustsFontSizeToFitWidth=true
-        
-        Answers.logCustomEvent(withName: "Opened Mood Stats", customAttributes: nil)
+
         var daylightsArray=[Daylight]()
         daylightsArray=CoreDataHelper.retrieveDaylight()
         daylightsArray = daylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })

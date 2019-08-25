@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 import UserNotifications
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -21,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
 
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Fabric.with([Crashlytics.self])
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             print("Granted \(granted)")
         }

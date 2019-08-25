@@ -24,20 +24,6 @@
 	<string>2.0</string>
 	<key>CFBundleVersion</key>
 	<string>4.0</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>704b97df301458252200f524d2ad4ee22de72e87</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

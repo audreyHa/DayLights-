@@ -6,7 +6,5 @@ target 'DayLights' do
   use_frameworks!
 
   # Pods for DayLights
-	pod 'Fabric'
-	pod 'Crashlytics'
 	pod 'Charts'
 end

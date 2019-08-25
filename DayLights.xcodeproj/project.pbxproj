@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		070E9B9945AC15E74BC6D355 /* Pods_DayLights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */; };
+		1129457C8F8C8B9202FC1F51 /* Pods_DayLights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB1E3095FAF05886533EDC92 /* Pods_DayLights.framework */; };
 		F61176272300F35500121F15 /* NegativeThoughtsEntering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */; };
 		F614E20823010CB50041D628 /* NegativeThoughtsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614E20723010CB50041D628 /* NegativeThoughtsGame.swift */; };
 		F614E20B230117250041D628 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614E20A230117250041D628 /* GameCell.swift */; };
@@ -52,9 +52,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayLights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.debug.xcconfig"; sourceTree = "<group>"; };
-		8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.release.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.release.xcconfig"; sourceTree = "<group>"; };
+		1DCFCA9149743867FCCE8CCC /* Pods-DayLights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.debug.xcconfig"; sourceTree = "<group>"; };
+		CB1E3095FAF05886533EDC92 /* Pods_DayLights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DayLights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB31D6BB297B9EB6A71701E9 /* Pods-DayLights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DayLights.release.xcconfig"; path = "Pods/Target Support Files/Pods-DayLights/Pods-DayLights.release.xcconfig"; sourceTree = "<group>"; };
 		F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsEntering.swift; sourceTree = "<group>"; };
 		F614E20723010CB50041D628 /* NegativeThoughtsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsGame.swift; sourceTree = "<group>"; };
 		F614E20A230117250041D628 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
@@ -106,26 +106,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				070E9B9945AC15E74BC6D355 /* Pods_DayLights.framework in Frameworks */,
+				1129457C8F8C8B9202FC1F51 /* Pods_DayLights.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0212A5550E821AAEBCC7CA38 /* Pods */ = {
+		7299FB81087F974970FD7828 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */,
-				8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */,
+				1DCFCA9149743867FCCE8CCC /* Pods-DayLights.debug.xcconfig */,
+				DB31D6BB297B9EB6A71701E9 /* Pods-DayLights.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		78A0406CDB7F0B1B1FB36A1A /* Frameworks */ = {
+		CF96254BFE80AA2F5C48DD7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F0CD8B72A54792D18BDF310 /* Pods_DayLights.framework */,
+				CB1E3095FAF05886533EDC92 /* Pods_DayLights.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,8 +166,8 @@
 				F68CFA11224A012F001138FE /* Helpers */,
 				F68CF9FB2249F1A1001138FE /* DayLights */,
 				F68CF9FA2249F1A1001138FE /* Products */,
-				0212A5550E821AAEBCC7CA38 /* Pods */,
-				78A0406CDB7F0B1B1FB36A1A /* Frameworks */,
+				7299FB81087F974970FD7828 /* Pods */,
+				CF96254BFE80AA2F5C48DD7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,12 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F68CFA0E2249F1A2001138FE /* Build configuration list for PBXNativeTarget "DayLights" */;
 			buildPhases = (
-				2943F10288EB9F76D8026A7E /* [CP] Check Pods Manifest.lock */,
+				6C37910413E623C4DE101380 /* [CP] Check Pods Manifest.lock */,
 				F68CF9F52249F1A1001138FE /* Sources */,
 				F68CF9F62249F1A1001138FE /* Frameworks */,
 				F68CF9F72249F1A1001138FE /* Resources */,
 				F6762936226645A6006723F5 /* ShellScript */,
-				2BABDD058082C8223026B2DE /* [CP] Embed Pods Frameworks */,
+				8C7A7553C6BE6DCFBCC992CC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -323,7 +323,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2943F10288EB9F76D8026A7E /* [CP] Check Pods Manifest.lock */ = {
+		6C37910413E623C4DE101380 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,7 +341,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2BABDD058082C8223026B2DE /* [CP] Embed Pods Frameworks */ = {
+		8C7A7553C6BE6DCFBCC992CC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,7 +371,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\" 704b97df301458252200f524d2ad4ee22de72e87 ae1335d6c10efa2decd4d0f8bf463bf0886c40f79b53409f5a2bb86a96df1324\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -559,7 +559,7 @@
 		};
 		F68CFA0F2249F1A2001138FE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36CF2CEA58C2B9C838144870 /* Pods-DayLights.debug.xcconfig */;
+			baseConfigurationReference = 1DCFCA9149743867FCCE8CCC /* Pods-DayLights.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -580,7 +580,7 @@
 		};
 		F68CFA102249F1A2001138FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8084A9830B0DF2E1C65E9034 /* Pods-DayLights.release.xcconfig */;
+			baseConfigurationReference = DB31D6BB297B9EB6A71701E9 /* Pods-DayLights.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

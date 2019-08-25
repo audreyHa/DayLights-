@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
 
 class ResourcesTableViewController: UITableViewController {
     
@@ -15,7 +14,7 @@ class ResourcesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Answers.logCustomEvent(withName: "Opened Resources", customAttributes: nil)
+
         var crisisTextLine=CoreDataHelper.newOrg()
         crisisTextLine.organizationName="Crisis Text Line"
         crisisTextLine.orgDescription="Text HOME to 741-741: 24/7"
