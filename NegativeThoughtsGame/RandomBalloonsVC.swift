@@ -22,6 +22,7 @@ class RandomBalloonsVC: UIViewController {
     var increasingValue=0
     
     var gameTimer=Timer()
+    var mediumBlue: UIColor!
     
     @IBOutlet weak var startOverButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -32,11 +33,12 @@ class RandomBalloonsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mediumBlue=UIColor(rgb: 0x1fc2ff)
+        
         startOverButton.layer.cornerRadius=5
         stopButton.layer.cornerRadius=5
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.setRandomBalloonGame(notification:)), name: Notification.Name("setRandomBalloonGame"), object: nil)
-        
         
     }
     
@@ -52,7 +54,27 @@ class RandomBalloonsVC: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    func resetForNewGame(){
+        segmentedControl.isUserInteractionEnabled=true
+        increasingValue=0
+        
+        gameTimer.invalidate()
+        balloonTimer.invalidate()
+        
+        for subview in gameView.subviews{
+            if let item = subview as? UIImageView{
+                item.removeFromSuperview()
+            }
+        }
+        
+        stopButton.setTitle("  Pause  ", for: .normal)
+        countLabel.text=""
+        countdownTimer.text=""
+    }
+    
     @objc func setRandomBalloonGame(notification: Notification){
+        resetForNewGame()
+        
         var gameTime=UserDefaults.standard.string(forKey: "gameTime")
         var gameLevel=UserDefaults.standard.string(forKey: "gameLevel")
         
@@ -105,15 +127,8 @@ class RandomBalloonsVC: UIViewController {
     
     @objc func descendingAction(){
         
-        if (totalMin==0 && totalSec==0){
-            gameTimer.invalidate()
-            balloonTimer.invalidate()
-            
-            for subview in gameView.subviews{
-                if let item = subview as? UIImageView{
-                    item.removeFromSuperview()
-                }
-            }
+        if (totalMin==0 && totalSec==0){ //when timer reaches zero, remove all balloons, stop timers, and set new values as records
+            resetForNewGame()
             
             if increasingValue>recordValue{
                 var gameTime=UserDefaults.standard.string(forKey: "gameTime")
@@ -149,66 +164,56 @@ class RandomBalloonsVC: UIViewController {
         if totalMin<10{
             if totalSec<10{
                 countdownTimer.text = String("0\(Int(totalMin!)) : 0\(Int(totalSec!))")
+                countdownTimer.textColor=mediumBlue
             } else{
                 countdownTimer.text = String("0\(Int(totalMin!)) : \(Int(totalSec!))")
+                countdownTimer.textColor=UIColor.black
             }
         } else{
             if totalSec<10{
                 countdownTimer.text = String("\(Int(totalMin!)) : 0\(Int(totalSec!))")
+                countdownTimer.textColor=UIColor.black
             } else{
                 countdownTimer.text = String("\(Int(totalMin!)) : \(Int(totalSec!))")
+                countdownTimer.textColor=UIColor.black
             }
         }
     }// end of function
     
     func scheduledAddBalloonTimer(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        if self.recordValue != nil{
+            self.countLabel.text="0/\(self.recordValue!)"
+        }else{
+            self.countLabel.text="0"
+        }
+        
+        displaying()
+        
         balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
     }
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
-        if (totalSec != 0)||(totalMin != 0){
-            let segmentIndex = segmentedControl.selectedSegmentIndex
+        if (stopButton.titleLabel!.text == "  Pause  ")&&((totalSec != 0)||(totalMin != 0)){
+                let segmentIndex = segmentedControl.selectedSegmentIndex
+                
+                switch(segmentIndex){
+                case 0:
+                    secondInterval=1
+                case 1:
+                    secondInterval=0.5
+                case 2:
+                    secondInterval=0.25
+                case 3:
+                    secondInterval=0.1
+                default:
+                    secondInterval=0.25
+                }
+                
+                balloonTimer.invalidate()
+                scheduledAddBalloonTimer()
             
-            switch(segmentIndex){
-            case 0:
-                secondInterval=1
-            case 1:
-                secondInterval=0.5
-            case 2:
-                secondInterval=0.25
-            case 3:
-                secondInterval=0.1
-            default:
-                secondInterval=0.25
-            }
-            
-            balloonTimer.invalidate()
-            scheduledAddBalloonTimer()
         }
-    }
-    
-    func segmentedControlValueChanged(){
-        if (totalSec != 0)||(totalMin != 0){
-            let segmentIndex = segmentedControl.selectedSegmentIndex
-            
-            switch(segmentIndex){
-            case 0:
-                secondInterval=1
-            case 1:
-                secondInterval=0.5
-            case 2:
-                secondInterval=0.25
-            case 3:
-                secondInterval=0.15
-            default:
-                secondInterval=0.25
-            }
-            
-            balloonTimer.invalidate()
-            scheduledAddBalloonTimer()
-        }
-        
     }
     
     @objc func addRandomBalloon(){
@@ -233,51 +238,59 @@ class RandomBalloonsVC: UIViewController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if let firstTouch = touches.first {
-            let hitView = gameView.hitTest(firstTouch.location(in: gameView), with: event)
-            
-            //if view that was being pan gestured is a small blue circle view
-            if let item = hitView as? UIImageView{
+        if (stopButton.titleLabel!.text == "  Pause  ")&&((totalSec != 0)||(totalMin != 0)){
+            if let firstTouch = touches.first {
+                let hitView = gameView.hitTest(firstTouch.location(in: gameView), with: event)
                 
-                guard let path = Bundle.main.path(forResource: "balloonPopping", ofType:"mp4") else {
-                    debugPrint("mp4 not found")
-                    return
-                }
-                
-
-                let player = AVPlayer(url: URL(fileURLWithPath: path))
-                let playerLayer = AVPlayerLayer(player: player)
-                playerLayer.frame = item.bounds
-                item.layer.addSublayer(playerLayer)
-                player.play()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
-                    // Code you want to be delayed
-                    item.removeFromSuperview()
-                    self.increasingValue += 1
-                   
-                    if self.recordValue == 0{
-                        self.countLabel.text="\(self.increasingValue)"
-                    }else{
-                        self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
+                //if view that was being pan gestured is a small blue circle view
+                if let item = hitView as? UIImageView{
+                    
+                    guard let path = Bundle.main.path(forResource: "balloonPopping", ofType:"mp4") else {
+                        debugPrint("mp4 not found")
+                        return
+                    }
+                    
+                    
+                    let player = AVPlayer(url: URL(fileURLWithPath: path))
+                    let playerLayer = AVPlayerLayer(player: player)
+                    playerLayer.frame = item.bounds
+                    item.layer.addSublayer(playerLayer)
+                    player.play()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
+                        // Code you want to be delayed
+                        item.removeFromSuperview()
+                        self.increasingValue += 1
+                        
+                        if self.increasingValue>self.recordValue{
+                            self.countLabel.text="\(self.increasingValue)"
+                            self.countLabel.textColor=self.mediumBlue
+                        }else if self.recordValue == 0{
+                            self.countLabel.text="\(self.increasingValue)"
+                            self.countLabel.textColor=UIColor.black
+                        }else{
+                            self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
+                            self.countLabel.textColor=UIColor.black
+                        }
+                        
                     }
                     
                 }
-                
             }
         }
     }
     
     @IBAction func stopGame(_ sender: Any) {
-        if stopButton.titleLabel!.text == "  Pause  "{
+        if stopButton.titleLabel!.text == "  Pause  "{ //pausing
+            segmentedControl.isUserInteractionEnabled=false
             if (totalSec != 0)||(totalMin != 0){
                 balloonTimer.invalidate()
                 gameTimer.invalidate()
                 stopButton.setTitle("  Resume  ", for: .normal)
             }
         }else{
-            if (totalSec != 0)||(totalMin != 0){
+            segmentedControl.isUserInteractionEnabled=true
+            if (totalSec != 0)||(totalMin != 0){ //resuming
                 gameTimer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RandomBalloonsVC.descendingAction), userInfo: nil, repeats: true)
                 balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
                 stopButton.setTitle("  Pause  ", for: .normal)
@@ -287,6 +300,7 @@ class RandomBalloonsVC: UIViewController {
     }
     
     @IBAction func startOverGame(_ sender: Any) {
+        resetForNewGame()
         makeGameSettingsAlert()
     }
     
