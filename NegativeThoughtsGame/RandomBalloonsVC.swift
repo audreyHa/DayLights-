@@ -39,7 +39,21 @@ class RandomBalloonsVC: UIViewController {
         stopButton.layer.cornerRadius=5
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.setRandomBalloonGame(notification:)), name: Notification.Name("setRandomBalloonGame"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.exitScoreReportNewGame(notification:)), name: Notification.Name("exitScoreReportNewGame"), object: nil)
+    }
+    
+    @objc func exitScoreReportNewGame(notification: Notification){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.makeGameSettingsAlert()
+        }
+    }
+    
+    @objc func appMovedToBackground() {
+        resetForNewGame()
+        print("handling random balloons game moved to background")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +62,14 @@ class RandomBalloonsVC: UIViewController {
     
     func makeGameSettingsAlert(){
         let vc = storyboard!.instantiateViewController(withIdentifier: "GameSettingsAlert") as! GameSettingsAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func makeScoreReportAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "ScoreReportAlert") as! ScoreReportAlert
         var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
         vc.view.backgroundColor = transparentGrey
         vc.modalPresentationStyle = .overCurrentContext
@@ -69,7 +91,9 @@ class RandomBalloonsVC: UIViewController {
         
         stopButton.setTitle("  Pause  ", for: .normal)
         countLabel.text=""
+        countLabel.textColor=UIColor.black
         countdownTimer.text=""
+        countdownTimer.textColor=UIColor.black
     }
     
     @objc func setRandomBalloonGame(notification: Notification){
@@ -128,9 +152,9 @@ class RandomBalloonsVC: UIViewController {
     @objc func descendingAction(){
         
         if (totalMin==0 && totalSec==0){ //when timer reaches zero, remove all balloons, stop timers, and set new values as records
-            resetForNewGame()
             
-            if increasingValue>recordValue{
+            
+            if (increasingValue>recordValue)||((recordValue==0)&&(increasingValue != 0)){
                 var gameTime=UserDefaults.standard.string(forKey: "gameTime")
                 
                 switch(gameTime){
@@ -143,10 +167,12 @@ class RandomBalloonsVC: UIViewController {
                 default:
                     print("error in setting the record values after game")
                 }
-                
-                
             }
             //present alert with current score and record score
+            
+            UserDefaults.standard.set(increasingValue, forKey: "currentScore")
+            makeScoreReportAlert()
+            resetForNewGame()
         }else{
             totalSec = totalSec - 1
             if totalSec<0{ //more than 59 seconds
@@ -182,10 +208,10 @@ class RandomBalloonsVC: UIViewController {
     
     func scheduledAddBalloonTimer(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        if self.recordValue != nil{
-            self.countLabel.text="0/\(self.recordValue!)"
-        }else{
+        if self.recordValue == 0{
             self.countLabel.text="0"
+        }else{
+            self.countLabel.text="0/\(recordValue!)"
         }
         
         displaying()
@@ -265,6 +291,20 @@ class RandomBalloonsVC: UIViewController {
                         if self.increasingValue>self.recordValue{
                             self.countLabel.text="\(self.increasingValue)"
                             self.countLabel.textColor=self.mediumBlue
+
+                            var gameTime=UserDefaults.standard.string(forKey: "gameTime")
+                                
+                            switch(gameTime){
+                            case "30 Sec":
+                                UserDefaults.standard.set(self.increasingValue, forKey: "recordThirty")
+                            case "1 Min":
+                                UserDefaults.standard.set(self.increasingValue, forKey: "recordOneMin")
+                            case "5 Min":
+                                UserDefaults.standard.set(self.increasingValue, forKey: "recordFiveMin")
+                            default:
+                                print("error in setting the record values after game")
+                            }
+                            
                         }else if self.recordValue == 0{
                             self.countLabel.text="\(self.increasingValue)"
                             self.countLabel.textColor=UIColor.black

@@ -264,7 +264,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         func setLeftSide(){
             cell.leftHandImage.image=UIImage(named: "greenBalloon")
             
-            var valueToSubtract=cell.leftHandImage.frame.width*1.1
+            var valueToSubtract=cell.leftHandImage.frame.width*1.4
             var min=0
             var max=Int(collectionView.frame.width-valueToSubtract)
             
