@@ -318,7 +318,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             setRightSide()
         }
         
-        cell.dateLabel.textColor=UIColor.white
+        cell.dateLabel.textColor=UIColor.black
         
         cell.updateConstraintsIfNeeded()
         return cell
