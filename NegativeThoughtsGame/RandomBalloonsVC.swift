@@ -53,6 +53,9 @@ class RandomBalloonsVC: UIViewController {
     
     @objc func appMovedToBackground() {
         resetForNewGame()
+        segmentedControl.isUserInteractionEnabled=false
+        stopButton.isEnabled=false
+        
         print("handling random balloons game moved to background")
     }
     
@@ -78,6 +81,7 @@ class RandomBalloonsVC: UIViewController {
     
     func resetForNewGame(){
         segmentedControl.isUserInteractionEnabled=true
+        stopButton.isEnabled=true
         increasingValue=0
         
         gameTimer.invalidate()
@@ -260,6 +264,7 @@ class RandomBalloonsVC: UIViewController {
         myImageView.image = UIImage(imageLiteralResourceName: "greenBalloon").withRenderingMode(.alwaysTemplate)
         myImageView.setImageColor()
         myImageView.isUserInteractionEnabled=true
+
         gameView.addSubview(myImageView)
     }
 
@@ -323,6 +328,7 @@ class RandomBalloonsVC: UIViewController {
     @IBAction func stopGame(_ sender: Any) {
         if stopButton.titleLabel!.text == "  Pause  "{ //pausing
             segmentedControl.isUserInteractionEnabled=false
+            
             if (totalSec != 0)||(totalMin != 0){
                 balloonTimer.invalidate()
                 gameTimer.invalidate()
