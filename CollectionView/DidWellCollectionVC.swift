@@ -288,7 +288,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
-            cell.leftGrateful=leftEntries[indexPath.row].funny!
+            cell.leftStressfulMoment=leftEntries[indexPath.row].stressfulMoment!
         }
         
         func setRightSide(){
@@ -305,7 +305,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
-            cell.rightGrateful=rightEntries[indexPath.row].funny!
+            cell.rightStressfulMoment=rightEntries[indexPath.row].stressfulMoment!
         }
         
         setLeftSide()

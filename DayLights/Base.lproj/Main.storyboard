@@ -680,13 +680,13 @@
                         <outlet property="dateLabel" destination="uF6-c4-4Ot" id="exj-9J-1Bm"/>
                         <outlet property="dayLightsTitleLabel" destination="Kut-Au-Zww" id="co5-WJ-1Mh"/>
                         <outlet property="didWellText" destination="05Y-jk-gUQ" id="fFb-aR-xR4"/>
-                        <outlet property="gratefulText" destination="WuK-UO-kRO" id="2Wc-Di-nE9"/>
                         <outlet property="mood1" destination="OAz-d8-aS8" id="le3-Jc-6W4"/>
                         <outlet property="mood2" destination="UGk-Fy-Ri1" id="Ue9-BX-3gT"/>
                         <outlet property="mood3" destination="I77-g5-ElD" id="3Yb-Lu-X5t"/>
                         <outlet property="mood4" destination="NZx-KN-DC3" id="yaz-VL-FyP"/>
                         <outlet property="mood5" destination="iec-Jm-ggK" id="4rJ-OV-CYP"/>
                         <outlet property="saveButton" destination="5ae-Sl-GyC" id="Zra-tY-KWA"/>
+                        <outlet property="stressfulMomentText" destination="WuK-UO-kRO" id="ATc-hy-tjy"/>
                         <segue destination="lVb-ru-sDB" kind="show" identifier="resources" id="QAL-ca-O38"/>
                         <segue destination="ulj-q6-Gbe" kind="show" identifier="showMood" id="D4J-UW-4Mv"/>
                         <segue destination="pWn-qb-Yv7" kind="show" identifier="showDidWell" id="Nhe-ro-Bqe"/>

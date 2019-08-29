@@ -55,13 +55,12 @@ class SearchDayLight: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchDayLightCell", for: indexPath) as! SearchDayLightCell
         cell.didWellText.text=""
-        cell.gratefulText.text=""
-        cell.joyousText.text=""
+        cell.stressfulMoment.text=""
         cell.moodImage.image=nil
         cell.moodText.text="Mood:"
         
         cell.didWellText.text=selectedDate[0].didWell
-        cell.gratefulText.text=selectedDate[0].funny
+        cell.stressfulMoment.text=selectedDate[0].stressfulMoment
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"

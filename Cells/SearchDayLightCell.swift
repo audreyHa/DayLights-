@@ -12,7 +12,7 @@ class SearchDayLightCell: UITableViewCell {
 
     @IBOutlet weak var dateText: UILabel!
     @IBOutlet weak var didWellText: UILabel!
-    @IBOutlet weak var gratefulText: UILabel!
+    @IBOutlet weak var stressfulMoment: UILabel!
     @IBOutlet weak var joyousText: UILabel!
     @IBOutlet weak var moodImage: UIImageView!
     @IBOutlet weak var moodText: UILabel!

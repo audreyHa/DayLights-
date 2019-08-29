@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Daylight" representedClassName=".Daylight" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="didWell" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="funny" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gratefulThing" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mood" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stressfulMoment" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="NegativeThought" representedClassName="NegativeThought" syncable="YES" codeGenerationType="class">
+        <attribute name="entry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sliderValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="NotificationTime" representedClassName="NotificationTime" syncable="YES" codeGenerationType="class">
+        <attribute name="hour" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minute" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Organization" representedClassName="Organization" syncable="YES" codeGenerationType="class">
+        <attribute name="contact" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organizationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orgDescription" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Daylight" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="NegativeThought" positionX="-63" positionY="27" width="128" height="75"/>
+        <element name="NotificationTime" positionX="-63" positionY="27" width="128" height="75"/>
+        <element name="Organization" positionX="-63" positionY="18" width="128" height="90"/>
+    </elements>
+</model>

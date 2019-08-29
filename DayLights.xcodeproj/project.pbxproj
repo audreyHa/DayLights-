@@ -11,7 +11,6 @@
 		F61176272300F35500121F15 /* NegativeThoughtsEntering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */; };
 		F614E20823010CB50041D628 /* NegativeThoughtsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614E20723010CB50041D628 /* NegativeThoughtsGame.swift */; };
 		F614E20B230117250041D628 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614E20A230117250041D628 /* GameCell.swift */; };
-		F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */; };
 		F61832A722506BCE0083886A /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61832A622506BCE0083886A /* BarCell.swift */; };
 		F61E8FB2230F9FF6004806BF /* StressfulCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E8FB1230F9FF6004806BF /* StressfulCollectionVC.swift */; };
 		F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E8FB3230FA005004806BF /* StressfulCell.swift */; };
@@ -32,8 +31,6 @@
 		F68CFA0A2249F1A2001138FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68CFA082249F1A2001138FE /* LaunchScreen.storyboard */; };
 		F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CFA12224A013B001138FE /* CoreDataHelper.swift */; };
 		F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6902855224B1DDF003E26E4 /* ContainerVC.swift */; };
-		F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F691978E224C975A00554EFA /* DidWellTableViewCell.swift */; };
-		F6919791224C976500554EFA /* GratefulTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6919790224C976500554EFA /* GratefulTableViewCell.swift */; };
 		F693171E2317004C00411078 /* ScoreReportAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F693171D2317004C00411078 /* ScoreReportAlert.swift */; };
 		F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */; };
 		F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */; };
@@ -59,7 +56,6 @@
 		F61176262300F35500121F15 /* NegativeThoughtsEntering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsEntering.swift; sourceTree = "<group>"; };
 		F614E20723010CB50041D628 /* NegativeThoughtsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsGame.swift; sourceTree = "<group>"; };
 		F614E20A230117250041D628 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
-		F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyTableViewCell.swift; sourceTree = "<group>"; };
 		F61832A622506BCE0083886A /* BarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
 		F61E8FB1230F9FF6004806BF /* StressfulCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressfulCollectionVC.swift; sourceTree = "<group>"; };
 		F61E8FB3230FA005004806BF /* StressfulCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressfulCell.swift; sourceTree = "<group>"; };
@@ -82,8 +78,6 @@
 		F68CFA0B2249F1A2001138FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F68CFA12224A013B001138FE /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		F6902855224B1DDF003E26E4 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
-		F691978E224C975A00554EFA /* DidWellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidWellTableViewCell.swift; sourceTree = "<group>"; };
-		F6919790224C976500554EFA /* GratefulTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratefulTableViewCell.swift; sourceTree = "<group>"; };
 		F693171D2317004C00411078 /* ScoreReportAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReportAlert.swift; sourceTree = "<group>"; };
 		F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDayLight.swift; sourceTree = "<group>"; };
 		F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDayLightCell.swift; sourceTree = "<group>"; };
@@ -91,6 +85,7 @@
 		F69C9E842262DC8000CFF1AC /* ShowAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllCell.swift; sourceTree = "<group>"; };
 		F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlertCell.swift; sourceTree = "<group>"; };
 		F6BACC41224DFCEB00430B79 /* MoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
+		F6BB67582317A7310089500B /* DayLights2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DayLights2.xcdatamodel; sourceTree = "<group>"; };
 		F6C5B8FB22FE06FE00078675 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTableViewCell.swift; sourceTree = "<group>"; };
 		F6C6E4992300F4E700A1612B /* NegativeThoughtsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeThoughtsCell.swift; sourceTree = "<group>"; };
@@ -237,9 +232,6 @@
 		F6EDDF1A224F0CFB009A1C0F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F691978E224C975A00554EFA /* DidWellTableViewCell.swift */,
-				F616C67C224DE4F300C85721 /* FunnyTableViewCell.swift */,
-				F6919790224C976500554EFA /* GratefulTableViewCell.swift */,
 				F61832A622506BCE0083886A /* BarCell.swift */,
 				F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */,
 				F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */,
@@ -389,7 +381,6 @@
 				F6E8B628230DD4CA004104D7 /* RandomBalloonsVC.swift in Sources */,
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
 				F6C6E49A2300F4E700A1612B /* NegativeThoughtsCell.swift in Sources */,
-				F616C67D224DE4F300C85721 /* FunnyTableViewCell.swift in Sources */,
 				F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */,
 				F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */,
 				F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */,
@@ -416,9 +407,7 @@
 				F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */,
 				F61E8FB2230F9FF6004806BF /* StressfulCollectionVC.swift in Sources */,
 				F627BA3823091DB800F888A3 /* PrivacyPolicyAlert.swift in Sources */,
-				F691978F224C975A00554EFA /* DidWellTableViewCell.swift in Sources */,
 				F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */,
-				F6919791224C976500554EFA /* GratefulTableViewCell.swift in Sources */,
 				F614E20B230117250041D628 /* GameCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,9 +619,10 @@
 		F68CFA032249F1A1001138FE /* DayLights.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F6BB67582317A7310089500B /* DayLights2.xcdatamodel */,
 				F68CFA042249F1A1001138FE /* DayLights.xcdatamodel */,
 			);
-			currentVersion = F68CFA042249F1A1001138FE /* DayLights.xcdatamodel */;
+			currentVersion = F6BB67582317A7310089500B /* DayLights2.xcdatamodel */;
 			path = DayLights.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

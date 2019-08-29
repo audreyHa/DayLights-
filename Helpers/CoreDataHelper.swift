@@ -20,6 +20,22 @@ struct CoreDataHelper{
         return context
     }()
     
+    lazy var persistentContainer: NSPersistentContainer={
+        let container=NSPersistentContainer(name: "Daylight")
+        
+        let description=NSPersistentStoreDescription()
+        description.shouldMigrateStoreAutomatically=true
+        description.shouldInferMappingModelAutomatically=true
+        container.persistentStoreDescriptions=[description]
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error=error as NSError?{
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
     static func newDaylight()->Daylight{
         let daylight=NSEntityDescription.insertNewObject(forEntityName: "Daylight", into: context) as! Daylight
         return daylight

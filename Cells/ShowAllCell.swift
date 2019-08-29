@@ -12,8 +12,7 @@ class ShowAllCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var didWellText: UILabel!
-    @IBOutlet weak var gratefulText: UILabel!
-    @IBOutlet weak var joyText: UILabel!
+    @IBOutlet weak var stressfulMoment: UILabel!
     @IBOutlet weak var moodLabel: UILabel!
     @IBOutlet weak var moodImage: UIImageView!
 

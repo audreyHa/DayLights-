@@ -40,11 +40,11 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
         var dateToInclude=UserDefaults.standard.string(forKey: "dateToInclude")
         var didWellText=UserDefaults.standard.string(forKey: "didWellText")
-        var gratefulText=UserDefaults.standard.string(forKey: "gratefulText")
+        var stressfulMoment=UserDefaults.standard.string(forKey: "stressfulMoment")
        
         categoryTitles=["Stressful Moments", "What I Did Well"]
         
-        categoryContent=[gratefulText!, didWellText!,]
+        categoryContent=[stressfulMoment!, didWellText!,]
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
