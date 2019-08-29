@@ -20,6 +20,9 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        timeLabel.layer.masksToBounds=true
+        timeLabel.layer.cornerRadius=5
+        
         changeNotiButton.layer.cornerRadius=5
         updateTimeAndSwitch()
         

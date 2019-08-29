@@ -23,10 +23,13 @@ class MoodVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        moodLabel.adjustsFontSizeToFitWidth=true
-        weekLabel.adjustsFontSizeToFitWidth=true
-        monthLabel.adjustsFontSizeToFitWidth=true
-        yearLabel.adjustsFontSizeToFitWidth=true
+        var labels=[moodLabel, weekLabel, monthLabel, yearLabel]
+        
+        for label in labels{
+            label!.layer.masksToBounds=true
+            label!.layer.cornerRadius=5
+            label?.adjustsFontSizeToFitWidth=true
+        }
 
         var daylightsArray=[Daylight]()
         daylightsArray=CoreDataHelper.retrieveDaylight()
