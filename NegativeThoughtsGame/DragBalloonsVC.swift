@@ -1,27 +1,26 @@
 //
-//  RandomBalloonsVC.swift
+//  DragBalloonsVC.swift
 //  DayLights
 //
-//  Created by Audrey Ha on 8/21/19.
+//  Created by Audrey Ha on 8/29/19.
 //  Copyright © 2019 AudreyHa. All rights reserved.
 //
 
 import UIKit
-import AVKit
-import AVFoundation
 
-class RandomBalloonsVC: UIViewController {
+class DragBalloonsVC: UIViewController {
 
     var balloonTimer = Timer()
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var controlsView: UIView!
+    
     var secondInterval: Double!
     var totalMin: Int!
     var totalSec: Int!
     var recordValue: Int!
     var increasingValue=0
-    
+    var balloonWidth=80
     var gameTimer=Timer()
     var mediumBlue: UIColor!
     
@@ -34,14 +33,17 @@ class RandomBalloonsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gameView.isUserInteractionEnabled=true
+        
         controlsView.layer.cornerRadius=10
+        
         mediumBlue=UIColor(rgb: 0x1fc2ff)
         
         startOverButton.layer.cornerRadius=5
         stopButton.layer.cornerRadius=5
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.setRandomBalloonGame(notification:)), name: Notification.Name("setRandomBalloonGame"), object: nil)
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.exitScoreReportNewGame(notification:)), name: Notification.Name("exitScoreReportNewGame"), object: nil)
@@ -222,33 +224,34 @@ class RandomBalloonsVC: UIViewController {
         
         displaying()
         
-        balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
+        balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addBalloonToDrag), userInfo: nil, repeats: true)
     }
     
     @IBAction func segmentedValueChanged(_ sender: Any) {
         if (stopButton.titleLabel!.text == "  Pause  ")&&((totalSec != 0)||(totalMin != 0)){
-                let segmentIndex = segmentedControl.selectedSegmentIndex
-                
-                switch(segmentIndex){
-                case 0:
-                    secondInterval=1
-                case 1:
-                    secondInterval=0.5
-                case 2:
-                    secondInterval=0.25
-                case 3:
-                    secondInterval=0.1
-                default:
-                    secondInterval=0.25
-                }
-                
-                balloonTimer.invalidate()
-                scheduledAddBalloonTimer()
+            let segmentIndex = segmentedControl.selectedSegmentIndex
+            
+            switch(segmentIndex){
+            case 0:
+                secondInterval=1
+            case 1:
+                secondInterval=0.5
+            case 2:
+                secondInterval=0.25
+            case 3:
+                secondInterval=0.1
+            default:
+                secondInterval=0.25
+            }
+            
+            balloonTimer.invalidate()
+            scheduledAddBalloonTimer()
             
         }
     }
     
-    @objc func addRandomBalloon(){
+    @objc func addBalloonToDrag(){
+        //COMMENT: These balloons instead have to be specific mood baloons. And they need the dragging gesture recognizer
         var myImageView=UIImageView()
         
         var fullWidth=Int(gameView.frame.width)
@@ -256,51 +259,57 @@ class RandomBalloonsVC: UIViewController {
         
         var widthMin=Int(gameView.frame.width*0.2)
         var widthMax=Int(gameView.frame.width*0.3)
-        var randomWidth = Int.random(in: widthMin...widthMax)
         var countdownLabelHeight=Int(countdownTimer.frame.height)
         
-        var randomX=Int.random(in: 0...fullWidth-randomWidth)
-        var randomY=Int.random(in: countdownLabelHeight...fullHeight-randomWidth)
+        var randomX=Int.random(in: 0...fullWidth-balloonWidth)
         
-        myImageView.frame=CGRect(x: randomX, y: randomY, width: randomWidth, height: randomWidth)
-        myImageView.image = UIImage(imageLiteralResourceName: "greenBalloon").withRenderingMode(.alwaysTemplate)
-        myImageView.setImageColor()
-        myImageView.isUserInteractionEnabled=true
-
+        //make sure that there is space at the top and bottom for image views to be dragged up and down
+        var randomY=Int.random(in: countdownLabelHeight+balloonWidth...fullHeight-balloonWidth-balloonWidth)
+        
+        myImageView.frame=CGRect(x: randomX, y: randomY, width: balloonWidth, height: balloonWidth)
+        
+        var moodBalloonNames=["emojiScale1","emojiScale2","emojiScale4","emojiScale5"]
+        var randomMoodBalloonInt=Int.random(in:0...3)
+        var randomBalloonName=moodBalloonNames[randomMoodBalloonInt]
+        
+        myImageView.image = UIImage(imageLiteralResourceName: "emojiScale1")
+        
+        var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(draggedView(_:)))
+        myImageView.isUserInteractionEnabled = true
+        myImageView.addGestureRecognizer(panGestureRecognizer)
+        
         gameView.addSubview(myImageView)
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+    @objc func draggedView(_ sender:UIPanGestureRecognizer){
         if (stopButton.titleLabel!.text == "  Pause  ")&&((totalSec != 0)||(totalMin != 0)){
-            if let firstTouch = touches.first {
-                let hitView = gameView.hitTest(firstTouch.location(in: gameView), with: event)
+            let translation = sender.translation(in: gameView)
+            if let viewDrag=sender.view as? UIImageView{
+                viewDrag.center = CGPoint(x: viewDrag.center.x + translation.x, y: viewDrag.center.y + translation.y)
+                sender.setTranslation(CGPoint.zero, in: gameView)
                 
-                //if view that was being pan gestured is a small blue circle view
-                if let item = hitView as? UIImageView{
-                    
-                    guard let path = Bundle.main.path(forResource: "balloonPopping", ofType:"mp4") else {
-                        debugPrint("mp4 not found")
-                        return
+                if (viewDrag.image==UIImage(named: "emojiScale1"))||(viewDrag.image==UIImage(named: "emojiScale2")){
+
+                    print("View Drag Y: \(viewDrag.frame.origin.y) Game View  Y: \(gameView.frame.origin.y)")
+                    if (!viewDrag.superview!.bounds.intersection(viewDrag.frame).equalTo(viewDrag.frame))
+                    {
+                        print("need to remove emoji scale 1 or 2 from superview")
+                        viewDrag.removeFromSuperview()
                     }
-                    
-                    
-                    let player = AVPlayer(url: URL(fileURLWithPath: path))
-                    let playerLayer = AVPlayerLayer(player: player)
-                    playerLayer.frame = item.bounds
-                    item.layer.addSublayer(playerLayer)
-                    player.play()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
-                        // Code you want to be delayed
-                        item.removeFromSuperview()
+
+                }else{
+                    var bottomY=viewDrag.frame.origin.y+CGFloat(balloonWidth)
+                    if bottomY==self.view.frame.height{
+                        viewDrag.removeFromSuperview()
+                        
                         self.increasingValue += 1
                         
                         if self.increasingValue>self.recordValue{
                             self.countLabel.text="\(self.increasingValue)"
                             self.countLabel.textColor=self.mediumBlue
-
+                            
                             var gameTime=UserDefaults.standard.string(forKey: "gameTime")
-                                
+                            
                             switch(gameTime){
                             case "30 Sec":
                                 UserDefaults.standard.set(self.increasingValue, forKey: "recordThirty")
@@ -319,14 +328,39 @@ class RandomBalloonsVC: UIViewController {
                             self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
                             self.countLabel.textColor=UIColor.black
                         }
-                        
+                    }
+                }
+                
+                self.increasingValue += 1
+                
+                if self.increasingValue>self.recordValue{
+                    self.countLabel.text="\(self.increasingValue)"
+                    self.countLabel.textColor=self.mediumBlue
+                    
+                    var gameTime=UserDefaults.standard.string(forKey: "gameTime")
+                    
+                    switch(gameTime){
+                    case "30 Sec":
+                        UserDefaults.standard.set(self.increasingValue, forKey: "recordThirty")
+                    case "1 Min":
+                        UserDefaults.standard.set(self.increasingValue, forKey: "recordOneMin")
+                    case "5 Min":
+                        UserDefaults.standard.set(self.increasingValue, forKey: "recordFiveMin")
+                    default:
+                        print("error in setting the record values after game")
                     }
                     
+                }else if self.recordValue == 0{
+                    self.countLabel.text="\(self.increasingValue)"
+                    self.countLabel.textColor=UIColor.black
+                }else{
+                    self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
+                    self.countLabel.textColor=UIColor.black
                 }
             }
         }
     }
-    
+
     @IBAction func stopGame(_ sender: Any) {
         if stopButton.titleLabel!.text == "  Pause  "{ //pausing
             segmentedControl.isUserInteractionEnabled=false
@@ -340,11 +374,13 @@ class RandomBalloonsVC: UIViewController {
             segmentedControl.isUserInteractionEnabled=true
             if (totalSec != 0)||(totalMin != 0){ //resuming
                 gameTimer=Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RandomBalloonsVC.descendingAction), userInfo: nil, repeats: true)
-                balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addRandomBalloon), userInfo: nil, repeats: true)
+                
+                balloonTimer = Timer.scheduledTimer(timeInterval: secondInterval, target: self, selector: #selector(self.addBalloonToDrag), userInfo: nil, repeats: true)
+                
                 stopButton.setTitle("  Pause  ", for: .normal)
             }
         }
-
+        
     }
     
     @IBAction func startOverGame(_ sender: Any) {
@@ -352,13 +388,4 @@ class RandomBalloonsVC: UIViewController {
         makeGameSettingsAlert()
     }
     
-}
-
-extension UIImageView{
-    func setImageColor(){
-        var myTempColors=[UIColor(rgb: 0xef4b4b), UIColor(rgb: 0xec8f6a), UIColor(rgb: 0xf9e090),  UIColor(rgb: 0xedaaaa), UIColor(rgb: 0xffdcf7), UIColor(rgb: 0xfce2ae), UIColor(rgb: 0xdc5353), UIColor(rgb: 0xcf455c), UIColor(rgb: 0xf67e7d), UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x00818a), UIColor(rgb: 0x00a79d), UIColor(rgb: 0x226b80), UIColor(rgb: 0x00818a), UIColor(rgb: 0x9cf196), UIColor(rgb: 0x5edfff), UIColor(rgb: 0xb2fcff), UIColor(rgb: 0xe0f5b9), UIColor(rgb: 0xc6f1d6), UIColor(rgb: 0xdaf1f9), UIColor(rgb: 0x366ed8), UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x843b62), UIColor(rgb: 0x241663), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b), UIColor(rgb: 0x9ea9f0), UIColor(rgb: 0xccc1ff), UIColor(rgb: 0xffeafe), UIColor(rgb: 0xab93c9), UIColor(rgb: 0xd698b9)]
-        
-        var randomInt = Int.random(in: 0..<myTempColors.count)
-        self.tintColor = myTempColors[randomInt]
-    }
 }
