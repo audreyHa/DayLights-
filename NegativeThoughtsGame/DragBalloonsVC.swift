@@ -272,7 +272,7 @@ class DragBalloonsVC: UIViewController {
         var randomMoodBalloonInt=Int.random(in:0...3)
         var randomBalloonName=moodBalloonNames[randomMoodBalloonInt]
         
-        myImageView.image = UIImage(imageLiteralResourceName: "emojiScale1")
+        myImageView.image = UIImage(imageLiteralResourceName: randomBalloonName)
         
         var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(draggedView(_:)))
         myImageView.isUserInteractionEnabled = true
@@ -288,45 +288,23 @@ class DragBalloonsVC: UIViewController {
                 viewDrag.center = CGPoint(x: viewDrag.center.x + translation.x, y: viewDrag.center.y + translation.y)
                 sender.setTranslation(CGPoint.zero, in: gameView)
                 
-                if (viewDrag.image==UIImage(named: "emojiScale1"))||(viewDrag.image==UIImage(named: "emojiScale2")){
-
-                    print("View Drag Y: \(viewDrag.frame.origin.y) Game View  Y: \(gameView.frame.origin.y)")
+                if (viewDrag.image==UIImage(named: "emojiScale4"))||(viewDrag.image==UIImage(named: "emojiScale5")){
                     if (!viewDrag.superview!.bounds.intersection(viewDrag.frame).equalTo(viewDrag.frame))
                     {
-                        print("need to remove emoji scale 1 or 2 from superview")
-                        viewDrag.removeFromSuperview()
+                        print("4 or 5: View Drag Min Y: \(viewDrag.frame.minY). Game View Min Y: \(gameView.frame.minY)")
+                        
+                        if viewDrag.frame.minY >= gameView.frame.minY{
+                            viewDrag.removeFromSuperview()
+                        }
                     }
 
                 }else{
-                    var bottomY=viewDrag.frame.origin.y+CGFloat(balloonWidth)
-                    if bottomY==self.view.frame.height{
-                        viewDrag.removeFromSuperview()
+                    if (!viewDrag.superview!.bounds.intersection(viewDrag.frame).equalTo(viewDrag.frame))
+                    {
+                        print("1 or 2: View Drag Min Y: \(viewDrag.frame.minY). Game View Min Y: \(gameView.frame.minY)")
                         
-                        self.increasingValue += 1
-                        
-                        if self.increasingValue>self.recordValue{
-                            self.countLabel.text="\(self.increasingValue)"
-                            self.countLabel.textColor=self.mediumBlue
-                            
-                            var gameTime=UserDefaults.standard.string(forKey: "gameTime")
-                            
-                            switch(gameTime){
-                            case "30 Sec":
-                                UserDefaults.standard.set(self.increasingValue, forKey: "recordThirty")
-                            case "1 Min":
-                                UserDefaults.standard.set(self.increasingValue, forKey: "recordOneMin")
-                            case "5 Min":
-                                UserDefaults.standard.set(self.increasingValue, forKey: "recordFiveMin")
-                            default:
-                                print("error in setting the record values after game")
-                            }
-                            
-                        }else if self.recordValue == 0{
-                            self.countLabel.text="\(self.increasingValue)"
-                            self.countLabel.textColor=UIColor.black
-                        }else{
-                            self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
-                            self.countLabel.textColor=UIColor.black
+                        if viewDrag.frame.minY <= gameView.frame.minY{
+                            viewDrag.removeFromSuperview()
                         }
                     }
                 }
