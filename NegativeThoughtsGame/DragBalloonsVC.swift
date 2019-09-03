@@ -160,19 +160,19 @@ class DragBalloonsVC: UIViewController {
         
         switch(gameLevel){
         case "Easy":
-            secondInterval=1
+            secondInterval=2
             segmentedControl.selectedSegmentIndex = 0
         case "Medium":
-            secondInterval=0.5
+            secondInterval=1.5
             segmentedControl.selectedSegmentIndex = 1
         case "HARD":
-            secondInterval=0.25
+            secondInterval=1
             segmentedControl.selectedSegmentIndex = 2
         case "EXTREME":
-            secondInterval=0.1
+            secondInterval=0.5
             segmentedControl.selectedSegmentIndex = 3
         default:
-            secondInterval=0.25
+            secondInterval=1.5
             segmentedControl.selectedSegmentIndex = 2
         }
         
@@ -221,7 +221,10 @@ class DragBalloonsVC: UIViewController {
         if totalMin<10{
             if totalSec<10{
                 countdownTimer.text = String("0\(Int(totalMin!)) : 0\(Int(totalSec!))")
-                countdownTimer.textColor=mediumBlue
+                
+                if totalMin==0{
+                    countdownTimer.textColor=mediumBlue
+                }
             } else{
                 countdownTimer.text = String("0\(Int(totalMin!)) : \(Int(totalSec!))")
                 countdownTimer.textColor=UIColor.black
@@ -256,15 +259,15 @@ class DragBalloonsVC: UIViewController {
             
             switch(segmentIndex){
             case 0:
-                secondInterval=1
+                secondInterval=2
             case 1:
-                secondInterval=0.5
+                secondInterval=1.5
             case 2:
-                secondInterval=0.25
+                secondInterval=1
             case 3:
-                secondInterval=0.1
+                secondInterval=0.5
             default:
-                secondInterval=0.25
+                secondInterval=1.5
             }
             
             balloonTimer.invalidate()

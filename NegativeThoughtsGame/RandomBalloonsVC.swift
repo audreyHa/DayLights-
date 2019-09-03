@@ -219,7 +219,10 @@ class RandomBalloonsVC: UIViewController {
         if totalMin<10{
             if totalSec<10{
                 countdownTimer.text = String("0\(Int(totalMin!)) : 0\(Int(totalSec!))")
-                countdownTimer.textColor=mediumBlue
+                
+                if totalMin==0{
+                    countdownTimer.textColor=mediumBlue
+                }
             } else{
                 countdownTimer.text = String("0\(Int(totalMin!)) : \(Int(totalSec!))")
                 countdownTimer.textColor=UIColor.black
