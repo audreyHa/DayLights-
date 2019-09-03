@@ -14,6 +14,7 @@ class DragBalloonsVC: UIViewController {
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var controlsView: UIView!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     var secondInterval: Double!
     var totalMin: Int!
@@ -33,6 +34,7 @@ class DragBalloonsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        instructionsLabel.adjustsFontSizeToFitWidth=true
         gameView.isUserInteractionEnabled=true
         
         controlsView.layer.cornerRadius=10
@@ -42,11 +44,28 @@ class DragBalloonsVC: UIViewController {
         startOverButton.layer.cornerRadius=5
         stopButton.layer.cornerRadius=5
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.setRandomBalloonGame(notification:)), name: Notification.Name("setRandomBalloonGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.gameTwoInstructions(notification:)), name: Notification.Name("gameTwoInstructions"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setSecondBalloonGame(notification:)), name: Notification.Name("setSecondBalloonGame"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.exitScoreReportNewGame(notification:)), name: Notification.Name("exitScoreReportNewGame"), object: nil)
+    }
+    
+    @objc func gameTwoInstructions(notification: Notification){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UserDefaults.standard.set("gameTwoInstructions",forKey: "typeOKAlert")
+            self.makeOKAlert()
+        }
+    }
+    
+    func makeOKAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "OKAlert") as! OKAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func exitScoreReportNewGame(notification: Notification){
@@ -56,11 +75,13 @@ class DragBalloonsVC: UIViewController {
     }
     
     @objc func appMovedToBackground() {
-        resetForNewGame()
         segmentedControl.isUserInteractionEnabled=false
-        stopButton.isEnabled=false
         
-        print("handling random balloons game moved to background")
+        if (totalSec != 0)||(totalMin != 0){
+            balloonTimer.invalidate()
+            gameTimer.invalidate()
+            stopButton.setTitle("  Resume  ", for: .normal)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +89,7 @@ class DragBalloonsVC: UIViewController {
     }
     
     func makeGameSettingsAlert(){
+        UserDefaults.standard.set("game2", forKey: "gameNumber")
         let vc = storyboard!.instantiateViewController(withIdentifier: "GameSettingsAlert") as! GameSettingsAlert
         var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
         vc.view.backgroundColor = transparentGrey
@@ -76,6 +98,7 @@ class DragBalloonsVC: UIViewController {
     }
     
     func makeScoreReportAlert(){
+        UserDefaults.standard.set("game2", forKey: "gameNumber")
         let vc = storyboard!.instantiateViewController(withIdentifier: "ScoreReportAlert") as! ScoreReportAlert
         var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
         vc.view.backgroundColor = transparentGrey
@@ -104,30 +127,30 @@ class DragBalloonsVC: UIViewController {
         countdownTimer.textColor=UIColor.black
     }
     
-    @objc func setRandomBalloonGame(notification: Notification){
+    @objc func setSecondBalloonGame(notification: Notification){
         resetForNewGame()
         
-        var gameTime=UserDefaults.standard.string(forKey: "gameTime")
-        var gameLevel=UserDefaults.standard.string(forKey: "gameLevel")
+        var gameTime=UserDefaults.standard.string(forKey: "gameTime2")
+        var gameLevel=UserDefaults.standard.string(forKey: "gameLevel2")
         
         switch(gameTime){
         case "30 Sec":
             totalMin=0
             totalSec=30
             
-            var record=UserDefaults.standard.integer(forKey: "recordThirty")
+            var record=UserDefaults.standard.integer(forKey: "recordThirty2")
             recordValue=record
         case "1 Min":
             totalMin=1
             totalSec=0
             
-            var record=UserDefaults.standard.integer(forKey: "recordOneMin")
+            var record=UserDefaults.standard.integer(forKey: "recordOneMin2")
             recordValue=record
         case "5 Min":
             totalMin=5
             totalSec=0
             
-            var record=UserDefaults.standard.integer(forKey: "recordFiveMin")
+            var record=UserDefaults.standard.integer(forKey: "recordFiveMin2")
             recordValue=record
         default:
             print("error in setting min and sec and record values")
@@ -163,22 +186,22 @@ class DragBalloonsVC: UIViewController {
             
             
             if (increasingValue>recordValue)||((recordValue==0)&&(increasingValue != 0)){
-                var gameTime=UserDefaults.standard.string(forKey: "gameTime")
+                var gameTime=UserDefaults.standard.string(forKey: "gameTime2")
                 
                 switch(gameTime){
                 case "30 Sec":
-                    UserDefaults.standard.set(increasingValue, forKey: "recordThirty")
+                    UserDefaults.standard.set(increasingValue, forKey: "recordThirty2")
                 case "1 Min":
-                    UserDefaults.standard.set(increasingValue, forKey: "recordOneMin")
+                    UserDefaults.standard.set(increasingValue, forKey: "recordOneMin2")
                 case "5 Min":
-                    UserDefaults.standard.set(increasingValue, forKey: "recordFiveMin")
+                    UserDefaults.standard.set(increasingValue, forKey: "recordFiveMin2")
                 default:
                     print("error in setting the record values after game")
                 }
             }
             //present alert with current score and record score
             
-            UserDefaults.standard.set(increasingValue, forKey: "currentScore")
+            UserDefaults.standard.set(increasingValue, forKey: "currentScore2")
             makeScoreReportAlert()
             resetForNewGame()
         }else{
@@ -216,7 +239,7 @@ class DragBalloonsVC: UIViewController {
     
     func scheduledAddBalloonTimer(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        if self.recordValue == 0{
+        if (self.recordValue == 0)||(self.recordValue == nil){
             self.countLabel.text="0"
         }else{
             self.countLabel.text="0/\(recordValue!)"
@@ -291,54 +314,58 @@ class DragBalloonsVC: UIViewController {
                 if (viewDrag.image==UIImage(named: "emojiScale4"))||(viewDrag.image==UIImage(named: "emojiScale5")){
                     if (!viewDrag.superview!.bounds.intersection(viewDrag.frame).equalTo(viewDrag.frame))
                     {
-                        print("4 or 5: View Drag Min Y: \(viewDrag.frame.minY). Game View Min Y: \(gameView.frame.minY)")
-                        
-                        if viewDrag.frame.minY >= gameView.frame.minY{
+                        if viewDrag.frame.minY <= gameView.frame.minY{
                             viewDrag.removeFromSuperview()
+                            increaseScore()
                         }
                     }
 
                 }else{
                     if (!viewDrag.superview!.bounds.intersection(viewDrag.frame).equalTo(viewDrag.frame))
                     {
-                        print("1 or 2: View Drag Min Y: \(viewDrag.frame.minY). Game View Min Y: \(gameView.frame.minY)")
-                        
-                        if viewDrag.frame.minY <= gameView.frame.minY{
+                        if viewDrag.frame.minY >= gameView.frame.minY{
                             viewDrag.removeFromSuperview()
+                            increaseScore()
+                        }else{
+                            //COMMENT: FIX THIS PLEASE
+                            viewDrag.frame=CGRect(x: Int(viewDrag.frame.origin.x), y: 0, width: balloonWidth, height: balloonWidth)
+                            
                         }
                     }
-                }
-                
-                self.increasingValue += 1
-                
-                if self.increasingValue>self.recordValue{
-                    self.countLabel.text="\(self.increasingValue)"
-                    self.countLabel.textColor=self.mediumBlue
-                    
-                    var gameTime=UserDefaults.standard.string(forKey: "gameTime")
-                    
-                    switch(gameTime){
-                    case "30 Sec":
-                        UserDefaults.standard.set(self.increasingValue, forKey: "recordThirty")
-                    case "1 Min":
-                        UserDefaults.standard.set(self.increasingValue, forKey: "recordOneMin")
-                    case "5 Min":
-                        UserDefaults.standard.set(self.increasingValue, forKey: "recordFiveMin")
-                    default:
-                        print("error in setting the record values after game")
-                    }
-                    
-                }else if self.recordValue == 0{
-                    self.countLabel.text="\(self.increasingValue)"
-                    self.countLabel.textColor=UIColor.black
-                }else{
-                    self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
-                    self.countLabel.textColor=UIColor.black
                 }
             }
         }
     }
 
+    func increaseScore(){
+        self.increasingValue += 1
+        
+        if self.increasingValue>self.recordValue{
+            self.countLabel.text="\(self.increasingValue)"
+            self.countLabel.textColor=self.mediumBlue
+            
+            var gameTime=UserDefaults.standard.string(forKey: "gameTime2")
+            
+            switch(gameTime){
+            case "30 Sec":
+                UserDefaults.standard.set(self.increasingValue, forKey: "recordThirty2")
+            case "1 Min":
+                UserDefaults.standard.set(self.increasingValue, forKey: "recordOneMin2")
+            case "5 Min":
+                UserDefaults.standard.set(self.increasingValue, forKey: "recordFiveMin2")
+            default:
+                print("error in setting the record values after game")
+            }
+            
+        }else if self.recordValue == 0{
+            self.countLabel.text="\(self.increasingValue)"
+            self.countLabel.textColor=UIColor.black
+        }else{
+            self.countLabel.text="\(self.increasingValue)/\(self.recordValue!)"
+            self.countLabel.textColor=UIColor.black
+        }
+    }
+    
     @IBAction func stopGame(_ sender: Any) {
         if stopButton.titleLabel!.text == "  Pause  "{ //pausing
             segmentedControl.isUserInteractionEnabled=false

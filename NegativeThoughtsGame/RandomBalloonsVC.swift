@@ -16,6 +16,8 @@ class RandomBalloonsVC: UIViewController {
     @IBOutlet weak var gameView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var controlsView: UIView!
+    @IBOutlet weak var instructionsLabel: UILabel!
+    
     var secondInterval: Double!
     var totalMin: Int!
     var totalSec: Int!
@@ -34,17 +36,27 @@ class RandomBalloonsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        instructionsLabel.adjustsFontSizeToFitWidth=true
         controlsView.layer.cornerRadius=10
         mediumBlue=UIColor(rgb: 0x1fc2ff)
         
         startOverButton.layer.cornerRadius=5
         stopButton.layer.cornerRadius=5
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.gameOneInstructions(notification:)), name: Notification.Name("gameOneInstructions"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.setRandomBalloonGame(notification:)), name: Notification.Name("setRandomBalloonGame"), object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.exitScoreReportNewGame(notification:)), name: Notification.Name("exitScoreReportNewGame"), object: nil)
+    }
+    
+    @objc func gameOneInstructions(notification: Notification){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UserDefaults.standard.set("gameOneInstructions",forKey: "typeOKAlert")
+            self.makeOKAlert()
+        }
     }
     
     @objc func exitScoreReportNewGame(notification: Notification){
@@ -66,6 +78,8 @@ class RandomBalloonsVC: UIViewController {
     }
     
     func makeGameSettingsAlert(){
+        UserDefaults.standard.set("game1", forKey: "gameNumber")
+        
         let vc = storyboard!.instantiateViewController(withIdentifier: "GameSettingsAlert") as! GameSettingsAlert
         var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
         vc.view.backgroundColor = transparentGrey
@@ -74,6 +88,8 @@ class RandomBalloonsVC: UIViewController {
     }
     
     func makeScoreReportAlert(){
+        UserDefaults.standard.set("game1", forKey: "gameNumber")
+        
         let vc = storyboard!.instantiateViewController(withIdentifier: "ScoreReportAlert") as! ScoreReportAlert
         var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
         vc.view.backgroundColor = transparentGrey
@@ -151,8 +167,15 @@ class RandomBalloonsVC: UIViewController {
             segmentedControl.selectedSegmentIndex = 2
         }
         
-        
         scheduledAddBalloonTimer()
+    }
+    
+    func makeOKAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "OKAlert") as! OKAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func descendingAction(){
@@ -214,7 +237,7 @@ class RandomBalloonsVC: UIViewController {
     
     func scheduledAddBalloonTimer(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        if self.recordValue == 0{
+        if (self.recordValue == 0)||(self.recordValue == nil){
             self.countLabel.text="0"
         }else{
             self.countLabel.text="0/\(recordValue!)"

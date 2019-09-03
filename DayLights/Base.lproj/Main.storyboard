@@ -1456,6 +1456,7 @@
                         <outlet property="countLabel" destination="kgn-UO-tKg" id="Rcc-Hu-cAy"/>
                         <outlet property="countdownTimer" destination="G6H-TG-YMT" id="WRY-Au-0E2"/>
                         <outlet property="gameView" destination="TMs-hW-57T" id="1uW-4R-rGn"/>
+                        <outlet property="instructionsLabel" destination="eEN-XU-mPc" id="fch-rw-2DS"/>
                         <outlet property="segmentedControl" destination="pun-s0-g1K" id="XM4-8f-jb4"/>
                         <outlet property="startOverButton" destination="Dfp-IE-YFk" id="QXx-2D-qEP"/>
                         <outlet property="stopButton" destination="ArQ-dp-Non" id="XMj-lR-Xv1"/>
@@ -2525,7 +2526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQW-uW-goQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5534" y="17"/>
+            <point key="canvasLocation" x="5646" y="17"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bnL-Ew-SrY">
@@ -2705,6 +2706,7 @@
                         <outlet property="countLabel" destination="ujF-l0-VID" id="s4B-0q-d3z"/>
                         <outlet property="countdownTimer" destination="A6P-N9-lnm" id="gW6-uG-hFE"/>
                         <outlet property="gameView" destination="dNO-q7-OQ1" id="8Ic-QE-bH7"/>
+                        <outlet property="instructionsLabel" destination="qIK-OW-a4e" id="8cn-t9-W1R"/>
                         <outlet property="segmentedControl" destination="mcs-vy-nNa" id="gwl-zb-Wfv"/>
                         <outlet property="startOverButton" destination="03U-Hd-46G" id="Tly-1c-ylR"/>
                         <outlet property="stopButton" destination="jpa-XP-VUa" id="E6D-Bb-OCt"/>

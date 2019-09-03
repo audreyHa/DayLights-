@@ -66,6 +66,14 @@ class OKAlert: UIViewController {
             headerLabel.text="ALERT!"
             bodyText.text="First you need to go to settings, scroll down to the DayHighlights App, and allow notifications!"
             yesButton.setTitle("OK", for: .normal)
+        case "gameOneInstructions":
+            headerLabel.text="Instructions!"
+            bodyText.text="Pop each balloon as they appear!"
+            yesButton.setTitle("OK", for: .normal)
+        case "gameTwoInstructions":
+            headerLabel.text="Instructions!"
+            bodyText.text="Drag the angry balloons down and the happy balloons up!"
+            yesButton.setTitle("OK", for: .normal)
         default:
             print("Error! Could not react to yes no alert!")
         }
@@ -75,11 +83,18 @@ class OKAlert: UIViewController {
         switch (UserDefaults.standard.string(forKey: "typeOKAlert")) {
         case "resources":
             NotificationCenter.default.post(name: Notification.Name("segueResources"), object: nil)
-            
             navigationController?.popViewController(animated: true)
             dismiss(animated: true, completion: nil)
         case "settingsTurnOnNoti":
             NotificationCenter.default.post(name: Notification.Name("updateTimeAndSwitch"), object: nil)
+            navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
+        case "gameOneInstructions":
+            NotificationCenter.default.post(name: Notification.Name("setRandomBalloonGame"), object: nil)
+            navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
+        case "gameTwoInstructions":
+            NotificationCenter.default.post(name: Notification.Name("setSecondBalloonGame"), object: nil)
             navigationController?.popViewController(animated: true)
             dismiss(animated: true, completion: nil)
         default:

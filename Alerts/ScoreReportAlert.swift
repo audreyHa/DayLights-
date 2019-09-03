@@ -57,24 +57,49 @@ class ScoreReportAlert: UIViewController {
         let randomInt = Int.random(in: 0..<successMessages.count)
         headerLabel.text=successMessages[randomInt]
         
-        var gameTime=UserDefaults.standard.string(forKey: "gameTime")
-        var gameLevel=UserDefaults.standard.string(forKey: "gameLevel")
-        
-        switch(gameTime){
-        case "30 Sec":
-            var record=UserDefaults.standard.integer(forKey: "recordThirty")
-            recordScore=record
-        case "1 Min":
-            var record=UserDefaults.standard.integer(forKey: "recordOneMin")
-            recordScore=record
-        case "5 Min":
-            var record=UserDefaults.standard.integer(forKey: "recordFiveMin")
-            recordScore=record
+        switch(UserDefaults.standard.string(forKey: "gameNumber")){
+        case "game1":
+            var gameTime=UserDefaults.standard.string(forKey: "gameTime")
+            var gameLevel=UserDefaults.standard.string(forKey: "gameLevel")
+            
+            switch(gameTime){
+            case "30 Sec":
+                var record=UserDefaults.standard.integer(forKey: "recordThirty")
+                recordScore=record
+            case "1 Min":
+                var record=UserDefaults.standard.integer(forKey: "recordOneMin")
+                recordScore=record
+            case "5 Min":
+                var record=UserDefaults.standard.integer(forKey: "recordFiveMin")
+                recordScore=record
+            default:
+                print("error in setting min and sec and record values")
+            }
+            
+            currentScore=UserDefaults.standard.integer(forKey: "currentScore")
+        case "game2":
+            var gameTime=UserDefaults.standard.string(forKey: "gameTime2")
+            var gameLevel=UserDefaults.standard.string(forKey: "gameLevel2")
+            
+            switch(gameTime){
+            case "30 Sec":
+                var record=UserDefaults.standard.integer(forKey: "recordThirty2")
+                recordScore=record
+            case "1 Min":
+                var record=UserDefaults.standard.integer(forKey: "recordOneMin2")
+                recordScore=record
+            case "5 Min":
+                var record=UserDefaults.standard.integer(forKey: "recordFiveMin2")
+                recordScore=record
+            default:
+                print("error in setting min and sec and record values")
+            }
+            
+            currentScore=UserDefaults.standard.integer(forKey: "currentScore2")
         default:
-            print("error in setting min and sec and record values")
+            print("ERROR! I don't recognize this game number")
         }
-        
-        currentScore=UserDefaults.standard.integer(forKey: "currentScore")
+
         
         if currentScore==recordScore{
             headerLabel.text="NEW RECORD!!"

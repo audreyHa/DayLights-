@@ -77,8 +77,17 @@ class GameSettingsAlert: UIViewController {
             }
         }
         
-        let title=timeButton.titleLabel!.text
-        UserDefaults.standard.set(title, forKey: "gameTime")
+        switch(UserDefaults.standard.string(forKey: "gameNumber")){
+        case "game1":
+            let title=timeButton.titleLabel!.text
+            UserDefaults.standard.set(title, forKey: "gameTime")
+        case "game2":
+            let title=timeButton.titleLabel!.text
+            UserDefaults.standard.set(title, forKey: "gameTime2")
+        default:
+            print("ERROR! I don't recognize this game number")
+        }
+        
     }
     
     func highlightLevelButton(levelButton: UIButton){
@@ -92,8 +101,18 @@ class GameSettingsAlert: UIViewController {
             }
         }
         
-        let title=levelButton.titleLabel!.text
-        UserDefaults.standard.set(title, forKey: "gameLevel")
+        switch(UserDefaults.standard.string(forKey: "gameNumber")){
+        case "game1":
+            let title=levelButton.titleLabel!.text
+            UserDefaults.standard.set(title, forKey: "gameLevel")
+        case "game2":
+            let title=levelButton.titleLabel!.text
+            UserDefaults.standard.set(title, forKey: "gameLevel2")
+        default:
+            print("ERROR! I don't recognize this game number")
+        }
+        
+        
     }
     
     @IBAction func thirtySecPressed(_ sender: Any) {
@@ -126,7 +145,15 @@ class GameSettingsAlert: UIViewController {
     
     @IBAction func okPressed(_ sender: Any) {
         //save values to user defaults
-        NotificationCenter.default.post(name: Notification.Name("setRandomBalloonGame"), object: nil)
+        switch(UserDefaults.standard.string(forKey: "gameNumber")){
+        case "game1":
+            NotificationCenter.default.post(name: Notification.Name("gameOneInstructions"), object: nil)
+        default:
+            NotificationCenter.default.post(name: Notification.Name("gameTwoInstructions"), object: nil)
+        }
+        
+        
+//        NotificationCenter.default.post(name: Notification.Name("setRandomBalloonGame"), object: nil)
         
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
