@@ -16,49 +16,50 @@ class Canvas : UIView{
         
         var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0xc8ff3f), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
         
-        switch(UserDefaults.standard.bool(forKey: "usingPen")){
-        case false:
-            context.setStrokeColor(UIColor.white.cgColor)
-            
-            var eraserWidth=UserDefaults.standard.integer(forKey: "eraserWidth")
-            print("eraser width: \(eraserWidth)")
-            context.setLineWidth(CGFloat(eraserWidth))
-        default:
-            var colorInteger=UserDefaults.standard.integer(forKey: "colorInteger")
-            print("color integer: \(colorInteger)")
-            context.setStrokeColor(colors[colorInteger].cgColor)
-            
-            
-            var penWidth=UserDefaults.standard.integer(forKey: "penWidth")
-            print("pen width: \(penWidth)")
-            context.setLineWidth(CGFloat(penWidth))
-        }
-        
-        context.setLineCap(.round)
-        
+
         lines.forEach{(line) in
-            for (i, p) in line.enumerated(){
+            context.setStrokeColor(line.color.cgColor)
+            context.setLineWidth(CGFloat(line.strokeWidth))
+            context.setLineCap(.round)
+            
+            for (i, p) in line.points.enumerated(){
                 if i==0{
                     context.move(to: p)
                 }else{
                     context.addLine(to: p)
                 }
             }
+            
+            context.strokePath()
         }
         
-        context.strokePath()
     }
     
-    var lines=[[CGPoint]]()
+    var lines=[Line]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        lines.append([CGPoint]())
+        var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0xc8ff3f), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
+        
+        switch(UserDefaults.standard.bool(forKey: "usingPen")){
+        case false:
+            var eraserWidth=UserDefaults.standard.integer(forKey: "eraserWidth")
+            
+            lines.append(Line.init(strokeWidth: Float(eraserWidth), color: UIColor.white, points: []))
+
+        default:
+            var penWidth=UserDefaults.standard.integer(forKey: "penWidth")
+            
+            var colorInteger=UserDefaults.standard.integer(forKey: "colorInteger")
+            
+            lines.append(Line.init(strokeWidth: Float(penWidth), color: colors[colorInteger], points: []))
+        }
+        
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let point=touches.first?.location(in: self) else {return}
         
         guard var lastLine = lines.popLast() else {return}
-        lastLine.append(point)
+        lastLine.points.append(point)
         lines.append(lastLine)
         
         setNeedsDisplay()
@@ -111,8 +112,9 @@ class DrawingGame: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set(4, forKey: "colorInteger")
+        UserDefaults.standard.set(7, forKey: "colorInteger")
         UserDefaults.standard.set(10, forKey: "penWidth")
+        UserDefaults.standard.set(10, forKey: "eraserWidth")
         UserDefaults.standard.set(true, forKey: "usingPen")
         
         eraserButton.layer.cornerRadius=5

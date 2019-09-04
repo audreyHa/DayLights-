@@ -19,6 +19,7 @@
 		F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */; };
 		F627BA3C2309288B00F888A3 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3B2309288B00F888A3 /* SettingsVC.swift */; };
 		F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */; };
+		F67BA4A52320435A0067487F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA4A42320435A0067487F /* Line.swift */; };
 		F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68954B422FF43BC00D23B5B /* EntryAlert.swift */; };
 		F68A4227225C6BF300B56FA1 /* OrganizationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */; };
 		F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FC2249F1A1001138FE /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNotiAlert.swift; sourceTree = "<group>"; };
 		F627BA3B2309288B00F888A3 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
+		F67BA4A42320435A0067487F /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		F68954B422FF43BC00D23B5B /* EntryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlert.swift; sourceTree = "<group>"; };
 		F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationCell.swift; sourceTree = "<group>"; };
 		F68CF9F92249F1A1001138FE /* DayLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */,
 				F6BB67592317B03C0089500B /* DragBalloonsVC.swift */,
 				F60557A7231E0F5000F67033 /* DrawingGame.swift */,
+				F67BA4A42320435A0067487F /* Line.swift */,
 			);
 			path = StressGames;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */,
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
+				F67BA4A52320435A0067487F /* Line.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */,
 				F6E8B62A230E67E6004104D7 /* GameSettingsAlert.swift in Sources */,
