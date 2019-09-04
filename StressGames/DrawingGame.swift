@@ -14,7 +14,7 @@ class Canvas : UIView{
         
         guard let context = UIGraphicsGetCurrentContext() else {return}
         
-        var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0xc8ff3f), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
+        var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
         
 
         lines.forEach{(line) in
@@ -38,7 +38,7 @@ class Canvas : UIView{
     var lines=[Line]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0xc8ff3f), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
+        var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
         
         switch(UserDefaults.standard.bool(forKey: "usingPen")){
         case false:
@@ -102,7 +102,7 @@ class DrawingGame: UIViewController {
 
     
     var canvas=Canvas()
-    var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0xc8ff3f), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
+    var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
     
     var buttons=[UIButton]()
     
@@ -166,13 +166,23 @@ class DrawingGame: UIViewController {
         eraserButton.backgroundColor = .groupTableViewBackground
     }
     
-    @IBAction func penPressed(_ sender: Any) {
+    func setPen(){
         UserDefaults.standard.set(true, forKey: "usingPen")
         penButton.backgroundColor=colors[4]
         eraserButton.backgroundColor = .clear
+        
+        var lastColorInteger=UserDefaults.standard.integer(forKey: "colorInteger")
+        
+        for i in 0...7{
+            if i != lastColorInteger{
+                buttons[i].setImage(plainColorImages[i], for: .normal)
+            }
+        }
+        
+        buttons[lastColorInteger].setImage(checkedColorImages[lastColorInteger], for: .normal)
     }
     
-    @IBAction func eraserPressed(_ sender: Any) {
+    func setEraser(){
         UserDefaults.standard.set(false, forKey: "usingPen")
         
         eraserButton.backgroundColor=colors[4]
@@ -183,12 +193,25 @@ class DrawingGame: UIViewController {
         }
     }
     
+    @IBAction func penPressed(_ sender: Any) {
+        setPen()
+    }
+    
+    
+    @IBAction func eraserPressed(_ sender: Any) {
+        setEraser()
+    }
+    
     @IBAction func penSliderValueChanged(_ sender: Any) {
         UserDefaults.standard.set(penSlider.value, forKey: "penWidth")
+        
+        setPen()
     }
     
     @IBAction func eraserSliderValueChanged(_ sender: Any) {
         UserDefaults.standard.set(eraserSlider.value, forKey: "eraserWidth")
+        
+        setEraser()
     }
     
     @IBAction func redPressed(_ sender: Any) {
