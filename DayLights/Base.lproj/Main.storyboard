@@ -691,8 +691,8 @@
                         <segue destination="ulj-q6-Gbe" kind="show" identifier="showMood" id="D4J-UW-4Mv"/>
                         <segue destination="pWn-qb-Yv7" kind="show" identifier="showDidWell" id="Nhe-ro-Bqe"/>
                         <segue destination="hIM-d8-Sj3" kind="show" identifier="" id="5Zj-gd-D9T"/>
-                        <segue destination="Qzp-rI-Nds" kind="show" identifier="negativeThoughtsGame" id="6AH-Oz-dLe"/>
-                        <segue destination="OAc-8A-tlC" kind="show" id="U78-5X-so1"/>
+                        <segue destination="Qzp-rI-Nds" kind="show" identifier="" id="6AH-Oz-dLe"/>
+                        <segue destination="OAc-8A-tlC" kind="show" identifier="negativeThoughtsGame" id="U78-5X-so1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -2537,13 +2537,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szQ-ty-W11" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="195"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xk9-cv-phx" userLabel="InstructionsView">
-                                        <rect key="frame" x="15" y="15" width="345" height="77.5"/>
+                                        <rect key="frame" x="15" y="15" width="345" height="75"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JGX-zu-x5X">
-                                                <rect key="frame" x="10" y="10" width="241.5" height="57.5"/>
+                                                <rect key="frame" x="10" y="10" width="241.5" height="55"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drawing Prompt:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4J-Oq-I6b">
                                                         <rect key="frame" x="0.0" y="0.0" width="241.5" height="35"/>
@@ -2555,7 +2555,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qx-SK-8aQ">
-                                                        <rect key="frame" x="0.0" y="40" width="241.5" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="40" width="241.5" height="15"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2568,7 +2568,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzG-d3-ZPQ">
-                                                <rect key="frame" x="271.5" y="15" width="53.5" height="47.5"/>
+                                                <rect key="frame" x="271.5" y="15" width="53.5" height="45"/>
                                                 <color key="backgroundColor" red="0.15621793540000001" green="0.36029721669999998" blue="0.58548144040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                 <state key="normal" title="New">
@@ -2589,7 +2589,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6v2-15-KVx" userLabel="DrawingSelectionView">
-                                        <rect key="frame" x="15" y="107.5" width="345" height="77.5"/>
+                                        <rect key="frame" x="15" y="105" width="345" height="75"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="25n-6n-aG5" userLabel="Colors">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
@@ -2673,7 +2673,6 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pt-yf-afg">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                        <color key="backgroundColor" red="1" green="0.88627450980392153" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="L3d-PV-OlN"/>
                                                         </constraints>
@@ -2684,7 +2683,7 @@
                                                     </button>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XBH-RW-MoV">
                                                         <rect key="frame" x="33" y="0.0" width="139" height="31"/>
-                                                        <color key="tintColor" red="0.90980392160000001" green="0.35294117650000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="tintColor" red="0.24705882352941178" green="0.83137254901960778" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <connections>
                                                             <action selector="penSliderValueChanged:" destination="OAc-8A-tlC" eventType="valueChanged" id="Qeo-ha-hem"/>
                                                         </connections>
@@ -2698,11 +2697,14 @@
                                                         <state key="normal" image="eraser"/>
                                                         <connections>
                                                             <action selector="eraserPressed:" destination="OAc-8A-tlC" eventType="touchUpInside" id="UCz-sk-PBW"/>
-                                                            <action selector="eraserSliderValueChanged:" destination="OAc-8A-tlC" eventType="touchUpInside" id="F7t-Gc-W7V"/>
                                                         </connections>
                                                     </button>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sfi-cd-JyB">
                                                         <rect key="frame" x="208" y="0.0" width="139" height="31"/>
+                                                        <color key="tintColor" red="0.24705882352941178" green="0.83137254901960778" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <connections>
+                                                            <action selector="eraserSliderValueChanged:" destination="OAc-8A-tlC" eventType="valueChanged" id="ACt-Z2-Ydc"/>
+                                                        </connections>
                                                     </slider>
                                                 </subviews>
                                                 <constraints>
@@ -2736,7 +2738,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5H-Gf-pB2">
-                                <rect key="frame" x="0.0" y="264" width="375" height="403"/>
+                                <rect key="frame" x="0.0" y="259" width="375" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -2747,7 +2749,6 @@
                             <constraint firstItem="u5H-Gf-pB2" firstAttribute="leading" secondItem="2oY-q9-m1h" secondAttribute="leading" id="czW-s7-Lx9"/>
                             <constraint firstItem="2oY-q9-m1h" firstAttribute="trailing" secondItem="szQ-ty-W11" secondAttribute="trailing" id="e99-pZ-62S"/>
                             <constraint firstItem="2oY-q9-m1h" firstAttribute="bottom" secondItem="u5H-Gf-pB2" secondAttribute="bottom" id="l84-xu-U6y"/>
-                            <constraint firstItem="szQ-ty-W11" firstAttribute="height" secondItem="rh9-q0-5W8" secondAttribute="height" multiplier="0.3" id="qgI-Qv-XWe"/>
                             <constraint firstItem="u5H-Gf-pB2" firstAttribute="top" secondItem="szQ-ty-W11" secondAttribute="bottom" id="sAy-m7-Z3D"/>
                             <constraint firstItem="szQ-ty-W11" firstAttribute="leading" secondItem="2oY-q9-m1h" secondAttribute="leading" id="vTc-gA-acC"/>
                         </constraints>
@@ -2773,7 +2774,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDh-XM-Rjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2733.5999999999999" y="-313.49325337331339"/>
+            <point key="canvasLocation" x="2697" y="-518"/>
         </scene>
         <!--Drag BalloonsVC-->
         <scene sceneID="Tgb-70-HhG">

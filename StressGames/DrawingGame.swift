@@ -48,27 +48,33 @@ class DrawingGame: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        eraserButton.layer.cornerRadius=10
-        penButton.layer.cornerRadius=10
+        eraserButton.layer.cornerRadius=5
+        penButton.layer.cornerRadius=5
+        blackButton.setImage(checkedColorImages[7], for: .normal)
         
         penSlider.minimumValue=5
-        penSlider.maximumValue=15
+        penSlider.maximumValue=25
         eraserSlider.minimumValue=5
-        eraserSlider.maximumValue=15
+        eraserSlider.maximumValue=25
         
         penSlider.setValue(10, animated: true)
         eraserSlider.setValue(10, animated: true)
         
         buttons=[redButton, orangeButton, yellowButton, greenButton, blueButton, navyButton, purpleButton, blackButton]
         
-        penSlider.setThumbImage(UIImage(named: "redPlayBar"), for: .normal)
-        eraserSlider.setThumbImage(UIImage(named: "navyPlayBar"), for: .normal)
+        penButton.backgroundColor=colors[4]
         
+        penSlider.setThumbImage(UIImage(named: "bluePlayBar"), for: .normal)
+        eraserSlider.setThumbImage(UIImage(named: "bluePlayBar"), for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        canvas.backgroundColor = .red
+        canvas.backgroundColor = .white
         canvas.frame=containerDrawingView.frame
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(checkAction))
+        containerDrawingView.addGestureRecognizer(gesture)
+        
         view.addSubview(canvas)
         print("added subview")
     }
@@ -77,6 +83,7 @@ class DrawingGame: UIViewController {
     var lines=[[CGPoint]]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touches began")
         lines.append([CGPoint]())
     }
     
@@ -116,13 +123,27 @@ class DrawingGame: UIViewController {
         lastLine.append(point)
         lines.append(lastLine)
         
+        var totalCount=lastLine.count
+        
         if lastLine.count>1{
-            var totalCount=lastLine.count
             drawLine(fromPoint: lastLine[totalCount-2], toPoint: lastLine[totalCount-1])
         }
         
         //need to redraw line(s) as the line array gets points appended to it
         canvas.setNeedsDisplay()
+    }
+    
+    @objc func checkAction(sender : UITapGestureRecognizer) {
+        print("tapped")
+        
+        var location=sender.location(in: canvas)
+        var offsetLocation=CGPoint(x: location.x+1, y: location.y+1)
+        drawLine(fromPoint: location, toPoint: offsetLocation)
+        
+        guard var lastLine = lines.popLast() else {return}
+        lastLine.append(location)
+        lastLine.append(offsetLocation)
+        lines.append(lastLine)
     }
     
     func setColor(indexPath: Int){
@@ -137,21 +158,25 @@ class DrawingGame: UIViewController {
         buttons[indexPath].setImage(checkedColorImages[indexPath], for: .normal)
         
         usingPen=true
-        penButton.backgroundColor=colors[2]
+        penButton.backgroundColor=colors[4]
         eraserButton.backgroundColor = .groupTableViewBackground
     }
     
     @IBAction func penPressed(_ sender: Any) {
         usingPen=true
-        penButton.backgroundColor=colors[2]
-        eraserButton.backgroundColor = .groupTableViewBackground
+        penButton.backgroundColor=colors[4]
+        eraserButton.backgroundColor = .clear
     }
     
     @IBAction func eraserPressed(_ sender: Any) {
         usingPen=false
         
-        eraserButton.backgroundColor=colors[2]
-        penButton.backgroundColor = .groupTableViewBackground
+        eraserButton.backgroundColor=colors[4]
+        penButton.backgroundColor = .clear
+        
+        for i in 0...buttons.count-1{
+            buttons[i].setImage(plainColorImages[i], for: .normal)
+        }
     }
     
     @IBAction func penSliderValueChanged(_ sender: Any) {
