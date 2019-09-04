@@ -16,14 +16,24 @@ class Canvas : UIView{
         
         var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0xc8ff3f), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
         
-        var colorInteger=UserDefaults.standard.integer(forKey: "colorInteger")
-        print("color integer: \(colorInteger)")
-        context.setStrokeColor(colors[colorInteger].cgColor)
+        switch(UserDefaults.standard.bool(forKey: "usingPen")){
+        case false:
+            context.setStrokeColor(UIColor.white.cgColor)
+            
+            var eraserWidth=UserDefaults.standard.integer(forKey: "eraserWidth")
+            print("eraser width: \(eraserWidth)")
+            context.setLineWidth(CGFloat(eraserWidth))
+        default:
+            var colorInteger=UserDefaults.standard.integer(forKey: "colorInteger")
+            print("color integer: \(colorInteger)")
+            context.setStrokeColor(colors[colorInteger].cgColor)
+            
+            
+            var penWidth=UserDefaults.standard.integer(forKey: "penWidth")
+            print("pen width: \(penWidth)")
+            context.setLineWidth(CGFloat(penWidth))
+        }
         
-        
-        var penWidth=UserDefaults.standard.integer(forKey: "penWidth")
-        print("pen width: \(penWidth)")
-        context.setLineWidth(CGFloat(penWidth))
         context.setLineCap(.round)
         
         lines.forEach{(line) in
@@ -53,6 +63,16 @@ class Canvas : UIView{
         
         setNeedsDisplay()
     }
+    
+    func undo(){
+        lines.popLast()
+        setNeedsDisplay()
+    }
+    
+    func clearAll(){
+        lines.removeAll()
+        setNeedsDisplay()
+    }
 }
 class DrawingGame: UIViewController {
 
@@ -78,9 +98,7 @@ class DrawingGame: UIViewController {
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var screenshotButton: UIButton!
     @IBOutlet weak var clearAllButton: UIButton!
-    
-    
-    var usingPen=true
+
     
     var canvas=Canvas()
     var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0xc8ff3f), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
@@ -90,17 +108,12 @@ class DrawingGame: UIViewController {
     var plainColorImages=[UIImage(named: "redCircle"), UIImage(named: "orangeCircle"), UIImage(named: "yellowCircle"), UIImage(named: "greenCircle"), UIImage(named: "blueCircle"), UIImage(named: "navyCircle"), UIImage(named: "purpleCircle"), UIImage(named: "blackCircle")]
     
     var checkedColorImages=[UIImage(named: "redCheck"), UIImage(named: "orangeCheck"), UIImage(named: "yellowCheck"), UIImage(named: "greenCheck"), UIImage(named: "blueCheck"), UIImage(named: "navyCheck"), UIImage(named: "purpleCheck"), UIImage(named: "blackCheck")]
-    
-    
-//    var color=UIColor.black
-//    var brushWidth: CGFloat=10.0
-//    var eraserWidth: CGFloat=10.0
-//    var opacity: CGFloat=1.0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(4, forKey: "colorInteger")
         UserDefaults.standard.set(10, forKey: "penWidth")
+        UserDefaults.standard.set(true, forKey: "usingPen")
         
         eraserButton.layer.cornerRadius=5
         penButton.layer.cornerRadius=5
@@ -128,49 +141,12 @@ class DrawingGame: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        canvas.backgroundColor = .red
+        canvas.backgroundColor = .white
         canvas.frame=containerDrawingView.frame
-        
-//        let gesture = UITapGestureRecognizer(target: self, action:  #selector(checkAction))
-//        containerDrawingView.addGestureRecognizer(gesture)
-        
+
         view.addSubview(canvas)
         print("added subview")
     }
-    
-    //track finger as we move across screen
-    var lines=[[CGPoint]]()
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touches began")
-        lines.append([CGPoint]())
-    }
-    
-
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let point=touches.first?.location(in: canvas) else {return}
-
-        guard var lastLine = lines.popLast() else {return}
-        lastLine.append(point)
-        lines.append(lastLine)
-
-        
-        //need to redraw line(s) as the line array gets points appended to it
-        canvas.setNeedsDisplay()
-    }
-    
-//    @objc func checkAction(sender : UITapGestureRecognizer) {
-//        print("tapped")
-//
-//        var location=sender.location(in: canvas)
-//        var offsetLocation=CGPoint(x: location.x+1, y: location.y+1)
-//        drawLine(fromPoint: location, toPoint: offsetLocation)
-//
-//        guard var lastLine = lines.popLast() else {return}
-//        lastLine.append(location)
-//        lastLine.append(offsetLocation)
-//        lines.append(lastLine)
-//    }
     
     func setColor(indexPath: Int){
         UserDefaults.standard.set(indexPath, forKey: "colorInteger")
@@ -183,19 +159,19 @@ class DrawingGame: UIViewController {
         
         buttons[indexPath].setImage(checkedColorImages[indexPath], for: .normal)
         
-        usingPen=true
+        UserDefaults.standard.set(true, forKey: "usingPen")
         penButton.backgroundColor=colors[4]
         eraserButton.backgroundColor = .groupTableViewBackground
     }
     
     @IBAction func penPressed(_ sender: Any) {
-        usingPen=true
+        UserDefaults.standard.set(true, forKey: "usingPen")
         penButton.backgroundColor=colors[4]
         eraserButton.backgroundColor = .clear
     }
     
     @IBAction func eraserPressed(_ sender: Any) {
-        usingPen=false
+        UserDefaults.standard.set(false, forKey: "usingPen")
         
         eraserButton.backgroundColor=colors[4]
         penButton.backgroundColor = .clear
@@ -206,13 +182,11 @@ class DrawingGame: UIViewController {
     }
     
     @IBAction func penSliderValueChanged(_ sender: Any) {
-        //COMMENT: Need to set brush width in user defaults
-//        brushWidth=CGFloat(penSlider.value)
+        UserDefaults.standard.set(penSlider.value, forKey: "penWidth")
     }
     
     @IBAction func eraserSliderValueChanged(_ sender: Any) {
-        //COMMENT: set eraser width in user defaults
-//        eraserWidth=CGFloat(eraserSlider.value)
+        UserDefaults.standard.set(eraserSlider.value, forKey: "eraserWidth")
     }
     
     @IBAction func redPressed(_ sender: Any) {
@@ -253,13 +227,11 @@ class DrawingGame: UIViewController {
     
     @IBAction func clearAllPressed(_ sender: Any) {
         print("clear all pressed")
-        lines.removeAll()
-
+        canvas.clearAll()
     }
     
     @IBAction func undoPressed(_ sender: Any) {
         print("undo pressed")
-        lines.popLast()
-        
+        canvas.undo()
     }
 }
