@@ -16,11 +16,11 @@ class Canvas : UIView{
         
         var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
         
-
+        context.setLineCap(.round)
+        
         lines.forEach{(line) in
             context.setStrokeColor(line.color.cgColor)
             context.setLineWidth(CGFloat(line.strokeWidth))
-            context.setLineCap(.round)
             
             for (i, p) in line.points.enumerated(){
                 if i==0{
@@ -36,8 +36,16 @@ class Canvas : UIView{
     }
     
     var lines=[Line]()
+    var addedTapGestureRecognizer=false
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(addedTapGestureRecognizer==false){
+            let gesture = UITapGestureRecognizer(target: self, action:  #selector(canvasTapped(sender:)))
+            self.addGestureRecognizer(gesture)
+            addedTapGestureRecognizer=true
+        }
+        
+        
         var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
         
         switch(UserDefaults.standard.bool(forKey: "usingPen")){
@@ -74,7 +82,40 @@ class Canvas : UIView{
         lines.removeAll()
         setNeedsDisplay()
     }
+    
+    func makeScreenshot() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: self.bounds)
+        return renderer.image { (context) in
+            self.layer.render(in: context.cgContext)
+        }
+    }
+
+    @objc func canvasTapped(sender : UITapGestureRecognizer) {
+        print("tapped")
+        
+        var location=sender.location(in: self)
+        var offsetLocation=CGPoint(x: location.x+1, y: location.y+1)
+        
+        switch(UserDefaults.standard.bool(forKey: "usingPen")){
+        case false:
+            var eraserWidth=UserDefaults.standard.integer(forKey: "eraserWidth")
+            
+            lines.append(Line.init(strokeWidth: Float(eraserWidth), color: UIColor.white, points: [location, offsetLocation]))
+            setNeedsDisplay()
+        default:
+            var penWidth=UserDefaults.standard.integer(forKey: "penWidth")
+            
+            var colorInteger=UserDefaults.standard.integer(forKey: "colorInteger")
+            
+            var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
+            
+            lines.append(Line.init(strokeWidth: Float(penWidth), color: colors[colorInteger], points: [location, offsetLocation]))
+            setNeedsDisplay()
+        }
+    }
+    
 }
+
 class DrawingGame: UIViewController {
 
     @IBOutlet weak var containerDrawingView: UIView!
@@ -100,7 +141,6 @@ class DrawingGame: UIViewController {
     @IBOutlet weak var screenshotButton: UIButton!
     @IBOutlet weak var clearAllButton: UIButton!
 
-    
     var canvas=Canvas()
     var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
     
@@ -112,6 +152,8 @@ class DrawingGame: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         UserDefaults.standard.set(7, forKey: "colorInteger")
         UserDefaults.standard.set(10, forKey: "penWidth")
         UserDefaults.standard.set(10, forKey: "eraserWidth")
@@ -145,7 +187,7 @@ class DrawingGame: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         canvas.backgroundColor = .white
         canvas.frame=containerDrawingView.frame
-
+        
         view.addSubview(canvas)
         print("added subview")
     }
@@ -248,6 +290,8 @@ class DrawingGame: UIViewController {
     }
     
     @IBAction func screenshotPressed(_ sender: Any) {
+        var screenshottedDrawing=canvas.makeScreenshot()
+        UIImageWriteToSavedPhotosAlbum(screenshottedDrawing, nil, nil, nil);
     }
     
     @IBAction func clearAllPressed(_ sender: Any) {
@@ -260,3 +304,4 @@ class DrawingGame: UIViewController {
         canvas.undo()
     }
 }
+
