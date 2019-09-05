@@ -59,6 +59,7 @@ class GameSettingsAlert: UIViewController {
         
         for button in buttons{
             button.titleLabel?.adjustsFontSizeToFitWidth=true
+            button.layer.cornerRadius=5
         }
         
         highlightTimeButton(timeButton: fiveMin)

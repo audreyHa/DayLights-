@@ -15,6 +15,7 @@ class DragBalloonsVC: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var titleOfGame: UILabel!
     
     var secondInterval: Double!
     var totalMin: Int!
@@ -34,6 +35,7 @@ class DragBalloonsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       titleOfGame.adjustsFontSizeToFitWidth=true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         instructionsLabel.adjustsFontSizeToFitWidth=true

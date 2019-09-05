@@ -27,6 +27,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var mood4: UIButton!
     @IBOutlet weak var mood5: UIButton!
     
+    @IBOutlet weak var stressfulLabel: UILabel!
+    @IBOutlet weak var didWellLabel: UILabel!
+    
+    
     var moodButtons=[UIButton]()
     
     @IBAction func mood1(_ sender: UIButton) {
@@ -338,6 +342,8 @@ class ViewController: UIViewController {
 
         daylightsArray=CoreDataHelper.retrieveDaylight()
         
+        stressfulLabel.adjustsFontSizeToFitWidth=true
+        didWellLabel.adjustsFontSizeToFitWidth=true
         let clearedStressful = UserDefaults.standard.bool(forKey: "clearedStressful")
         if clearedStressful{
             print("DON'T need to add stressful moment.")
@@ -376,7 +382,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(searchDayLights), name: NSNotification.Name("searchDayLights"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(negativeThoughtsGame), name: NSNotification.Name("negativeThoughtsGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stressReliefControlVC), name: NSNotification.Name("stressReliefControlVC"), object: nil)
          NotificationCenter.default.addObserver(self, selector: #selector(segueResources), name: NSNotification.Name("segueResources"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(notiTime), name: NSNotification.Name("notiTime"), object: nil)
         
@@ -497,8 +503,8 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "resources", sender: nil)
     }
     
-    @objc func negativeThoughtsGame(){
-        performSegue(withIdentifier: "negativeThoughtsGame", sender: nil)
+    @objc func stressReliefControlVC(){
+        performSegue(withIdentifier: "stressReliefControlVC", sender: nil)
     }
     
     @objc func showMood(){

@@ -13,7 +13,7 @@ class Side: UIViewController {
     @IBOutlet weak var createNewButton: UIButton!
     @IBOutlet weak var galleriesButton: UIButton!
     @IBOutlet weak var moodTrackerButton: UIButton!
-    @IBOutlet weak var negativeThoughts: UIButton!
+    @IBOutlet weak var stressGames: UIButton!
     @IBOutlet weak var resourcesHotlinesButton: UIButton!
     
     
@@ -40,18 +40,19 @@ class Side: UIViewController {
 
     }
     
-    @IBAction func negativeThoughtsPressed(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name("negativeThoughtsGame"), object: nil)
+    @IBAction func stressGamesPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("stressReliefControlVC"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createNewButton.titleLabel?.adjustsFontSizeToFitWidth=true
-        galleriesButton.titleLabel?.adjustsFontSizeToFitWidth=true
-        moodTrackerButton.titleLabel?.adjustsFontSizeToFitWidth=true
-        negativeThoughts.titleLabel?.adjustsFontSizeToFitWidth=true
-        resourcesHotlinesButton.titleLabel?.adjustsFontSizeToFitWidth=true
+        var buttons=[createNewButton, galleriesButton, moodTrackerButton, stressGames, resourcesHotlinesButton]
+        for button in buttons{
+            button!.titleLabel?.adjustsFontSizeToFitWidth=true
+        }
+
     }
 
     

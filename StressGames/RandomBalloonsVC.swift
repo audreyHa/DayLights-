@@ -36,6 +36,8 @@ class RandomBalloonsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         instructionsLabel.adjustsFontSizeToFitWidth=true
         controlsView.layer.cornerRadius=10
         mediumBlue=UIColor(rgb: 0x1fc2ff)

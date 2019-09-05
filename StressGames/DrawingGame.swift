@@ -135,8 +135,6 @@ class Canvas : UIView{
                     print("error saving file:", error)
                 }
             }
-            
-            clearAll()
         }else{
             print("not saving image to documents directory because there are 0 lines in lines array")
         }
@@ -219,7 +217,13 @@ class DrawingGame: UIViewController {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
+        new.titleLabel?.adjustsFontSizeToFitWidth=true
+        screenshotButton.titleLabel?.adjustsFontSizeToFitWidth=true
+        clearAllButton.titleLabel?.adjustsFontSizeToFitWidth=true
+        
         randomAnimalDrawingPrompt()
+        
+        label.adjustsFontSizeToFitWidth=true
         
         UserDefaults.standard.set(7, forKey: "colorInteger")
         UserDefaults.standard.set(10, forKey: "penWidth")
@@ -313,6 +317,7 @@ class DrawingGame: UIViewController {
     
     @IBAction func newPressed(_ sender: Any) {
         randomAnimalDrawingPrompt()
+        canvas.clearAll()
     }
     
     @IBAction func penPressed(_ sender: Any) {
