@@ -34,6 +34,8 @@ class DragBalloonsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         instructionsLabel.adjustsFontSizeToFitWidth=true
         gameView.isUserInteractionEnabled=true
         

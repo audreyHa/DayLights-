@@ -8,9 +8,9 @@
         <attribute name="mood" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="stressfulMoment" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="NegativeThought" representedClassName="NegativeThought" syncable="YES" codeGenerationType="class">
-        <attribute name="entry" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sliderValue" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    <entity name="Drawing" representedClassName="Drawing" syncable="YES" codeGenerationType="class">
+        <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="prompt" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="NotificationTime" representedClassName="NotificationTime" syncable="YES" codeGenerationType="class">
         <attribute name="hour" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -23,7 +23,7 @@
     </entity>
     <elements>
         <element name="Daylight" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="NegativeThought" positionX="-63" positionY="27" width="128" height="75"/>
+        <element name="Drawing" positionX="-63" positionY="27" width="128" height="75"/>
         <element name="NotificationTime" positionX="-63" positionY="27" width="128" height="75"/>
         <element name="Organization" positionX="-63" positionY="18" width="128" height="90"/>
     </elements>

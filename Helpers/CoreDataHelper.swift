@@ -50,10 +50,11 @@ struct CoreDataHelper{
         let notiTime=NSEntityDescription.insertNewObject(forEntityName: "NotificationTime", into: context) as! NotificationTime
         return notiTime
     }
+
     
-    static func newNegativeThought() -> NegativeThought{
-        let negativeThought=NSEntityDescription.insertNewObject(forEntityName: "NegativeThought", into: context) as! NegativeThought
-        return negativeThought
+    static func newDrawing()->Drawing{
+        let drawing=NSEntityDescription.insertNewObject(forEntityName: "Drawing", into: context) as! Drawing
+        return drawing
     }
     
     static func saveDaylight(){
@@ -68,20 +69,31 @@ struct CoreDataHelper{
         context.delete(daylight)
         saveDaylight()
     }
-    
-    static func delete(negativeThought: NegativeThought){
-        context.delete(negativeThought)
+
+    static func delete(noti: NotificationTime){
+        context.delete(noti)
         saveDaylight()
     }
     
-    static func delete(noti: NotificationTime){
-        context.delete(noti)
+    static func delete(drawing: Drawing){
+        context.delete(drawing)
         saveDaylight()
     }
     
     static func retrieveDaylight()->[Daylight]{
         do{
             let fetchRequest=NSFetchRequest<Daylight>(entityName: "Daylight")
+            let results=try context.fetch(fetchRequest)
+            return results
+        }catch let error{
+            print("Could not fetch \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveDrawing()->[Drawing]{
+        do{
+            let fetchRequest=NSFetchRequest<Drawing>(entityName: "Drawing")
             let results=try context.fetch(fetchRequest)
             return results
         }catch let error{
@@ -111,16 +123,6 @@ struct CoreDataHelper{
             return []
         }
     }
-    
-    static func retrieveNegativeThought()->[NegativeThought]{
-        do{
-            let fetchRequest=NSFetchRequest<NegativeThought>(entityName: "NegativeThought")
-            let results=try context.fetch(fetchRequest)
-            return results
-        }catch let error{
-            print("Could not fetch \(error.localizedDescription)")
-            return []
-        }
-    }
+
     
 }

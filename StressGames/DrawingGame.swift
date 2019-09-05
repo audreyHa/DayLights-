@@ -9,6 +9,7 @@
 import UIKit
 
 class Canvas : UIView{
+    
     override func draw(_ rect: CGRect){
         super.draw(rect)
         
@@ -89,6 +90,57 @@ class Canvas : UIView{
             self.layer.render(in: context.cgContext)
         }
     }
+    
+    func getAlphaNumericValue(yourString: String) -> String{
+        let unsafeChars = CharacterSet.alphanumerics.inverted  // Remove the .inverted to get the opposite result.
+        
+        let cleanChars  = yourString.components(separatedBy: unsafeChars).joined(separator: "")
+        return cleanChars
+    }
+
+    func checkIfScreenshot(labelText: String){
+        if lines.count>0{
+            var drawing=CoreDataHelper.newDrawing()
+            
+            var imageToSave=makeScreenshot()
+            
+            // get the documents directory url
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            // choose a name for your image
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "hh/mm/ss"
+            let dateDrawingGame=dateformatter.string(from: Date())
+            let combinedFileName="\(labelText)\(dateDrawingGame)"
+            
+            let fileName = "\(getAlphaNumericValue(yourString: combinedFileName)).jpg"
+            print("file name: \(fileName)")
+            
+            // create the destination file url to save your image
+            let fileURL = documentsDirectory.appendingPathComponent(fileName)
+            
+            // get your UIImage jpeg data representation and check if the destination file url already exists
+            if let data = imageToSave.jpegData(compressionQuality:  1.0),
+                !FileManager.default.fileExists(atPath: fileURL.path) {
+                do {
+                    // writes the image data to disk
+                    try data.write(to: fileURL)
+                    print("drawing game image saved")
+                    
+                    drawing.filename=fileName
+                    drawing.prompt=labelText
+                    
+                    CoreDataHelper.saveDaylight()
+                } catch {
+                    print("error saving file:", error)
+                }
+            }
+            
+            clearAll()
+        }else{
+            print("not saving image to documents directory because there are 0 lines in lines array")
+        }
+    }
 
     @objc func canvasTapped(sender : UITapGestureRecognizer) {
         print("tapped")
@@ -115,6 +167,7 @@ class Canvas : UIView{
     }
     
 }
+
 
 class DrawingGame: UIViewController {
 
@@ -149,10 +202,24 @@ class DrawingGame: UIViewController {
     var plainColorImages=[UIImage(named: "redCircle"), UIImage(named: "orangeCircle"), UIImage(named: "yellowCircle"), UIImage(named: "greenCircle"), UIImage(named: "blueCircle"), UIImage(named: "navyCircle"), UIImage(named: "purpleCircle"), UIImage(named: "blackCircle")]
     
     var checkedColorImages=[UIImage(named: "redCheck"), UIImage(named: "orangeCheck"), UIImage(named: "yellowCheck"), UIImage(named: "greenCheck"), UIImage(named: "blueCheck"), UIImage(named: "navyCheck"), UIImage(named: "purpleCheck"), UIImage(named: "blackCheck")]
+    
+    var adjectives=["luxurious","odd","dangerous","enthusiastic","majestic","complex","jittery","pink","screeching","sophisticated","terrific","boring","pink","mushy","disgusting","little","giant","elegant","energetic","awesome","creepy","imperfect","cool","educated","frightening","tough","bored","secretive","attractive","outgoing","interesting","cooperative","helpful","delightful","talented","quirky","intelligent","creative","athletic","artistic","whimsical","imaginary","enormous","shiny","polite","healthy","great","snobbish","royal","flawless","hungry","angry","groovy","snotty","calm","impolite","colossal","bright","special","charming"]
 
+    var animals=["monsters","antelope","octopus","lions","aardvarks","polar bears","deer","rabbits","ground hogs","eagles","bears","mouse","pony","llama","beetle","donkey","zebra","parrots","racooons","bats","wolf","panthers","coyote","camels","birds","lizards","frogs","buffalo","peacocks","cats","fish","elephants","tigers","snakes","turtles","wolves","rhinoceros","foxes","frogs","squirrels","sharks","dolphins","leopards","giraffe","otters","hippos","crocodiles","alligators","owls"]
+    
+    func randomAnimalDrawingPrompt(){
+        canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
+        
+        var adjectiveInt=Int.random(in: 0...adjectives.count-1)
+        var animalInt=Int.random(in: 0...animals.count-1)
+        label.text="\(adjectives[adjectiveInt].capitalized) \(animals[animalInt].capitalized)"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
+        randomAnimalDrawingPrompt()
         
         UserDefaults.standard.set(7, forKey: "colorInteger")
         UserDefaults.standard.set(10, forKey: "penWidth")
@@ -182,8 +249,17 @@ class DrawingGame: UIViewController {
         clearAllButton.layer.cornerRadius=10
         new.layer.cornerRadius=10
 
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
     }
 
+    @objc func appMovedToBackground() {
+        canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         canvas.backgroundColor = .white
         canvas.frame=containerDrawingView.frame
@@ -235,6 +311,10 @@ class DrawingGame: UIViewController {
         }
     }
     
+    @IBAction func newPressed(_ sender: Any) {
+        randomAnimalDrawingPrompt()
+    }
+    
     @IBAction func penPressed(_ sender: Any) {
         setPen()
     }
@@ -257,7 +337,6 @@ class DrawingGame: UIViewController {
     }
     
     @IBAction func redPressed(_ sender: Any) {
-        
         setColor(indexPath: 0)
     }
     

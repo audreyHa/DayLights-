@@ -2574,6 +2574,9 @@
                                                 <state key="normal" title="New">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="newPressed:" destination="OAc-8A-tlC" eventType="touchUpInside" id="ezt-6d-3IW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
