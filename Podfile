@@ -7,4 +7,6 @@ target 'DayLights' do
 
   # Pods for DayLights
 	pod 'Charts'
+	pod 'Alamofire'
+	pod 'SwiftyJSON'
 end

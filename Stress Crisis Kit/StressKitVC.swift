@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var phoneNumbersTBV: UITableView!
     @IBOutlet weak var crisisTBV: UITableView!
     var organizations=[Organization]()
+    var quotes=[String]()
+    var authors=[String]()
+    @IBOutlet weak var quotesTBV: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +29,14 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         crisisTBV.delegate=self
         crisisTBV.dataSource=self
         crisisTBV.allowsSelection=false
+        
+        self.quotesTBV.estimatedRowHeight = 80
+        self.quotesTBV.rowHeight = UITableView.automaticDimension
+        
+        quotesTBV.layer.cornerRadius=10
+        quotesTBV.delegate=self
+        quotesTBV.dataSource=self
+        quotesTBV.allowsSelection=false
         
         if(UserDefaults.standard.bool(forKey: "setUpOrganizations")==false){
             var crisisTextLine=CoreDataHelper.newOrg()
@@ -48,50 +61,110 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         }
         
         organizations=CoreDataHelper.retrieveOrg()
+        
+        let apiToContact = "https://api.quotable.io/quotes"
+
+        Alamofire.request(apiToContact).validate().responseJSON() { response in
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    for i in 0...19{
+                        var randomQuoteData=json["results"][i]
+                        var randomQuoteText=randomQuoteData["content"]
+                        var randomQuoteAuthor=randomQuoteData["author"]
+                        
+                        self.quotes.append("\(randomQuoteText)")
+                        self.authors.append("\(randomQuoteAuthor)")
+
+                        print("appending quote \(self.quotes.count)")
+                    }
+
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        quotesTBV.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return organizations.count
-        
-//        if tableView == crisisTBV{
-//            return organizations.count
-//        }
+
+        if tableView == crisisTBV{
+            return organizations.count
+        }else if tableView==quotesTBV{
+            return quotes.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizationCell", for: indexPath) as! OrganizationCell
-        
-        let organization=self.organizations[indexPath.row]
-        var brightRed = UIColor(red: 232.0/255.0, green: 90.0/255.0, blue: 69.0/255.0, alpha: 1.0)
-        var teal = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-        if (organization.organizationName=="Anxiety and Depression Association of America")||(organization.organizationName=="Depression and Bipolar Support Alliance")||(organization.organizationName=="Sidran Institute"){
-            cell.orgName.textColor=teal
+        if tableView == crisisTBV{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizationCell", for: indexPath) as! OrganizationCell
+
+            let organization=self.organizations[indexPath.row]
+            var brightRed = UIColor(red: 232.0/255.0, green: 90.0/255.0, blue: 69.0/255.0, alpha: 1.0)
+            var teal = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            if (organization.organizationName=="Anxiety and Depression Association of America")||(organization.organizationName=="Depression and Bipolar Support Alliance")||(organization.organizationName=="Sidran Institute"){
+                cell.orgName.textColor=teal
+            }else{
+                cell.orgName.textColor=brightRed
+            }
+            cell.orgName.text=organization.organizationName
+            cell.orgDesc.text=organization.orgDescription
+            cell.contact.text=organization.contact
+
+            return cell
+        }else if tableView==quotesTBV{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "quotesCell", for: indexPath) as! quotesCell
+            print("Index Path: \(indexPath.row)")
+            
+            let formattedString = NSMutableAttributedString()
+            formattedString.normal("\(quotes[indexPath.row]) -- ").bold("\(authors[indexPath.row])")
+            
+            
+            cell.quotesLabel.text="\(quotes[indexPath.row]) -- \(authors[indexPath.row])"
+            
+            cell.quotesLabel.attributedText = formattedString
+            return cell
         }else{
-            cell.orgName.textColor=brightRed
+            let cell = tableView.dequeueReusableCell(withIdentifier: "quotesCell", for: indexPath) as! quotesCell
+            print("Index Path: \(indexPath.row)")
+
+            let formattedString = NSMutableAttributedString()
+            formattedString.normal("\(quotes[indexPath.row]) -- ").bold("\(authors[indexPath.row])")
+            
+            
+            cell.quotesLabel.text="\(quotes[indexPath.row]) -- \(authors[indexPath.row])"
+            
+            cell.quotesLabel.attributedText = formattedString
+            return cell
         }
-        cell.orgName.text=organization.organizationName
-        cell.orgDesc.text=organization.orgDescription
-        cell.contact.text=organization.contact
-        
-        return cell
-        
-//        if tableView == crisisTBV{
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "OrganizationCell", for: indexPath) as! OrganizationCell
-//
-//            let organization=self.organizations[indexPath.row]
-//            var brightRed = UIColor(red: 232.0/255.0, green: 90.0/255.0, blue: 69.0/255.0, alpha: 1.0)
-//            var teal = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-//            if (organization.organizationName=="Anxiety and Depression Association of America")||(organization.organizationName=="Depression and Bipolar Support Alliance")||(organization.organizationName=="Sidran Institute"){
-//                cell.orgName.textColor=teal
-//            }else{
-//                cell.orgName.textColor=brightRed
-//            }
-//            cell.orgName.text=organization.organizationName
-//            cell.orgDesc.text=organization.orgDescription
-//            cell.contact.text=organization.contact
-//
-//            return cell
-//        }
     }
 
+}
+
+extension NSMutableAttributedString {
+    @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
+        var darkBlue=UIColor(rgb: 0x007ebd)
+        
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 19)!,
+                                                    .foregroundColor: UIColor(cgColor: darkBlue.cgColor)]
+        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
+        append(boldString)
+        
+        return self
+    }
+    
+    @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
+        let normal = NSAttributedString(string: text)
+        append(normal)
+        
+        return self
+    }
 }
