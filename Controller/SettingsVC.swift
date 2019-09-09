@@ -79,7 +79,7 @@ class SettingsVC: UIViewController {
             } else if settings.types.contains(.alert) {
                 notiAllowedTimeSwitch()
             }else{
-                timeLabel.text="None"
+                timeLabel.text="No Time Set"
                 
                 if mySwitch.isOn==true{
                     mySwitch.setOn(false, animated: true)
@@ -118,7 +118,7 @@ class SettingsVC: UIViewController {
             
             mySwitch.setOn(true, animated: false)
         }else{
-            timeLabel.text="None"
+            timeLabel.text="No Time Set"
             mySwitch.setOn(false, animated: false)
         }
     }

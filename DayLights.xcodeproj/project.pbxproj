@@ -18,7 +18,7 @@
 		F627BA3823091DB800F888A3 /* PrivacyPolicyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3723091DB800F888A3 /* PrivacyPolicyAlert.swift */; };
 		F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */; };
 		F627BA3C2309288B00F888A3 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3B2309288B00F888A3 /* SettingsVC.swift */; };
-		F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */; };
+		F6719F8F2326181900EC52FD /* StressKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6719F8E2326181900EC52FD /* StressKitVC.swift */; };
 		F67247962320E4E2006F67C6 /* StressGamesControlPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */; };
 		F67BA4A52320435A0067487F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA4A42320435A0067487F /* Line.swift */; };
 		F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68954B422FF43BC00D23B5B /* EntryAlert.swift */; };
@@ -63,7 +63,7 @@
 		F627BA3723091DB800F888A3 /* PrivacyPolicyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyAlert.swift; sourceTree = "<group>"; };
 		F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNotiAlert.swift; sourceTree = "<group>"; };
 		F627BA3B2309288B00F888A3 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
+		F6719F8E2326181900EC52FD /* StressKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressKitVC.swift; sourceTree = "<group>"; };
 		F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressGamesControlPage.swift; sourceTree = "<group>"; };
 		F67BA4A42320435A0067487F /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		F68954B422FF43BC00D23B5B /* EntryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlert.swift; sourceTree = "<group>"; };
@@ -149,9 +149,19 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		F6719F8D232617E400EC52FD /* Stress Crisis Kit */ = {
+			isa = PBXGroup;
+			children = (
+				F6719F8E2326181900EC52FD /* StressKitVC.swift */,
+				F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */,
+			);
+			path = "Stress Crisis Kit";
+			sourceTree = "<group>";
+		};
 		F68CF9F02249F1A1001138FE = {
 			isa = PBXGroup;
 			children = (
+				F6719F8D232617E400EC52FD /* Stress Crisis Kit */,
 				F6E8B62F230E73CE004104D7 /* popBalloon.gif */,
 				F6E8B62B230E734C004104D7 /* balloonPopping.mp4 */,
 				F614E20923010CBB0041D628 /* StressGames */,
@@ -204,7 +214,6 @@
 				F6902855224B1DDF003E26E4 /* ContainerVC.swift */,
 				F6F79ECC224B3DB700A1DAC8 /* Side.swift */,
 				F6BACC41224DFCEB00430B79 /* MoodVC.swift */,
-				F65DA8BA225C660D00DF0F8C /* ResourcesTableViewController.swift */,
 				F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */,
 				F69C9E822262DC7300CFF1AC /* ShowAll.swift */,
 				F6C5B8FB22FE06FE00078675 /* Chart.swift */,
@@ -233,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				F61832A622506BCE0083886A /* BarCell.swift */,
-				F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */,
 				F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */,
 				F69C9E842262DC8000CFF1AC /* ShowAllCell.swift */,
 				F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */,
@@ -377,6 +385,7 @@
 			files = (
 				F68CFA052249F1A1001138FE /* DayLights.xcdatamodeld in Sources */,
 				F6A0B38922FFE3A400DD8A03 /* EntryAlertCell.swift in Sources */,
+				F6719F8F2326181900EC52FD /* StressKitVC.swift in Sources */,
 				F6E8B628230DD4CA004104D7 /* RandomBalloonsVC.swift in Sources */,
 				F68CF9FF2249F1A1001138FE /* ViewController.swift in Sources */,
 				F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */,
@@ -399,7 +408,6 @@
 				F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */,
 				F67247962320E4E2006F67C6 /* StressGamesControlPage.swift in Sources */,
 				F6BB675A2317B03C0089500B /* DragBalloonsVC.swift in Sources */,
-				F65DA8BB225C660D00DF0F8C /* ResourcesTableViewController.swift in Sources */,
 				F627BA3C2309288B00F888A3 /* SettingsVC.swift in Sources */,
 				F61F8E3D22FE4FE200080D31 /* DidWellCollectionVC.swift in Sources */,
 				F68A4227225C6BF300B56FA1 /* OrganizationCell.swift in Sources */,

@@ -221,7 +221,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
         ]
         
         var randomInt1 = Int.random(in: 0...2)
-        randomInt1=1
+        randomInt1=2
 
         let randomInt2 = Int.random(in: 0..<myTempColors[randomInt1].count)
         image.tintColor = myTempColors[randomInt1][randomInt2]

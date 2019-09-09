@@ -147,6 +147,18 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
         
+        //remove any arrays from daylightsPerMonth if count is <2. Then remove same value from formalIndividualMonths and individualMonths
+        var i=0
+        for array in daylightsPerMonth{
+            if array.count<2{
+                daylightsPerMonth=daylightsPerMonth.filter {$0 != array}
+                formalIndividualMonths.remove(at: i)
+                individualMonths.remove(at: i)
+            }
+            
+            i += 1
+        }
+        
         formalIndividualMonths.reverse()
         individualMonths.reverse()
         daylightsPerMonth.reverse()

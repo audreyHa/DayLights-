@@ -112,32 +112,35 @@ class ViewController: UIViewController {
     }
     
     func saveWhatYouHave(){
-        if (didWellText.text==""){
-            daylight!.didWell="None entered"
-        }else{
-            daylight!.didWell=didWellText.text!
-        }
+            if (didWellText.text==""){
+                daylight!.didWell="None entered"
+            }else{
+                daylight!.didWell=didWellText.text!
+            }
+            
+            if (stressfulMomentText.text==""){
+                daylight!.stressfulMoment="None entered"
+            }else{
+                daylight!.stressfulMoment=stressfulMomentText.text!
+            }
+            
+            //change this if you want the grateful and joyful moments entered instead of stressful
+            daylight!.gratefulThing="No Grateful Thing Entered."
+            daylight!.funny="No Joyful Moment Entered"
+            
+            if currentMood != nil{
+                daylight!.mood=currentMood ?? 3
+            }
+            
+            currentMood=nil
+            
+            if (daylight!.dateCreated == nil){
+                daylight!.dateCreated=Date()
+            }
+            
+            currentMood=0
+            CoreDataHelper.saveDaylight()
         
-        if (stressfulMomentText.text==""){
-            daylight!.stressfulMoment="None entered"
-        }else{
-            daylight!.stressfulMoment=stressfulMomentText.text!
-        }
-        
-        daylight!.gratefulThing="No Grateful Thing Entered."
-        
-        if currentMood != nil{
-            daylight!.mood=currentMood ?? 3
-        }
-        
-        currentMood=nil
-        
-        if (daylight!.dateCreated == nil){
-            daylight!.dateCreated=Date()
-        }
-
-        currentMood=0
-        CoreDataHelper.saveDaylight()
     }
     
     func resetEverything(){
@@ -162,14 +165,22 @@ class ViewController: UIViewController {
         var array=CoreDataHelper.retrieveDaylight()
         
             if daylight != nil{
-                saveWhatYouHave()
-                resetEverything()
-                moodIsNotGreat()
+                if (didWellText.text != "")||(stressfulMomentText.text != ""){
+                    saveWhatYouHave()
+                    resetEverything()
+                    moodIsNotGreat()
+                }else{
+                    print("not going to save because no text entered")
+                }
             }else{
-                daylight=CoreDataHelper.newDaylight()
-                saveWhatYouHave()
-                resetEverything()
-                moodIsNotGreat()
+                if (didWellText.text != "")||(stressfulMomentText.text != ""){
+                    daylight=CoreDataHelper.newDaylight()
+                    saveWhatYouHave()
+                    resetEverything()
+                    moodIsNotGreat()
+                }else{
+                    print("not going to save because no text entered")
+                }
             }
     }
 
@@ -516,7 +527,7 @@ class ViewController: UIViewController {
                 count+=1
             }
         }
-        
+
         if (count>1){
             performSegue(withIdentifier: "showMood", sender: nil)
         }else{
