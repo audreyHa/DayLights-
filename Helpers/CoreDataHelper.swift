@@ -57,6 +57,11 @@ struct CoreDataHelper{
         return drawing
     }
     
+    static func newQuote()->Quote{
+        let quote=NSEntityDescription.insertNewObject(forEntityName: "Quote", into: context) as! Quote
+        return quote
+    }
+    
     static func saveDaylight(){
         do{
             try context.save()
@@ -77,6 +82,11 @@ struct CoreDataHelper{
     
     static func delete(drawing: Drawing){
         context.delete(drawing)
+        saveDaylight()
+    }
+    
+    static func delete(quote: Quote){
+        context.delete(quote)
         saveDaylight()
     }
     
@@ -116,6 +126,17 @@ struct CoreDataHelper{
     static func retrieveNotification()->[NotificationTime]{
         do{
             let fetchRequest=NSFetchRequest<NotificationTime>(entityName: "NotificationTime")
+            let results=try context.fetch(fetchRequest)
+            return results
+        }catch let error{
+            print("Could not fetch \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveQuote()->[Quote]{
+        do{
+            let fetchRequest=NSFetchRequest<Quote>(entityName: "Quote")
             let results=try context.fetch(fetchRequest)
             return results
         }catch let error{

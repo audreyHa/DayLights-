@@ -21,10 +21,15 @@
         <attribute name="organizationName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orgDescription" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Quote" representedClassName="Quote" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quote" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Daylight" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Drawing" positionX="-63" positionY="27" width="128" height="75"/>
         <element name="NotificationTime" positionX="-63" positionY="27" width="128" height="75"/>
         <element name="Organization" positionX="-63" positionY="18" width="128" height="90"/>
+        <element name="Quote" positionX="-63" positionY="27" width="128" height="75"/>
     </elements>
 </model>

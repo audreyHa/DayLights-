@@ -13,11 +13,21 @@ import SwiftyJSON
 class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var phoneNumbersTBV: UITableView!
+    
     @IBOutlet weak var crisisTBV: UITableView!
+    
+    @IBOutlet weak var quotesTBV: UITableView!
+    
+    @IBOutlet weak var quotesSegmentedControl: UISegmentedControl!
+    
     var organizations=[Organization]()
     var quotes=[String]()
     var authors=[String]()
-    @IBOutlet weak var quotesTBV: UITableView!
+    
+    var savedQuotes=[String]()
+    var savedAuthors=[String]()
+    
+    var segmentedNumber=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,42 +72,90 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         organizations=CoreDataHelper.retrieveOrg()
         
-        let apiToContact = "https://api.quotable.io/quotes"
-
-        Alamofire.request(apiToContact).validate().responseJSON() { response in
-            switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    
-                    for i in 0...19{
-                        var randomQuoteData=json["results"][i]
-                        var randomQuoteText=randomQuoteData["content"]
-                        var randomQuoteAuthor=randomQuoteData["author"]
+        getRandomQuotes()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadQuotesArray(notification:)), name: Notification.Name("reloadQuotesArray"), object: nil)
+    }
+    
+    @objc func reloadQuotesArray(notification: Notification){
+        print("reloading quotes array")
+        matchQuotesSegment()
+    }
+    
+    func getRandomQuotes(){
+        for i in 0...2{
+            let apiToContact = "https://api.quotable.io/random"
+            
+            Alamofire.request(apiToContact).validate().responseJSON() { response in
+                switch response.result {
+                case .success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
                         
-                        self.quotes.append("\(randomQuoteText)")
-                        self.authors.append("\(randomQuoteAuthor)")
-
-                        print("appending quote \(self.quotes.count)")
+                        var randomQuoteText=json["content"]
+                        var randomQuoteAuthor=json["author"]
+                        
+                        if randomQuoteAuthor=="Donald Trump"{
+                            self.quotes.append("Do not judge me by my successes, judge me by how many times I fell down and got back up again.")
+                            self.authors.append("Nelson Mandela")
+                            
+                            print(self.quotes)
+                            self.quotesTBV.reloadData()
+                        }else{
+                            self.quotes.append("\(randomQuoteText)")
+                            self.authors.append("\(randomQuoteAuthor)")
+                            
+                            print(self.quotes)
+                            self.quotesTBV.reloadData()
+                        }
+                        
+                        
                     }
-
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    func matchQuotesSegment(){
+        if quotesSegmentedControl.selectedSegmentIndex==0{
+            print("segment number is 0")
+            segmentedNumber=0
+        }else{
+            print("segment number is 1")
+            segmentedNumber=1
+            
+            var allSavedQuotes=CoreDataHelper.retrieveQuote()
+            savedQuotes=[]
+            savedAuthors=[]
+            
+            for savedQuote in allSavedQuotes{
+                savedQuotes.append(savedQuote.quote!)
+                savedAuthors.append(savedQuote.author!)
+            }
+        }
+        
         quotesTBV.reloadData()
     }
+    
+    @IBAction func quotesSegmentChanged(_ sender: Any) {
+        matchQuotesSegment()
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         if tableView == crisisTBV{
             return organizations.count
         }else if tableView==quotesTBV{
-            return quotes.count
+            
+            if segmentedNumber==0{
+                return quotes.count
+            }else{
+                return savedQuotes.count
+            }
+            
         }else{
             return 0
         }
@@ -110,11 +168,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             let organization=self.organizations[indexPath.row]
             var brightRed = UIColor(red: 232.0/255.0, green: 90.0/255.0, blue: 69.0/255.0, alpha: 1.0)
             var teal = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-            if (organization.organizationName=="Anxiety and Depression Association of America")||(organization.organizationName=="Depression and Bipolar Support Alliance")||(organization.organizationName=="Sidran Institute"){
-                cell.orgName.textColor=teal
-            }else{
-                cell.orgName.textColor=brightRed
-            }
+            cell.orgName.textColor=brightRed
+            
             cell.orgName.text=organization.organizationName
             cell.orgDesc.text=organization.orgDescription
             cell.contact.text=organization.contact
@@ -122,27 +177,39 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             return cell
         }else if tableView==quotesTBV{
             let cell = tableView.dequeueReusableCell(withIdentifier: "quotesCell", for: indexPath) as! quotesCell
-            print("Index Path: \(indexPath.row)")
             
             let formattedString = NSMutableAttributedString()
-            formattedString.normal("\(quotes[indexPath.row]) -- ").bold("\(authors[indexPath.row])")
             
+            var quoteToUse: String
+            var authorToUse: String
             
-            cell.quotesLabel.text="\(quotes[indexPath.row]) -- \(authors[indexPath.row])"
+            if segmentedNumber==1{
+                quoteToUse=savedQuotes[indexPath.row]
+                authorToUse=savedAuthors[indexPath.row]
+            }else{
+                quoteToUse=quotes[indexPath.row]
+                authorToUse=authors[indexPath.row]
+            }
+            
+            formattedString.normal("\(quoteToUse) -- ").bold("\(authorToUse)")
             
             cell.quotesLabel.attributedText = formattedString
+            cell.quote=quoteToUse
+            cell.author=authorToUse
+            
+            cell.bookmarkButton.setImage(UIImage(imageLiteralResourceName: "bookmark"), for: .normal)
+            
+            var allQuotes=CoreDataHelper.retrieveQuote()
+            
+            for savedQuote in allQuotes{
+                if savedQuote.quote! == quoteToUse{
+                    cell.bookmarkButton.setImage(UIImage(imageLiteralResourceName: "filledBookmark"), for: .normal)
+                }
+            }
+            
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "quotesCell", for: indexPath) as! quotesCell
-            print("Index Path: \(indexPath.row)")
-
-            let formattedString = NSMutableAttributedString()
-            formattedString.normal("\(quotes[indexPath.row]) -- ").bold("\(authors[indexPath.row])")
-            
-            
-            cell.quotesLabel.text="\(quotes[indexPath.row]) -- \(authors[indexPath.row])"
-            
-            cell.quotesLabel.attributedText = formattedString
             return cell
         }
     }
