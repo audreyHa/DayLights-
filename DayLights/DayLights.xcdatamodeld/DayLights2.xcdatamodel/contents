@@ -12,6 +12,9 @@
         <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prompt" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="FunnyImage" representedClassName="FunnyImage" syncable="YES" codeGenerationType="class">
+        <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="NotificationTime" representedClassName="NotificationTime" syncable="YES" codeGenerationType="class">
         <attribute name="hour" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="minute" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -37,5 +40,6 @@
         <element name="Organization" positionX="-63" positionY="18" width="128" height="90"/>
         <element name="Quote" positionX="-63" positionY="27" width="128" height="75"/>
         <element name="Speech" positionX="-63" positionY="27" width="128" height="90"/>
+        <element name="FunnyImage" positionX="-63" positionY="27" width="128" height="60"/>
     </elements>
 </model>

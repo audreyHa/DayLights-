@@ -44,6 +44,8 @@
 		F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5B8FB22FE06FE00078675 /* Chart.swift */; };
 		F6C5B8FE22FE1D8200078675 /* GraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */; };
 		F6CCAA8A2328B56600AF734C /* SpeechCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCAA892328B56600AF734C /* SpeechCell.swift */; };
+		F6CCAA8C2328C2DE00AF734C /* FunnyImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCAA8B2328C2DE00AF734C /* FunnyImageCell.swift */; };
+		F6CCAA8E2328C35100AF734C /* FunnyImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCAA8D2328C35100AF734C /* FunnyImageVC.swift */; };
 		F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E110382300DB330033C4CA /* YesNoAlert.swift */; };
 		F6E8B628230DD4CA004104D7 /* RandomBalloonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */; };
 		F6E8B62A230E67E6004104D7 /* GameSettingsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */; };
@@ -96,6 +98,8 @@
 		F6C5B8FB22FE06FE00078675 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTableViewCell.swift; sourceTree = "<group>"; };
 		F6CCAA892328B56600AF734C /* SpeechCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCell.swift; sourceTree = "<group>"; };
+		F6CCAA8B2328C2DE00AF734C /* FunnyImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyImageCell.swift; sourceTree = "<group>"; };
+		F6CCAA8D2328C35100AF734C /* FunnyImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyImageVC.swift; sourceTree = "<group>"; };
 		F6E110382300DB330033C4CA /* YesNoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoAlert.swift; sourceTree = "<group>"; };
 		F6E8B627230DD4CA004104D7 /* RandomBalloonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBalloonsVC.swift; sourceTree = "<group>"; };
 		F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsAlert.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */,
 				F617CF1923262AF80075BDAA /* quotesCell.swift */,
 				F6CCAA892328B56600AF734C /* SpeechCell.swift */,
+				F6CCAA8B2328C2DE00AF734C /* FunnyImageCell.swift */,
+				F6CCAA8D2328C35100AF734C /* FunnyImageVC.swift */,
 			);
 			path = "Stress Crisis Kit";
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				F6381DDC23282FA6000C4D7A /* SpeechAlert.swift in Sources */,
 				F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */,
 				F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */,
+				F6CCAA8E2328C35100AF734C /* FunnyImageVC.swift in Sources */,
 				F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */,
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
@@ -425,6 +432,7 @@
 				F60557A8231E0F5000F67033 /* DrawingGame.swift in Sources */,
 				F61832A722506BCE0083886A /* BarCell.swift in Sources */,
 				F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */,
+				F6CCAA8C2328C2DE00AF734C /* FunnyImageCell.swift in Sources */,
 				F67247962320E4E2006F67C6 /* StressGamesControlPage.swift in Sources */,
 				F6BB675A2317B03C0089500B /* DragBalloonsVC.swift in Sources */,
 				F627BA3C2309288B00F888A3 /* SettingsVC.swift in Sources */,

@@ -32,6 +32,8 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>DayHighlights takes a screenshot of your drawings so that you can easily save them to your camera roll!</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>DayHighlights needs to access your photos so that it can add them to your funny images gallery</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

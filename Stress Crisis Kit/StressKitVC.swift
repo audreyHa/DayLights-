@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
     @IBOutlet weak var phoneNumbersTBV: UITableView!
     
@@ -21,6 +21,10 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var speechTBV: UITableView!
     
     @IBOutlet weak var quotesSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var funnyCollectionView: UICollectionView!
+    
+    var funnyImages=[FunnyImage]()
     
     var organizations=[Organization]()
     var quotes=[String]()
@@ -50,6 +54,14 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             }
         }
         
+        funnyImages=CoreDataHelper.retrieveFunnyImage()
+        funnyCollectionView.delegate=self
+        funnyCollectionView.dataSource=self
+        
+        var layout=funnyCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset=UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
+        layout.minimumInteritemSpacing=0
+        layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width-10)/2, height: (funnyCollectionView.frame.size.height)/2)
         
         if(UserDefaults.standard.bool(forKey: "setUpOrganizations")==false){
             var crisisTextLine=CoreDataHelper.newOrg()
@@ -245,7 +257,90 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             self.performSegue(withIdentifier: "oldSpeech", sender: nil)
         }
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("Funny images count \(funnyImages.count)")
+        return funnyImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell=funnyCollectionView.dequeueReusableCell(withReuseIdentifier: "FunnyImageCell", for: indexPath) as! FunnyImageCell
+        print("collection view index path \(indexPath.row)")
+        var filename=funnyImages[indexPath.row].imageFilename
+        
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        
+        if let dirPath = paths.first{
+            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(filename!)
+            let funnyImage = UIImage(contentsOfFile: imageURL.path)
+            
+            cell.funnyImageView.image=funnyImage
+        }
+        
+        return cell
+    }
+    
+    @IBAction func addFunnyImage(_ sender: Any) {
+        let image=UIImagePickerController()
+        image.delegate=self
+        
+        image.sourceType=UIImagePickerController.SourceType.photoLibrary
+        
+        image.allowsEditing=false
+        
+        self.present(image, animated: true){
+            //after using picks image
+        }
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            // get the documents directory url
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            // choose a name for your image
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "yyyy-MM--dd/hh:mm:ss"
+            let dateDrawingGame=dateformatter.string(from: Date())
+            
+            let fileName = "\(getAlphaNumericValue(yourString: dateDrawingGame)).jpg"
+            print("file name: \(fileName)")
+            
+            // create the destination file url to save your image
+            let fileURL = documentsDirectory.appendingPathComponent(fileName)
+            
+            // get your UIImage jpeg data representation and check if the destination file url already exists
+            if let data = image.jpegData(compressionQuality:  1.0),
+                !FileManager.default.fileExists(atPath: fileURL.path) {
+                do {
+                    // writes the image data to disk
+                    try data.write(to: fileURL)
+                    print("funny image saved")
+                    
+                    var newFunnyImage=CoreDataHelper.newFunnyImage()
+                    newFunnyImage.imageFilename=fileName
+                    
+                    CoreDataHelper.saveDaylight()
+                } catch {
+                    print("error saving file:", error)
+                }
+            }
+        }else{
+            print("error with saving the image!!!")
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func getAlphaNumericValue(yourString: String) -> String{
+        let unsafeChars = CharacterSet.alphanumerics.inverted  // Remove the .inverted to get the opposite result.
+        
+        let cleanChars  = yourString.components(separatedBy: unsafeChars).joined(separator: "")
+        return cleanChars
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 1
         guard let identifier = segue.identifier,
