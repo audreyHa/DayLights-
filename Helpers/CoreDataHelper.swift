@@ -62,6 +62,11 @@ struct CoreDataHelper{
         return quote
     }
     
+    static func newSpeech()->Speech{
+        let speech=NSEntityDescription.insertNewObject(forEntityName: "Speech", into: context) as! Speech
+        return speech
+    }
+    
     static func saveDaylight(){
         do{
             try context.save()
@@ -87,6 +92,11 @@ struct CoreDataHelper{
     
     static func delete(quote: Quote){
         context.delete(quote)
+        saveDaylight()
+    }
+    
+    static func delete(speech: Speech){
+        context.delete(speech)
         saveDaylight()
     }
     
@@ -137,6 +147,17 @@ struct CoreDataHelper{
     static func retrieveQuote()->[Quote]{
         do{
             let fetchRequest=NSFetchRequest<Quote>(entityName: "Quote")
+            let results=try context.fetch(fetchRequest)
+            return results
+        }catch let error{
+            print("Could not fetch \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveSpeech()->[Speech]{
+        do{
+            let fetchRequest=NSFetchRequest<Speech>(entityName: "Speech")
             let results=try context.fetch(fetchRequest)
             return results
         }catch let error{

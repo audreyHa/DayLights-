@@ -18,6 +18,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var quotesTBV: UITableView!
     
+    @IBOutlet weak var speechTBV: UITableView!
+    
     @IBOutlet weak var quotesSegmentedControl: UISegmentedControl!
     
     var organizations=[Organization]()
@@ -27,26 +29,27 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var savedQuotes=[String]()
     var savedAuthors=[String]()
     
+    var speeches=[Speech]()
+    
     var segmentedNumber=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.crisisTBV.estimatedRowHeight = 80
-        self.crisisTBV.rowHeight = UITableView.automaticDimension
+        var tbvs=[crisisTBV, quotesTBV, speechTBV]
+        for tbv in tbvs{
+            tbv!.estimatedRowHeight = 80
+            tbv!.rowHeight = UITableView.automaticDimension
+            
+            tbv!.layer.cornerRadius=10
+            tbv!.delegate=self
+            tbv!.dataSource=self
+            
+            if tbv != speechTBV{
+                tbv!.allowsSelection=false
+            }
+        }
         
-        crisisTBV.layer.cornerRadius=10
-        crisisTBV.delegate=self
-        crisisTBV.dataSource=self
-        crisisTBV.allowsSelection=false
-        
-        self.quotesTBV.estimatedRowHeight = 80
-        self.quotesTBV.rowHeight = UITableView.automaticDimension
-        
-        quotesTBV.layer.cornerRadius=10
-        quotesTBV.delegate=self
-        quotesTBV.dataSource=self
-        quotesTBV.allowsSelection=false
         
         if(UserDefaults.standard.bool(forKey: "setUpOrganizations")==false){
             var crisisTextLine=CoreDataHelper.newOrg()
@@ -74,12 +77,21 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         getRandomQuotes()
         
+        speeches=CoreDataHelper.retrieveSpeech()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadQuotesArray(notification:)), name: Notification.Name("reloadQuotesArray"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadSpeechTableView(notification:)), name: Notification.Name("reloadSpeechTableView"), object: nil)
     }
     
     @objc func reloadQuotesArray(notification: Notification){
         print("reloading quotes array")
         matchQuotesSegment()
+    }
+    
+    @objc func reloadSpeechTableView(notification: Notification){
+        speeches=CoreDataHelper.retrieveSpeech()
+        speechTBV.reloadData()
     }
     
     func getRandomQuotes(){
@@ -156,6 +168,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                 return savedQuotes.count
             }
             
+        }else if tableView==speechTBV{
+            return speeches.count
         }else{
             return 0
         }
@@ -208,12 +222,64 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             }
             
             return cell
+        }else if tableView==speechTBV{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SpeechCell", for: indexPath) as! SpeechCell
+            
+            let speech=self.speeches[indexPath.row]
+            cell.speechTitleLabel.text=speech.title
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "MM/dd/yy"
+            
+            cell.dateCreated.text=dateformatter.string(from: speech.dateModified!)
+
+            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "quotesCell", for: indexPath) as! quotesCell
             return cell
         }
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView==speechTBV{
+            self.performSegue(withIdentifier: "oldSpeech", sender: nil)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView==speechTBV{
+            if editingStyle == .delete {
+                var speechToRemove=speeches[indexPath.row]
+                CoreDataHelper.delete(speech: speechToRemove)
+                CoreDataHelper.saveDaylight()
+                speeches=CoreDataHelper.retrieveSpeech()
+                speechTBV.reloadData()
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 1
+        guard let identifier = segue.identifier,
+            let destination = segue.destination as? SpeechAlert
+            else { return }
+        
+        switch identifier {
+            // 2
+            
+        case "oldSpeech":
+            var speechToEdit: Speech
+            guard let indexPath = speechTBV.indexPathForSelectedRow else { return }
+            
+            let destination = segue.destination as! SpeechAlert
+            // 4
+            destination.speech = speeches[indexPath.row]
+        case "addSpeech":
+            print("adding completely new speech")
+        default:
+            print("unexpected segue identifier")
+        }
+    }
 }
 
 extension NSMutableAttributedString {

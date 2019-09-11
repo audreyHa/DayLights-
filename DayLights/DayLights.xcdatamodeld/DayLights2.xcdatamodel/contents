@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Daylight" representedClassName=".Daylight" syncable="YES" codeGenerationType="class">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="didWell" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,11 +25,17 @@
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quote" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Speech" representedClassName="Speech" syncable="YES" codeGenerationType="class">
+        <attribute name="dateModified" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="speech" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Daylight" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Drawing" positionX="-63" positionY="27" width="128" height="75"/>
         <element name="NotificationTime" positionX="-63" positionY="27" width="128" height="75"/>
         <element name="Organization" positionX="-63" positionY="18" width="128" height="90"/>
         <element name="Quote" positionX="-63" positionY="27" width="128" height="75"/>
+        <element name="Speech" positionX="-63" positionY="27" width="128" height="90"/>
     </elements>
 </model>
