@@ -246,18 +246,6 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         }
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if tableView==speechTBV{
-            if editingStyle == .delete {
-                var speechToRemove=speeches[indexPath.row]
-                CoreDataHelper.delete(speech: speechToRemove)
-                CoreDataHelper.saveDaylight()
-                speeches=CoreDataHelper.retrieveSpeech()
-                speechTBV.reloadData()
-            }
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 1
         guard let identifier = segue.identifier,
