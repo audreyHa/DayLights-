@@ -36,6 +36,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var speeches=[Speech]()
     
     var segmentedNumber=0
+    var indexPathToScrollTo: IndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var layout=funnyCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset=UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         layout.minimumInteritemSpacing=0
-        layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width-10)/2, height: (funnyCollectionView.frame.size.height)/2)
+        layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width-15)/2, height: (funnyCollectionView.frame.size.width-15)/2)
         
         if(UserDefaults.standard.bool(forKey: "setUpOrganizations")==false){
             var crisisTextLine=CoreDataHelper.newOrg()
@@ -265,7 +266,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=funnyCollectionView.dequeueReusableCell(withReuseIdentifier: "FunnyImageCell", for: indexPath) as! FunnyImageCell
-        print("collection view index path \(indexPath.row)")
+
         var filename=funnyImages[indexPath.row].imageFilename
         
         let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
@@ -276,10 +277,34 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(filename!)
             let funnyImage = UIImage(contentsOfFile: imageURL.path)
             
-            cell.funnyImageView.image=funnyImage
+            var copyToCrop=funnyImage
+            
+            let imageWidth = copyToCrop!.size.width
+            let imageHeight = copyToCrop!.size.height
+            var smallerValue = imageWidth
+            
+            if imageHeight<imageWidth{
+                smallerValue=imageHeight
+            }
+            
+            let origin = CGPoint(x: (imageWidth - smallerValue)/2, y: (imageHeight - smallerValue)/2)
+            let size = CGSize(width: smallerValue, height: smallerValue)
+            
+            copyToCrop=copyToCrop!.crop(rect: CGRect(origin: origin, size: size))
+            
+            cell.funnyImageView.image=copyToCrop
+            
+            cell.funnyImageView.frame=cell.bounds
+            
+            cell.funnyImageView.layer.cornerRadius=10
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        UserDefaults.standard.set(indexPath.row, forKey: "indexPathToScrollTo")
+        self.performSegue(withIdentifier: "expandFunnyImage", sender: nil)
     }
     
     @IBAction func addFunnyImage(_ sender: Any) {
@@ -382,5 +407,19 @@ extension NSMutableAttributedString {
         append(normal)
         
         return self
+    }
+}
+
+extension UIImage {
+    func crop( rect: CGRect) -> UIImage {
+        var rect = rect
+        rect.origin.x*=self.scale
+        rect.origin.y*=self.scale
+        rect.size.width*=self.scale
+        rect.size.height*=self.scale
+        
+        let imageRef = self.cgImage!.cropping(to: rect)
+        let image = UIImage(cgImage: imageRef!, scale: self.scale, orientation: self.imageOrientation)
+        return image
     }
 }
