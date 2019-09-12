@@ -11,12 +11,21 @@ import UIKit
 class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     @IBOutlet weak var funnyCollectionView: UICollectionView!
+    
+    @IBOutlet weak var headerLabel: UILabel!
+    
     var funnyImages=[FunnyImage]()
+    var drawings=[Drawing]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        funnyImages=CoreDataHelper.retrieveFunnyImage()
+        if headerLabel.text == "My Drawings!"{
+            drawings=CoreDataHelper.retrieveDrawing()
+        }else{
+            funnyImages=CoreDataHelper.retrieveFunnyImage()
+        }
+        
         funnyCollectionView.delegate=self
         funnyCollectionView.dataSource=self
         
@@ -29,20 +38,32 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        var intIndex=UserDefaults.standard.integer(forKey: "indexPathToScrollTo")
-        var indexPathToScrollTo=IndexPath(item: intIndex, section: 0)
-        funnyCollectionView.scrollToItem(at: indexPathToScrollTo, at: .top, animated: true)
+        if headerLabel.text=="Funny Images Gallery!"{
+            var intIndex=UserDefaults.standard.integer(forKey: "indexPathToScrollTo")
+            var indexPathToScrollTo=IndexPath(item: intIndex, section: 0)
+            funnyCollectionView.scrollToItem(at: indexPathToScrollTo, at: .top, animated: true)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Funny images count \(funnyImages.count)")
-        return funnyImages.count
+        if headerLabel.text == "My Drawings!"{
+            return drawings.count
+        }else{
+            print("Funny images count \(funnyImages.count)")
+            return funnyImages.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=funnyCollectionView.dequeueReusableCell(withReuseIdentifier: "FunnyImageCell", for: indexPath) as! FunnyImageCell
         
-        var filename=funnyImages[indexPath.row].imageFilename
+        var filename: String!
+        
+        if headerLabel.text == "My Drawings!"{
+            filename=drawings[indexPath.row].filename
+        }else{
+            filename=funnyImages[indexPath.row].imageFilename
+        }
         
         let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
@@ -71,6 +92,27 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
             cell.funnyImageView.frame=cell.bounds
             
             cell.funnyImageView.layer.cornerRadius=10
+            
+            if headerLabel.text == "My Drawings!"{
+                //add label with the prompt
+                for subview in cell.funnyImageView.subviews{
+                    if let item = subview as? UILabel{
+                        item.removeFromSuperview()
+                    }
+                }
+                
+                var label = UILabel(frame: CGRect(x: cell.funnyImageView.frame.width/2, y: 0, width: cell.funnyImageView.frame.width/2, height: 60))
+                label.textAlignment = NSTextAlignment.right
+                label.text = drawings[indexPath.row].prompt!
+                
+                label.adjustsFontSizeToFitWidth=true
+                label.numberOfLines=100
+                label.font=UIFont(name: "Avenir", size: 20)
+                label.textColor=UIColor.black
+                label.backgroundColor=UIColor(red: 1, green: 1, blue: 1, alpha:0.5)
+                
+                cell.funnyImageView.addSubview(label)
+            }
         }
         
         return cell

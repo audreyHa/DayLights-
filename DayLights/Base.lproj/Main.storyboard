@@ -3254,7 +3254,7 @@
                                                             <constraint firstItem="sfi-cd-JyB" firstAttribute="width" secondItem="XBH-RW-MoV" secondAttribute="width" id="vha-Y4-XXn"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="sVF-ky-6qX">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sVF-ky-6qX">
                                                         <rect key="frame" x="0.0" y="80" width="345" height="30"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iMD-Xo-bCi">
@@ -3274,7 +3274,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCF-PA-Hsp">
-                                                                <rect key="frame" x="49" y="0.0" width="138.5" height="30"/>
+                                                                <rect key="frame" x="40" y="0.0" width="112.5" height="30"/>
                                                                 <color key="backgroundColor" red="0.2470588235" green="0.83137254900000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <state key="normal" title="  Screenshot  ">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3284,13 +3284,27 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzA-VA-pcx">
-                                                                <rect key="frame" x="206.5" y="0.0" width="138.5" height="30"/>
+                                                                <rect key="frame" x="162.5" y="0.0" width="112.5" height="30"/>
                                                                 <color key="backgroundColor" red="0.90980392160000001" green="0.35294117650000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <state key="normal" title="  Clear All  ">
                                                                     <color key="titleColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="clearAllPressed:" destination="OAc-8A-tlC" eventType="touchUpInside" id="FwD-dB-WKC"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfN-LD-OEH">
+                                                                <rect key="frame" x="285" y="0.0" width="60" height="30"/>
+                                                                <color key="backgroundColor" red="1" green="0.8862745098" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="60" id="iD4-cI-27O"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <state key="normal">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="saveButtonPressed:" destination="OAc-8A-tlC" eventType="touchUpInside" id="HGW-qy-AOK"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -3364,6 +3378,7 @@
                         <outlet property="penSlider" destination="XBH-RW-MoV" id="dLP-Kv-IK5"/>
                         <outlet property="purpleButton" destination="Fqu-BT-84v" id="y9w-wI-KBK"/>
                         <outlet property="redButton" destination="H60-8V-0ly" id="3tJ-uv-RiU"/>
+                        <outlet property="saveButton" destination="hfN-LD-OEH" id="wm0-Wu-UDc"/>
                         <outlet property="screenshotButton" destination="RCF-PA-Hsp" id="zhw-VL-XTh"/>
                         <outlet property="undoButton" destination="Iqq-rz-2vz" id="usu-RH-2fa"/>
                         <outlet property="yellowButton" destination="FgB-RV-kf1" id="4Po-Yh-wNN"/>
@@ -3771,6 +3786,7 @@
                     </view>
                     <connections>
                         <outlet property="funnyCollectionView" destination="sQS-D9-UK7" id="1HQ-ZY-luN"/>
+                        <outlet property="headerLabel" destination="BkO-nq-HFg" id="oB8-h4-bOW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECc-JS-sjj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3814,7 +3830,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qex-Qy-H1Q">
                                 <rect key="frame" x="0.0" y="144" width="375" height="523"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.15621793540000001" green="0.36029721669999998" blue="0.58548144040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ei6-iC-fbq">
                                     <size key="itemSize" width="186" height="173"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -3861,6 +3877,7 @@
                     </view>
                     <connections>
                         <outlet property="funnyCollectionView" destination="qex-Qy-H1Q" id="AjE-4r-nlm"/>
+                        <outlet property="headerLabel" destination="GAh-11-YmL" id="UCj-9t-X2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWG-gU-eBg" userLabel="First Responder" sceneMemberID="firstResponder"/>

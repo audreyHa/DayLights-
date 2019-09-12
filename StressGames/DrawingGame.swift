@@ -46,7 +46,8 @@ class Canvas : UIView{
             addedTapGestureRecognizer=true
         }
         
-        
+        NotificationCenter.default.post(name: Notification.Name("needToSave"), object: nil)
+
         var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
         
         switch(UserDefaults.standard.bool(forKey: "usingPen")){
@@ -64,6 +65,7 @@ class Canvas : UIView{
         }
         
     }
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let point=touches.first?.location(in: self) else {return}
         
@@ -100,7 +102,53 @@ class Canvas : UIView{
 
     func checkIfScreenshot(labelText: String){
         if lines.count>0{
-            var drawing=CoreDataHelper.newDrawing()
+            var currentDrawing: Drawing!
+            
+            var allDrawings=CoreDataHelper.retrieveDrawing()
+            for drawing in allDrawings{
+                if drawing.prompt! == labelText{
+                    
+                    //set the core data Drawing to whatever drawing is currently being worked on
+                    currentDrawing=drawing
+                    
+                    //delete the previous image that was saved to the documents directory
+                    var filePath = ""
+                    
+                    let dirs : [String] = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)
+                    
+                    if dirs.count > 0 {
+                        let dir = dirs[0] //documents directory
+                        filePath = dir.appendingFormat("/" + drawing.filename!)
+                        print("Local path = \(filePath)")
+                        
+                    } else {
+                        print("Could not find local directory to store file")
+                        return
+                    }
+                    
+                    
+                    do {
+                        let fileManager = FileManager.default
+                        
+                        // Check if file exists
+                        if fileManager.fileExists(atPath: filePath) {
+                            // Delete file
+                            try fileManager.removeItem(atPath: filePath)
+                            print("got original to be deleted")
+                        } else {
+                            print("File does not exist for deleting after saving")
+                        }
+                        
+                    }
+                    catch let error as NSError {
+                        print("An error took place: \(error)")
+                    }
+                }
+            }
+            
+            if currentDrawing==nil{
+                currentDrawing=CoreDataHelper.newDrawing()
+            }
             
             var imageToSave=makeScreenshot()
             
@@ -127,8 +175,8 @@ class Canvas : UIView{
                     try data.write(to: fileURL)
                     print("drawing game image saved")
                     
-                    drawing.filename=fileName
-                    drawing.prompt=labelText
+                    currentDrawing.filename=fileName
+                    currentDrawing.prompt=labelText
                     
                     CoreDataHelper.saveDaylight()
                 } catch {
@@ -191,7 +239,8 @@ class DrawingGame: UIViewController {
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var screenshotButton: UIButton!
     @IBOutlet weak var clearAllButton: UIButton!
-
+    @IBOutlet weak var saveButton: UIButton!
+    
     var canvas=Canvas()
     var colors=[UIColor(rgb: 0xfa310a), UIColor(rgb: 0xff803f), UIColor(rgb: 0xffe23f), UIColor(rgb: 0x85F74D), UIColor(rgb: 0x3fd4ff), UIColor(rgb: 0x003f87), UIColor(rgb: 0x400087), UIColor(rgb: 0x000000)]
     
@@ -206,7 +255,6 @@ class DrawingGame: UIViewController {
     var animals=["monsters","antelope","octopus","lions","aardvarks","polar bears","deer","rabbits","ground hogs","eagles","bears","mouse","pony","llama","beetle","donkey","zebra","parrots","racooons","bats","wolf","panthers","coyote","camels","birds","lizards","frogs","buffalo","peacocks","cats","fish","elephants","tigers","snakes","turtles","wolves","rhinoceros","foxes","frogs","squirrels","sharks","dolphins","leopards","giraffe","otters","hippos","crocodiles","alligators","owls"]
     
     func randomAnimalDrawingPrompt(){
-        canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
         
         var adjectiveInt=Int.random(in: 0...adjectives.count-1)
         var animalInt=Int.random(in: 0...animals.count-1)
@@ -217,9 +265,13 @@ class DrawingGame: UIViewController {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        new.titleLabel?.adjustsFontSizeToFitWidth=true
-        screenshotButton.titleLabel?.adjustsFontSizeToFitWidth=true
-        clearAllButton.titleLabel?.adjustsFontSizeToFitWidth=true
+        var allButtons=[new, screenshotButton, clearAllButton, saveButton]
+        for button in allButtons{
+            button!.titleLabel?.adjustsFontSizeToFitWidth=true
+            button!.layer.cornerRadius=10
+        }
+
+        saveButton.layer.cornerRadius=5
         
         randomAnimalDrawingPrompt()
         
@@ -249,21 +301,16 @@ class DrawingGame: UIViewController {
         penSlider.setThumbImage(UIImage(named: "bluePlayBar"), for: .normal)
         eraserSlider.setThumbImage(UIImage(named: "bluePlayBar"), for: .normal)
         
-        screenshotButton.layer.cornerRadius=10
-        clearAllButton.layer.cornerRadius=10
-        new.layer.cornerRadius=10
-
-        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
-    }
-
-    @objc func appMovedToBackground() {
-        canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.needToSave(notification:)), name: Notification.Name("needToSave"), object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
+    @objc func needToSave(notification: Notification){
+        saveButton.backgroundColor=colors[3]
+        saveButton.setTitle("Save", for: .normal)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         canvas.backgroundColor = .white
         canvas.frame=containerDrawingView.frame
@@ -317,6 +364,7 @@ class DrawingGame: UIViewController {
     
     @IBAction func newPressed(_ sender: Any) {
         randomAnimalDrawingPrompt()
+        resetSavedButton()
         canvas.clearAll()
     }
     
@@ -378,8 +426,25 @@ class DrawingGame: UIViewController {
         UIImageWriteToSavedPhotosAlbum(screenshottedDrawing, nil, nil, nil);
     }
     
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        //only resave drawing if changes have actually been made!!
+        if saveButton.titleLabel!.text=="Save"{
+            //need to save this drawing
+            resetSavedButton()
+            
+            canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
+        }
+    }
+    
+    func resetSavedButton(){
+        saveButton.backgroundColor=colors[2]
+        saveButton.setTitle("", for: .normal)
+    }
+    
     @IBAction func clearAllPressed(_ sender: Any) {
         print("clear all pressed")
+
         canvas.clearAll()
     }
     
