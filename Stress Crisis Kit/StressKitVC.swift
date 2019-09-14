@@ -95,6 +95,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadQuotesArray(notification:)), name: Notification.Name("reloadQuotesArray"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadSpeechTableView(notification:)), name: Notification.Name("reloadSpeechTableView"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadFunnyImages(notification:)), name: Notification.Name("reloadFunnyImages"), object: nil)
     }
 
     @objc func reloadQuotesArray(notification: Notification){
@@ -105,6 +107,11 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @objc func reloadSpeechTableView(notification: Notification){
         speeches=CoreDataHelper.retrieveSpeech()
         speechTBV.reloadData()
+    }
+    
+    @objc func reloadFunnyImages(notification: Notification){
+        funnyImages=CoreDataHelper.retrieveFunnyImage()
+        funnyCollectionView.reloadData()
     }
     
     func getRandomQuotes(){
@@ -348,6 +355,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     newFunnyImage.imageFilename=fileName
                     
                     CoreDataHelper.saveDaylight()
+                    NotificationCenter.default.post(name: Notification.Name("reloadFunnyImages"), object: nil)
                 } catch {
                     print("error saving file:", error)
                 }

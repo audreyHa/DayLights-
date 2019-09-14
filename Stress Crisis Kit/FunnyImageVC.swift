@@ -35,9 +35,26 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
         layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width - 15), height: (funnyCollectionView.frame.size.width - 15))
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.deleteDrawingOrImage(notification:)), name: Notification.Name("deleteDrawingOrImage"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.permanentDeleteImage(notification:)), name: Notification.Name("permanentDeleteImage"), object: nil)
     }
     
     @objc func deleteDrawingOrImage(notification: Notification){
+        if headerLabel.text=="Funny Images Gallery!"{
+            UserDefaults.standard.set("deleteFunnyImage",forKey: "typeYesNoAlert")
+        }else{
+            UserDefaults.standard.set("deleteDrawing",forKey: "typeYesNoAlert")
+        }
+        
+        
+        let vc = storyboard!.instantiateViewController(withIdentifier: "YesNoAlert") as! YesNoAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func permanentDeleteImage(notification: Notification){
         var drawingOrImageToDelete=UserDefaults.standard.integer(forKey: "drawingOrImageToDelete")
         var filename: String!
         var filePath = ""
@@ -80,6 +97,9 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
                     
                     allFunnyImages=CoreDataHelper.retrieveFunnyImage()
                     funnyImages=CoreDataHelper.retrieveFunnyImage()
+                    
+                    //post notification to reload the smaller funny images view in the stress crisis kit VC
+                    NotificationCenter.default.post(name: Notification.Name("reloadFunnyImages"), object: nil)
                 }else{
                     var drawingToDelete=allDrawings[drawingOrImageToDelete]
                     CoreDataHelper.delete(drawing: drawingToDelete)
@@ -130,6 +150,8 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
             filename=funnyImages[indexPath.row].imageFilename
         }
         
+        cell.deleteImageButton.layer.cornerRadius=5
+        
         let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
         let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
@@ -178,12 +200,6 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 
                 cell.funnyImageView.addSubview(label)
             }
-            
-            //adding delete button
-//            var deleteImageButton = UIButton(frame: CGRect(x: cell.funnyImageView.frame.width-30, y: 0, width: 30, height: 30))
-//            deleteImageButton.setImage(UIImage(imageLiteralResourceName: "delete"), for: .normal)
-//            deleteImageButton.addTarget(self, action: #selector(deleteImageButtonPressed(_:)), forControlEvents: .TouchUpInside)
-//            cell.funnyImageView.addSubview(deleteImageButton)
             
         }
         

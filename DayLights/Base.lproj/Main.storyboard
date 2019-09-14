@@ -3764,7 +3764,7 @@
                                                         <constraint firstAttribute="width" constant="30" id="BYq-hE-W2w"/>
                                                         <constraint firstAttribute="height" constant="30" id="qr2-oW-Z7n"/>
                                                     </constraints>
-                                                    <state key="normal" image="delete"/>
+                                                    <state key="normal" image="ModifiedDelete"/>
                                                     <connections>
                                                         <action selector="deleteImage:" destination="f4t-HD-1UJ" eventType="touchUpInside" id="ihy-Qi-ywv"/>
                                                     </connections>
@@ -3864,13 +3864,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="186" height="173"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gx-YR-d97">
-                                                    <rect key="frame" x="148" y="28" width="30" height="30"/>
+                                                    <rect key="frame" x="8" y="28" width="30" height="30"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="3aO-Xp-3mC"/>
                                                         <constraint firstAttribute="height" constant="30" id="cKW-kn-JHz"/>
                                                     </constraints>
-                                                    <state key="normal" image="delete">
+                                                    <state key="normal" image="ModifiedDelete">
                                                         <color key="titleColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                     <connections>
@@ -3880,11 +3880,11 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="9gx-YR-d97" secondAttribute="trailing" id="SfO-h8-mBm"/>
                                             <constraint firstItem="B1N-sU-KsI" firstAttribute="leading" secondItem="XMs-jh-e3z" secondAttribute="leading" id="VZW-5j-sv5"/>
                                             <constraint firstAttribute="bottom" secondItem="B1N-sU-KsI" secondAttribute="bottom" id="ZIx-Db-0aB"/>
                                             <constraint firstAttribute="trailing" secondItem="B1N-sU-KsI" secondAttribute="trailing" id="d7T-yz-VWP"/>
                                             <constraint firstItem="B1N-sU-KsI" firstAttribute="top" secondItem="XMs-jh-e3z" secondAttribute="top" id="eCn-DX-1fQ"/>
+                                            <constraint firstItem="9gx-YR-d97" firstAttribute="leading" secondItem="XMs-jh-e3z" secondAttribute="leadingMargin" id="xkF-bL-XY5"/>
                                             <constraint firstItem="9gx-YR-d97" firstAttribute="top" secondItem="XMs-jh-e3z" secondAttribute="topMargin" id="zth-6s-Frn"/>
                                         </constraints>
                                         <connections>
@@ -3919,6 +3919,7 @@
     </scenes>
     <resources>
         <image name="Add" width="512" height="512"/>
+        <image name="ModifiedDelete" width="190" height="190"/>
         <image name="baseline_settings_black_24pt" width="24" height="24"/>
         <image name="blackCircle" width="512" height="512"/>
         <image name="blueCircle" width="512" height="512"/>
