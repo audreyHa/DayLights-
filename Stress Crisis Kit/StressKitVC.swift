@@ -96,7 +96,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadSpeechTableView(notification:)), name: Notification.Name("reloadSpeechTableView"), object: nil)
     }
-    
+
     @objc func reloadQuotesArray(notification: Notification){
         print("reloading quotes array")
         matchQuotesSegment()

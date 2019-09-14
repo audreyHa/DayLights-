@@ -3757,6 +3757,18 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Fb-UJ-X2e">
                                                     <rect key="frame" x="0.0" y="0.0" width="186" height="173"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvd-qu-Yzm">
+                                                    <rect key="frame" x="148" y="28" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="BYq-hE-W2w"/>
+                                                        <constraint firstAttribute="height" constant="30" id="qr2-oW-Z7n"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete"/>
+                                                    <connections>
+                                                        <action selector="deleteImage:" destination="f4t-HD-1UJ" eventType="touchUpInside" id="ihy-Qi-ywv"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -3764,8 +3776,11 @@
                                             <constraint firstAttribute="bottom" secondItem="2Fb-UJ-X2e" secondAttribute="bottom" id="Pkb-oN-fTb"/>
                                             <constraint firstItem="2Fb-UJ-X2e" firstAttribute="leading" secondItem="f4t-HD-1UJ" secondAttribute="leading" id="Yfh-gN-yNy"/>
                                             <constraint firstAttribute="trailing" secondItem="2Fb-UJ-X2e" secondAttribute="trailing" id="Zz6-vs-qAG"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Gvd-qu-Yzm" secondAttribute="trailing" id="ejD-PQ-AG9"/>
+                                            <constraint firstItem="Gvd-qu-Yzm" firstAttribute="top" secondItem="f4t-HD-1UJ" secondAttribute="topMargin" id="vw5-u6-RoL"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="deleteImageButton" destination="Gvd-qu-Yzm" id="d27-Ji-EXn"/>
                                             <outlet property="funnyImageView" destination="2Fb-UJ-X2e" id="c8b-Hw-QIB"/>
                                         </connections>
                                     </collectionViewCell>
@@ -3848,15 +3863,32 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B1N-sU-KsI">
                                                     <rect key="frame" x="0.0" y="0.0" width="186" height="173"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gx-YR-d97">
+                                                    <rect key="frame" x="148" y="28" width="30" height="30"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="3aO-Xp-3mC"/>
+                                                        <constraint firstAttribute="height" constant="30" id="cKW-kn-JHz"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete">
+                                                        <color key="titleColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteImage:" destination="XMs-jh-e3z" eventType="touchUpInside" id="kS1-rZ-VLb"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="9gx-YR-d97" secondAttribute="trailing" id="SfO-h8-mBm"/>
                                             <constraint firstItem="B1N-sU-KsI" firstAttribute="leading" secondItem="XMs-jh-e3z" secondAttribute="leading" id="VZW-5j-sv5"/>
                                             <constraint firstAttribute="bottom" secondItem="B1N-sU-KsI" secondAttribute="bottom" id="ZIx-Db-0aB"/>
                                             <constraint firstAttribute="trailing" secondItem="B1N-sU-KsI" secondAttribute="trailing" id="d7T-yz-VWP"/>
                                             <constraint firstItem="B1N-sU-KsI" firstAttribute="top" secondItem="XMs-jh-e3z" secondAttribute="top" id="eCn-DX-1fQ"/>
+                                            <constraint firstItem="9gx-YR-d97" firstAttribute="top" secondItem="XMs-jh-e3z" secondAttribute="topMargin" id="zth-6s-Frn"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="deleteImageButton" destination="9gx-YR-d97" id="soF-Hi-xLn"/>
                                             <outlet property="funnyImageView" destination="B1N-sU-KsI" id="rfC-eD-J23"/>
                                         </connections>
                                     </collectionViewCell>

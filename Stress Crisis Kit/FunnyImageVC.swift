@@ -33,6 +33,71 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
         layout.sectionInset=UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         layout.minimumInteritemSpacing=0
         layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width - 15), height: (funnyCollectionView.frame.size.width - 15))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deleteDrawingOrImage(notification:)), name: Notification.Name("deleteDrawingOrImage"), object: nil)
+    }
+    
+    @objc func deleteDrawingOrImage(notification: Notification){
+        var drawingOrImageToDelete=UserDefaults.standard.integer(forKey: "drawingOrImageToDelete")
+        var filename: String!
+        var filePath = ""
+        var allFunnyImages=CoreDataHelper.retrieveFunnyImage()
+        var allDrawings=CoreDataHelper.retrieveDrawing()
+        
+        if headerLabel.text=="Funny Images Gallery!"{
+            filename=allFunnyImages[drawingOrImageToDelete].imageFilename!
+        }else{
+            filename=allDrawings[drawingOrImageToDelete].filename!
+        }
+        
+        let dirs : [String] = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)
+        
+        if dirs.count > 0 {
+            let dir = dirs[0] //documents directory
+            filePath = dir.appendingFormat("/" + filename)
+            print("Local path = \(filePath)")
+            
+        } else {
+            print("Could not find local directory to store file")
+            return
+        }
+        
+        
+        do {
+            let fileManager = FileManager.default
+            
+            // Check if file exists
+            if fileManager.fileExists(atPath: filePath) {
+                // Delete file from documents directory
+                try fileManager.removeItem(atPath: filePath)
+                print("got original funny image or drawing to be deleted")
+                
+                //Deleting Core Data file
+                if headerLabel.text=="Funny Images Gallery!"{
+                    var funnyImageToDelete=allFunnyImages[drawingOrImageToDelete]
+                    CoreDataHelper.delete(funnyImage: funnyImageToDelete)
+                    CoreDataHelper.saveDaylight()
+                    
+                    allFunnyImages=CoreDataHelper.retrieveFunnyImage()
+                    funnyImages=CoreDataHelper.retrieveFunnyImage()
+                }else{
+                    var drawingToDelete=allDrawings[drawingOrImageToDelete]
+                    CoreDataHelper.delete(drawing: drawingToDelete)
+                    CoreDataHelper.saveDaylight()
+                    
+                    allDrawings=CoreDataHelper.retrieveDrawing()
+                    drawings=CoreDataHelper.retrieveDrawing()
+                }
+            } else {
+                print("Funny image/drawing to delete does not exist!")
+            }
+            
+        }
+        catch let error as NSError {
+            print("An error took place: \(error)")
+        }
+        
+        funnyCollectionView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -113,6 +178,13 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 
                 cell.funnyImageView.addSubview(label)
             }
+            
+            //adding delete button
+//            var deleteImageButton = UIButton(frame: CGRect(x: cell.funnyImageView.frame.width-30, y: 0, width: 30, height: 30))
+//            deleteImageButton.setImage(UIImage(imageLiteralResourceName: "delete"), for: .normal)
+//            deleteImageButton.addTarget(self, action: #selector(deleteImageButtonPressed(_:)), forControlEvents: .TouchUpInside)
+//            cell.funnyImageView.addSubview(deleteImageButton)
+            
         }
         
         return cell
