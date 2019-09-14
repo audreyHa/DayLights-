@@ -34,12 +34,12 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
         layout.minimumInteritemSpacing=0
         layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width - 15), height: (funnyCollectionView.frame.size.width - 15))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.deleteDrawingOrImage(notification:)), name: Notification.Name("deleteDrawingOrImage"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.possiblyDeleteImage(notification:)), name: Notification.Name("possiblyDeleteImage"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.permanentDeleteImage(notification:)), name: Notification.Name("permanentDeleteImage"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.permanentlyDeleteImage(notification:)), name: Notification.Name("permanentlyDeleteImage"), object: nil)
     }
     
-    @objc func deleteDrawingOrImage(notification: Notification){
+    @objc func possiblyDeleteImage(notification: Notification){
         if headerLabel.text=="Funny Images Gallery!"{
             UserDefaults.standard.set("deleteFunnyImage",forKey: "typeYesNoAlert")
         }else{
@@ -54,17 +54,19 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
         present(vc, animated: true, completion: nil)
     }
     
-    @objc func permanentDeleteImage(notification: Notification){
-        var drawingOrImageToDelete=UserDefaults.standard.integer(forKey: "drawingOrImageToDelete")
+    @objc func permanentlyDeleteImage(notification: Notification){
+        var possiblyDeleteImageRow=UserDefaults.standard.integer(forKey: "possiblyDeleteImageRow")
         var filename: String!
         var filePath = ""
         var allFunnyImages=CoreDataHelper.retrieveFunnyImage()
         var allDrawings=CoreDataHelper.retrieveDrawing()
         
         if headerLabel.text=="Funny Images Gallery!"{
-            filename=allFunnyImages[drawingOrImageToDelete].imageFilename!
+            
+            filename=allFunnyImages[possiblyDeleteImageRow].imageFilename!
         }else{
-            filename=allDrawings[drawingOrImageToDelete].filename!
+            print("drawing to delete: \(possiblyDeleteImageRow)")
+            filename=allDrawings[possiblyDeleteImageRow].filename!
         }
         
         let dirs : [String] = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)
@@ -91,7 +93,7 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 
                 //Deleting Core Data file
                 if headerLabel.text=="Funny Images Gallery!"{
-                    var funnyImageToDelete=allFunnyImages[drawingOrImageToDelete]
+                    var funnyImageToDelete=allFunnyImages[possiblyDeleteImageRow]
                     CoreDataHelper.delete(funnyImage: funnyImageToDelete)
                     CoreDataHelper.saveDaylight()
                     
@@ -101,18 +103,23 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
                     //post notification to reload the smaller funny images view in the stress crisis kit VC
                     NotificationCenter.default.post(name: Notification.Name("reloadFunnyImages"), object: nil)
                 }else{
-                    var drawingToDelete=allDrawings[drawingOrImageToDelete]
+                    var drawingToDelete=allDrawings[possiblyDeleteImageRow]
                     CoreDataHelper.delete(drawing: drawingToDelete)
                     CoreDataHelper.saveDaylight()
                     
+                    print("deleting drawing")
+
+                    
                     allDrawings=CoreDataHelper.retrieveDrawing()
                     drawings=CoreDataHelper.retrieveDrawing()
+                    
                 }
             } else {
                 print("Funny image/drawing to delete does not exist!")
             }
             
         }
+            
         catch let error as NSError {
             print("An error took place: \(error)")
         }

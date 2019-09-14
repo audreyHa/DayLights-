@@ -17,9 +17,9 @@ class FunnyImageCell: UICollectionViewCell {
         guard let superView = self.superview as? UICollectionView else {return}
 
         var myIndexPath = superView.indexPath(for: self)
-        UserDefaults.standard.set(myIndexPath!.row, forKey: "drawingOrImageToDelete")
+        UserDefaults.standard.set(myIndexPath!.row, forKey: "possiblyDeleteImageRow")
         
-        NotificationCenter.default.post(name: Notification.Name("deleteDrawingOrImage"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("possiblyDeleteImage"), object: nil)
     }
     
     

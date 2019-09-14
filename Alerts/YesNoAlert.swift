@@ -58,6 +58,9 @@ class YesNoAlert: UIViewController{
         case "deleteDrawing":
             headerLabel.text="Confirm!"
             bodyText.text="Are you sure you want to delete this drawing? You cannot undo this action."
+        case "deleteSpeech":
+            headerLabel.text="Confirm!"
+            bodyText.text="Are you sure you want to delete this motivational speech? You cannot undo this action."
         default:
             print("Error! Could not react to yes no alert!")
         }
@@ -67,9 +70,10 @@ class YesNoAlert: UIViewController{
         switch (UserDefaults.standard.string(forKey: "typeYesNoAlert")) {
         case "delete":
             NotificationCenter.default.post(name: Notification.Name("delete"), object: nil)
-        
+        case "deleteSpeech":
+            NotificationCenter.default.post(name: Notification.Name("permanentlyDeleteSpeech"), object: nil)
         default:
-            NotificationCenter.default.post(name: Notification.Name("permanentDeleteImage"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name("permanentlyDeleteImage"), object: nil)
         }
         
         navigationController?.popViewController(animated: true)

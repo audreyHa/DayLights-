@@ -21,17 +21,11 @@ class SpeechCell: UITableViewCell {
     }
 
     @IBAction func deletePressed(_ sender: Any) {
-        
         guard let superView = self.superview as? UITableView else {return}
-        
-        var speeches=CoreDataHelper.retrieveSpeech()
         var myIndexPath = superView.indexPath(for: self)
-        var speechToRemove=speeches[myIndexPath!.row]
-        CoreDataHelper.delete(speech: speechToRemove)
-        CoreDataHelper.saveDaylight()
-        speeches=CoreDataHelper.retrieveSpeech()
+        UserDefaults.standard.set(myIndexPath!.row, forKey: "possiblyDeleteSpeechRow")
         
-        NotificationCenter.default.post(name: Notification.Name("reloadSpeechTableView"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("possiblyDeleteSpeech"), object: nil)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

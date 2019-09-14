@@ -94,9 +94,13 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadQuotesArray(notification:)), name: Notification.Name("reloadQuotesArray"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadSpeechTableView(notification:)), name: Notification.Name("reloadSpeechTableView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.possiblyDeleteSpeech(notification:)), name: Notification.Name("possiblyDeleteSpeech"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadFunnyImages(notification:)), name: Notification.Name("reloadFunnyImages"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.permanentlyDeleteSpeech(notification:)), name: Notification.Name("permanentlyDeleteSpeech"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadSpeechTableView(notification:)), name: Notification.Name("reloadSpeechTableView"), object: nil)
     }
 
     @objc func reloadQuotesArray(notification: Notification){
@@ -105,6 +109,26 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     @objc func reloadSpeechTableView(notification: Notification){
+        speeches=CoreDataHelper.retrieveSpeech()
+        speechTBV.reloadData()
+    }
+    
+    @objc func possiblyDeleteSpeech(notification: Notification){
+        UserDefaults.standard.set("deleteSpeech",forKey: "typeYesNoAlert")
+    
+        let vc = storyboard!.instantiateViewController(withIdentifier: "YesNoAlert") as! YesNoAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func permanentlyDeleteSpeech(notification: Notification){
+        var indexPathToRemove=UserDefaults.standard.integer(forKey: "possiblyDeleteSpeechRow")
+        var speechToRemove=speeches[indexPathToRemove]
+        
+        CoreDataHelper.delete(speech: speechToRemove)
+        CoreDataHelper.saveDaylight()
         speeches=CoreDataHelper.retrieveSpeech()
         speechTBV.reloadData()
     }
