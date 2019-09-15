@@ -12,6 +12,13 @@ import SwiftyJSON
 
 class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
+    @IBOutlet weak var threeQuotesLabel: UILabel!
+    @IBOutlet weak var funnyImagesLabel: UILabel!
+    @IBOutlet weak var motivationalSpeechLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var crisisHotlineLabel: UILabel!
+    
+    
     @IBOutlet weak var phoneNumbersTBV: UITableView!
     
     @IBOutlet weak var crisisTBV: UITableView!
@@ -40,7 +47,12 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var labels=[threeQuotesLabel, funnyImagesLabel, motivationalSpeechLabel, phoneNumberLabel, crisisHotlineLabel]
+        
+        for label in labels{
+            label?.adjustsFontSizeToFitWidth=true
+        }
+        
         var tbvs=[crisisTBV, quotesTBV, speechTBV]
         for tbv in tbvs{
             tbv!.estimatedRowHeight = 80
@@ -55,7 +67,6 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
         }
         
-        funnyImages=CoreDataHelper.retrieveFunnyImage()
         funnyCollectionView.delegate=self
         funnyCollectionView.dataSource=self
         
@@ -64,7 +75,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         layout.minimumInteritemSpacing=0
         layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width-15)/2, height: (funnyCollectionView.frame.size.width-15)/2)
         
-        if(UserDefaults.standard.bool(forKey: "setUpOrganizations")==false){
+        if(UserDefaults.standard.bool(forKey: "setUpStressData")==false){
             var crisisTextLine=CoreDataHelper.newOrg()
             crisisTextLine.organizationName="Crisis Text Line"
             crisisTextLine.orgDescription="Text HOME to 741-741: 24/7"
@@ -81,9 +92,44 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             parent.orgDescription="Emotional support for parents from a trained advocate: 24/7"
             parent.contact="855-427-2736"
             
-            CoreDataHelper.saveDaylight()
+            var motivationalSpeech=CoreDataHelper.newSpeech()
+            motivationalSpeech.dateModified=Date()
+            motivationalSpeech.title="Martin Luther King Jr: \"What Is Your Life's Blueprint?\""
+            motivationalSpeech.speech="This is the most important and crucial period of your lives, for what you do now and what you decide now at this age may well determine which way your life shall go. And the question is, whether you have a proper, a solid, and a sound blueprint.\n\nAnd I want to suggest some of the things that should be in your life's blueprint. Number one in your life's blueprint should be a deep belief in your own dignity, your own worth, and your own somebodiness. Don't allow anybody to make you feel that you are nobody. Always feel that you count. Always feel that you have worth, and always feel that your life has ultimate significance.\n\nSecondly, in your life's blueprint, you must have a basic principle: the determination to achieve excellence in your various fields of endeavor. You're going to be deciding as the days and the years unfold what you do in life, what your life's work will be. Once you discover what it will be set out to do it and to do it well. Be a bush if you can't be a tree. If you can't be a highway, just be a trail. If you can't be the sun, be a star, for it isn't by size that you win or you fail, be the best of whatever you are.\n\nFinally, in your life's blueprint must be a commitment to the eternal principals of beauty, love, and justice. Well life for none of us has been a crystal stair, but we must keep moving, we must keep going. If you can't fly, run. If you can't run, walk. If you can't walk, crawl, but by all means, keep moving."
             
-            UserDefaults.standard.set(true, forKey: "setUpOrganizations")
+            
+            var dogLlamaImages=[UIImage(imageLiteralResourceName: "dog1"), UIImage(imageLiteralResourceName: "dog2"), UIImage(imageLiteralResourceName: "dog3"), UIImage(imageLiteralResourceName: "llama1"), UIImage(imageLiteralResourceName: "llama2")]
+            
+            var imageNames=["dog1", "dog2", "dog3", "llama1", "llama2"]
+            var count=0
+            
+            for image in dogLlamaImages{
+                let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                // choose a name for your image
+                let fileName = "\(imageNames[count]).jpg"
+                // create the destination file url to save your image
+                let fileURL = documentsDirectory.appendingPathComponent(fileName)
+                // get your UIImage jpeg data representation and check if the destination file url already exists
+                if let data = image.jpegData(compressionQuality:  1.0),
+                    !FileManager.default.fileExists(atPath: fileURL.path) {
+                    do {
+                        // writes the image data to disk
+                        try data.write(to: fileURL)
+                        print("file saved")
+                    } catch {
+                        print("error saving file:", error)
+                    }
+                }
+                
+                var newImage=CoreDataHelper.newFunnyImage()
+                newImage.imageFilename=fileName
+                
+                count+=1
+            }
+            
+            CoreDataHelper.saveDaylight()
+            UserDefaults.standard.set(true, forKey: "setUpStressData")
+            funnyCollectionView.reloadData()
         }
         
         organizations=CoreDataHelper.retrieveOrg()
@@ -91,6 +137,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         getRandomQuotes()
         
         speeches=CoreDataHelper.retrieveSpeech()
+        
+        funnyImages=CoreDataHelper.retrieveFunnyImage()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadQuotesArray(notification:)), name: Notification.Name("reloadQuotesArray"), object: nil)
         

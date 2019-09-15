@@ -302,7 +302,7 @@ class ViewController: UIViewController {
         
         
         if((doubleWeekToCheck.count==doubleCheck)||(doubleWeekToCheck.count-1 == doubleCheck)||(doubleWeekToCheck.count-2 == doubleCheck))&&(doubleWeekEachDateCount>=10){
-            UserDefaults.standard.set("resources",forKey: "typeOKAlert")
+            UserDefaults.standard.set("weeksTalkToFriend",forKey: "typeOKAlert")
             makeOKAlert()
 
         }else if((weekDatesToCheck.count==weekCheck)||(weekDatesToCheck.count-1 == weekCheck))&&(weekCheckEachDateCount>=5){
@@ -310,7 +310,10 @@ class ViewController: UIViewController {
             makeOKAlert()
 
         }else if(checkingCount==datesToCheck.count)&&(threeDayCount==3){
-            UserDefaults.standard.set("daysTalkToFriend",forKey: "typeOKAlert")
+            UserDefaults.standard.set("stressGames",forKey: "typeOKAlert")
+            makeOKAlert()
+        }else if(todayStringDate==threeDay[0]){
+            UserDefaults.standard.set("todayStressGames",forKey: "typeOKAlert")
             makeOKAlert()
         }
         
@@ -350,7 +353,7 @@ class ViewController: UIViewController {
     //VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         daylightsArray=CoreDataHelper.retrieveDaylight()
         
         stressfulLabel.adjustsFontSizeToFitWidth=true
@@ -392,9 +395,10 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("showDidWell"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(searchDayLights), name: NSNotification.Name("searchDayLights"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showResources), name: NSNotification.Name("resources"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(stressReliefControlVC), name: NSNotification.Name("stressReliefControlVC"), object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(segueResources), name: NSNotification.Name("segueResources"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stressCrisis), name: NSNotification.Name("stressCrisis"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(stressGames), name: NSNotification.Name("stressGames"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(notiTime), name: NSNotification.Name("notiTime"), object: nil)
         
         self.hideSide()
@@ -478,10 +482,6 @@ class ViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-    
-    @objc func segueResources(notification: NSNotification) {
-        self.performSegue(withIdentifier: "resources", sender: nil)
-    }
 
     @objc func keyboardWillChange(notification: Notification){
         
@@ -510,12 +510,12 @@ class ViewController: UIViewController {
         
     }
     
-    @objc func showResources(){
-        performSegue(withIdentifier: "resources", sender: nil)
+    @objc func stressCrisis(){
+        performSegue(withIdentifier: "stressCrisis", sender: nil)
     }
     
-    @objc func stressReliefControlVC(){
-        performSegue(withIdentifier: "stressReliefControlVC", sender: nil)
+    @objc func stressGames(){
+        performSegue(withIdentifier: "stressGames", sender: nil)
     }
     
     @objc func showMood(){

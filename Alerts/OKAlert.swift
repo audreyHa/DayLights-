@@ -38,18 +38,26 @@ class OKAlert: UIViewController {
         daylightImage.superview?.bringSubviewToFront(daylightImage)
         
         switch (UserDefaults.standard.string(forKey: "typeOKAlert")) {
-        case "resources":
+        case "todayStressGames":
             headerLabel.text="ALERT!"
-            bodyText.text="Looks like your stress has not been good for the past few weeks... Let's look at some resources!"
+            bodyText.text="Looks like your stress was not great today! Let's play some stress games!"
             yesButton.setTitle("LET'S GO!", for: .normal)
+            
+        case "stressGames":
+            headerLabel.text="ALERT!"
+            bodyText.text="Looks like your stress has not been great for the past few days... Let's play some stress games!"
+            yesButton.setTitle("LET'S GO!", for: .normal)
+            
         case "weekTalkToFriend":
             headerLabel.text="ALERT!"
-            bodyText.text="Looks like you stress has not been great for the past week... Please make sure to talk to a family member or guardian, trusted adult, teacher, or friend."
-            yesButton.setTitle("I WILL talk to someone!", for: .normal)
-        case "daysTalkToFriend":
+            bodyText.text="Looks like you stress has not been great for the past week... Let's look at your stress crisis kit!"
+            yesButton.setTitle("LET'S GO!", for: .normal)
+        
+        case "weeksTalkToFriend":
             headerLabel.text="ALERT!"
-            bodyText.text="Looks like your stress has not been great for the past few days... Try talking to a family member or guardian, trusted adult, teacher, or friend!"
-            yesButton.setTitle("I WILL talk to someone!", for: .normal)
+            bodyText.text="Looks like your stress has not been good for the past few weeks... Let's look at your stress crisis kit!"
+            yesButton.setTitle("LET'S GO!", for: .normal)
+            
         case "noMoodData":
             headerLabel.text="ALERT!"
             bodyText.text="You do not have any stress data yet!\n\nCheck back after filling out at least 2 entries!"
@@ -81,25 +89,32 @@ class OKAlert: UIViewController {
     
     @IBAction func yesPressed(_ sender: Any) {
         switch (UserDefaults.standard.string(forKey: "typeOKAlert")) {
-        case "resources":
-            NotificationCenter.default.post(name: Notification.Name("segueResources"), object: nil)
-            navigationController?.popViewController(animated: true)
-            dismiss(animated: true, completion: nil)
+        case "todayStressGames":
+            NotificationCenter.default.post(name: Notification.Name("stressGames"), object: nil)
+            
+        case "stressGames":
+            NotificationCenter.default.post(name: Notification.Name("stressGames"), object: nil)
+            
+        case "weekTalkToFriend":
+            NotificationCenter.default.post(name: Notification.Name("stressCrisis"), object: nil)
+            
+        case "weeksTalkToFriend":
+            NotificationCenter.default.post(name: Notification.Name("stressCrisis"), object: nil)
+
         case "settingsTurnOnNoti":
             NotificationCenter.default.post(name: Notification.Name("updateTimeAndSwitch"), object: nil)
-            navigationController?.popViewController(animated: true)
-            dismiss(animated: true, completion: nil)
+            
         case "gameOneInstructions":
             NotificationCenter.default.post(name: Notification.Name("setRandomBalloonGame"), object: nil)
-            navigationController?.popViewController(animated: true)
-            dismiss(animated: true, completion: nil)
+            
         case "gameTwoInstructions":
             NotificationCenter.default.post(name: Notification.Name("setSecondBalloonGame"), object: nil)
-            navigationController?.popViewController(animated: true)
-            dismiss(animated: true, completion: nil)
+            
         default:
-            navigationController?.popViewController(animated: true)
-            dismiss(animated: true, completion: nil)
+            print("default yes")
         }
+        
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }

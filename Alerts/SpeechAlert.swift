@@ -21,6 +21,7 @@ class SpeechAlert: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var speechTextView: UITextView!
     @IBOutlet weak var speechDateLabel: UILabel!
+    @IBOutlet weak var wholeAlertViewHeightConstraint: NSLayoutConstraint!
     
     var speech: Speech?
     
@@ -61,9 +62,25 @@ class SpeechAlert: UIViewController {
             speechDateLabel.text=reformattedDate
         }
         
+        self.view.layoutIfNeeded()
+        titleTextField.text="Martin Luther King Jr: \"What Is Your Life's Blueprint?\""
+        
+        if titleTextField.text=="Martin Luther King Jr: \"What Is Your Life's Blueprint?\""{
+            titleTextField.isUserInteractionEnabled=false
+            speechTextView.isEditable=false
+
+            let newConstraint = wholeAlertViewHeightConstraint.constraintWithMultiplier(0.75)
+            view.removeConstraint(wholeAlertViewHeightConstraint)
+            view.addConstraint(newConstraint)
+            view.layoutIfNeeded()
+            wholeAlertViewHeightConstraint = newConstraint
+            
+            self.view.layoutIfNeeded()
+        }
+        
         self.hideKeyboardWhenTappedAround() 
     }
-    
+
     @IBAction func yesPressed(_ sender: Any) {
         if (speechTextView.text != ""){
             if speech==nil{ //if creating completely new speech
@@ -97,5 +114,11 @@ class SpeechAlert: UIViewController {
         
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension NSLayoutConstraint {
+    func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
     }
 }

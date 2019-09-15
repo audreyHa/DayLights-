@@ -24,7 +24,7 @@ class Side: UIViewController {
     }
     
     @IBAction func resourcesPressed(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name("resources"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("stressCrisis"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
     }
     
@@ -41,7 +41,7 @@ class Side: UIViewController {
     }
     
     @IBAction func stressGamesPressed(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name("stressReliefControlVC"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("stressGames"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("CloseSideMenu"), object: nil)
     }
     
