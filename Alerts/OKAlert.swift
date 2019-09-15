@@ -60,7 +60,7 @@ class OKAlert: UIViewController {
             
         case "noMoodData":
             headerLabel.text="ALERT!"
-            bodyText.text="You do not have any stress data yet!\n\nCheck back after filling out at least 2 entries!"
+            bodyText.text="You do not have enough stress data yet!\n\nCheck back after filling out at least 2 entries!"
             yesButton.setTitle("OK", for: .normal)
         case "noDaylightData":
             headerLabel.text="ALERT!"

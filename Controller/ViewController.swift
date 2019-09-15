@@ -313,8 +313,12 @@ class ViewController: UIViewController {
             UserDefaults.standard.set("stressGames",forKey: "typeOKAlert")
             makeOKAlert()
         }else if(todayStringDate==threeDay[0]){
-            UserDefaults.standard.set("todayStressGames",forKey: "typeOKAlert")
-            makeOKAlert()
+            var todayEntry=CoreDataHelper.retrieveDaylight().last
+            
+            if todayEntry!.mood<3{
+                UserDefaults.standard.set("todayStressGames",forKey: "typeOKAlert")
+                makeOKAlert()
+            }
         }
         
         print("Double week each count \(doubleWeekEachDateCount)")

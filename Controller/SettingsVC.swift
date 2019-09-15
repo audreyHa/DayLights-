@@ -16,6 +16,7 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var changeNotiButton: UIButton!
     @IBOutlet var fullView: UIView!
+    @IBOutlet weak var linksTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +33,39 @@ class SettingsVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTimeAndSwitch), name: NSNotification.Name("updateTimeAndSwitch"), object: nil)
 
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "RainDH.jpg")?.draw(in: self.view.bounds)
+        linksTextView.text="Alamofire\n\nSwifty JSON\n\niOS Charts\n\nQuotable"
         
-        if let image = UIGraphicsGetImageFromCurrentImageContext(){
-            UIGraphicsEndImageContext()
-            self.view.backgroundColor = UIColor(patternImage: image)
-        }else{
-            UIGraphicsEndImageContext()
-            debugPrint("Image not available")
+        let linkedText = NSMutableAttributedString(attributedString: linksTextView.attributedText)
+        
+        //Alamofire
+        let hyperlinkedAlamofire = linkedText.setAsLink(textToFind: "Alamofire", linkURL: "https://github.com/Alamofire/Alamofire")
+        
+        if hyperlinkedAlamofire {
+            linksTextView.attributedText = NSAttributedString(attributedString: linkedText)
         }
         
-        fullView.backgroundColor=UIColor.clear
+        //Swifty JSON
+        let hyperlinkedSwiftyJSON = linkedText.setAsLink(textToFind: "Swifty JSON", linkURL: "https://github.com/SwiftyJSON/SwiftyJSON")
+        
+        if hyperlinkedSwiftyJSON {
+            linksTextView.attributedText = NSAttributedString(attributedString: linkedText)
+        }
+        
+        //Charts
+        let hyperlinkedCharts = linkedText.setAsLink(textToFind: "iOS Charts", linkURL: "https://github.com/danielgindi/Charts")
+        
+        if hyperlinkedCharts {
+            linksTextView.attributedText = NSAttributedString(attributedString: linkedText)
+        }
+        
+        //Quotable
+        let hyperlinkedQuotes = linkedText.setAsLink(textToFind: "Quotable", linkURL: "https://github.com/lukePeavey/quotable#examples")
+        
+        if hyperlinkedQuotes {
+            linksTextView.attributedText = NSAttributedString(attributedString: linkedText)
+        }
+
+        linksTextView.layer.cornerRadius=5
     }
     
     func makeEnterNotiAlert(){
@@ -161,4 +183,23 @@ class SettingsVC: UIViewController {
         }
     }
 
+}
+
+extension NSMutableAttributedString {
+    public func setAsLink(textToFind:String, linkURL:String) -> Bool {
+        
+        let foundRange = self.mutableString.range(of: textToFind)
+        if foundRange.location != NSNotFound {
+            
+            self.addAttribute(.link, value: linkURL, range: foundRange)
+            
+            let multipleAttributes: [NSAttributedString.Key : Any] = [
+                NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
+            
+            self.addAttributes(multipleAttributes, range: foundRange)
+            
+            return true
+        }
+        return false
+    }
 }

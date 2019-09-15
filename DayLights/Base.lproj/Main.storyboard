@@ -2632,12 +2632,34 @@
                                             <constraint firstAttribute="trailing" secondItem="YBT-Qz-cQo" secondAttribute="trailing" id="zKw-5e-cwo"/>
                                         </constraints>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yh5-dL-q7o">
+                                        <rect key="frame" x="15" y="125" width="345" height="237.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Source Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svj-OM-Den">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="34.5"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Alamofire" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e68-j3-R3w">
+                                                <rect key="frame" x="0.0" y="49.5" width="345" height="188"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" red="0.15621793540000001" green="0.36029721669999998" blue="0.58548144040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.15621793539683923" green="0.36029721665131642" blue="0.5854814403553299" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="Yh5-dL-q7o" firstAttribute="leading" secondItem="uHb-xZ-WIs" secondAttribute="leading" constant="15" id="19D-JS-2yC"/>
                                     <constraint firstItem="0uL-1U-EXp" firstAttribute="top" secondItem="uHb-xZ-WIs" secondAttribute="top" constant="20" id="UX3-Nm-Thz"/>
                                     <constraint firstAttribute="trailing" secondItem="0uL-1U-EXp" secondAttribute="trailing" constant="20" id="cx8-te-fHa"/>
                                     <constraint firstItem="0uL-1U-EXp" firstAttribute="leading" secondItem="uHb-xZ-WIs" secondAttribute="leading" constant="20" id="fCu-Gc-pF0"/>
+                                    <constraint firstItem="Yh5-dL-q7o" firstAttribute="top" secondItem="0uL-1U-EXp" secondAttribute="bottom" constant="30" id="lg1-CX-HXM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yh5-dL-q7o" secondAttribute="trailing" constant="15" id="ujh-GP-XFB"/>
+                                    <constraint firstItem="Yh5-dL-q7o" firstAttribute="height" secondItem="uHb-xZ-WIs" secondAttribute="height" multiplier="0.45" id="vRC-ml-yAB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2659,6 +2681,7 @@
                         <outlet property="changeNotiButton" destination="Cma-YD-Wvs" id="5CA-dt-el9"/>
                         <outlet property="enableNotiLabel" destination="6Vw-iQ-a1s" id="XO4-Tq-jgt"/>
                         <outlet property="fullView" destination="uHb-xZ-WIs" id="6FI-6E-UDW"/>
+                        <outlet property="linksTextView" destination="e68-j3-R3w" id="sQe-BT-ob4"/>
                         <outlet property="mySwitch" destination="HTs-b6-nzh" id="gSC-5x-WtA"/>
                         <outlet property="timeLabel" destination="1qi-UE-c1P" id="v6R-Uj-Pwx"/>
                     </connections>
