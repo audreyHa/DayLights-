@@ -72,6 +72,11 @@ struct CoreDataHelper{
         return funnyImage
     }
     
+    static func newContact()->Contact{
+        let contact=NSEntityDescription.insertNewObject(forEntityName: "Contact", into: context) as! Contact
+        return contact
+    }
+    
     static func saveDaylight(){
         do{
             try context.save()
@@ -107,6 +112,11 @@ struct CoreDataHelper{
     
     static func delete(funnyImage: FunnyImage){
         context.delete(funnyImage)
+        saveDaylight()
+    }
+    
+    static func delete(contact: Contact){
+        context.delete(contact)
         saveDaylight()
     }
     
@@ -179,6 +189,17 @@ struct CoreDataHelper{
     static func retrieveFunnyImage()->[FunnyImage]{
         do{
             let fetchRequest=NSFetchRequest<FunnyImage>(entityName: "FunnyImage")
+            let results=try context.fetch(fetchRequest)
+            return results
+        }catch let error{
+            print("Could not fetch \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    static func retrieveContacts()->[Contact]{
+        do{
+            let fetchRequest=NSFetchRequest<Contact>(entityName: "Contact")
             let results=try context.fetch(fetchRequest)
             return results
         }catch let error{

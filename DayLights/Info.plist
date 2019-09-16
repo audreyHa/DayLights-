@@ -34,6 +34,8 @@
 	<string>DayHighlights takes a screenshot of your drawings so that you can easily save them to your camera roll!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>DayHighlights needs to access your photos so that it can add them to your funny images gallery</string>
+	<key>NSContactsUsageDescription</key>
+	<string>DayHighlights needs access to your contacts so that you can add your friend/family phone numbers directly to this app!</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

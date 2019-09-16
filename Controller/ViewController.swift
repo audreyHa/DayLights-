@@ -164,7 +164,7 @@ class ViewController: UIViewController {
     @IBAction func saveDayLights(_ sender: UIButton) {
         var array=CoreDataHelper.retrieveDaylight()
         
-            if daylight != nil{
+            if daylight != nil{ //saving old
                 if (didWellText.text != "")||(stressfulMomentText.text != ""){
                     saveWhatYouHave()
                     resetEverything()
@@ -172,12 +172,20 @@ class ViewController: UIViewController {
                 }else{
                     print("not going to save because no text entered")
                 }
-            }else{
+            }else{ //saving new
                 if (didWellText.text != "")||(stressfulMomentText.text != ""){
+                    var tempCurrentMood=currentMood
+                    
                     daylight=CoreDataHelper.newDaylight()
                     saveWhatYouHave()
                     resetEverything()
                     moodIsNotGreat()
+                    
+                    if tempCurrentMood! < Int32(3){
+                        UserDefaults.standard.set("todayStressGames",forKey: "typeOKAlert")
+                        makeOKAlert()
+                    }
+                    
                 }else{
                     print("not going to save because no text entered")
                 }
@@ -312,13 +320,6 @@ class ViewController: UIViewController {
         }else if(checkingCount==datesToCheck.count)&&(threeDayCount==3){
             UserDefaults.standard.set("stressGames",forKey: "typeOKAlert")
             makeOKAlert()
-        }else if(todayStringDate==threeDay[0]){
-            var todayEntry=CoreDataHelper.retrieveDaylight().last
-            
-            if todayEntry!.mood<3{
-                UserDefaults.standard.set("todayStressGames",forKey: "typeOKAlert")
-                makeOKAlert()
-            }
         }
         
         print("Double week each count \(doubleWeekEachDateCount)")

@@ -63,7 +63,6 @@ class SpeechAlert: UIViewController {
         }
         
         self.view.layoutIfNeeded()
-        titleTextField.text="Martin Luther King Jr: \"What Is Your Life's Blueprint?\""
         
         if titleTextField.text=="Martin Luther King Jr: \"What Is Your Life's Blueprint?\""{
             titleTextField.isUserInteractionEnabled=false

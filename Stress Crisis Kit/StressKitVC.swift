@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Contacts
 
 class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
     
@@ -27,6 +28,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @IBOutlet weak var speechTBV: UITableView!
     
+    @IBOutlet weak var contactTBV: UITableView!
+    
     @IBOutlet weak var quotesSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var funnyCollectionView: UICollectionView!
@@ -41,6 +44,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var savedAuthors=[String]()
     
     var speeches=[Speech]()
+    var contacts=[Contact]()
     
     var segmentedNumber=0
     var indexPathToScrollTo: IndexPath!
@@ -53,11 +57,14 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             label?.adjustsFontSizeToFitWidth=true
         }
         
-        var tbvs=[crisisTBV, quotesTBV, speechTBV]
+        var tbvs=[crisisTBV, quotesTBV, speechTBV, contactTBV]
+        
         for tbv in tbvs{
-            tbv!.estimatedRowHeight = 80
-            tbv!.rowHeight = UITableView.automaticDimension
-            
+            if tbv != contactTBV{
+                tbv!.estimatedRowHeight = 80
+                tbv!.rowHeight = UITableView.automaticDimension
+            }
+
             tbv!.layer.cornerRadius=10
             tbv!.delegate=self
             tbv!.dataSource=self
@@ -138,6 +145,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         speeches=CoreDataHelper.retrieveSpeech()
         
+        contacts=CoreDataHelper.retrieveContacts()
+        
         funnyImages=CoreDataHelper.retrieveFunnyImage()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadQuotesArray(notification:)), name: Notification.Name("reloadQuotesArray"), object: nil)
@@ -149,8 +158,17 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         NotificationCenter.default.addObserver(self, selector: #selector(self.permanentlyDeleteSpeech(notification:)), name: Notification.Name("permanentlyDeleteSpeech"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadSpeechTableView(notification:)), name: Notification.Name("reloadSpeechTableView"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadContactTBV(notification:)), name: Notification.Name("reloadContactTBV"), object: nil)
+        
+        //end of View Did Load
     }
-
+    
+    @objc func reloadContactTBV(notification: Notification){
+        contacts=CoreDataHelper.retrieveContacts()
+        contactTBV.reloadData()
+    }
+    
     @objc func reloadQuotesArray(notification: Notification){
         print("reloading quotes array")
         matchQuotesSegment()
@@ -262,6 +280,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         }else if tableView==speechTBV{
             return speeches.count
+        }else if tableView==contactTBV{
+            return contacts.count
         }else{
             return 0
         }
@@ -326,6 +346,12 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.dateCreated.text=dateformatter.string(from: speech.dateModified!)
 
             return cell
+        }else if tableView==contactTBV{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhoneNumberCell", for: indexPath) as! PhoneNumberCell
+            
+            cell.nameLabel.text=contacts[indexPath.row].name!
+            
+            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "quotesCell", for: indexPath) as! quotesCell
             return cell
@@ -384,6 +410,18 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         UserDefaults.standard.set(indexPath.row, forKey: "indexPathToScrollTo")
         self.performSegue(withIdentifier: "expandFunnyImage", sender: nil)
+    }
+    
+    @IBAction func addPhoneNumber(_ sender: Any) {
+        makeContactAlert()
+    }
+    
+    func makeContactAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "AddContact") as! AddContactVC
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     
     @IBAction func addFunnyImage(_ sender: Any) {

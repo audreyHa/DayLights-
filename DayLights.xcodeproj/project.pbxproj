@@ -20,6 +20,8 @@
 		F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */; };
 		F627BA3C2309288B00F888A3 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627BA3B2309288B00F888A3 /* SettingsVC.swift */; };
 		F6381DDC23282FA6000C4D7A /* SpeechAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6381DDB23282FA6000C4D7A /* SpeechAlert.swift */; };
+		F642EFFD232F435E00457733 /* AddContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642EFFC232F435E00457733 /* AddContactVC.swift */; };
+		F642EFFF232F45AE00457733 /* contactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642EFFE232F45AE00457733 /* contactCell.swift */; };
 		F6719F8F2326181900EC52FD /* StressKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6719F8E2326181900EC52FD /* StressKitVC.swift */; };
 		F67247962320E4E2006F67C6 /* StressGamesControlPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */; };
 		F67BA4A52320435A0067487F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA4A42320435A0067487F /* Line.swift */; };
@@ -38,6 +40,7 @@
 		F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */; };
 		F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E822262DC7300CFF1AC /* ShowAll.swift */; };
 		F69C9E852262DC8000CFF1AC /* ShowAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E842262DC8000CFF1AC /* ShowAllCell.swift */; };
+		F69E5612232F5C9D00490F6B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E5611232F5C9D00490F6B /* PhoneNumberCell.swift */; };
 		F6A0B38922FFE3A400DD8A03 /* EntryAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */; };
 		F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BACC41224DFCEB00430B79 /* MoodVC.swift */; };
 		F6BB675A2317B03C0089500B /* DragBalloonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB67592317B03C0089500B /* DragBalloonsVC.swift */; };
@@ -71,6 +74,8 @@
 		F627BA3923091F9A00F888A3 /* EnterNotiAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNotiAlert.swift; sourceTree = "<group>"; };
 		F627BA3B2309288B00F888A3 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		F6381DDB23282FA6000C4D7A /* SpeechAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechAlert.swift; sourceTree = "<group>"; };
+		F642EFFC232F435E00457733 /* AddContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactVC.swift; sourceTree = "<group>"; };
+		F642EFFE232F45AE00457733 /* contactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactCell.swift; sourceTree = "<group>"; };
 		F6719F8E2326181900EC52FD /* StressKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressKitVC.swift; sourceTree = "<group>"; };
 		F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressGamesControlPage.swift; sourceTree = "<group>"; };
 		F67BA4A42320435A0067487F /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 		F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDayLightCell.swift; sourceTree = "<group>"; };
 		F69C9E822262DC7300CFF1AC /* ShowAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAll.swift; sourceTree = "<group>"; };
 		F69C9E842262DC8000CFF1AC /* ShowAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllCell.swift; sourceTree = "<group>"; };
+		F69E5611232F5C9D00490F6B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlertCell.swift; sourceTree = "<group>"; };
 		F6BACC41224DFCEB00430B79 /* MoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
 		F6BB67582317A7310089500B /* DayLights2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DayLights2.xcdatamodel; sourceTree = "<group>"; };
@@ -170,6 +176,9 @@
 				F6CCAA892328B56600AF734C /* SpeechCell.swift */,
 				F6CCAA8B2328C2DE00AF734C /* FunnyImageCell.swift */,
 				F6CCAA8D2328C35100AF734C /* FunnyImageVC.swift */,
+				F642EFFC232F435E00457733 /* AddContactVC.swift */,
+				F642EFFE232F45AE00457733 /* contactCell.swift */,
+				F69E5611232F5C9D00490F6B /* PhoneNumberCell.swift */,
 			);
 			path = "Stress Crisis Kit";
 			sourceTree = "<group>";
@@ -414,6 +423,7 @@
 				F6381DDC23282FA6000C4D7A /* SpeechAlert.swift in Sources */,
 				F6E110392300DB330033C4CA /* YesNoAlert.swift in Sources */,
 				F61F8E3722FE4C6E00080D31 /* LeftCollectionViewCell.swift in Sources */,
+				F69E5612232F5C9D00490F6B /* PhoneNumberCell.swift in Sources */,
 				F6CCAA8E2328C35100AF734C /* FunnyImageVC.swift in Sources */,
 				F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */,
 				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
@@ -431,7 +441,9 @@
 				F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */,
 				F60557A8231E0F5000F67033 /* DrawingGame.swift in Sources */,
 				F61832A722506BCE0083886A /* BarCell.swift in Sources */,
+				F642EFFD232F435E00457733 /* AddContactVC.swift in Sources */,
 				F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */,
+				F642EFFF232F45AE00457733 /* contactCell.swift in Sources */,
 				F6CCAA8C2328C2DE00AF734C /* FunnyImageCell.swift in Sources */,
 				F67247962320E4E2006F67C6 /* StressGamesControlPage.swift in Sources */,
 				F6BB675A2317B03C0089500B /* DragBalloonsVC.swift in Sources */,
