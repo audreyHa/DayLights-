@@ -36,17 +36,9 @@ class PhoneNumberCell: UITableViewCell {
         guard let superView = self.superview as? UITableView else {return}
         var myIndexPath = superView.indexPath(for: self)
         
-        var allContacts=CoreDataHelper.retrieveContacts()
+        UserDefaults.standard.set(myIndexPath!.row, forKey: "phoneNumberToCall")
         
-        var phoneNumberToCall=allContacts[myIndexPath!.row].phoneNumber!
-        
-        if let url = URL(string: "tel://\(phoneNumberToCall)"), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
+        NotificationCenter.default.post(name: Notification.Name("callNumber"), object: nil)
         
     }
     

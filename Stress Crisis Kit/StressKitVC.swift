@@ -168,6 +168,9 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         NotificationCenter.default.addObserver(self, selector: #selector(self.possiblyDeleteContact(notification:)), name: Notification.Name("possiblyDeleteContact"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.textNumber(notification:)), name: Notification.Name("textNumber"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.callNumber(notification:)), name: Notification.Name("callNumber"), object: nil)
+        
         //end of View Did Load
     }
     
@@ -180,16 +183,45 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
-            controller.body = "Message Body"
+            controller.body = ""
+            print("phone number: \(phoneNumberToText)")
             controller.recipients = [phoneNumberToText]
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
         }
     }
-    
+
     func messageComposeViewController(_ controller: MFMessageComposeViewController!, didFinishWith result: MessageComposeResult) {
         //... handle sms screen actions
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func callNumber(notification: Notification){
+        print("should call number")
+        var allContacts=CoreDataHelper.retrieveContacts()
+        
+        var phoneIndexPath=UserDefaults.standard.integer(forKey: "phoneNumberToCall")
+        var phoneNumberToCall=allContacts[phoneIndexPath].phoneNumber
+        phoneNumberToCall=getAlphaNumericValue(yourString: phoneNumberToCall!)
+        
+        let lastTen=String(phoneNumberToCall!.characters.suffix(10))
+        
+        print("number: \(lastTen)")
+        
+        if let url = URL(string: "tel://\(lastTen)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    func getAlphaNumericValue(yourString: String) -> String{
+        let unsafeChars = CharacterSet.alphanumerics.inverted  // Remove the .inverted to get the opposite result.
+        
+        let cleanChars  = yourString.components(separatedBy: unsafeChars).joined(separator: "")
+        return cleanChars
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -526,14 +558,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         self.dismiss(animated: true, completion: nil)
     }
-    
-    func getAlphaNumericValue(yourString: String) -> String{
-        let unsafeChars = CharacterSet.alphanumerics.inverted  // Remove the .inverted to get the opposite result.
-        
-        let cleanChars  = yourString.components(separatedBy: unsafeChars).joined(separator: "")
-        return cleanChars
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 1
         guard let identifier = segue.identifier,
