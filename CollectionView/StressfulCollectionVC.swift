@@ -264,7 +264,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
-            cell.leftStressfulMoment=leftEntries[indexPath.row].stressfulMoment!
+            cell.leftStressfulMoment=leftEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
         }
         
         func setRightSide(){
@@ -283,7 +283,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
-            cell.rightStressfulMoment=rightEntries[indexPath.row].stressfulMoment!
+            cell.rightStressfulMoment=rightEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
         }
         
         setLeftSide()

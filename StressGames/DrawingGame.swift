@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class Canvas : UIView{
     
@@ -422,8 +423,48 @@ class DrawingGame: UIViewController {
     }
     
     @IBAction func screenshotPressed(_ sender: Any) {
-        var screenshottedDrawing=canvas.makeScreenshot()
-        UIImageWriteToSavedPhotosAlbum(screenshottedDrawing, nil, nil, nil);
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            var screenshottedDrawing=canvas.makeScreenshot()
+            UIImageWriteToSavedPhotosAlbum(screenshottedDrawing, nil, nil, nil);
+            UserDefaults.standard.set("successfulScreenshot",forKey: "typeOKAlert")
+            self.makeOKAlert()
+            
+        case .denied, .restricted :
+            DispatchQueue.main.async {
+                UserDefaults.standard.set("photosNoAccess",forKey: "typeOKAlert")
+                self.makeOKAlert()
+            }
+            
+            
+        case .notDetermined:
+            // ask for permissions
+            PHPhotoLibrary.requestAuthorization() { (status) -> Void in
+                switch status {
+                case .authorized:
+                    var screenshottedDrawing=self.canvas.makeScreenshot()
+                    UIImageWriteToSavedPhotosAlbum(screenshottedDrawing, nil, nil, nil);
+                case .denied, .restricted:
+                    DispatchQueue.main.async {
+                        UserDefaults.standard.set("photosNoAccess",forKey: "typeOKAlert")
+                        self.makeOKAlert()
+                    }
+                case .notDetermined:
+                    // won't happen but still
+                    print("photos library access stil not determined for some reason...")
+                }
+            }
+        }
+        
+    }
+    
+    func makeOKAlert(){
+        let vc = storyboard!.instantiateViewController(withIdentifier: "OKAlert") as! OKAlert
+        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+        vc.view.backgroundColor = transparentGrey
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {

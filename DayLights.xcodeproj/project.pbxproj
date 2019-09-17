@@ -25,6 +25,7 @@
 		F6719F8F2326181900EC52FD /* StressKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6719F8E2326181900EC52FD /* StressKitVC.swift */; };
 		F67247962320E4E2006F67C6 /* StressGamesControlPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */; };
 		F67BA4A52320435A0067487F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA4A42320435A0067487F /* Line.swift */; };
+		F68179392330190F009F55D8 /* ControlPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68179382330190F009F55D8 /* ControlPanelVC.swift */; };
 		F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68954B422FF43BC00D23B5B /* EntryAlert.swift */; };
 		F68A4227225C6BF300B56FA1 /* OrganizationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */; };
 		F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CF9FC2249F1A1001138FE /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 		F6719F8E2326181900EC52FD /* StressKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressKitVC.swift; sourceTree = "<group>"; };
 		F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressGamesControlPage.swift; sourceTree = "<group>"; };
 		F67BA4A42320435A0067487F /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		F68179382330190F009F55D8 /* ControlPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelVC.swift; sourceTree = "<group>"; };
 		F68954B422FF43BC00D23B5B /* EntryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlert.swift; sourceTree = "<group>"; };
 		F68A4226225C6BF300B56FA1 /* OrganizationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationCell.swift; sourceTree = "<group>"; };
 		F68CF9F92249F1A1001138FE /* DayLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 				F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */,
 				F693171D2317004C00411078 /* ScoreReportAlert.swift */,
 				F6381DDB23282FA6000C4D7A /* SpeechAlert.swift */,
+				F68179382330190F009F55D8 /* ControlPanelVC.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */,
 				F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */,
 				F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */,
+				F68179392330190F009F55D8 /* ControlPanelVC.swift in Sources */,
 				F60557A8231E0F5000F67033 /* DrawingGame.swift in Sources */,
 				F61832A722506BCE0083886A /* BarCell.swift in Sources */,
 				F642EFFD232F435E00457733 /* AddContactVC.swift in Sources */,

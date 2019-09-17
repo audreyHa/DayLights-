@@ -114,7 +114,7 @@ class MoodVC: UIViewController {
             print("average Week ROUNDED \(averageWeek)")
             weekMood=Int(averageWeek)
         }else{
-            weekLabel.text="No Moods Entered This Week!"
+            weekLabel.text="No Data Entered This Week!"
         }
         
         
@@ -150,7 +150,7 @@ class MoodVC: UIViewController {
             averageMonth.round()
             monthMood=Int(averageMonth)
         }else{
-            moodLabel.text="No Moods Entered This Month!"
+            moodLabel.text="No Data Entered This Month!"
         }
         
         
@@ -185,7 +185,7 @@ class MoodVC: UIViewController {
             averageYear.round()
             yearMood=Int(averageYear)
         }else{
-            moodLabel.text="No Moods Entered This Year!"
+            moodLabel.text="No Data Entered This Year!"
         }
         
         print("today \(todayMood)")

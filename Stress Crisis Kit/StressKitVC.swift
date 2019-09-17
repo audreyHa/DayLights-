@@ -10,8 +10,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Contacts
+import MessageUI
 
-class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
+class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MFMessageComposeViewControllerDelegate{
     
     @IBOutlet weak var threeQuotesLabel: UILabel!
     @IBOutlet weak var funnyImagesLabel: UILabel!
@@ -51,6 +52,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         var labels=[threeQuotesLabel, funnyImagesLabel, motivationalSpeechLabel, phoneNumberLabel, crisisHotlineLabel]
         
         for label in labels{
@@ -157,11 +159,41 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.permanentlyDeleteSpeech(notification:)), name: Notification.Name("permanentlyDeleteSpeech"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.permanentlyDeleteContact(notification:)), name: Notification.Name("permanentlyDeleteContact"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadSpeechTableView(notification:)), name: Notification.Name("reloadSpeechTableView"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadContactTBV(notification:)), name: Notification.Name("reloadContactTBV"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.possiblyDeleteContact(notification:)), name: Notification.Name("possiblyDeleteContact"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.textNumber(notification:)), name: Notification.Name("textNumber"), object: nil)
         //end of View Did Load
+    }
+    
+    @objc func textNumber(notification: Notification){
+        contacts=CoreDataHelper.retrieveContacts()
+        
+        var indexPathToText=UserDefaults.standard.integer(forKey: "phoneNumberToText")
+        
+        var phoneNumberToText=contacts[indexPathToText].phoneNumber!
+        
+        if (MFMessageComposeViewController.canSendText()) {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Message Body"
+            controller.recipients = [phoneNumberToText]
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController!, didFinishWith result: MessageComposeResult) {
+        //... handle sms screen actions
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @objc func reloadContactTBV(notification: Notification){
@@ -182,6 +214,16 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @objc func possiblyDeleteSpeech(notification: Notification){
         UserDefaults.standard.set("deleteSpeech",forKey: "typeYesNoAlert")
     
+        makeYesNoAlert()
+    }
+    
+    @objc func possiblyDeleteContact(notification: Notification){
+        UserDefaults.standard.set("deleteContact",forKey: "typeYesNoAlert")
+        
+        makeYesNoAlert()
+    }
+    
+    func makeYesNoAlert(){
         let vc = storyboard!.instantiateViewController(withIdentifier: "YesNoAlert") as! YesNoAlert
         var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
         vc.view.backgroundColor = transparentGrey
@@ -197,6 +239,16 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         CoreDataHelper.saveDaylight()
         speeches=CoreDataHelper.retrieveSpeech()
         speechTBV.reloadData()
+    }
+    
+    @objc func permanentlyDeleteContact(notification: Notification){
+        var indexPathToRemove=UserDefaults.standard.integer(forKey: "possiblyContactRow")
+        var contactToRemove=contacts[indexPathToRemove]
+        
+        CoreDataHelper.delete(contact: contactToRemove)
+        CoreDataHelper.saveDaylight()
+        contacts=CoreDataHelper.retrieveContacts()
+        contactTBV.reloadData()
     }
     
     @objc func reloadFunnyImages(notification: Notification){
@@ -221,13 +273,11 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             self.quotes.append("Do not judge me by my successes, judge me by how many times I fell down and got back up again.")
                             self.authors.append("Nelson Mandela")
                             
-                            print(self.quotes)
                             self.quotesTBV.reloadData()
                         }else{
                             self.quotes.append("\(randomQuoteText)")
                             self.authors.append("\(randomQuoteAuthor)")
                             
-                            print(self.quotes)
                             self.quotesTBV.reloadData()
                         }
                         

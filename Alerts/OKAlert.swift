@@ -82,6 +82,26 @@ class OKAlert: UIViewController {
             headerLabel.text="Instructions!"
             bodyText.text="Drag the angry balloons down and the happy balloons up!"
             yesButton.setTitle("OK", for: .normal)
+        case "enterDHText":
+            headerLabel.text="Incomplete!"
+            bodyText.text="Please fill out the text fields before saving!"
+            yesButton.setTitle("OK", for: .normal)
+        case "enterAllDH":
+            headerLabel.text="Incomplete!"
+            bodyText.text="Please fill out the text fields and stress level before saving!"
+            yesButton.setTitle("OK", for: .normal)
+        case "contactsNoAccess":
+            headerLabel.text="Alert!"
+            bodyText.text="DayHighlights can not add your contacts since you did not give the app access to them. You can go into settings and change this."
+            yesButton.setTitle("OK", for: .normal)
+        case "photosNoAccess":
+            headerLabel.text="Alert!"
+            bodyText.text="DayHighlights can not screenshot your drawing and add it to your Photos since you did not give the app access to your Photos Library. You can go into settings and change this."
+            yesButton.setTitle("OK", for: .normal)
+        case "successfulScreenshot":
+            headerLabel.text="Nice!"
+            bodyText.text="Your current drawing is screenshotted and saved to your Photos Library!"
+            yesButton.setTitle("OK", for: .normal)
         default:
             print("Error! Could not react to yes no alert!")
         }
@@ -109,7 +129,7 @@ class OKAlert: UIViewController {
             
         case "gameTwoInstructions":
             NotificationCenter.default.post(name: Notification.Name("setSecondBalloonGame"), object: nil)
-            
+        
         default:
             print("default yes")
         }

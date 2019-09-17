@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     var red = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     var count=0
-    var currentMood: Int32?
+    var currentMood=0
     var daylightsArray=[Daylight]()
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     func setMoodButton(currentButton: UIButton, value: Int){
         currentButton.layer.borderWidth=3
         currentButton.layer.borderColor = red.cgColor
-        currentMood=Int32(value)
+        currentMood=value
         
         for button in moodButtons{
             if button != currentButton{
@@ -128,11 +128,11 @@ class ViewController: UIViewController {
             daylight!.gratefulThing="No Grateful Thing Entered."
             daylight!.funny="No Joyful Moment Entered"
             
-            if currentMood != nil{
-                daylight!.mood=currentMood ?? 3
+            if currentMood != 0{
+                daylight!.mood=Int32(currentMood) ?? 3
             }
             
-            currentMood=nil
+            currentMood=0
             
             if (daylight!.dateCreated == nil){
                 daylight!.dateCreated=Date()
@@ -165,15 +165,21 @@ class ViewController: UIViewController {
         var array=CoreDataHelper.retrieveDaylight()
         
             if daylight != nil{ //saving old
-                if (didWellText.text != "")||(stressfulMomentText.text != ""){
+                if (didWellText.text != "")&&(stressfulMomentText.text != "")&&(currentMood != 0){
                     saveWhatYouHave()
                     resetEverything()
                     moodIsNotGreat()
-                }else{
+                }else if (currentMood != 0){ //text fields are incomplete
                     print("not going to save because no text entered")
+                    
+                    UserDefaults.standard.set("enterDHText",forKey: "typeOKAlert")
+                    makeOKAlert()
+                }else{ //mood is also incomplete
+                    UserDefaults.standard.set("enterAllDH",forKey: "typeOKAlert")
+                    makeOKAlert()
                 }
             }else{ //saving new
-                if (didWellText.text != "")||(stressfulMomentText.text != ""){
+                if (didWellText.text != "")&&(stressfulMomentText.text != "")&&(currentMood != 0){
                     var tempCurrentMood=currentMood
                     
                     daylight=CoreDataHelper.newDaylight()
@@ -181,13 +187,26 @@ class ViewController: UIViewController {
                     resetEverything()
                     moodIsNotGreat()
                     
-                    if tempCurrentMood! < Int32(3){
+                    if tempCurrentMood < 3{
                         UserDefaults.standard.set("todayStressGames",forKey: "typeOKAlert")
                         makeOKAlert()
+                    }else{ //mood is fine
+                        let vc = storyboard!.instantiateViewController(withIdentifier: "ControlPanelVC") as! ControlPanelVC
+                        var transparentGrey=UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 0.95)
+                        vc.view.backgroundColor = transparentGrey
+                        vc.modalPresentationStyle = .overCurrentContext
+                        present(vc, animated: true, completion: nil)
                     }
                     
-                }else{
+                }else if (currentMood != 0){ //text fields are incomplete
                     print("not going to save because no text entered")
+                    
+                    UserDefaults.standard.set("enterDHText",forKey: "typeOKAlert")
+                    makeOKAlert()
+
+                }else{ //mood is also incomplete
+                    UserDefaults.standard.set("enterAllDH",forKey: "typeOKAlert")
+                    makeOKAlert()
                 }
             }
     }
@@ -398,8 +417,11 @@ class ViewController: UIViewController {
         contentsView.layer.borderColor = red.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("showDidWell"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(searchDayLights), name: NSNotification.Name("searchDayLights"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showMood), name: NSNotification.Name("ShowMood"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(stressCrisis), name: NSNotification.Name("stressCrisis"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(stressGames), name: NSNotification.Name("stressGames"), object: nil)

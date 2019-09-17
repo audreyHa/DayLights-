@@ -23,7 +23,7 @@ class contactCell: UITableViewCell {
             newContact.phoneNumber=phoneNumberLabel.text
             CoreDataHelper.saveDaylight()
             
-            addButton.titleLabel?.textColor==UIColor.white
+            addButton.titleLabel?.textColor=UIColor.white
             addButton.backgroundColor=navyBlue
             addButton.setTitle(" Added ", for: .normal)
         }else{
@@ -35,7 +35,7 @@ class contactCell: UITableViewCell {
                 }
             }
             
-            addButton.titleLabel?.textColor==UIColor.black
+            addButton.titleLabel?.textColor=UIColor.black
             addButton.backgroundColor=mediumBlue
             addButton.setTitle("Add", for: .normal)
         }
