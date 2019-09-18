@@ -222,6 +222,7 @@ class MoodVC: UIViewController {
             UIGraphicsEndImageContext()
             debugPrint("Image not available")
         }
+
     }//end of view did load
 }
 

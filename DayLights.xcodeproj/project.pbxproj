@@ -55,6 +55,7 @@
 		F6E8B62A230E67E6004104D7 /* GameSettingsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */; };
 		F6E8B62C230E734C004104D7 /* balloonPopping.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F6E8B62B230E734C004104D7 /* balloonPopping.mp4 */; };
 		F6E8B630230E73CE004104D7 /* popBalloon.gif in Resources */ = {isa = PBXBuildFile; fileRef = F6E8B62F230E73CE004104D7 /* popBalloon.gif */; };
+		F6E95E3A2332929500D5D670 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6E95E392332929500D5D670 /* GoogleService-Info.plist */; };
 		F6E988022326212D004BB81C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E988012326212D004BB81C /* SwiftyJSON.swift */; };
 		F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F79ECC224B3DB700A1DAC8 /* Side.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		F6E8B629230E67E5004104D7 /* GameSettingsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsAlert.swift; sourceTree = "<group>"; };
 		F6E8B62B230E734C004104D7 /* balloonPopping.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = balloonPopping.mp4; sourceTree = "<group>"; };
 		F6E8B62F230E73CE004104D7 /* popBalloon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = popBalloon.gif; sourceTree = "<group>"; };
+		F6E95E392332929500D5D670 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6E988012326212D004BB81C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayLights.entitlements; sourceTree = "<group>"; };
 		F6F79ECC224B3DB700A1DAC8 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				F68CFA062249F1A2001138FE /* Assets.xcassets */,
 				F68CFA082249F1A2001138FE /* LaunchScreen.storyboard */,
 				F68CFA0B2249F1A2001138FE /* Info.plist */,
+				F6E95E392332929500D5D670 /* GoogleService-Info.plist */,
 				F68CFA032249F1A1001138FE /* DayLights.xcdatamodeld */,
 			);
 			path = DayLights;
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6E8B630230E73CE004104D7 /* popBalloon.gif in Resources */,
+				F6E95E3A2332929500D5D670 /* GoogleService-Info.plist in Resources */,
 				F6E8B62C230E734C004104D7 /* balloonPopping.mp4 in Resources */,
 				F68CFA0A2249F1A2001138FE /* LaunchScreen.storyboard in Resources */,
 				F68CFA072249F1A2001138FE /* Assets.xcassets in Resources */,
@@ -383,13 +387,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-DayLights/Pods-DayLights-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Untitled_Artwork 63.jpg",
+      "filename" : "Untitled_Artwork 66.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Untitled_Artwork 63@2x.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Untitled_Artwork 63@3x.jpg",
       "scale" : "3x"
     }
   ],

@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     
     var moodButtons=[UIButton]()
-    
+
     @IBAction func mood1(_ sender: UIButton) {
         setMoodButton(currentButton: mood1, value: 1)
     }
@@ -134,7 +134,7 @@ class ViewController: UIViewController {
             }
             
             currentMood=0
-            
+        
             if (daylight!.dateCreated == nil){
                 daylight!.dateCreated=Date()
             }

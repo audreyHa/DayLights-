@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             print("Granted \(granted)")
         }
         
+        FirebaseApp.configure()
         return true
     }
     

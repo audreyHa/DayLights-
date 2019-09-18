@@ -17,7 +17,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
     var myColors=[[UIColor]]()
     var leftEntries=[Daylight]()
     var rightEntries=[Daylight]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -236,7 +236,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             [UIColor(rgb: 0x7ecfc0), UIColor(rgb: 0x9cf196), UIColor(rgb: 0xb6ffea), UIColor(rgb: 0x00818a), UIColor(rgb: 0x00a79d), UIColor(rgb: 0x226b80), UIColor(rgb: 0x00818a), UIColor(rgb: 0x9cf196), UIColor(rgb: 0x5edfff), UIColor(rgb: 0xb2fcff), UIColor(rgb: 0xe0f5b9), UIColor(rgb: 0xc6f1d6), UIColor(rgb: 0xdaf1f9), UIColor(rgb: 0x366ed8)],
             
             //dark navy/purples/magenta
-            [UIColor(rgb: 0x293462), UIColor(rgb: 0x216583), UIColor(rgb: 0xa72461), UIColor(rgb: 0x843b62), UIColor(rgb: 0x241663), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b), UIColor(rgb: 0x9ea9f0), UIColor(rgb: 0xccc1ff), UIColor(rgb: 0xffeafe), UIColor(rgb: 0xab93c9), UIColor(rgb: 0xd698b9)]
+            [UIColor(rgb: 0xa72461), UIColor(rgb: 0x843b62), UIColor(rgb: 0x241663), UIColor(rgb: 0x843b62), UIColor(rgb: 0x553c8b), UIColor(rgb: 0xccc1ff), UIColor(rgb: 0xffeafe), UIColor(rgb: 0xab93c9), UIColor(rgb: 0xd698b9)]
             
         ]
         
@@ -308,7 +308,8 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
             let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
             
-            cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
+//            COMMENT cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
+            cell.dateLabel.text = ("09/18/19\n09/17/19")
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!

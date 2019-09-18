@@ -40,6 +40,7 @@ class GraphTableViewCell: UITableViewCell {
             values.append(ChartDataEntry(x: Double(i+1), y: Double(val)))
         }
         
+        
         let set1=LineChartDataSet(values: values, label: "\(monthLabel.text!)")
         set1.mode = .cubicBezier
         set1.drawValuesEnabled = false

@@ -9,4 +9,5 @@ target 'DayLights' do
 	pod 'Charts'
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
+	pod 'Firebase/Analytics'
 end

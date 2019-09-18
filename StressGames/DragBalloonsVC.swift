@@ -337,7 +337,7 @@ class DragBalloonsVC: UIViewController {
                             viewDrag.removeFromSuperview()
                             increaseScore()
                         }else{
-                            //COMMENT: FIX THIS PLEASE
+                            
                             viewDrag.frame=CGRect(x: Int(viewDrag.frame.origin.x), y: 0, width: balloonWidth, height: balloonWidth)
                             
                         }
