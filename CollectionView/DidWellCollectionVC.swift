@@ -51,6 +51,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "SkyDH.jpg")?.draw(in: self.view.bounds)
         
+        //COMMENT change to grateful/joyful
         switch(headerCategoryLabel.text){
         case "Gallery: Stressful Moments":
             UIImage(named: "PlanetDH.jpg")?.draw(in: self.view.bounds)
@@ -166,6 +167,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         }
         var number1=0
         
+        //COMMENT change to grateful/stressful
         switch(headerCategoryLabel.text){
         case "Gallery: Stressful Moments":
             if updatedDaylightsArray.count%2 == 0{
@@ -200,6 +202,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.17, width: image.frame.width*0.63, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
 
+        //COMMENT: change this to grateful and funny
         switch(headerCategoryLabel.text){
         case "Gallery: Things I Did Well":
             label.text = array[row].didWell
@@ -237,6 +240,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
         ]
         
+        //COMMENT: Include colors for grateful/joyful
         var randomInt1 = Int.random(in: 0...2)
         switch(headerCategoryLabel.text){
         case "Gallery: Things I Did Well":
@@ -269,6 +273,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             var max=Int(collectionView.frame.width-valueToSubtract)
             
             
+            //COMMENT: CHANGE TO GRATEFUL
             if(headerCategoryLabel.text=="Gallery: Stressful Moments"){
                 min=Int(cell.leftHandImage.frame.width*0.4)
             }
@@ -288,6 +293,8 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
+            
+            //COMMENT: instead, add variables to cell for leftGrateful and leftJoyful
             cell.leftStressfulMoment=leftEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
         }
         
@@ -305,6 +312,8 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
+            
+            //Add variables to cell for rightGrateful and rightDidWell
             cell.rightStressfulMoment=rightEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
         }
         
@@ -338,6 +347,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             setRightSide()
         }
 
+        //COMMENT: change from stressful to grateful
         switch(headerCategoryLabel.text){
         case "Gallery: Stressful Moments":
             cell.dateLabel.textColor=UIColor.white

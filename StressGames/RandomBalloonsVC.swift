@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import AudioToolbox
 
 class RandomBalloonsVC: UIViewController {
 
@@ -311,6 +312,7 @@ class RandomBalloonsVC: UIViewController {
                         return
                     }
                     
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                     
                     let player = AVPlayer(url: URL(fileURLWithPath: path))
                     let playerLayer = AVPlayerLayer(player: player)
@@ -320,6 +322,7 @@ class RandomBalloonsVC: UIViewController {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
                         // Code you want to be delayed
+                        
                         item.removeFromSuperview()
                         self.increasingValue += 1
                         

@@ -169,8 +169,6 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.textNumber(notification:)), name: Notification.Name("textNumber"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.callNumber(notification:)), name: Notification.Name("callNumber"), object: nil)
-        
         //end of View Did Load
     }
     
@@ -194,27 +192,6 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func messageComposeViewController(_ controller: MFMessageComposeViewController!, didFinishWith result: MessageComposeResult) {
         //... handle sms screen actions
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func callNumber(notification: Notification){
-        print("should call number")
-        var allContacts=CoreDataHelper.retrieveContacts()
-        
-        var phoneIndexPath=UserDefaults.standard.integer(forKey: "phoneNumberToCall")
-        var phoneNumberToCall=allContacts[phoneIndexPath].phoneNumber
-        phoneNumberToCall=getAlphaNumericValue(yourString: phoneNumberToCall!)
-        
-        let lastTen=String(phoneNumberToCall!.characters.suffix(10))
-        
-        print("number: \(lastTen)")
-        
-        if let url = URL(string: "tel://\(lastTen)"), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
     }
     
     func getAlphaNumericValue(yourString: String) -> String{
@@ -614,5 +591,21 @@ extension UIImage {
         let imageRef = self.cgImage!.cropping(to: rect)
         let image = UIImage(cgImage: imageRef!, scale: self.scale, orientation: self.imageOrientation)
         return image
+    }
+}
+
+extension String {
+    var removingWhitespacesAndNewlines: String {
+        return components(separatedBy: .whitespacesAndNewlines).joined()
+    }
+    
+    func capitalizingFirstLetter() -> String{
+        var stringArray=self.characters.split(separator: " ")
+        for n in 0...stringArray.count-1{
+            stringArray[n]=stringArray[n].prefix(1).uppercased() + stringArray[n].lowercased().dropFirst()
+        }
+        
+        var combinedString=stringArray.joined(separator: " ")
+        return combinedString
     }
 }

@@ -117,14 +117,15 @@ class ViewController: UIViewController {
             }else{
                 daylight!.didWell=didWellText.text!
             }
-            
+        
+            //COMMENT! You would save grateful things and joyful moments instead here
             if (stressfulMomentText.text==""){
                 daylight!.stressfulMoment="None entered"
             }else{
                 daylight!.stressfulMoment=stressfulMomentText.text!
             }
             
-            //change this if you want the grateful and joyful moments entered instead of stressful
+            //COMMENT change this to saving dummy data for stressful moment for V2
             daylight!.gratefulThing="No Grateful Thing Entered."
             daylight!.funny="No Joyful Moment Entered"
             

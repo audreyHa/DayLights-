@@ -179,8 +179,8 @@
 				F6CCAA8B2328C2DE00AF734C /* FunnyImageCell.swift */,
 				F6CCAA8D2328C35100AF734C /* FunnyImageVC.swift */,
 				F642EFFC232F435E00457733 /* AddContactVC.swift */,
-				F642EFFE232F45AE00457733 /* contactCell.swift */,
 				F69E5611232F5C9D00490F6B /* PhoneNumberCell.swift */,
+				F642EFFE232F45AE00457733 /* contactCell.swift */,
 			);
 			path = "Stress Crisis Kit";
 			sourceTree = "<group>";

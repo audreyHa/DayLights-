@@ -17,14 +17,13 @@ class PrivacyPolicyAlert: UIViewController {
     @IBOutlet weak var wholeAlertView: UIView!
     
     @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var bodyText: UILabel!
+    @IBOutlet weak var bodyText: UITextView!
     @IBOutlet weak var yesButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         yesButton.titleLabel!.adjustsFontSizeToFitWidth = true
-        bodyText.adjustsFontSizeToFitWidth=true
         
         topView.layer.cornerRadius = 10
         topView.clipsToBounds = true
@@ -39,7 +38,15 @@ class PrivacyPolicyAlert: UIViewController {
         daylightImage.superview?.bringSubviewToFront(daylightImage)
         headerLabel.adjustsFontSizeToFitWidth=true
         headerLabel.text="Privacy Policy!"
-        bodyText.text="By clicking “Continue” or continuing to use this app, you acknowledge that DayHighlights incorporates an analytical tool (Answers) tracking how many times users land on different screens to improve user experience and guide development for future features. Any identifiable information (name, contact information, location, etc.) will not be collected. Your DayHighLights are stored locally on your phone; no third party (including me) has access to your content in this app. If you have any questions, please contact DayHighlightsApp@gmail.com!"
+        bodyText.text="By clicking continue or continuing to use this app, you acknowledge that:\n\nDayHighlights incorporates Google Analytics for Firebase or Firebase Analytics: an analytics service provided by Google LLC. In order to understand Google's use of Data, see Google's policy on “How Google uses data when you use our partners' sites or apps.”\n\nFirebase Analytics may share Data with other tools provided by Firebase, such as Crash Reporting, Authentication, Remote Config or Notifications.\n\nPersonal Data collected by DayHighlights through Firebase:\n\u{2022}Geography/region\n\u{2022}Usage data\n\u{2022}Number of users\n\u{2022}Number of sessions\n\u{2022}Session duration\n\u{2022}iPhone type\n\u{2022}Application opens\n\u{2022}Application updates\n\u{2022}First launches\n\nThe only purpose of DayHighlights collecting user behavior data for this version is to improve user experience and guide development for the next release. If you do not wish to participate and help the app (and me) better understand your needs, you are always welcome to come back and install a later version.\n\nAll of your recordings are stored locally on your phone. No third party (including me!) has access to the recordings you store in this app.\n\nIf you have any questions, please feel free to contact me at dayhighlightsapp@gmail.com!"
+        
+        let linkedText = NSMutableAttributedString(attributedString: bodyText.attributedText!)
+        let hyperlinked = linkedText.setAsLink(textToFind: "“How Google uses data when you use our partners' sites or apps.”", linkURL: "https://policies.google.com/technologies/partner-sites")
+        
+        if hyperlinked {
+            bodyText.attributedText! = NSAttributedString(attributedString: linkedText)
+        }
+        
         yesButton.setTitle("Continue", for: .normal)
         
     }

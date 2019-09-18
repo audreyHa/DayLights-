@@ -12,7 +12,6 @@ class PhoneNumberCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var textButton: UIButton!
-    @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
     @IBAction func deletePressed(_ sender: Any) {
@@ -31,17 +30,7 @@ class PhoneNumberCell: UITableViewCell {
         
         NotificationCenter.default.post(name: Notification.Name("textNumber"), object: nil)
     }
-    
-    @IBAction func callPressed(_ sender: Any) {
-        guard let superView = self.superview as? UITableView else {return}
-        var myIndexPath = superView.indexPath(for: self)
-        
-        UserDefaults.standard.set(myIndexPath!.row, forKey: "phoneNumberToCall")
-        
-        NotificationCenter.default.post(name: Notification.Name("callNumber"), object: nil)
-        
-    }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

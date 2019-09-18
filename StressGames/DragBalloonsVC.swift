@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class DragBalloonsVC: UIViewController {
 
@@ -322,6 +323,7 @@ class DragBalloonsVC: UIViewController {
                     if (!viewDrag.superview!.bounds.intersection(viewDrag.frame).equalTo(viewDrag.frame))
                     {
                         if viewDrag.frame.minY <= gameView.frame.minY{
+                            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             viewDrag.removeFromSuperview()
                             increaseScore()
                         }
@@ -331,6 +333,7 @@ class DragBalloonsVC: UIViewController {
                     if (!viewDrag.superview!.bounds.intersection(viewDrag.frame).equalTo(viewDrag.frame))
                     {
                         if viewDrag.frame.minY >= gameView.frame.minY{
+                            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             viewDrag.removeFromSuperview()
                             increaseScore()
                         }else{
