@@ -283,7 +283,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
             
             cell.dateLabel.text = ("09/18/19\n09/17/19")
-//            COMMENT cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
+            cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!

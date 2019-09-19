@@ -21,21 +21,21 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>3.0</string>
 	<key>CFBundleVersion</key>
-	<string>4.0</string>
+	<string>3.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<key>NSContactsUsageDescription</key>
+	<string>DayHighlights needs access to your contacts so that you can add your friend/family phone numbers directly to this app!</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>DayHighlights takes a screenshot of your drawings so that you can easily save them to your camera roll!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>DayHighlights needs to access your photos so that it can add them to your funny images gallery</string>
-	<key>NSContactsUsageDescription</key>
-	<string>DayHighlights needs access to your contacts so that you can add your friend/family phone numbers directly to this app!</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
