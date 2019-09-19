@@ -17,17 +17,23 @@ class StressfulCell: UICollectionViewCell {
     
     var leftDate: String!
     var leftDidWell: String!
-    var leftStressfulMoment: String!
+    var leftGratefulMoment: String!
+    var leftJoyfulMoment: String!
     
     var rightDate: String!
     var rightDidWell: String!
-    var rightStressfulMoment: String!
+    var rightGratefulMoment: String!
+    var rightJoyfulMoment: String!
     
     @IBAction func onLeftZoomTouched(_ sender: Any) {
         UserDefaults.standard.set("left", forKey: "sideInCell")
+        
         UserDefaults.standard.set(leftDidWell,forKey: "didWellText")
-        UserDefaults.standard.set(leftStressfulMoment,forKey: "stressfulMoment")
+        UserDefaults.standard.set(leftGratefulMoment,forKey: "gratefulMoment")
+        UserDefaults.standard.set(leftJoyfulMoment,forKey: "joyfulMoment")
+        
         UserDefaults.standard.set(leftDate, forKey: "dateToInclude")
+        
         getIndexPath()
         NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
         
@@ -35,8 +41,11 @@ class StressfulCell: UICollectionViewCell {
     
     @IBAction func onRightZoomTouched(_ sender: Any) {
         UserDefaults.standard.set("right", forKey: "sideInCell")
+        
         UserDefaults.standard.set(rightDidWell,forKey: "didWellText")
-        UserDefaults.standard.set(rightStressfulMoment,forKey: "stressfulMoment")
+        UserDefaults.standard.set(rightGratefulMoment,forKey: "gratefulMoment")
+        UserDefaults.standard.set(rightJoyfulMoment,forKey: "joyfulMoment")
+        
         UserDefaults.standard.set(rightDate, forKey: "dateToInclude")
         getIndexPath()
         NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
