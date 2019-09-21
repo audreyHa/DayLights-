@@ -13,7 +13,6 @@ DayHighlights incorporates Google Analytics for Firebase or Firebase Analytics: 
 
 Firebase Analytics may share Data with other tools provided by Firebase, such as Crash Reporting, Authentication, Remote Config or Notifications. Personal Data collected by DayHighlights through Firebase:
 - Geography/region
-- Usage data
 - Number of users
 - Number of sessions
 - Session duration
@@ -21,8 +20,10 @@ Firebase Analytics may share Data with other tools provided by Firebase, such as
 - Application opens
 - Application updates
 - First launches
+- How often users land on different pages and do certain events (saving entries, deleting entries, etc.)
+- Frequency of app crashes
 
-The only purpose of DayHighlights collecting user behavior data for this version is to improve user experience and guide development for the next release. If you do not wish to participate and help the app (and me) better understand your needs, you are always welcome to come back and install a later version. All of your entries are stored locally on your phone. No third party (including me!) has access to the entries you store in this app. If you have any questions, please feel free to contact me at dayhighlightsapp@gmail.com!
+The only purpose of DayHighlights collecting user behavior data for this version is to improve user experience and guide development for the next release. If you do not wish to participate and help the app (and me) better understand your needs, you are always welcome to come back and install a later version. All of your entries are stored locally on your phone. No third party (including me!) accesses the entries you store in this app. If you have any questions, please feel free to contact me at dayhighlightsapp@gmail.com!
 
 Happy DayHighlighting!
 
