@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class contactCell: UITableViewCell {
 
@@ -18,6 +19,8 @@ class contactCell: UITableViewCell {
     
     @IBAction func addButtonPressed(_ sender: Any) {
         if addButton.titleLabel!.text=="Add"{
+            Analytics.logEvent("addedContact", parameters: nil)
+            
             var newContact=CoreDataHelper.newContact()
             newContact.name=nameLabel.text
             newContact.phoneNumber=phoneNumberLabel.text

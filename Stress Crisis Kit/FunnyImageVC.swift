@@ -29,12 +29,10 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
         funnyCollectionView.delegate=self
         funnyCollectionView.dataSource=self
         
-        let width=self.view.bounds.width
-        
         var layout=funnyCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset=UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         layout.minimumInteritemSpacing=0
-        layout.itemSize=CGSize(width: (width - 20), height: (width - 20))
+        layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width - 15), height: (funnyCollectionView.frame.size.width - 15))
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.possiblyDeleteImage(notification:)), name: Notification.Name("possiblyDeleteImage"), object: nil)
         

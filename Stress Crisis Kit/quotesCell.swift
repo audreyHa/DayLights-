@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class quotesCell: UITableViewCell {
 
@@ -18,6 +19,8 @@ class quotesCell: UITableViewCell {
     
     @IBAction func bookmarkButtonPressed(_ sender: Any) {
         if bookmarkButton.imageView!.image==UIImage(imageLiteralResourceName: "bookmark"){
+            Analytics.logEvent("savedQuote", parameters: nil)
+            
             print("bookmarking")
             var newQuote=CoreDataHelper.newQuote()
             newQuote.quote=self.quote

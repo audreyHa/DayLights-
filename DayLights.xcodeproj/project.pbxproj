@@ -37,6 +37,10 @@
 		F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68CFA12224A013B001138FE /* CoreDataHelper.swift */; };
 		F6902856224B1DDF003E26E4 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6902855224B1DDF003E26E4 /* ContainerVC.swift */; };
 		F693171E2317004C00411078 /* ScoreReportAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F693171D2317004C00411078 /* ScoreReportAlert.swift */; };
+		F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */; };
+		F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */; };
+		F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E822262DC7300CFF1AC /* ShowAll.swift */; };
+		F69C9E852262DC8000CFF1AC /* ShowAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C9E842262DC8000CFF1AC /* ShowAllCell.swift */; };
 		F69E5612232F5C9D00490F6B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69E5611232F5C9D00490F6B /* PhoneNumberCell.swift */; };
 		F6A0B38922FFE3A400DD8A03 /* EntryAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */; };
 		F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BACC41224DFCEB00430B79 /* MoodVC.swift */; };
@@ -91,6 +95,10 @@
 		F68CFA12224A013B001138FE /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		F6902855224B1DDF003E26E4 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		F693171D2317004C00411078 /* ScoreReportAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreReportAlert.swift; sourceTree = "<group>"; };
+		F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDayLight.swift; sourceTree = "<group>"; };
+		F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDayLightCell.swift; sourceTree = "<group>"; };
+		F69C9E822262DC7300CFF1AC /* ShowAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAll.swift; sourceTree = "<group>"; };
+		F69C9E842262DC8000CFF1AC /* ShowAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllCell.swift; sourceTree = "<group>"; };
 		F69E5611232F5C9D00490F6B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		F6A0B38822FFE3A400DD8A03 /* EntryAlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlertCell.swift; sourceTree = "<group>"; };
 		F6BACC41224DFCEB00430B79 /* MoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
@@ -237,6 +245,8 @@
 				F6902855224B1DDF003E26E4 /* ContainerVC.swift */,
 				F6F79ECC224B3DB700A1DAC8 /* Side.swift */,
 				F6BACC41224DFCEB00430B79 /* MoodVC.swift */,
+				F69C9E7E2262B43F00CFF1AC /* SearchDayLight.swift */,
+				F69C9E822262DC7300CFF1AC /* ShowAll.swift */,
 				F6C5B8FB22FE06FE00078675 /* Chart.swift */,
 				F627BA3B2309288B00F888A3 /* SettingsVC.swift */,
 				F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */,
@@ -265,6 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				F61832A622506BCE0083886A /* BarCell.swift */,
+				F69C9E802262B48400CFF1AC /* SearchDayLightCell.swift */,
+				F69C9E842262DC8000CFF1AC /* ShowAllCell.swift */,
 				F6C5B8FD22FE1D8200078675 /* GraphTableViewCell.swift */,
 			);
 			path = Cells;
@@ -425,14 +437,17 @@
 				F69E5612232F5C9D00490F6B /* PhoneNumberCell.swift in Sources */,
 				F6CCAA8E2328C35100AF734C /* FunnyImageVC.swift in Sources */,
 				F61E8FB4230FA005004806BF /* StressfulCell.swift in Sources */,
+				F69C9E812262B48400CFF1AC /* SearchDayLightCell.swift in Sources */,
 				F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */,
 				F67BA4A52320435A0067487F /* Line.swift in Sources */,
 				F6F79ECD224B3DB700A1DAC8 /* Side.swift in Sources */,
 				F627BA3A23091F9A00F888A3 /* EnterNotiAlert.swift in Sources */,
 				F6CCAA8A2328B56600AF734C /* SpeechCell.swift in Sources */,
 				F6E8B62A230E67E6004104D7 /* GameSettingsAlert.swift in Sources */,
+				F69C9E852262DC8000CFF1AC /* ShowAllCell.swift in Sources */,
 				F693171E2317004C00411078 /* ScoreReportAlert.swift in Sources */,
 				F68CFA13224A013B001138FE /* CoreDataHelper.swift in Sources */,
+				F69C9E7F2262B43F00CFF1AC /* SearchDayLight.swift in Sources */,
 				F68CF9FD2249F1A1001138FE /* AppDelegate.swift in Sources */,
 				F6BACC42224DFCEB00430B79 /* MoodVC.swift in Sources */,
 				F68179392330190F009F55D8 /* ControlPanelVC.swift in Sources */,
@@ -453,6 +468,7 @@
 				F61E8FB2230F9FF6004806BF /* StressfulCollectionVC.swift in Sources */,
 				F627BA3823091DB800F888A3 /* PrivacyPolicyAlert.swift in Sources */,
 				F6E988022326212D004BB81C /* SwiftyJSON.swift in Sources */,
+				F69C9E832262DC7300CFF1AC /* ShowAll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

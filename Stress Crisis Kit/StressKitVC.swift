@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Contacts
 import MessageUI
+import Firebase
 
 class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MFMessageComposeViewControllerDelegate{
     
@@ -82,7 +83,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var layout=funnyCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset=UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         layout.minimumInteritemSpacing=0
-        layout.itemSize=CGSize(width: (self.view.bounds.width-50)/2, height: (self.view.bounds.width-50)/2)
+        layout.itemSize=CGSize(width: (funnyCollectionView.frame.size.width-15)/2, height: (funnyCollectionView.frame.size.width-15)/2)
         
         if(UserDefaults.standard.bool(forKey: "setUpStressData")==false){
             var crisisTextLine=CoreDataHelper.newOrg()
@@ -493,6 +494,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         self.present(image, animated: true){
             //after using picks image
+            
+            Analytics.logEvent("addFunnyImage", parameters: nil)
         }
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import Firebase
 
 class DragBalloonsVC: UIViewController {
 
@@ -205,6 +206,7 @@ class DragBalloonsVC: UIViewController {
                 }
             }
             //present alert with current score and record score
+            Analytics.logEvent("playedDragBalloonsGame", parameters: nil)
             
             UserDefaults.standard.set(increasingValue, forKey: "currentScore2")
             makeScoreReportAlert()

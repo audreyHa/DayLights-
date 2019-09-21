@@ -40,12 +40,11 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
         var dateToInclude=UserDefaults.standard.string(forKey: "dateToInclude")
         var didWellText=UserDefaults.standard.string(forKey: "didWellText")
-        var gratefulMoment=UserDefaults.standard.string(forKey: "gratefulMoment")
-        var joyfulMoment=UserDefaults.standard.string(forKey: "joyfulMoment")
+        var stressfulMoment=UserDefaults.standard.string(forKey: "stressfulMoment")
        
-        categoryTitles=["What I Did Well","Grateful Moment", "Joyful Moment"]
+        categoryTitles=["Stressful Moments", "What I Did Well"]
         
-        categoryContent=[didWellText!, gratefulMoment!, joyfulMoment!]
+        categoryContent=[stressfulMoment!, didWellText!,]
         
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
@@ -93,7 +92,6 @@ class EntryAlert: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     @IBAction func okPressed(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name("reloadWhiteZoomIn"), object: nil)
         navigationController?.popViewController(animated: true)
 
         dismiss(animated: true, completion: nil)
