@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
@@ -64,13 +63,13 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         leftCollectionView.backgroundColor=UIColor.clear
-        
-        Analytics.logEvent("viewedGallery", parameters: nil)
     }
     
     func setEditedDaylightsArray(){
+        editedDaylightsArray=[]
+        
         for daylight in dayHighlightsArray{
-            if daylight.stressfulMoment != "Need To Enter Stressful Moment"{
+            if (daylight.gratefulThing != "Need To Enter Grateful Moment")&&(daylight.funny != "Need To Enter Joyful Moment"){
                 editedDaylightsArray.append(daylight)
             }
         }
@@ -193,19 +192,18 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
         
         var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.17, width: image.frame.width*0.63, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
-        label.text = array[row].stressfulMoment
+        label.text = array[row].gratefulThing
         
         label.adjustsFontSizeToFitWidth=true
         label.numberOfLines=100
         label.font=UIFont(name: "Avenir", size: 17)
+        label.textColor=UIColor.black
         
         if myColors[1].contains(image.tintColor){
             label.textColor=UIColor.white
         }else{
             label.textColor=UIColor.black
         }
-        
-        //        label.backgroundColor=UIColor.purple
         
         image.addSubview(label)
     }
@@ -246,7 +244,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             var max=Int(collectionView.frame.width-valueToSubtract)
             
             
-            if(headerCategoryLabel.text=="Gallery: Stressful Moments"){
+            if(headerCategoryLabel.text=="Gallery: Grateful Moments"){
                 min=Int(cell.leftHandImage.frame.width*0.4)
             }
             
@@ -266,8 +264,12 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             print("add label to left. row: \(indexPath.row). Left entries count: \(leftEntries.count)")
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
+            
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
-            cell.leftStressfulMoment=leftEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
+            
+            cell.leftGratefulMoment=leftEntries[indexPath.row].gratefulThing ?? "No Grateful Moment Entered"
+            
+            cell.leftJoyfulMoment=leftEntries[indexPath.row].funny ?? "No Joyful Moment Entered"
         }
         
         func setRightSide(){
@@ -281,12 +283,16 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
             let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
-
+            
+            cell.dateLabel.text = ("09/18/19\n09/17/19")
             cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
-            cell.rightStressfulMoment=rightEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
+            
+            cell.rightGratefulMoment=rightEntries[indexPath.row].gratefulThing ?? "No Grateful Moment Entered"
+            
+            cell.rightJoyfulMoment=rightEntries[indexPath.row].funny ?? "No Joyful Moment Entered"
         }
         
         setLeftSide()

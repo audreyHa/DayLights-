@@ -8,7 +8,6 @@
 
 import UIKit
 import Photos
-import Firebase
 
 class Canvas : UIView{
     
@@ -88,7 +87,7 @@ class Canvas : UIView{
         setNeedsDisplay()
     }
     
-    func makeScreenshot() -> UIImage { //this just gets the current image. Doesn't necessarily save to photos
+    func makeScreenshot() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: self.bounds)
         return renderer.image { (context) in
             self.layer.render(in: context.cgContext)
@@ -102,7 +101,7 @@ class Canvas : UIView{
         return cleanChars
     }
 
-    func checkIfSaveDrawing(labelText: String){
+    func checkIfScreenshot(labelText: String){
         if lines.count>0{
             var currentDrawing: Drawing!
             
@@ -173,8 +172,6 @@ class Canvas : UIView{
             if let data = imageToSave.jpegData(compressionQuality:  1.0),
                 !FileManager.default.fileExists(atPath: fileURL.path) {
                 do {
-                    Analytics.logEvent("savedDrawingToApp", parameters: nil)
-                    
                     // writes the image data to disk
                     try data.write(to: fileURL)
                     print("drawing game image saved")
@@ -429,8 +426,6 @@ class DrawingGame: UIViewController {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
         case .authorized:
-            Analytics.logEvent("screenshotDrawing", parameters: nil)
-
             var screenshottedDrawing=canvas.makeScreenshot()
             UIImageWriteToSavedPhotosAlbum(screenshottedDrawing, nil, nil, nil);
             UserDefaults.standard.set("successfulScreenshot",forKey: "typeOKAlert")
@@ -479,7 +474,7 @@ class DrawingGame: UIViewController {
             //need to save this drawing
             resetSavedButton()
             
-            canvas.checkIfSaveDrawing(labelText: label.text ?? "Drawing Game")
+            canvas.checkIfScreenshot(labelText: label.text ?? "Drawing Game")
         }
     }
     

@@ -8,7 +8,6 @@
 
 import UIKit
 import UserNotifications
-import Firebase
 
 class ViewController: UIViewController {
     var daylight: Daylight?
@@ -20,7 +19,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var didWellText: UITextView!
-    @IBOutlet weak var stressfulMomentText: UITextView!
+    @IBOutlet weak var gratefulMomentText: UITextView!
+    @IBOutlet weak var joyfulMomentText: UITextView!
     
     @IBOutlet weak var mood1: UIButton!
     @IBOutlet weak var mood2: UIButton!
@@ -28,8 +28,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var mood4: UIButton!
     @IBOutlet weak var mood5: UIButton!
     
-    @IBOutlet weak var stressfulLabel: UILabel!
+    @IBOutlet weak var gratefulLabel: UILabel!
     @IBOutlet weak var didWellLabel: UILabel!
+    @IBOutlet weak var joyfulLabel: UILabel!
     
     
     var moodButtons=[UIButton]()
@@ -119,16 +120,20 @@ class ViewController: UIViewController {
                 daylight!.didWell=didWellText.text!
             }
         
-            //COMMENT! You would save grateful things and joyful moments instead here
-            if (stressfulMomentText.text==""){
-                daylight!.stressfulMoment="None entered"
+        
+            if (gratefulMomentText.text==""){
+                daylight!.gratefulThing="None entered"
             }else{
-                daylight!.stressfulMoment=stressfulMomentText.text!
+                daylight!.gratefulThing=gratefulMomentText.text!
             }
-            
-            //COMMENT change this to saving dummy data for stressful moment for V2
-            daylight!.gratefulThing="No Grateful Thing Entered."
-            daylight!.funny="No Joyful Moment Entered"
+        
+            if (joyfulMomentText.text==""){
+                daylight!.funny="None entered"
+            }else{
+                daylight!.funny=joyfulMomentText.text!
+            }
+
+            daylight!.stressfulMoment="No Stressful Moment Entered"
             
             if currentMood != 0{
                 daylight!.mood=Int32(currentMood) ?? 3
@@ -148,18 +153,23 @@ class ViewController: UIViewController {
     func resetEverything(){
         count=0
         currentMood=0
+        
         didWellText.text = ""
-        stressfulMomentText.text = ""
+        gratefulMomentText.text = ""
+        joyfulMomentText.text=""
+        
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
         let now = dateformatter.string(from: Date())
         dateLabel.text=now
+        
         dayLightsTitleLabel.text="DayHighlights"
         mood1.layer.borderWidth=0
         mood2.layer.borderWidth=0
         mood3.layer.borderWidth=0
         mood4.layer.borderWidth=0
         mood5.layer.borderWidth=0
+        
         daylight=nil
     }
     
@@ -167,9 +177,7 @@ class ViewController: UIViewController {
         var array=CoreDataHelper.retrieveDaylight()
         
             if daylight != nil{ //saving old
-                if (didWellText.text != "")&&(stressfulMomentText.text != "")&&(currentMood != 0){
-                    Analytics.logEvent("resaveOld", parameters: nil)
-                    
+                if (didWellText.text != "")&&(gratefulMomentText.text != "")&&(joyfulMomentText.text != "")&&(currentMood != 0){
                     saveWhatYouHave()
                     resetEverything()
                     moodIsNotGreat()
@@ -183,9 +191,7 @@ class ViewController: UIViewController {
                     makeOKAlert()
                 }
             }else{ //saving new
-                if (didWellText.text != "")&&(stressfulMomentText.text != "")&&(currentMood != 0){
-                    Analytics.logEvent("saveNew", parameters: nil)
-                    
+                if (didWellText.text != "")&&(gratefulMomentText.text != "")&&(joyfulMomentText.text != "")&&(currentMood != 0){
                     var tempCurrentMood=currentMood
                     
                     daylight=CoreDataHelper.newDaylight()
@@ -386,25 +392,10 @@ class ViewController: UIViewController {
         
         daylightsArray=CoreDataHelper.retrieveDaylight()
         
-        stressfulLabel.adjustsFontSizeToFitWidth=true
+        gratefulLabel.adjustsFontSizeToFitWidth=true
+        joyfulLabel.adjustsFontSizeToFitWidth=true
         didWellLabel.adjustsFontSizeToFitWidth=true
-        let clearedStressful = UserDefaults.standard.bool(forKey: "clearedStressful")
-        if clearedStressful{
-            print("DON'T need to add stressful moment.")
-        }else{
-            print("NEED to add stressful moment.")
-            daylightsArray=CoreDataHelper.retrieveDaylight()
-            for item in daylightsArray{
-                if item.stressfulMoment == nil{
-                    item.stressfulMoment="Need To Enter Stressful Moment"
-                }
-                
-                CoreDataHelper.saveDaylight()
-            }
 
-            UserDefaults.standard.set(true, forKey: "clearedStressful")
-            daylightsArray=CoreDataHelper.retrieveDaylight()
-        }
         
         moodButtons=[mood1, mood2, mood3, mood4, mood5]
         
@@ -454,7 +445,8 @@ class ViewController: UIViewController {
         if let daylight = daylight{
             // 2
             didWellText.text = daylight.didWell
-            stressfulMomentText.text = daylight.stressfulMoment
+            gratefulMomentText.text = daylight.gratefulThing
+            joyfulMomentText.text=daylight.funny
             
             if (daylight.mood==1){
                 mood1.layer.borderWidth = 3
@@ -487,7 +479,8 @@ class ViewController: UIViewController {
         } else {
             // 3
             didWellText.text = ""
-            stressfulMomentText.text = ""
+            gratefulMomentText.text = ""
+            joyfulMomentText.text = ""
         }
     }
 

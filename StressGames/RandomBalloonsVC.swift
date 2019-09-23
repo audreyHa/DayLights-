@@ -10,7 +10,6 @@ import UIKit
 import AVKit
 import AVFoundation
 import AudioToolbox
-import Firebase
 
 class RandomBalloonsVC: UIViewController {
 
@@ -202,7 +201,6 @@ class RandomBalloonsVC: UIViewController {
                 }
             }
             //present alert with current score and record score
-            Analytics.logEvent("playedPopBalloonsGame", parameters: nil)
             
             UserDefaults.standard.set(increasingValue, forKey: "currentScore")
             makeScoreReportAlert()
