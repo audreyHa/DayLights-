@@ -124,11 +124,7 @@ class AddContactVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             var familyName=contact.familyName ?? ""
                             var phoneNumber=contact.phoneNumbers.first?.value.stringValue ?? ""
                             var fullName="\(givenName) \(familyName)"
-                            
-                            print(givenName)
-                            print(familyName)
-                            print(phoneNumber)
-                            
+
                             //COMMENT check if phone number exists in phone Core Data array. If so, don't append
                             var allContacts=CoreDataHelper.retrieveContacts()
                             var count=0

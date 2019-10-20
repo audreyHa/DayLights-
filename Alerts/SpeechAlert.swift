@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SpeechAlert: UIViewController {
     @IBOutlet weak var topView: UIView!
@@ -64,7 +65,7 @@ class SpeechAlert: UIViewController {
         
         self.view.layoutIfNeeded()
         
-        if titleTextField.text=="Martin Luther King Jr: \"What Is Your Life's Blueprint?\""{
+        if titleTextField.text=="Martin Luther King Jr: \"What Is Your Life's Blueprint?\" (abridged)"{
             titleTextField.isUserInteractionEnabled=false
             speechTextView.isEditable=false
 
@@ -83,6 +84,8 @@ class SpeechAlert: UIViewController {
     @IBAction func yesPressed(_ sender: Any) {
         if (speechTextView.text != ""){
             if speech==nil{ //if creating completely new speech
+                Analytics.logEvent("saveNewSpeech", parameters: nil)
+                
                 var newSpeech=CoreDataHelper.newSpeech()
                 
                 if(titleTextField.text != ""){
@@ -95,7 +98,7 @@ class SpeechAlert: UIViewController {
                 newSpeech.dateModified=Date()
                 
                 CoreDataHelper.saveDaylight()
-            }else{
+            }else{ //resaving old speech
                 if(titleTextField.text != ""){
                     speech!.title=titleTextField.text!
                 }else{

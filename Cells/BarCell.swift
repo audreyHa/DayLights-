@@ -49,6 +49,22 @@ class BarCell: UICollectionViewCell{
         barView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         barView.addSubview(barDate)
         
+//        addSubview(lowerBar)
+//        lowerBar.heightAnchor.constraint(equalToConstant: 100).isActive=true
+//
+//        lowerBar.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//        lowerBar.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+//        lowerBar.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+//        lowerBar.backgroundColor=UIColor.blue
+        
+//        addSubview(barDate)
+//        barDate.heightAnchor.constraint(equalToConstant: 30).isActive=true
+//        barDate.widthAnchor.constraint(equalToConstant: 30).isActive=true
+//        barDate.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+//        barDate.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
+//        barDate.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

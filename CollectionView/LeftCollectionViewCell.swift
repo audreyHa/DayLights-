@@ -18,35 +18,17 @@ class LeftCollectionViewCell: UICollectionViewCell {
     
     var leftDate: String!
     var leftDidWell: String!
-    var leftGratefulMoment: String!
-    var leftJoyfulMoment: String!
+    var leftStressfulMoment: String!
     
     var rightDate: String!
     var rightDidWell: String!
-    var rightGratefulMoment: String!
-    var rightJoyfulMoment: String!
-    
-    var isJoyful: Bool?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        if isJoyful==true{
-            leftZoom.setImage(UIImage(imageLiteralResourceName: "whiteZoomIn"), for: .normal)
-            rightZoom.setImage(UIImage(imageLiteralResourceName: "whiteZoomIn"), for: .normal)
-        }
-
-    }
+    var rightStressfulMoment: String!
     
     @IBAction func onLeftZoomTouched(_ sender: Any) {
         UserDefaults.standard.set("left", forKey: "sideInCell")
-        
         UserDefaults.standard.set(leftDidWell,forKey: "didWellText")
-        UserDefaults.standard.set(leftGratefulMoment,forKey: "gratefulMoment")
-        UserDefaults.standard.set(leftJoyfulMoment,forKey: "joyfulMoment")
-        
+        UserDefaults.standard.set(leftStressfulMoment,forKey: "stressfulMoment")
         UserDefaults.standard.set(leftDate, forKey: "dateToInclude")
-        
         getIndexPath()
         NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
         
@@ -54,11 +36,9 @@ class LeftCollectionViewCell: UICollectionViewCell {
     
     @IBAction func onRightZoomTouched(_ sender: Any) {
         UserDefaults.standard.set("right", forKey: "sideInCell")
-        
         UserDefaults.standard.set(rightDidWell,forKey: "didWellText")
-        UserDefaults.standard.set(rightGratefulMoment,forKey: "gratefulMoment")
-        UserDefaults.standard.set(rightJoyfulMoment,forKey: "joyfulMoment")
-        
+        UserDefaults.standard.set(rightStressfulMoment,forKey: "stressfulMoment")
+        UserDefaults.standard.set(rightDate, forKey: "dateToInclude")
         getIndexPath()
         NotificationCenter.default.post(name: Notification.Name("showEntryAlert"), object: nil)
         
