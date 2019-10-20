@@ -8,7 +8,7 @@ Each day, users log both their stressful moments and sucesses. Writing down thei
 
 DayHighlights also contains a stress management kit, which allows you to aggregate all your stress resources in one place and easily access them! (quotes, funny images, motivational speeches, and more)
 
-When you're feeling stressed, there are various fun, diverting games for you to play in the app! You can also see graphs from each month to view your overall stress levels and how you are bringing those stress levels down.
+When you're feeling stressed, there are various fun, diverting games for you to play in the app! You can also see graphs from each month to view your overall stress levels and how well you are doing with bringing those levels down.
 
 ## Privacy Policy
 DayHighlights incorporates Google Analytics for Firebase or Firebase Analytics: an analytics service provided by Google LLC. In order to understand Google's use of Data, see Google's policy on [“How Google uses data when you use our partners' sites or apps.”](https://policies.google.com/technologies/partner-sites)
