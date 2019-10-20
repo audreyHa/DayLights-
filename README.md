@@ -2,7 +2,9 @@
 A fun, resource-packed stress management app! 
 
 ## Features
-DayHighlights is a fun stress management app for people of all ages! Each day, users log one thing they did well, one grateful thing, and one joyful moment from that day; [studies](https://optionb.org/articles/write-down-positive-moments) show that logging these three things can improve happiness levels. There are fun, scrollable balloon galleries for users to quickly view their entries!
+DayHighlights is a fun stress management app for people of all ages! 
+
+Each day, users log both their stressful moments and what they did well. Writing down their challenging experiences allows users to reflect on the many events of their day, and keeping track of their joyful or successful moments helps users maintain an “overcomer” mentality.
 
 DayHighlights also contains a stress management kit, which allows you to aggregate all your stress resources in one place and easily access them! (quotes, funny images, motivational speeches, and more)
 
