@@ -24,6 +24,11 @@
 		F642EFFF232F45AE00457733 /* contactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642EFFE232F45AE00457733 /* contactCell.swift */; };
 		F6719F8F2326181900EC52FD /* StressKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6719F8E2326181900EC52FD /* StressKitVC.swift */; };
 		F67247962320E4E2006F67C6 /* StressGamesControlPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */; };
+		F673E7A22431C5BE00573409 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E79D2431C57E00573409 /* Montserrat-Regular.otf */; };
+		F673E7A32431C5BE00573409 /* Montserrat-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E79E2431C58700573409 /* Montserrat-Medium.otf */; };
+		F673E7A42431C5BE00573409 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E79F2431C58F00573409 /* Montserrat-SemiBold.otf */; };
+		F673E7A52431C5BE00573409 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E7A02431C59C00573409 /* Montserrat-Bold.otf */; };
+		F673E7A62431C5BE00573409 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E7A12431C5A300573409 /* Montserrat-ExtraBold.otf */; };
 		F67BA4A52320435A0067487F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA4A42320435A0067487F /* Line.swift */; };
 		F68179392330190F009F55D8 /* ControlPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68179382330190F009F55D8 /* ControlPanelVC.swift */; };
 		F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68954B422FF43BC00D23B5B /* EntryAlert.swift */; };
@@ -80,6 +85,11 @@
 		F642EFFE232F45AE00457733 /* contactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactCell.swift; sourceTree = "<group>"; };
 		F6719F8E2326181900EC52FD /* StressKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressKitVC.swift; sourceTree = "<group>"; };
 		F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressGamesControlPage.swift; sourceTree = "<group>"; };
+		F673E79D2431C57E00573409 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		F673E79E2431C58700573409 /* Montserrat-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.otf"; sourceTree = "<group>"; };
+		F673E79F2431C58F00573409 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		F673E7A02431C59C00573409 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		F673E7A12431C5A300573409 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
 		F67BA4A42320435A0067487F /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		F68179382330190F009F55D8 /* ControlPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelVC.swift; sourceTree = "<group>"; };
 		F68954B422FF43BC00D23B5B /* EntryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlert.swift; sourceTree = "<group>"; };
@@ -187,6 +197,18 @@
 			path = "Stress Crisis Kit";
 			sourceTree = "<group>";
 		};
+		F673E79C2431C56800573409 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F673E79D2431C57E00573409 /* Montserrat-Regular.otf */,
+				F673E79E2431C58700573409 /* Montserrat-Medium.otf */,
+				F673E79F2431C58F00573409 /* Montserrat-SemiBold.otf */,
+				F673E7A02431C59C00573409 /* Montserrat-Bold.otf */,
+				F673E7A12431C5A300573409 /* Montserrat-ExtraBold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F68CF9F02249F1A1001138FE = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +222,7 @@
 				F6902852224B1810003E26E4 /* Controller */,
 				F6EDDF1A224F0CFB009A1C0F /* Cells */,
 				F68CFA11224A012F001138FE /* Helpers */,
+				F673E79C2431C56800573409 /* Fonts */,
 				F68CF9FB2249F1A1001138FE /* DayLights */,
 				F68CF9FA2249F1A1001138FE /* Products */,
 				7299FB81087F974970FD7828 /* Pods */,
@@ -317,6 +340,7 @@
 				TargetAttributes = {
 					F68CF9F82249F1A1001138FE = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -349,10 +373,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6E8B630230E73CE004104D7 /* popBalloon.gif in Resources */,
+				F673E7A62431C5BE00573409 /* Montserrat-ExtraBold.otf in Resources */,
+				F673E7A32431C5BE00573409 /* Montserrat-Medium.otf in Resources */,
 				F6E95E3A2332929500D5D670 /* GoogleService-Info.plist in Resources */,
+				F673E7A42431C5BE00573409 /* Montserrat-SemiBold.otf in Resources */,
 				F6E8B62C230E734C004104D7 /* balloonPopping.mp4 in Resources */,
+				F673E7A52431C5BE00573409 /* Montserrat-Bold.otf in Resources */,
 				F68CFA0A2249F1A2001138FE /* LaunchScreen.storyboard in Resources */,
 				F68CFA072249F1A2001138FE /* Assets.xcassets in Resources */,
+				F673E7A22431C5BE00573409 /* Montserrat-Regular.otf in Resources */,
 				F68CFA022249F1A1001138FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,11 +654,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.audrey-ha.DayLights";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -649,11 +678,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.audrey-ha.DayLights";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

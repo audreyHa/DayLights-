@@ -578,14 +578,4 @@ extension String {
     var removingWhitespacesAndNewlines: String {
         return components(separatedBy: .whitespacesAndNewlines).joined()
     }
-    
-    func capitalizingFirstLetter() -> String{
-        var stringArray=self.characters.split(separator: " ")
-        for n in 0...stringArray.count-1{
-            stringArray[n]=stringArray[n].prefix(1).uppercased() + stringArray[n].lowercased().dropFirst()
-        }
-        
-        var combinedString=stringArray.joined(separator: " ")
-        return combinedString
-    }
 }
