@@ -310,6 +310,11 @@ class DrawingGame: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.needToSave(notification:)), name: Notification.Name("needToSave"), object: nil)
     }
     
+    @IBAction func xPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func needToSave(notification: Notification){
         saveButton.backgroundColor=colors[3]
         saveButton.setTitle("Save", for: .normal)

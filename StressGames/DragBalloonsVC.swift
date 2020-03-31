@@ -59,6 +59,11 @@ class DragBalloonsVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.exitScoreReportNewGame(notification:)), name: Notification.Name("exitScoreReportNewGame"), object: nil)
     }
     
+    @IBAction func xPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func gameTwoInstructions(notification: Notification){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             UserDefaults.standard.set("gameTwoInstructions",forKey: "typeOKAlert")

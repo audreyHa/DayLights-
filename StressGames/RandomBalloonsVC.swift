@@ -56,6 +56,11 @@ class RandomBalloonsVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.exitScoreReportNewGame(notification:)), name: Notification.Name("exitScoreReportNewGame"), object: nil)
     }
     
+    @IBAction func xPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func gameOneInstructions(notification: Notification){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             UserDefaults.standard.set("gameOneInstructions",forKey: "typeOKAlert")

@@ -298,7 +298,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
             
             //COMMENT: instead, add variables to cell for leftGrateful and leftJoyful
-            cell.leftStressfulMoment=leftEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
+            cell.leftStressfulMoment=leftEntries[indexPath.row].gratefulThing ?? "No Grateful Thing Entered"
         }
         
         func setRightSide(){
@@ -318,7 +318,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
             
             //Add variables to cell for rightGrateful and rightDidWell
-            cell.rightStressfulMoment=rightEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
+            cell.rightStressfulMoment=rightEntries[indexPath.row].gratefulThing ?? "No Grateful Thing Entered"
         }
         
         setLeftSide()

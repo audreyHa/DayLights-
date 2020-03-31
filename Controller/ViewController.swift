@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITabBarControllerDelegate {
     var daylight: Daylight?
     
     var red = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var didWellText: UITextView!
-    @IBOutlet weak var stressfulMomentText: UITextView!
+    @IBOutlet weak var gratefulMomentText: UITextView!
     
     @IBOutlet weak var mood1: UIButton!
     @IBOutlet weak var mood2: UIButton!
@@ -28,9 +28,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var mood4: UIButton!
     @IBOutlet weak var mood5: UIButton!
     
-    @IBOutlet weak var stressfulLabel: UILabel!
+    @IBOutlet weak var gratefulLabel: UILabel!
     @IBOutlet weak var didWellLabel: UILabel!
     
+    @IBOutlet weak var topPurple: UIView!
+    @IBOutlet weak var middlePurple: UIView!
+    @IBOutlet weak var bottomPurple: UIView!
     
     var moodButtons=[UIButton]()
 
@@ -66,7 +69,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var contentsView: UIView!
     
     @IBAction func onMoreTapped(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("OpenSideMenu"), object: nil)
@@ -120,15 +122,15 @@ class ViewController: UIViewController {
             }
         
             //COMMENT! You would save grateful things and joyful moments instead here
-//            if (stressfulMomentText.text==""){
-//                daylight!.stressfulMoment="None entered"
-//            }else{
-//                daylight!.stressfulMoment=stressfulMomentText.text!
-//            }
+            if (gratefulMomentText.text==""){
+                daylight!.gratefulThing="None entered"
+            }else{
+                daylight!.gratefulThing=gratefulMomentText.text!
+            }
             
             //COMMENT change this to saving dummy data for stressful moment for V2
             daylight!.stressfulMoment="No Stressful Moment entered"
-            daylight!.gratefulThing="No Grateful Thing Entered."
+//            daylight!.gratefulThing="No Grateful Thing Entered."
             daylight!.funny="No Joyful Moment Entered"
             
             if currentMood != 0{
@@ -150,7 +152,7 @@ class ViewController: UIViewController {
         count=0
         currentMood=0
         didWellText.text = ""
-        stressfulMomentText.text = ""
+        gratefulMomentText.text = ""
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "MM/dd/yy"
         let now = dateformatter.string(from: Date())
@@ -168,7 +170,7 @@ class ViewController: UIViewController {
         var array=CoreDataHelper.retrieveDaylight()
         
             if daylight != nil{ //saving old
-                if (didWellText.text != "")&&(stressfulMomentText.text != "")&&(currentMood != 0){
+                if (didWellText.text != "")&&(gratefulMomentText.text != "")&&(currentMood != 0){
                     Analytics.logEvent("resaveOld", parameters: nil)
                     
                     saveWhatYouHave()
@@ -184,7 +186,7 @@ class ViewController: UIViewController {
                     makeOKAlert()
                 }
             }else{ //saving new
-                if (didWellText.text != "")&&(stressfulMomentText.text != "")&&(currentMood != 0){
+                if (didWellText.text != "")&&(gratefulMomentText.text != "")&&(currentMood != 0){
                     Analytics.logEvent("saveNew", parameters: nil)
                     
                     var tempCurrentMood=currentMood
@@ -387,7 +389,7 @@ class ViewController: UIViewController {
         
         daylightsArray=CoreDataHelper.retrieveDaylight()
         
-        stressfulLabel.adjustsFontSizeToFitWidth=true
+        gratefulLabel.adjustsFontSizeToFitWidth=true
         didWellLabel.adjustsFontSizeToFitWidth=true
         let clearedStressful = UserDefaults.standard.bool(forKey: "clearedStressful")
         if clearedStressful{
@@ -412,16 +414,19 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        contentsView.layer.cornerRadius = 8
-        contentsView.layer.masksToBounds = true
         saveButton.layer.cornerRadius = 8
         saveButton.layer.masksToBounds = true
         cancelButton.layer.cornerRadius = 8
         cancelButton.layer.masksToBounds = true
+        
+        topPurple.layer.cornerRadius=10
+        middlePurple.layer.cornerRadius=10
+        bottomPurple.layer.cornerRadius=10
 
-        contentsView.layer.borderWidth = 3
+        didWellText.layer.cornerRadius=10
+        gratefulMomentText.layer.cornerRadius=10
+        
         var red = UIColor(red: 41.0/255.0, green: 220.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-        contentsView.layer.borderColor = red.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(showDidWell), name: NSNotification.Name("showDidWell"), object: nil)
         
@@ -455,7 +460,7 @@ class ViewController: UIViewController {
         if let daylight = daylight{
             // 2
             didWellText.text = daylight.didWell
-            stressfulMomentText.text = daylight.stressfulMoment
+            gratefulMomentText.text = daylight.gratefulThing
             
             if (daylight.mood==1){
                 mood1.layer.borderWidth = 3
@@ -488,7 +493,7 @@ class ViewController: UIViewController {
         } else {
             // 3
             didWellText.text = ""
-            stressfulMomentText.text = ""
+            gratefulMomentText.text = ""
         }
     }
 
@@ -526,21 +531,7 @@ class ViewController: UIViewController {
     }
     
     @objc func showDidWell(){
-        var daylights=CoreDataHelper.retrieveDaylight()
-        
-        var count=0
-        for value in daylights{
-            if (value.mood != 0){
-                count+=1
-            }
-        }
-        
-        if (count>0){
-            performSegue(withIdentifier: "showDidWell", sender: nil)
-        }else{
-            UserDefaults.standard.set("noDaylightData",forKey: "typeOKAlert")
-            makeOKAlert()
-        }
+        self.tabBarController?.selectedIndex = 1
         
     }
     
@@ -549,25 +540,11 @@ class ViewController: UIViewController {
     }
     
     @objc func stressGames(){
-        performSegue(withIdentifier: "stressGames", sender: nil)
+        self.tabBarController?.selectedIndex = 0
     }
     
     @objc func showMood(){
-        var daylights=CoreDataHelper.retrieveDaylight()
-        
-        var count=0
-        for value in daylights{
-            if (value.mood != 0){
-                count+=1
-            }
-        }
-
-        if (count>1){
-            performSegue(withIdentifier: "showMood", sender: nil)
-        }else{
-            UserDefaults.standard.set("noMoodData",forKey: "typeOKAlert")
-            makeOKAlert()
-        }
+        self.tabBarController?.selectedIndex = 4
     }
 }
 

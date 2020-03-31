@@ -224,6 +224,11 @@ class MoodVC: UIViewController {
         }
 
     }//end of view did load
+    
+    @IBAction func xPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 

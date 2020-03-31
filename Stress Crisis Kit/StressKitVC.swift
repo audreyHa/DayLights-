@@ -29,8 +29,6 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @IBOutlet weak var contactTBV: UITableView!
     
-    @IBOutlet weak var quotesSegmentedControl: UISegmentedControl!
-    
     @IBOutlet weak var funnyCollectionView: UICollectionView!
     
     var funnyImages=[FunnyImage]()
@@ -293,22 +291,23 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
 
     func matchQuotesSegment(){
-        if quotesSegmentedControl.selectedSegmentIndex==0{
-            print("segment number is 0")
-            segmentedNumber=0
-        }else{
-            print("segment number is 1")
-            segmentedNumber=1
-            
-            var allSavedQuotes=CoreDataHelper.retrieveQuote()
-            savedQuotes=[]
-            savedAuthors=[]
-            
-            for savedQuote in allSavedQuotes{
-                savedQuotes.append(savedQuote.quote!)
-                savedAuthors.append(savedQuote.author!)
-            }
-        }
+        //COMPATABILITY: YOU'LL NEED TO FIX THIS SEGMENTED CONTROL THING
+//        if quotesSegmentedControl.selectedSegmentIndex==0{
+//            print("segment number is 0")
+//            segmentedNumber=0
+//        }else{
+//            print("segment number is 1")
+//            segmentedNumber=1
+//
+//            var allSavedQuotes=CoreDataHelper.retrieveQuote()
+//            savedQuotes=[]
+//            savedAuthors=[]
+//
+//            for savedQuote in allSavedQuotes{
+//                savedQuotes.append(savedQuote.quote!)
+//                savedAuthors.append(savedQuote.author!)
+//            }
+//        }
         
         quotesTBV.reloadData()
     }

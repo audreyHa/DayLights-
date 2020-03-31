@@ -68,9 +68,14 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
         Analytics.logEvent("viewedGallery", parameters: nil)
     }
     
+    @IBAction func xPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     func setEditedDaylightsArray(){
         for daylight in dayHighlightsArray{
-            if daylight.stressfulMoment != "Need To Enter Stressful Moment"{
+            if daylight.gratefulThing != "No Grateful Thing Entered"{
                 editedDaylightsArray.append(daylight)
             }
         }
@@ -193,7 +198,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
         
         var label = UILabel(frame: CGRect(x: image.frame.width*0.18, y: image.frame.height*0.17, width: image.frame.width*0.63, height: image.frame.height*0.59))
         label.textAlignment = NSTextAlignment.center
-        label.text = array[row].stressfulMoment
+        label.text = array[row].gratefulThing
         
         label.adjustsFontSizeToFitWidth=true
         label.numberOfLines=100
@@ -267,7 +272,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
             cell.leftDidWell=leftEntries[indexPath.row].didWell!
-            cell.leftStressfulMoment=leftEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
+            cell.leftStressfulMoment=leftEntries[indexPath.row].gratefulThing ?? "No Grateful Thing Entered"
         }
         
         func setRightSide(){
@@ -286,7 +291,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             cell.rightDate=dateformatter.string(for: rightEntries[indexPath.row].dateCreated)
             cell.rightDidWell=rightEntries[indexPath.row].didWell!
-            cell.rightStressfulMoment=rightEntries[indexPath.row].stressfulMoment ?? "No Stressful Moment Entered"
+            cell.rightStressfulMoment=rightEntries[indexPath.row].gratefulThing ?? "No Grateful Thing Entered"
         }
         
         setLeftSide()

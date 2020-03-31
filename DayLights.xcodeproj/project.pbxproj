@@ -29,6 +29,7 @@
 		F673E7A42431C5BE00573409 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E79F2431C58F00573409 /* Montserrat-SemiBold.otf */; };
 		F673E7A52431C5BE00573409 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E7A02431C59C00573409 /* Montserrat-Bold.otf */; };
 		F673E7A62431C5BE00573409 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F673E7A12431C5A300573409 /* Montserrat-ExtraBold.otf */; };
+		F67718CA2433FBD20036E4D3 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67718C92433FBD20036E4D3 /* MyTabBarController.swift */; };
 		F67BA4A52320435A0067487F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA4A42320435A0067487F /* Line.swift */; };
 		F68179392330190F009F55D8 /* ControlPanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68179382330190F009F55D8 /* ControlPanelVC.swift */; };
 		F68954B522FF43BC00D23B5B /* EntryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68954B422FF43BC00D23B5B /* EntryAlert.swift */; };
@@ -90,6 +91,7 @@
 		F673E79F2431C58F00573409 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
 		F673E7A02431C59C00573409 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
 		F673E7A12431C5A300573409 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		F67718C92433FBD20036E4D3 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		F67BA4A42320435A0067487F /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		F68179382330190F009F55D8 /* ControlPanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelVC.swift; sourceTree = "<group>"; };
 		F68954B422FF43BC00D23B5B /* EntryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAlert.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				F6C5B8FB22FE06FE00078675 /* Chart.swift */,
 				F627BA3B2309288B00F888A3 /* SettingsVC.swift */,
 				F67247952320E4E2006F67C6 /* StressGamesControlPage.swift */,
+				F67718C92433FBD20036E4D3 /* MyTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				F60557A8231E0F5000F67033 /* DrawingGame.swift in Sources */,
 				F61832A722506BCE0083886A /* BarCell.swift in Sources */,
 				F642EFFD232F435E00457733 /* AddContactVC.swift in Sources */,
+				F67718CA2433FBD20036E4D3 /* MyTabBarController.swift in Sources */,
 				F6C5B8FC22FE06FE00078675 /* Chart.swift in Sources */,
 				F642EFFF232F45AE00457733 /* contactCell.swift in Sources */,
 				F6CCAA8C2328C2DE00AF734C /* FunnyImageCell.swift in Sources */,

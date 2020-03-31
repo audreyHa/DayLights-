@@ -10,19 +10,15 @@ import UIKit
 
 class StressGamesControlPage: UIViewController {
 
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var stressReliefTitle: UILabel!
-    @IBOutlet weak var explanationLabel: UILabel!
     @IBOutlet weak var balloonPoppingGame: UIButton!
     @IBOutlet weak var balloonDraggingGame: UIButton!
     @IBOutlet weak var randomDrawing: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        containerView.layer.cornerRadius=20
+
         stressReliefTitle.adjustsFontSizeToFitWidth=true
-        explanationLabel.adjustsFontSizeToFitWidth=true
         
         var buttons=[balloonPoppingGame, balloonDraggingGame, randomDrawing]
         

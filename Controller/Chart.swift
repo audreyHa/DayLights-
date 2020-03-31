@@ -30,6 +30,11 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
     }
     
+    @IBAction func xPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return individualMonths.count+1

@@ -39,6 +39,11 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
         NotificationCenter.default.addObserver(self, selector: #selector(self.permanentlyDeleteImage(notification:)), name: Notification.Name("permanentlyDeleteImage"), object: nil)
     }
     
+    @IBAction func xPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func possiblyDeleteImage(notification: Notification){
         if headerLabel.text=="Funny Images Gallery!"{
             UserDefaults.standard.set("deleteFunnyImage",forKey: "typeYesNoAlert")
