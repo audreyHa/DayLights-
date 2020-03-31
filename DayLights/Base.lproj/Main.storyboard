@@ -334,7 +334,7 @@
                                         <rect key="frame" x="15" y="52" width="285" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.16078431369999999" green="0.86274509799999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something I Did Well Today:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS9-f8-CQW">
@@ -608,7 +608,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.58431372550000005" green="0.69411764710000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.80284941759999995" green="0.84926400339999997" blue="0.94458979489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="zh7-6w-ZpY" firstAttribute="top" secondItem="oYH-Ny-IxK" secondAttribute="top" constant="15" id="2G6-Cq-7l8"/>
                                             <constraint firstAttribute="trailing" secondItem="zh7-6w-ZpY" secondAttribute="trailing" constant="15" id="Hzr-ro-uzh"/>
@@ -770,7 +770,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjX-v6-jJa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="133.5" height="25"/>
-                                                                        <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                                         <state key="normal" title="Random">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -929,7 +929,7 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.58431372549019611" green="0.69411764705882351" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.80392156862745101" green="0.85098039215686272" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="UwH-te-rX5" firstAttribute="top" secondItem="H0v-qR-wkA" secondAttribute="top" constant="15" id="9iT-HM-7N0"/>
                                                     <constraint firstAttribute="bottom" secondItem="UwH-te-rX5" secondAttribute="bottom" constant="15" id="IO9-e4-Snh"/>
@@ -1226,7 +1226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okh-fy-I82" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="1115"/>
+            <point key="canvasLocation" x="2068" y="1114.5427286356824"/>
         </scene>
         <!--Entry Alert-->
         <scene sceneID="bco-5p-Cnu">
@@ -1273,7 +1273,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="tjM-lS-44L" firstAttribute="leading" secondItem="6Au-sj-d0E" secondAttribute="leading" constant="15" id="0hx-CQ-mFY"/>
                                             <constraint firstItem="aIg-wZ-mTu" firstAttribute="top" secondItem="6Au-sj-d0E" secondAttribute="top" constant="15" id="AJ5-4L-vhO"/>
@@ -1294,7 +1294,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="bbX-Qh-I0u"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                                         <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1317,13 +1317,13 @@
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="30" id="OZk-86-kzx"/>
                                                                                     </constraints>
-                                                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                                                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMC-o6-2oT">
                                                                                     <rect key="frame" x="0.0" y="35" width="250" height="43"/>
-                                                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
@@ -1369,20 +1369,21 @@
                                         <rect key="frame" x="0.0" y="330" width="300" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91w-Vq-rPm">
-                                                <rect key="frame" x="118.5" y="17" width="63" height="36"/>
-                                                <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                <rect key="frame" x="112.5" y="18.5" width="75" height="33"/>
+                                                <color key="backgroundColor" red="0.90842227149999999" green="0.97265904780000001" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                 <state key="normal" title="  Close  ">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="okPressed:" destination="7n1-Z6-aeH" eventType="touchUpInside" id="U6n-Sp-kMX"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="91w-Vq-rPm" firstAttribute="centerX" secondItem="FA7-vM-WHa" secondAttribute="centerX" id="QtX-uZ-CoH"/>
+                                            <constraint firstItem="91w-Vq-rPm" firstAttribute="width" secondItem="FA7-vM-WHa" secondAttribute="width" multiplier="0.25" id="Vlf-dq-KeO"/>
                                             <constraint firstItem="91w-Vq-rPm" firstAttribute="centerY" secondItem="FA7-vM-WHa" secondAttribute="centerY" id="bkw-NP-v9s"/>
                                         </constraints>
                                     </view>
@@ -1712,7 +1713,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXm-eI-Z7V" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="57.5"/>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hiq-ZY-dW8" userLabel="CenterView">
                                         <rect key="frame" x="0.0" y="47.5" width="300" height="172"/>
@@ -1731,7 +1732,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTn-EQ-hbE">
                                                         <rect key="frame" x="0.0" y="40" width="280" height="92"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1760,10 +1761,10 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3TS-Pl-WTd">
                                                         <rect key="frame" x="0.0" y="0.0" width="65" height="32.5"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  Yes  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.1215686275" green="0.76078431369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="yesPressed:" destination="NpR-oB-gnD" eventType="touchUpInside" id="Gov-Y7-kxE"/>
@@ -1771,10 +1772,10 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS7-9j-YX3">
                                                         <rect key="frame" x="85" y="0.0" width="65" height="32.5"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  No  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.1215686275" green="0.76078431369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="noPressed:" destination="NpR-oB-gnD" eventType="touchUpInside" id="z3E-hI-K22"/>
@@ -1786,7 +1787,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Jjd-6V-5lf" firstAttribute="centerX" secondItem="aNb-dy-YQp" secondAttribute="centerX" id="4wg-ft-v1f"/>
                                             <constraint firstItem="Jjd-6V-5lf" firstAttribute="width" secondItem="aNb-dy-YQp" secondAttribute="width" multiplier="0.5" id="Rtp-I0-YIq"/>
@@ -1858,7 +1859,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTq-lE-ROR" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="57.5"/>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLZ-1H-YEB" userLabel="CenterView">
                                         <rect key="frame" x="0.0" y="47.5" width="300" height="172"/>
@@ -1871,13 +1872,13 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="t0n-ap-dvZ"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                                         <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5b-db-2zV">
                                                         <rect key="frame" x="0.0" y="40" width="280" height="92"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1906,10 +1907,10 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cY-UU-QF6">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="32.5"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  Yes  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.1215686275" green="0.76078431369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="yesPressed:" destination="Wcf-dM-VzP" eventType="touchUpInside" id="id9-jT-LHm"/>
@@ -1918,7 +1919,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="bFf-b7-WnH" firstAttribute="centerX" secondItem="L8U-g0-UQ8" secondAttribute="centerX" id="65E-ed-Etg"/>
                                             <constraint firstItem="bFf-b7-WnH" firstAttribute="top" secondItem="L8U-g0-UQ8" secondAttribute="top" constant="15" id="ayd-k3-s5i"/>
@@ -1989,7 +1990,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wrf-8n-WfW" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yb6-Ye-Xhx" userLabel="CenterView">
                                         <rect key="frame" x="0.0" y="50" width="300" height="300"/>
@@ -2009,7 +2010,7 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqY-mY-lgr">
                                                         <rect key="frame" x="10" y="40" width="260" height="220"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
@@ -2037,19 +2038,20 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4B-yQ-ylH">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  Yes  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.1215686275" green="0.76078431369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="yesPressed:" destination="sa0-dh-DZu" eventType="touchUpInside" id="pX0-PF-3vS"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="IJw-Si-zJt" firstAttribute="centerX" secondItem="pE2-VH-0BK" secondAttribute="centerX" id="Xix-R1-lMK"/>
                                             <constraint firstAttribute="bottom" secondItem="IJw-Si-zJt" secondAttribute="bottom" constant="10" id="ac4-H0-EmQ"/>
@@ -2120,7 +2122,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dM1-xE-12U" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mI3-At-jzk" userLabel="CenterView">
                                         <rect key="frame" x="0.0" y="38" width="300" height="191"/>
@@ -2160,10 +2162,10 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCr-Wc-LYD">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="23"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                         <state key="normal" title="  Yes  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" red="0.1215686275" green="0.76078431369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="yesPressed:" destination="wNQ-KH-7hb" eventType="touchUpInside" id="3f1-uN-Zh0"/>
@@ -2172,7 +2174,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="5gE-A1-JOo" secondAttribute="bottom" constant="10" id="92F-Bk-XAV"/>
                                             <constraint firstItem="5gE-A1-JOo" firstAttribute="top" secondItem="kTe-af-7Ax" secondAttribute="top" constant="15" id="HiC-bo-hmc"/>
@@ -2397,22 +2399,22 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j0B-ha-FsZ">
                                                 <rect key="frame" x="10" y="15" width="280" height="236"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Game Preferences:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVg-Qw-Bsc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Game Preferences:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVg-Qw-Bsc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="qFW-uS-czV"/>
+                                                            <constraint firstAttribute="height" constant="60" id="qFW-uS-czV"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                                         <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="J1r-wQ-IIv" userLabel="TimeStack">
-                                                        <rect key="frame" x="0.0" y="45" width="280" height="43.5"/>
+                                                        <rect key="frame" x="0.0" y="75" width="280" height="33.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynQ-fA-9ma">
-                                                                <rect key="frame" x="0.0" y="0.0" width="76.5" height="43.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="76.5" height="33.5"/>
                                                                 <color key="backgroundColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                 <state key="normal" title="30 Sec">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -2421,9 +2423,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3m-IN-9ub">
-                                                                <rect key="frame" x="101.5" y="0.0" width="77" height="43.5"/>
+                                                                <rect key="frame" x="101.5" y="0.0" width="77" height="33.5"/>
                                                                 <color key="backgroundColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                 <state key="normal" title="1 Min">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -2432,9 +2434,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZA2-4J-UZ5">
-                                                                <rect key="frame" x="203.5" y="0.0" width="76.5" height="43.5"/>
+                                                                <rect key="frame" x="203.5" y="0.0" width="76.5" height="33.5"/>
                                                                 <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                 <state key="normal" title="5 Min">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
@@ -2449,22 +2451,22 @@
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzV-Ei-cu8">
-                                                        <rect key="frame" x="0.0" y="103.5" width="280" height="5"/>
+                                                        <rect key="frame" x="0.0" y="123.5" width="280" height="5"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="5" id="MVZ-zJ-pPu"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="4pH-eL-ajg">
-                                                        <rect key="frame" x="0.0" y="123.5" width="280" height="112.5"/>
+                                                        <rect key="frame" x="0.0" y="143.5" width="280" height="92.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="csI-cN-7Ia" userLabel="Easy/Medium">
-                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsi-Fb-Wv1">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="127.5" height="44"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="127.5" height="34"/>
                                                                         <color key="backgroundColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                         <state key="normal" title="Easy">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
@@ -2473,9 +2475,9 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MZ-6w-LbJ">
-                                                                        <rect key="frame" x="152.5" y="0.0" width="127.5" height="44"/>
+                                                                        <rect key="frame" x="152.5" y="0.0" width="127.5" height="34"/>
                                                                         <color key="backgroundColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                         <state key="normal" title="Medium">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
@@ -2489,12 +2491,12 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="BDG-gX-m0J" userLabel="Hard/Extreme">
-                                                                <rect key="frame" x="0.0" y="69" width="280" height="43.5"/>
+                                                                <rect key="frame" x="0.0" y="59" width="280" height="33.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgh-7l-8F0">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="127.5" height="43.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="127.5" height="33.5"/>
                                                                         <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                         <state key="normal" title="HARD">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
@@ -2503,9 +2505,9 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRT-DW-U3S">
-                                                                        <rect key="frame" x="152.5" y="0.0" width="127.5" height="43.5"/>
+                                                                        <rect key="frame" x="152.5" y="0.0" width="127.5" height="33.5"/>
                                                                         <color key="backgroundColor" red="0.8980392157" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                                         <state key="normal" title="EXTREME">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
@@ -2553,19 +2555,20 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A30-If-xu6">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="30.5"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.90842227149999999" green="0.97265904780000001" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  OK  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="okPressed:" destination="dqH-Oz-oOD" eventType="touchUpInside" id="UgJ-6O-diP"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="hJm-o6-wyX" secondAttribute="bottom" constant="10" id="D6F-4Z-3oS"/>
                                             <constraint firstItem="hJm-o6-wyX" firstAttribute="centerX" secondItem="U5C-Yv-JDz" secondAttribute="centerX" id="N52-69-1CG"/>
@@ -2642,7 +2645,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfD-3P-zKG" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="57.5"/>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCX-Ye-TWi" userLabel="CenterView">
                                         <rect key="frame" x="0.0" y="47.5" width="300" height="172"/>
@@ -2655,13 +2658,13 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="PT2-Ls-y31"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                                         <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mga-iB-d5e">
                                                         <rect key="frame" x="0.0" y="40" width="280" height="92"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2686,25 +2689,25 @@
                                         <rect key="frame" x="0.0" y="209.5" width="300" height="57.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-og-N1c">
-                                                <rect key="frame" x="45" y="15" width="210" height="32.5"/>
+                                                <rect key="frame" x="30" y="15" width="240" height="32.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEe-9D-kqG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="95" height="32.5"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="32.5"/>
+                                                        <color key="backgroundColor" red="0.90842227149999999" green="0.97265904780000001" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  Start Over  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="startOverPressed:" destination="Kfe-Zd-jph" eventType="touchUpInside" id="wzo-6U-DZD"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1C-ao-l9R">
-                                                        <rect key="frame" x="115" y="0.0" width="95" height="32.5"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <rect key="frame" x="130" y="0.0" width="110" height="32.5"/>
+                                                        <color key="backgroundColor" red="0.90842227149999999" green="0.97265904780000001" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  End  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="endPressed:" destination="Kfe-Zd-jph" eventType="touchUpInside" id="EUK-EP-I4v"/>
@@ -2716,9 +2719,9 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="9ge-og-N1c" firstAttribute="width" secondItem="HRT-hZ-VEe" secondAttribute="width" multiplier="0.7" id="Bw8-Kz-XfD"/>
+                                            <constraint firstItem="9ge-og-N1c" firstAttribute="width" secondItem="HRT-hZ-VEe" secondAttribute="width" multiplier="0.8" id="Bw8-Kz-XfD"/>
                                             <constraint firstAttribute="bottom" secondItem="9ge-og-N1c" secondAttribute="bottom" constant="10" id="CIO-LY-t2M"/>
                                             <constraint firstItem="9ge-og-N1c" firstAttribute="centerX" secondItem="HRT-hZ-VEe" secondAttribute="centerX" id="nun-yH-D2r"/>
                                             <constraint firstItem="9ge-og-N1c" firstAttribute="top" secondItem="HRT-hZ-VEe" secondAttribute="top" constant="15" id="wTs-Ad-SnS"/>
@@ -3145,7 +3148,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAq-vI-FHa">
                                         <rect key="frame" x="57" y="0.0" width="113" height="31"/>
-                                        <color key="backgroundColor" red="0.58431372550000005" green="0.69411764710000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.80284941759999995" green="0.84926400339999997" blue="0.94458979489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                         <state key="normal" title="  Medium  ">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3269,15 +3272,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="337.5" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4g-mE-lFt">
-                                                <rect key="frame" x="253" y="15" width="69.5" height="19"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                <rect key="frame" x="259.5" y="13" width="63" height="21"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="f4g-mE-lFt" firstAttribute="top" secondItem="aQI-F7-2KM" secondAttribute="top" constant="15" id="WsJ-dG-NIk"/>
+                                            <constraint firstItem="f4g-mE-lFt" firstAttribute="top" secondItem="aQI-F7-2KM" secondAttribute="top" constant="13" id="WsJ-dG-NIk"/>
                                             <constraint firstAttribute="bottom" secondItem="f4g-mE-lFt" secondAttribute="bottom" constant="15" id="kwN-Gw-t71"/>
                                             <constraint firstAttribute="trailing" secondItem="f4g-mE-lFt" secondAttribute="trailing" constant="15" id="lZI-53-JZn"/>
                                         </constraints>
@@ -3293,8 +3296,8 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="K2N-yh-wRG"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                        <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                                        <color key="textColor" red="0.12156862745098039" green="0.76078431372549016" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H1W-UL-cOr">
@@ -3303,13 +3306,13 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="Ima-yC-O0d"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JkA-FO-vsq">
                                                         <rect key="frame" x="0.0" y="70" width="307.5" height="135.5"/>
                                                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
@@ -3334,29 +3337,24 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLU-6i-rvt" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="274.5" width="337.5" height="49"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="e7K-Qq-De2">
-                                                <rect key="frame" x="84" y="15" width="169" height="24"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-J2-bwy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="169" height="24"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                        <state key="normal" title="  Done  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="yesPressed:" destination="42n-Re-f5O" eventType="touchUpInside" id="OEp-el-uPV"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-J2-bwy">
+                                                <rect key="frame" x="126.5" y="8" width="84" height="33"/>
+                                                <color key="backgroundColor" red="0.90842227145008081" green="0.97265904782907631" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                                <state key="normal" title="  Done  ">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="yesPressed:" destination="42n-Re-f5O" eventType="touchUpInside" id="OEp-el-uPV"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="e7K-Qq-De2" firstAttribute="top" secondItem="vLU-6i-rvt" secondAttribute="top" constant="15" id="83l-rX-5JF"/>
-                                            <constraint firstAttribute="bottom" secondItem="e7K-Qq-De2" secondAttribute="bottom" constant="10" id="Drg-oN-Xat"/>
-                                            <constraint firstItem="e7K-Qq-De2" firstAttribute="width" secondItem="vLU-6i-rvt" secondAttribute="width" multiplier="0.5" id="T6u-bZ-Eeh"/>
-                                            <constraint firstItem="e7K-Qq-De2" firstAttribute="centerX" secondItem="vLU-6i-rvt" secondAttribute="centerX" id="nC1-hF-lLz"/>
+                                            <constraint firstAttribute="bottom" secondItem="sWm-J2-bwy" secondAttribute="bottom" constant="8" id="IIO-Mc-HxM"/>
+                                            <constraint firstItem="sWm-J2-bwy" firstAttribute="width" secondItem="vLU-6i-rvt" secondAttribute="width" multiplier="0.25" id="OVE-UU-gWr"/>
+                                            <constraint firstItem="sWm-J2-bwy" firstAttribute="top" secondItem="vLU-6i-rvt" secondAttribute="top" constant="8" id="TRq-1m-yYM"/>
+                                            <constraint firstItem="sWm-J2-bwy" firstAttribute="centerX" secondItem="vLU-6i-rvt" secondAttribute="centerX" id="zVE-8I-QEM"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3415,36 +3413,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlT-lc-GTT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="PGd-3a-k3C" userLabel="Title">
+                                <rect key="frame" x="15" y="30" width="330" height="35"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="p1h-Zz-sNt">
-                                        <rect key="frame" x="15" y="5" width="345" height="70"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funny Images Gallery!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkO-nq-HFg">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
-                                                <color key="textColor" red="0.90980392160000001" green="0.35294117650000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1c-Hs-abb">
+                                        <rect key="frame" x="0.0" y="1" width="35" height="32.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="BkO-nq-HFg" secondAttribute="trailing" id="hkJ-9q-6cO"/>
+                                            <constraint firstAttribute="width" secondItem="b1c-Hs-abb" secondAttribute="height" multiplier="1:1" id="pKj-vh-htG"/>
                                         </constraints>
-                                    </stackView>
+                                        <color key="tintColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" backgroundImage="arrow.left.square" catalog="system"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Funny Images:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WQ-ok-qiG">
+                                        <rect key="frame" x="50" y="0.0" width="280" height="35"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="p1h-Zz-sNt" firstAttribute="top" secondItem="BlT-lc-GTT" secondAttribute="top" constant="5" id="LyA-yw-tmY"/>
-                                    <constraint firstAttribute="height" constant="80" id="T8I-Yx-MjD"/>
-                                    <constraint firstAttribute="bottom" secondItem="p1h-Zz-sNt" secondAttribute="bottom" constant="5" id="fc4-1r-wB1"/>
-                                    <constraint firstAttribute="trailing" secondItem="p1h-Zz-sNt" secondAttribute="trailing" constant="15" id="lcB-XT-Lhh"/>
-                                    <constraint firstItem="p1h-Zz-sNt" firstAttribute="leading" secondItem="BlT-lc-GTT" secondAttribute="leading" constant="15" id="v1w-de-XX6"/>
+                                    <constraint firstAttribute="height" constant="35" id="AWo-kO-sJe"/>
                                 </constraints>
-                            </view>
+                            </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sQS-D9-UK7">
-                                <rect key="frame" x="0.0" y="80" width="375" height="567"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="552"/>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RzM-Y4-1iV">
                                     <size key="itemSize" width="186" height="173"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -3495,18 +3488,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sQS-D9-UK7" firstAttribute="leading" secondItem="1QX-DA-LFS" secondAttribute="leading" id="4JS-w1-qDx"/>
-                            <constraint firstItem="BlT-lc-GTT" firstAttribute="top" secondItem="1QX-DA-LFS" secondAttribute="top" id="6wU-iD-J4T"/>
                             <constraint firstItem="1QX-DA-LFS" firstAttribute="trailing" secondItem="sQS-D9-UK7" secondAttribute="trailing" id="8fI-r6-5wW"/>
-                            <constraint firstItem="sQS-D9-UK7" firstAttribute="top" secondItem="BlT-lc-GTT" secondAttribute="bottom" id="EQJ-fi-3mM"/>
-                            <constraint firstItem="1QX-DA-LFS" firstAttribute="trailing" secondItem="BlT-lc-GTT" secondAttribute="trailing" id="Lte-Zz-Vav"/>
-                            <constraint firstItem="BlT-lc-GTT" firstAttribute="leading" secondItem="cJ8-NX-k46" secondAttribute="leading" id="XxK-Rd-Pxt"/>
+                            <constraint firstItem="sQS-D9-UK7" firstAttribute="top" secondItem="PGd-3a-k3C" secondAttribute="bottom" constant="30" id="BSn-O4-ZlZ"/>
+                            <constraint firstItem="PGd-3a-k3C" firstAttribute="top" secondItem="1QX-DA-LFS" secondAttribute="top" constant="30" id="H4Z-fd-eeC"/>
+                            <constraint firstItem="1QX-DA-LFS" firstAttribute="trailing" secondItem="PGd-3a-k3C" secondAttribute="trailing" constant="30" id="fuR-rU-mFT"/>
+                            <constraint firstItem="PGd-3a-k3C" firstAttribute="leading" secondItem="1QX-DA-LFS" secondAttribute="leading" constant="15" id="jpM-VN-ebx"/>
                             <constraint firstItem="1QX-DA-LFS" firstAttribute="bottom" secondItem="sQS-D9-UK7" secondAttribute="bottom" id="lo5-n9-cZs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1QX-DA-LFS"/>
                     </view>
                     <connections>
                         <outlet property="funnyCollectionView" destination="sQS-D9-UK7" id="1HQ-ZY-luN"/>
-                        <outlet property="headerLabel" destination="BkO-nq-HFg" id="oB8-h4-bOW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECc-JS-sjj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3521,36 +3513,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TxN-NQ-4Gp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vsm-az-Cud">
-                                        <rect key="frame" x="15" y="5" width="345" height="70"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Drawings!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAh-11-YmL">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
-                                                <color key="textColor" red="0.15621793540000001" green="0.36029721669999998" blue="0.58548144040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="GAh-11-YmL" secondAttribute="trailing" id="dqz-S6-f7m"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.93000000000000005" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Vsm-az-Cud" firstAttribute="top" secondItem="TxN-NQ-4Gp" secondAttribute="top" constant="5" id="8zu-DH-VVy"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vsm-az-Cud" secondAttribute="trailing" constant="15" id="9CC-wr-gsK"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vsm-az-Cud" secondAttribute="bottom" constant="5" id="nT5-Qc-UXY"/>
-                                    <constraint firstItem="Vsm-az-Cud" firstAttribute="leading" secondItem="TxN-NQ-4Gp" secondAttribute="leading" constant="15" id="tep-F7-NdA"/>
-                                    <constraint firstAttribute="height" constant="80" id="zTa-j1-nIW"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qex-Qy-H1Q">
-                                <rect key="frame" x="0.0" y="80" width="375" height="567"/>
-                                <color key="backgroundColor" red="0.15621793540000001" green="0.36029721669999998" blue="0.58548144040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="552"/>
+                                <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ei6-iC-fbq">
                                     <size key="itemSize" width="186" height="173"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -3599,15 +3564,37 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7JJ-9d-ces" userLabel="Title">
+                                <rect key="frame" x="15" y="30" width="330" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68g-9W-woE">
+                                        <rect key="frame" x="0.0" y="1" width="35" height="32.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="68g-9W-woE" secondAttribute="height" multiplier="1:1" id="CqL-WT-VQY"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" backgroundImage="arrow.left.square" catalog="system"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Drawings:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8p-Lj-xSe">
+                                        <rect key="frame" x="50" y="0.0" width="280" height="35"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4LX-AU-dsH"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zLW-B0-ueD" firstAttribute="trailing" secondItem="TxN-NQ-4Gp" secondAttribute="trailing" id="5s2-T8-r6g"/>
-                            <constraint firstItem="qex-Qy-H1Q" firstAttribute="top" secondItem="TxN-NQ-4Gp" secondAttribute="bottom" id="JS5-8U-sYA"/>
-                            <constraint firstItem="TxN-NQ-4Gp" firstAttribute="leading" secondItem="BZV-cQ-R7c" secondAttribute="leading" id="LcZ-ae-E5m"/>
+                            <constraint firstItem="7JJ-9d-ces" firstAttribute="top" secondItem="zLW-B0-ueD" secondAttribute="top" constant="30" id="088-vj-hB9"/>
+                            <constraint firstItem="qex-Qy-H1Q" firstAttribute="top" secondItem="7JJ-9d-ces" secondAttribute="bottom" constant="30" id="1f1-p3-W9W"/>
+                            <constraint firstItem="zLW-B0-ueD" firstAttribute="trailing" secondItem="7JJ-9d-ces" secondAttribute="trailing" constant="30" id="BoA-qB-Bmf"/>
+                            <constraint firstItem="7JJ-9d-ces" firstAttribute="leading" secondItem="BZV-cQ-R7c" secondAttribute="leading" constant="15" id="I8s-Nf-N1z"/>
                             <constraint firstItem="zLW-B0-ueD" firstAttribute="bottom" secondItem="qex-Qy-H1Q" secondAttribute="bottom" id="PDa-4i-R85"/>
                             <constraint firstItem="qex-Qy-H1Q" firstAttribute="leading" secondItem="zLW-B0-ueD" secondAttribute="leading" id="cPb-S8-vjy"/>
-                            <constraint firstItem="TxN-NQ-4Gp" firstAttribute="top" secondItem="zLW-B0-ueD" secondAttribute="top" id="gb0-0F-ZeF"/>
                             <constraint firstItem="zLW-B0-ueD" firstAttribute="trailing" secondItem="qex-Qy-H1Q" secondAttribute="trailing" id="tvL-Xa-biW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zLW-B0-ueD"/>
@@ -3615,7 +3602,6 @@
                     <navigationItem key="navigationItem" id="yAE-eI-T5Q"/>
                     <connections>
                         <outlet property="funnyCollectionView" destination="qex-Qy-H1Q" id="AjE-4r-nlm"/>
-                        <outlet property="headerLabel" destination="GAh-11-YmL" id="UCj-9t-X2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWG-gU-eBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3641,7 +3627,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-2u-IME" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8X-Cf-Ktp" userLabel="CenterView">
                                         <rect key="frame" x="0.0" y="50" width="300" height="300"/>
@@ -3654,7 +3640,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="Vte-ts-tgN"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                                         <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -3673,26 +3659,26 @@
                                                                             <rect key="frame" x="5" y="5" width="200" height="60"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d22-Na-Y4K">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
-                                                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="35.5"/>
+                                                                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7c-Yh-7Bt">
-                                                                                    <rect key="frame" x="0.0" y="38" width="200" height="22"/>
-                                                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                                                    <rect key="frame" x="0.0" y="41.5" width="200" height="18.5"/>
+                                                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
                                                                         </stackView>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqn-5M-vvb">
-                                                                            <rect key="frame" x="210" y="16" width="50" height="30"/>
+                                                                            <rect key="frame" x="210" y="16" width="50" height="31"/>
                                                                             <color key="backgroundColor" red="0.2470588235" green="0.83137254900000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="50" id="J5q-Xe-RX9"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                                             <state key="normal" title="Add">
                                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </state>
@@ -3743,10 +3729,10 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjf-hP-EiE">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.90842227149999999" green="0.97265904780000001" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  Done  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="yesPressed:" destination="FIv-Kx-L6G" eventType="touchUpInside" id="3oW-wI-h2h"/>
@@ -3755,7 +3741,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="06R-AR-PMV" secondAttribute="bottom" constant="10" id="BKp-Qy-6sR"/>
                                             <constraint firstItem="06R-AR-PMV" firstAttribute="top" secondItem="HxA-w0-lOP" secondAttribute="top" constant="15" id="KZO-B6-rgS"/>
@@ -3826,7 +3812,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzD-we-cmR" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
-                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.95294117649999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HV4-VZ-prY" userLabel="CenterView">
                                         <rect key="frame" x="0.0" y="50" width="300" height="300"/>
@@ -3836,20 +3822,20 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice Job!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCd-OS-Q1H">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                                                         <color key="textColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out these other pages!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO0-4r-HSr">
                                                         <rect key="frame" x="10" y="55" width="260" height="40"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwn-QN-oXd">
                                                         <rect key="frame" x="10" y="110" width="260" height="40"/>
-                                                        <color key="backgroundColor" red="0.42662033160000001" green="0.90346646799999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.80392156862745101" green="0.85098039215686272" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                         <state key="normal" title="DayHighlights Galleries">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -3859,10 +3845,10 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoJ-ON-Nrt">
                                                         <rect key="frame" x="10" y="165" width="260" height="40"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.64313725489999995" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                         <state key="normal" title="Stress Graphs">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="graphPressed:" destination="dds-C0-j2z" eventType="touchUpInside" id="8mt-kB-uaY"/>
@@ -3870,10 +3856,10 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kh-hm-8bo">
                                                         <rect key="frame" x="10" y="220" width="260" height="40"/>
-                                                        <color key="backgroundColor" red="0.15686274510000001" green="0.36078431370000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.80392156859999997" green="0.63921568630000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                                         <state key="normal" title="Stress Relief Games">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="gamePressed:" destination="dds-C0-j2z" eventType="touchUpInside" id="Qeo-qT-JB4"/>
@@ -3916,10 +3902,10 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-2h-Iwy">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
-                                                        <color key="backgroundColor" red="0.1212007705" green="0.75898867680000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                        <color key="backgroundColor" red="0.90842227149999999" green="0.97265904780000001" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
                                                         <state key="normal" title="  Close  ">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="yesPressed:" destination="dds-C0-j2z" eventType="touchUpInside" id="2PO-Io-993"/>
@@ -3928,7 +3914,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.69019607839999997" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="eEw-Fw-fax" firstAttribute="top" secondItem="4dg-no-nnY" secondAttribute="top" constant="15" id="07t-w7-ZH7"/>
                                             <constraint firstItem="eEw-Fw-fax" firstAttribute="width" secondItem="4dg-no-nnY" secondAttribute="width" multiplier="0.5" id="A4o-fR-v40"/>
