@@ -56,14 +56,14 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         UIImage(named: "SkyDH.jpg")?.draw(in: self.view.bounds)
         
         //COMMENT change to grateful/joyful
-        switch(headerCategoryLabel.text){
-        case "Gallery: Stressful Moments":
-            UIImage(named: "PlanetDH.jpg")?.draw(in: self.view.bounds)
-        case "Gallery: Joyful Moments":
-            UIImage(named: "SunsetDH.png")?.draw(in: self.view.bounds)
-        default:
-            UIImage(named: "SkyDH.png")?.draw(in: self.view.bounds)
-        }
+//        switch(headerCategoryLabel.text){
+//        case "Gallery: Stressful Moments":
+//            UIImage(named: "PlanetDH.jpg")?.draw(in: self.view.bounds)
+//        case "Gallery: Joyful Moments":
+//            UIImage(named: "SunsetDH.png")?.draw(in: self.view.bounds)
+//        default:
+//            UIImage(named: "SkyDH.png")?.draw(in: self.view.bounds)
+//        }
         
         if let image = UIGraphicsGetImageFromCurrentImageContext(){
             UIGraphicsEndImageContext()

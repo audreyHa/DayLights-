@@ -11,36 +11,25 @@ import Charts
 
 class GraphTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var purpleView: UIView!
+    @IBOutlet weak var whiteGraphSurroundView: UIView!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var monthLabel: UILabel!
     var monthData=[Daylight]()
+    var monthDoubles=[Double]()
     var entryNumber=0
     var monthInList=0
     var labels=[String]()
     
     func setChartValues(){
         var values=[ChartDataEntry]()
-        var colorTemplates=[ChartColorTemplates.colorful(), ChartColorTemplates.material(), ChartColorTemplates.joyful(), ChartColorTemplates.pastel()]
-        for i in 0...entryNumber-1 {
-            var val=monthData[i].mood
-            switch(monthData[i].mood){
-            case 1:
-                val=5
-            case 2:
-                val=4
-            case 3:
-                val=3
-            case 4:
-                val=2
-            case 5:
-                val=1
-            default:
-                val=3
-            }
+        for i in 0...entryNumber-1{
+            var val=monthDoubles[i]
             values.append(ChartDataEntry(x: Double(i+1), y: Double(val)))
         }
         
-        
+        var colorTemplates=[ChartColorTemplates.colorful(), ChartColorTemplates.material(), ChartColorTemplates.joyful(), ChartColorTemplates.pastel()]
+
         let set1=LineChartDataSet(values: values, label: "\(monthLabel.text!)")
         set1.mode = .cubicBezier
         set1.drawValuesEnabled = false
@@ -54,6 +43,7 @@ class GraphTableViewCell: UITableViewCell {
         let data=LineChartData(dataSet: set1)
         lineChartView.data=data
         lineChartView.reloadInputViews()
+        
         lineChartView.leftAxis.axisMinimum = 0
         lineChartView.leftAxis.axisMaximum=6
         lineChartView.rightAxis.axisMinimum = 0

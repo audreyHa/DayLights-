@@ -15,6 +15,12 @@ class MoodVC: UIViewController {
     @IBOutlet weak var monthImage: UIImageView!
     @IBOutlet weak var yearImage: UIImageView!
     
+    @IBOutlet weak var purple1: UIView!
+    @IBOutlet weak var purple2: UIView!
+    @IBOutlet weak var purple3: UIView!
+    @IBOutlet weak var purple4: UIView!
+    
+    
     @IBOutlet weak var moodLabel: UILabel!
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
@@ -31,6 +37,11 @@ class MoodVC: UIViewController {
             label?.adjustsFontSizeToFitWidth=true
         }
 
+        purple1.layer.cornerRadius=20
+        purple2.layer.cornerRadius=20
+        purple3.layer.cornerRadius=20
+        purple4.layer.cornerRadius=20
+        
         var daylightsArray=[Daylight]()
         daylightsArray=CoreDataHelper.retrieveDaylight()
         daylightsArray = daylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
@@ -212,17 +223,6 @@ class MoodVC: UIViewController {
             }
         }
         
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "PlanetDH.jpg")?.draw(in: self.view.bounds)
-        
-        if let image = UIGraphicsGetImageFromCurrentImageContext(){
-            UIGraphicsEndImageContext()
-            self.view.backgroundColor = UIColor(patternImage: image)
-        }else{
-            UIGraphicsEndImageContext()
-            debugPrint("Image not available")
-        }
-
     }//end of view did load
     
     @IBAction func xPressed(_ sender: Any) {

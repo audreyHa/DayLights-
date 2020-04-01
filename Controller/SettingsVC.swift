@@ -18,13 +18,20 @@ class SettingsVC: UIViewController {
     @IBOutlet var fullView: UIView!
     @IBOutlet weak var linksTextView: UITextView!
     
+    @IBOutlet weak var purple1: UIView!
+    @IBOutlet weak var purple2: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         timeLabel.layer.masksToBounds=true
         timeLabel.layer.cornerRadius=5
         
-        changeNotiButton.layer.cornerRadius=5
+        purple1.layer.cornerRadius=15
+        purple2.layer.cornerRadius=15
+        changeNotiButton.layer.cornerRadius=changeNotiButton.frame.height/2
+        
         updateTimeAndSwitch()
         
         enableNotiLabel.adjustsFontSizeToFitWidth=true

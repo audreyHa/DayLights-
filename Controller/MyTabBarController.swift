@@ -22,6 +22,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
             var daylights=CoreDataHelper.retrieveDaylight()
             
             var count=0
+            
             for value in daylights{
                 if (value.mood != 0){
                     count+=1
@@ -33,6 +34,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
                 makeOKAlert()
                 return false
             }else{
+
                 return true
             }
         }else if viewController == tabBarController.viewControllers?[4]{
@@ -47,6 +49,25 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
 
             if (count>1){
                 return true
+//                var multipleDays=false
+//                let dateformatter = DateFormatter()
+//                dateformatter.dateFormat = "MM/dd/yy"
+//
+//                var date1=dateformatter.string(from: daylights[0].dateCreated!)
+//
+//                for value in daylights{
+//                    if(dateformatter.string(from: value.dateCreated!) != date1){
+//                        multipleDays=true
+//                    }
+//                }
+//
+//                if(multipleDays){
+//                    return true
+//                }else{
+//                    UserDefaults.standard.set("noMoodData",forKey: "typeOKAlert")
+//                    makeOKAlert()
+//                    return true
+//                }
             }else{
                 UserDefaults.standard.set("noMoodData",forKey: "typeOKAlert")
                 makeOKAlert()

@@ -171,7 +171,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     internal func initialize()
     {
         #if os(iOS)
-            self.backgroundColor = NSUIColor.clear
+//            self.backgroundColor = NSUIColor.clear
         #endif
 
         _animator = Animator()

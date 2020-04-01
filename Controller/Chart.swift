@@ -12,6 +12,7 @@ import Charts
 class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var statsButton: UIButton!
     
     var daylightsArray=CoreDataHelper.retrieveDaylight()
     var monthYear=[String]()
@@ -21,13 +22,26 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var formalMonthYear=[String]()
     var formalIndividualMonths=[String]()
 
+    var purpleColors=[UIColor]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getMonths()
         
+        daylightsArray=CoreDataHelper.retrieveDaylight()
         self.tableView.allowsSelection = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        statsButton.layer.cornerRadius=20
+        
+        purpleColors=[UIColor(rgb: 0xDBF3FC),UIColor(rgb: 0xCDD9F1),UIColor(rgb: 0xb0b6ff),UIColor(rgb: 0xa495e8),UIColor(rgb: 0xcda3ff)]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        daylightsArray=CoreDataHelper.retrieveDaylight()
+        getMonths()
+        tableView.reloadData()
     }
     
     @IBAction func xPressed(_ sender: Any) {
@@ -45,10 +59,40 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let cell: GraphTableViewCell = tableView.dequeueReusableCell(withIdentifier: "GraphTableViewCell", for: indexPath) as! GraphTableViewCell
         
+        cell.purpleView.layer.cornerRadius=15
+        cell.lineChartView.backgroundColor=UIColor.white
+        cell.purpleView.backgroundColor=purpleColors[indexPath.row%6]
+        
+        
+        cell.whiteGraphSurroundView.layer.cornerRadius=15
+        cell.lineChartView.rightAxis.drawLabelsEnabled=false
+        
         if indexPath.row==0{
             cell.monthData=daylightsArray
+            var monthDoubles=[Double]()
+            for daylight in daylightsArray{
+                var val=0.0
+                switch(daylight.mood){
+                case 1:
+                    val=5.0
+                case 2:
+                    val=4.0
+                case 3:
+                    val=3.0
+                case 4:
+                    val=2.0
+                case 5:
+                    val=1.0
+                default:
+                    val=3.0
+                }
+                
+                monthDoubles.append(val)
+            }
+            
+            cell.monthDoubles=monthDoubles
             cell.entryNumber=daylightsArray.count
-            cell.monthLabel.text="All Month Data"
+            cell.monthLabel.text="All Data"
             
             cell.labels=formalMonthYear
             cell.lineChartView.isUserInteractionEnabled=false
@@ -56,7 +100,29 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 cell.lineChartView.xAxis.drawLabelsEnabled=false
             }
         }else{
+           
             var monthData=daylightsPerMonth[indexPath.row-1]
+            var monthDoubles=[Double]()
+            for daylight in daylightsPerMonth[indexPath.row-1]{
+                var val=0.0
+                switch(daylight.mood){
+                case 1:
+                    val=5.0
+                case 2:
+                    val=4.0
+                case 3:
+                    val=3.0
+                case 4:
+                    val=2.0
+                case 5:
+                    val=1.0
+                default:
+                    val=3.0
+                }
+                monthDoubles.append(val)
+            }
+
+            
             var monthName=formalIndividualMonths[indexPath.row-1]
             var tempLabelsArray=[String]()
             
@@ -68,6 +134,7 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             cell.monthLabel.text=monthName
             cell.monthData=monthData
+            cell.monthDoubles=monthDoubles
             cell.entryNumber=monthData.count
             cell.labels=tempLabelsArray
         }
@@ -81,6 +148,13 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func getMonths(){
         //get array of each daylight's month year
+        
+        monthYear=[]
+        individualMonths=[]
+        daylightsPerMonth=[]
+        formalMonthYear=[]
+        formalIndividualMonths=[]
+        
         for daylight in daylightsArray{
             var monthFormatter = DateFormatter()
             monthFormatter.dateFormat = "MM"
@@ -143,10 +217,12 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
             daylightsPerMonth.append([])
         }
         
+        print(monthYear)
         //sort the daylights into arrays by their month year
         for i in 0...monthYear.count-1{
             for j in 0...individualMonths.count-1{
                 if individualMonths[j]==monthYear[i]{
+                    print(i)
                     daylightsPerMonth[j].append(daylightsArray[i])
                 }
             }
@@ -157,6 +233,8 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
         for array in daylightsPerMonth{
             if array.count<2{
                 daylightsPerMonth=daylightsPerMonth.filter {$0 != array}
+                print("Array \(array)")
+                print("Formal individual months \(formalIndividualMonths)")
                 formalIndividualMonths.remove(at: i)
                 individualMonths.remove(at: i)
             }

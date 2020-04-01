@@ -25,6 +25,7 @@ class LeftCollectionViewCell: UICollectionViewCell {
     var rightStressfulMoment: String!
     
     @IBAction func onLeftZoomTouched(_ sender: Any) {
+        print("left touched")
         UserDefaults.standard.set("left", forKey: "sideInCell")
         UserDefaults.standard.set(leftDidWell,forKey: "didWellText")
         UserDefaults.standard.set(leftStressfulMoment,forKey: "gratefulThing")

@@ -387,6 +387,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         daylightsArray=CoreDataHelper.retrieveDaylight()
         
         gratefulLabel.adjustsFontSizeToFitWidth=true
@@ -414,9 +415,9 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        saveButton.layer.cornerRadius = 8
+        saveButton.layer.cornerRadius = 25
         saveButton.layer.masksToBounds = true
-        cancelButton.layer.cornerRadius = 8
+        cancelButton.layer.cornerRadius = 25
         cancelButton.layer.masksToBounds = true
         
         topPurple.layer.cornerRadius=10
