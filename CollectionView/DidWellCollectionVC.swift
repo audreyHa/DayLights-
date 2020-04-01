@@ -13,6 +13,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
 
     @IBOutlet weak var leftCollectionView: UICollectionView!
     @IBOutlet weak var headerCategoryLabel: UILabel!
+  
     
     var dayHighlightsArray=CoreDataHelper.retrieveDaylight()
     var myColors=[[UIColor]]()
@@ -25,6 +26,8 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         headerCategoryLabel.adjustsFontSizeToFitWidth=true
         resetDaylightArrays()
         
+        leftCollectionView.layer.cornerRadius=30
+
         leftCollectionView.dataSource=self
         leftCollectionView.delegate=self
         
@@ -69,10 +72,13 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
             UIGraphicsEndImageContext()
             debugPrint("Image not available")
         }
-        
-        leftCollectionView.backgroundColor=UIColor.clear
+
         
         Analytics.logEvent("viewedGallery", parameters: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        leftCollectionView.reloadData()
     }
 
     func resetDaylightArrays(){

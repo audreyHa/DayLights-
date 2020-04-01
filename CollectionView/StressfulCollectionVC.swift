@@ -28,6 +28,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
         setEditedDaylightsArray()
         resetDaylightArrays()
         
+        leftCollectionView.layer.cornerRadius=15
         leftCollectionView.dataSource=self
         leftCollectionView.delegate=self
         
@@ -62,8 +63,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             UIGraphicsEndImageContext()
             debugPrint("Image not available")
         }
-        
-        leftCollectionView.backgroundColor=UIColor.clear
+
         
         Analytics.logEvent("viewedGallery", parameters: nil)
     }
@@ -74,11 +74,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func setEditedDaylightsArray(){
-        for daylight in dayHighlightsArray{
-            if daylight.gratefulThing != "No Grateful Thing Entered"{
-                editedDaylightsArray.append(daylight)
-            }
-        }
+        editedDaylightsArray=dayHighlightsArray
         
         editedDaylightsArray.reverse()
     }
@@ -271,7 +267,7 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             print("add label to left. row: \(indexPath.row). Left entries count: \(leftEntries.count)")
             
             cell.leftDate=dateformatter.string(for: leftEntries[indexPath.row].dateCreated)
-            cell.leftDidWell=leftEntries[indexPath.row].didWell!
+            cell.leftDidWell=leftEntries[indexPath.row].didWell ?? "IDK1"
             cell.leftStressfulMoment=leftEntries[indexPath.row].gratefulThing ?? "No Grateful Thing Entered"
         }
         
@@ -284,8 +280,10 @@ class StressfulCollectionVC: UIViewController, UICollectionViewDelegate, UIColle
             
             print("add label to right. row: \(indexPath.row). Right entries count: \(rightEntries.count)")
             
+            
             let leftDate = dateformatter.string(from: leftEntries[indexPath.row].dateCreated!)
             let rightDate=dateformatter.string(from: rightEntries[indexPath.row].dateCreated!)
+
 
             cell.dateLabel.text = ("\(leftDate)\n\(rightDate)")
             
