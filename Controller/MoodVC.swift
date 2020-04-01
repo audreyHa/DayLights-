@@ -15,6 +15,7 @@ class MoodVC: UIViewController {
     @IBOutlet weak var monthImage: UIImageView!
     @IBOutlet weak var yearImage: UIImageView!
     
+    @IBOutlet weak var topPurple: UIView!
     @IBOutlet weak var purple1: UIView!
     @IBOutlet weak var purple2: UIView!
     @IBOutlet weak var purple3: UIView!
@@ -25,6 +26,44 @@ class MoodVC: UIViewController {
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    
+    @IBOutlet weak var blueLabel: UILabel!
+    @IBOutlet weak var greenLabel: UILabel!
+    @IBOutlet weak var yellowLabel: UILabel!
+    @IBOutlet weak var orangeLabel: UILabel!
+    @IBOutlet weak var redLabel: UILabel!
+    
+    func updateMoodCounts(){
+        var daylightsArray=CoreDataHelper.retrieveDaylight()
+        var redCount=0
+        var orangeCount=0
+        var yellowCount=0
+        var greenCount=0
+        var blueCount=0
+        
+        for daylight in daylightsArray{
+            switch(daylight.mood){
+            case 1:
+                redCount+=1
+            case 2:
+                orangeCount+=1
+            case 3:
+                yellowCount+=1
+            case 4:
+                greenCount+=1
+            case 5:
+                blueCount+=1
+            default:
+                print("Don't do anything")
+            }
+        }
+        
+        blueLabel.text="\(blueCount)"
+        greenLabel.text="\(greenCount)"
+        yellowLabel.text="\(yellowCount)"
+        orangeLabel.text="\(orangeCount)"
+        redLabel.text="\(redCount)"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +76,9 @@ class MoodVC: UIViewController {
             label?.adjustsFontSizeToFitWidth=true
         }
 
+        updateMoodCounts()
+        
+        topPurple.layer.cornerRadius=20
         purple1.layer.cornerRadius=20
         purple2.layer.cornerRadius=20
         purple3.layer.cornerRadius=20

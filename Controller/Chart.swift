@@ -51,7 +51,7 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return individualMonths.count+1
+        return individualMonths.count
 //        return 1
     }
     
@@ -66,44 +66,10 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         cell.whiteGraphSurroundView.layer.cornerRadius=15
         cell.lineChartView.rightAxis.drawLabelsEnabled=false
-        
-        if indexPath.row==0{
-            cell.monthData=daylightsArray
-            var monthDoubles=[Double]()
-            for daylight in daylightsArray{
-                var val=0.0
-                switch(daylight.mood){
-                case 1:
-                    val=5.0
-                case 2:
-                    val=4.0
-                case 3:
-                    val=3.0
-                case 4:
-                    val=2.0
-                case 5:
-                    val=1.0
-                default:
-                    val=3.0
-                }
-                
-                monthDoubles.append(val)
-            }
-            
-            cell.monthDoubles=monthDoubles
-            cell.entryNumber=daylightsArray.count
-            cell.monthLabel.text="All Data"
-            
-            cell.labels=formalMonthYear
-            cell.lineChartView.isUserInteractionEnabled=false
-            if daylightsArray.count<10{
-                cell.lineChartView.xAxis.drawLabelsEnabled=false
-            }
-        }else{
            
-            var monthData=daylightsPerMonth[indexPath.row-1]
+            var monthData=daylightsPerMonth[indexPath.row]
             var monthDoubles=[Double]()
-            for daylight in daylightsPerMonth[indexPath.row-1]{
+            for daylight in daylightsPerMonth[indexPath.row]{
                 var val=0.0
                 switch(daylight.mood){
                 case 1:
@@ -123,7 +89,7 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
 
             
-            var monthName=formalIndividualMonths[indexPath.row-1]
+            var monthName=formalIndividualMonths[indexPath.row]
             var tempLabelsArray=[String]()
             
             for day in monthData{
@@ -137,7 +103,7 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.monthDoubles=monthDoubles
             cell.entryNumber=monthData.count
             cell.labels=tempLabelsArray
-        }
+        
         
         cell.monthInList=indexPath.row%4
         
