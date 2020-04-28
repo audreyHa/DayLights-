@@ -26,9 +26,7 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMonths()
-        
-        daylightsArray=CoreDataHelper.retrieveDaylight()
+    
         self.tableView.allowsSelection = false
         self.tableView.delegate = self
         self.tableView.dataSource = self

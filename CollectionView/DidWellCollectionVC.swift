@@ -24,6 +24,7 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         
         headerCategoryLabel.adjustsFontSizeToFitWidth=true
+        dayHighlightsArray=CoreDataHelper.retrieveDaylight()
         resetDaylightArrays()
         
         leftCollectionView.layer.cornerRadius=30
@@ -78,6 +79,8 @@ class DidWellCollectionVC: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        dayHighlightsArray=CoreDataHelper.retrieveDaylight()
+        resetDaylightArrays()
         leftCollectionView.reloadData()
     }
 

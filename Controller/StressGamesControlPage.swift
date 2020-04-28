@@ -24,6 +24,7 @@ class StressGamesControlPage: UIViewController {
         
         for button in buttons{
             button!.layer.cornerRadius=10
+            button!.layer.masksToBounds=true
             button!.titleLabel?.adjustsFontSizeToFitWidth=true
         }
         

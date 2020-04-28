@@ -13,6 +13,7 @@ class PhoneNumberCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var textButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var subBack: UIView!
     
     @IBAction func deletePressed(_ sender: Any) {
         guard let superView = self.superview as? UITableView else {return}

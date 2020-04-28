@@ -13,6 +13,7 @@ class SpeechCell: UITableViewCell {
     @IBOutlet weak var speechTitleLabel: UILabel!
     @IBOutlet weak var dateCreated: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var subBack: UIView!
     
     
     override func awakeFromNib() {

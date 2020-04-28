@@ -15,11 +15,11 @@ class MoodVC: UIViewController {
     @IBOutlet weak var monthImage: UIImageView!
     @IBOutlet weak var yearImage: UIImageView!
     
-    @IBOutlet weak var topPurple: UIView!
-    @IBOutlet weak var purple1: UIView!
-    @IBOutlet weak var purple2: UIView!
-    @IBOutlet weak var purple3: UIView!
-    @IBOutlet weak var purple4: UIView!
+    @IBOutlet weak var topPurple: UIImageView!
+    @IBOutlet weak var purple1: UIImageView!
+    @IBOutlet weak var purple2: UIImageView!
+    @IBOutlet weak var purple3: UIImageView!
+    @IBOutlet weak var purple4: UIImageView!
     
     
     @IBOutlet weak var moodLabel: UILabel!
@@ -76,14 +76,23 @@ class MoodVC: UIViewController {
             label?.adjustsFontSizeToFitWidth=true
         }
 
-        updateMoodCounts()
-        
         topPurple.layer.cornerRadius=20
         purple1.layer.cornerRadius=20
         purple2.layer.cornerRadius=20
         purple3.layer.cornerRadius=20
         purple4.layer.cornerRadius=20
         
+        self.topPurple.layer.masksToBounds = true
+        self.purple1.layer.masksToBounds = true
+        self.purple2.layer.masksToBounds = true
+        self.purple3.layer.masksToBounds = true
+        self.purple4.layer.masksToBounds = true
+
+    }//end of view did load
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateMoodCounts()
+            
         var daylightsArray=[Daylight]()
         daylightsArray=CoreDataHelper.retrieveDaylight()
         daylightsArray = daylightsArray.sorted(by: { $0.dateCreated!.compare($1.dateCreated!) == .orderedDescending })
@@ -264,9 +273,7 @@ class MoodVC: UIViewController {
                 array[number]!.image = #imageLiteral(resourceName: "emojiScale5")
             }
         }
-        
-    }//end of view did load
-    
+    }
     @IBAction func xPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

@@ -16,6 +16,7 @@ class quotesCell: UITableViewCell {
     
     var quote: String!
     var author: String!
+    @IBOutlet weak var subBack: UIView!
     
     @IBAction func bookmarkButtonPressed(_ sender: Any) {
         if bookmarkButton.imageView!.image==UIImage(imageLiteralResourceName: "bookmark"){

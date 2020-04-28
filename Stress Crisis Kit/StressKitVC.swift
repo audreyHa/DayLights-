@@ -15,21 +15,23 @@ import Firebase
 
 class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MFMessageComposeViewControllerDelegate{
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var threeQuotesLabel: UILabel!
     @IBOutlet weak var funnyImagesLabel: UILabel!
     @IBOutlet weak var motivationalSpeechLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     
-    
     @IBOutlet weak var phoneNumbersTBV: UITableView!
- 
     @IBOutlet weak var quotesTBV: UITableView!
-    
     @IBOutlet weak var speechTBV: UITableView!
-    
     @IBOutlet weak var contactTBV: UITableView!
-    
     @IBOutlet weak var funnyCollectionView: UICollectionView!
+    
+    @IBOutlet weak var quotesImageView: UIImageView!
+    @IBOutlet weak var imagesImageView: UIImageView!
+    @IBOutlet weak var phoneImageView: UIImageView!
+    @IBOutlet weak var speechImageView: UIImageView!
+    
     
     var funnyImages=[FunnyImage]()
     
@@ -48,7 +50,19 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        headerLabel.adjustsFontSizeToFitWidth=true
+        
+        quotesImageView.layer.cornerRadius=20
+        imagesImageView.layer.cornerRadius=20
+        phoneImageView.layer.cornerRadius=20
+        speechImageView.layer.cornerRadius=20
+        
+        self.quotesImageView.layer.masksToBounds = true
+        self.imagesImageView.layer.masksToBounds = true
+        self.phoneImageView.layer.masksToBounds = true
+        self.speechImageView.layer.masksToBounds = true
+        
         var labels=[threeQuotesLabel, funnyImagesLabel, motivationalSpeechLabel, phoneNumberLabel]
         
         for label in labels{
@@ -62,8 +76,7 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 tbv!.estimatedRowHeight = 80
                 tbv!.rowHeight = UITableView.automaticDimension
             }
-
-            tbv!.layer.cornerRadius=10
+            
             tbv!.delegate=self
             tbv!.dataSource=self
             
@@ -359,7 +372,9 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell.quote=quoteToUse
             cell.author=authorToUse
             
+            
             cell.bookmarkButton.setImage(UIImage(imageLiteralResourceName: "bookmark"), for: .normal)
+            
             
             var allQuotes=CoreDataHelper.retrieveQuote()
             
@@ -368,6 +383,8 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     cell.bookmarkButton.setImage(UIImage(imageLiteralResourceName: "filledBookmark"), for: .normal)
                 }
             }
+            
+            cell.subBack.layer.cornerRadius=10
             
             return cell
         }else if tableView==speechTBV{
@@ -380,13 +397,13 @@ class StressKitVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             dateformatter.dateFormat = "MM/dd/yy"
             
             cell.dateCreated.text=dateformatter.string(from: speech.dateModified!)
-
+            cell.subBack.layer.cornerRadius=10
             return cell
         }else if tableView==contactTBV{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhoneNumberCell", for: indexPath) as! PhoneNumberCell
             
             cell.nameLabel.text=contacts[indexPath.row].name!
-            
+            cell.subBack.layer.cornerRadius=10
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "quotesCell", for: indexPath) as! quotesCell

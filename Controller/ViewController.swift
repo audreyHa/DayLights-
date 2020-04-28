@@ -31,9 +31,9 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     @IBOutlet weak var gratefulLabel: UILabel!
     @IBOutlet weak var didWellLabel: UILabel!
     
-    @IBOutlet weak var topPurple: UIView!
-    @IBOutlet weak var middlePurple: UIView!
-    @IBOutlet weak var bottomPurple: UIView!
+    @IBOutlet weak var topPurple: UIImageView!
+    @IBOutlet weak var midPurple: UIImageView!
+    @IBOutlet weak var bottomPurple: UIImageView!
     
     var moodButtons=[UIButton]()
 
@@ -387,7 +387,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         daylightsArray=CoreDataHelper.retrieveDaylight()
         
         gratefulLabel.adjustsFontSizeToFitWidth=true
@@ -421,8 +421,12 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         cancelButton.layer.masksToBounds = true
         
         topPurple.layer.cornerRadius=10
-        middlePurple.layer.cornerRadius=10
+        midPurple.layer.cornerRadius=10
         bottomPurple.layer.cornerRadius=10
+        
+        self.topPurple.layer.masksToBounds = true
+        self.midPurple.layer.masksToBounds = true
+        self.bottomPurple.layer.masksToBounds = true
 
         didWellText.layer.cornerRadius=10
         gratefulMomentText.layer.cornerRadius=10
@@ -451,6 +455,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         dateLabel.text=newnow
         dayLightsTitleLabel.text="DayHighlights"
         dateLabel.adjustsFontSizeToFitWidth=true
+
     }
     //END of view did load
     

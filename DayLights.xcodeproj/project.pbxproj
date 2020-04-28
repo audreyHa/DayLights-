@@ -206,7 +206,6 @@
 				F673E79E2431C58700573409 /* Montserrat-Medium.otf */,
 				F673E79F2431C58F00573409 /* Montserrat-SemiBold.otf */,
 				F673E7A02431C59C00573409 /* Montserrat-Bold.otf */,
-				F673E7A12431C5A300573409 /* Montserrat-ExtraBold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -245,6 +244,7 @@
 			children = (
 				F6EBC5EF225F12E7005EB363 /* DayLights.entitlements */,
 				F68CF9FC2249F1A1001138FE /* AppDelegate.swift */,
+				F673E7A12431C5A300573409 /* Montserrat-ExtraBold.otf */,
 				F68CFA002249F1A1001138FE /* Main.storyboard */,
 				F68CFA062249F1A2001138FE /* Assets.xcassets */,
 				F68CFA082249F1A2001138FE /* LaunchScreen.storyboard */,

@@ -15,11 +15,10 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var mySwitch: UISwitch!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var changeNotiButton: UIButton!
-    @IBOutlet var fullView: UIView!
     @IBOutlet weak var linksTextView: UITextView!
     
-    @IBOutlet weak var purple1: UIView!
-    @IBOutlet weak var purple2: UIView!
+    @IBOutlet weak var purple1: UIImageView!
+    @IBOutlet weak var purple2: UIImageView!
     
     
     override func viewDidLoad() {
@@ -30,6 +29,9 @@ class SettingsVC: UIViewController {
         
         purple1.layer.cornerRadius=15
         purple2.layer.cornerRadius=15
+        
+        self.purple1.layer.masksToBounds = true
+        self.purple2.layer.masksToBounds = true
         changeNotiButton.layer.cornerRadius=changeNotiButton.frame.height/2
         
         updateTimeAndSwitch()
