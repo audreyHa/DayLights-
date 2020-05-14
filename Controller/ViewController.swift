@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     var currentMood=0
     var daylightsArray=[Daylight]()
     
+    @IBOutlet weak var headerLabel: UILabel!
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var didWellText: UITextView!
     @IBOutlet weak var gratefulMomentText: UITextView!
@@ -387,7 +389,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        headerLabel.adjustsFontSizeToFitWidth=true
         daylightsArray=CoreDataHelper.retrieveDaylight()
         
         gratefulLabel.adjustsFontSizeToFitWidth=true

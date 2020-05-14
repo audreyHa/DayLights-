@@ -221,6 +221,7 @@ class Canvas : UIView{
 
 class DrawingGame: UIViewController {
 
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var containerDrawingView: UIView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var new: UIButton!
@@ -308,6 +309,8 @@ class DrawingGame: UIViewController {
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.needToSave(notification:)), name: Notification.Name("needToSave"), object: nil)
+        
+        headerLabel.adjustsFontSizeToFitWidth=true
     }
     
     @IBAction func xPressed(_ sender: Any) {

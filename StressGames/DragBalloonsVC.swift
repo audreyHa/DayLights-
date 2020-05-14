@@ -12,10 +12,10 @@ import Firebase
 
 class DragBalloonsVC: UIViewController {
 
+    @IBOutlet weak var headerLabel: UILabel!
+    
     var balloonTimer = Timer()
     @IBOutlet weak var gameView: UIView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var controlsView: UIView!
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var titleOfGame: UILabel!
     
@@ -43,8 +43,6 @@ class DragBalloonsVC: UIViewController {
         instructionsLabel.adjustsFontSizeToFitWidth=true
         gameView.isUserInteractionEnabled=true
         
-        controlsView.layer.cornerRadius=10
-        
         mediumBlue=UIColor(rgb: 0x1fc2ff)
         
         startOverButton.layer.cornerRadius=5
@@ -57,6 +55,8 @@ class DragBalloonsVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.exitScoreReportNewGame(notification:)), name: Notification.Name("exitScoreReportNewGame"), object: nil)
+        
+        headerLabel.adjustsFontSizeToFitWidth=true
     }
     
     @IBAction func xPressed(_ sender: Any) {

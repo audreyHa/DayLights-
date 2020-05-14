@@ -10,6 +10,7 @@ import UIKit
 
 class MoodVC: UIViewController {
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var todayImage: UIImageView!
     @IBOutlet weak var weekImage: UIImageView!
     @IBOutlet weak var monthImage: UIImageView!
@@ -87,6 +88,8 @@ class MoodVC: UIViewController {
         self.purple2.layer.masksToBounds = true
         self.purple3.layer.masksToBounds = true
         self.purple4.layer.masksToBounds = true
+        
+        headerLabel.adjustsFontSizeToFitWidth=true
 
     }//end of view did load
     

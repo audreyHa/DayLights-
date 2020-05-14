@@ -20,10 +20,13 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var purple1: UIImageView!
     @IBOutlet weak var purple2: UIImageView!
     
+    @IBOutlet weak var headerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        headerLabel.adjustsFontSizeToFitWidth=true
+        
         timeLabel.layer.masksToBounds=true
         timeLabel.layer.cornerRadius=5
         

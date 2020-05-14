@@ -11,6 +11,7 @@ import Charts
 
 class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var statsButton: UIButton!
     
@@ -34,6 +35,8 @@ class Chart: UIViewController, UITableViewDelegate, UITableViewDataSource {
         statsButton.layer.cornerRadius=20
         
         purpleColors=[UIColor(rgb: 0xDBF3FC),UIColor(rgb: 0xCDD9F1),UIColor(rgb: 0xb0b6ff),UIColor(rgb: 0xa495e8),UIColor(rgb: 0xcda3ff)]
+        
+        headerLabel.adjustsFontSizeToFitWidth=true
     }
     
     override func viewDidAppear(_ animated: Bool) {

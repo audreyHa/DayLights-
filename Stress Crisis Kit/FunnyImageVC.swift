@@ -20,7 +20,7 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if headerLabel.text == "My Drawings!"{
+        if headerLabel.text == "My Drawings:"{
             drawings=CoreDataHelper.retrieveDrawing()
         }else{
             funnyImages=CoreDataHelper.retrieveFunnyImage()
@@ -37,6 +37,8 @@ class FunnyImageVC: UIViewController, UICollectionViewDelegate, UICollectionView
         NotificationCenter.default.addObserver(self, selector: #selector(self.possiblyDeleteImage(notification:)), name: Notification.Name("possiblyDeleteImage"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.permanentlyDeleteImage(notification:)), name: Notification.Name("permanentlyDeleteImage"), object: nil)
+        
+        headerLabel.adjustsFontSizeToFitWidth=true
     }
     
     @IBAction func xPressed(_ sender: Any) {

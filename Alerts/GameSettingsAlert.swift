@@ -62,7 +62,7 @@ class GameSettingsAlert: UIViewController {
             button.layer.cornerRadius=5
         }
         
-        highlightTimeButton(timeButton: fiveMin)
+        highlightTimeButton(timeButton: oneMin)
         highlightLevelButton(levelButton: hard)
         
     }
